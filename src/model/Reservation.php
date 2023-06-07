@@ -117,25 +117,47 @@ class Reservation
         $request = $connection->prepare('SELECT * FROM Reservation WHERE id = :id');
         $request->bindParam(':id', $reservation_id);
 
-        $results = $request->fetch(PDO::FETCH_ASSOC);
+        $result = $request->fetch(PDO::FETCH_ASSOC);
 
         if($request->execute()){
             $this->id = $id;
-            $this->user_id = $results['user_id'];
-            $this->apartment_id = $results['apartment_id'];
-            $this->start_time = $results['start_time'];
-            $this->end_time = $results['end_time'];
-            $this->created_at = $results['created_at'];
+            $this->user_id = $result['user_id'];
+            $this->apartment_id = $result['apartment_id'];
+            $this->start_time = $result['start_time'];
+            $this->end_time = $result['end_time'];
+            $this->created_at = $result['created_at'];
             return true;
         }
         return false;
     }
 
-    //  fonction qui récupère toutes les réservation d'un utilisateur via son ID
+    //  fonction qui récupère toutes les réservations d'un utilisateur via son ID
     public  function getUserReservations($user_id){
         $db = new Database();
         $connection = $db->getConnection();
 
-        $request = $connection->prepare('SELECT * FROM');
+        $request = $connection->prepare('SELECT * FROM Reservation WHERE user_id = :user_id');
+        $request->bindParam(':user_id', $user_id);
+
+        $results = $request->fetchAll(PDO::FETCH_ASSOC);
+        if($request->execute()){
+            return $results;
+        }
+        return null;
+    }
+
+    //  fonction qui récupère toutes les réservations d'un appartement via son ID
+    public function getApartmentReservations($apartment_id){
+        $db = new Database();
+        $connection = $db->getConnection();
+
+        $request = $connection->prepare('SELECT * FROM Reservation WHERE apartment_id = :apartment_id');
+        $request->bindParam(':apartment_id', $apartment_id);
+
+        $results = $request->fetchAll(PDO::FETCH_ASSOC);
+        if($request->execute()){
+            return $results;
+        }
+        return null;
     }
 }
