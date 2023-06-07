@@ -7,9 +7,9 @@ class Database {
         // variables de connection a la bdd
         $host = "localhost";
         $dbname = "socialNetwork";
-        $username = "postgres";
-        $password = "0000";
-        $port = 5432;
+        $username = "root";
+        $password = "";
+        $port = 3000;
 
         $connection = null;
         try {
