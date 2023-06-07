@@ -94,6 +94,37 @@ class Reservation
         return false;
     }
 
+    //  fonction qui modifie une réservation (changement d'appartement, de début ou de fin) / prend en paramètre le type de donnée modifiée et la donnée en question
+    //  attention la classe doit déjà être instanciée pour avoir l'ID de la réservation à modifier
+    public function modifyReservation($data, $data_type){
+        $db = new Database();
+        $connection = $db->getConnection();
+
+        $request = $connection->prepare('UPDATE Reservation SET :data_type = :data WHERE id = :id');
+        $request->bindParam(':id', $this->id);
+        $request->bindParam(':data_type', $data_type);
+        $request->bindParam(':data', $data);
+
+        if($request->execute()){
+            switch($data_type){
+                case 'apartment_id':
+                    $this->apartment_id = $data;
+                    break;
+                case 'start_time':
+                    $this->start_time = $data;
+                    break;
+                case 'end_time':
+                    $this->end_time = $data;
+                    break;
+                default :
+                    return false;
+                    break;
+            }
+            return true;
+        }
+        return false;
+    }
+
     //  fonction pour supprimer une réservation
     public function deleteReservation(){
 
