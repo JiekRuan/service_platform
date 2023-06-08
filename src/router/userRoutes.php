@@ -14,3 +14,8 @@ switch ($url) {
         # code...
         break;
 }
+
+// TODO faire les routes en objet
+// gerer les param dans les fonctions
+// avoir des param dynamique
+//
