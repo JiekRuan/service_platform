@@ -118,4 +118,131 @@ class User
         return $this->createdAt;
     }
 
+    public function addUser()
+    {
+        $db = new Database();
+        $connection = $db->getConnection();
+    
+        $request = $connection->prepare('INSERT INTO Users VALUES(:id, :name, :password, :mail, :phone, :role)');
+        $request->bindParam(':id', $this->id);
+        $request->bindParam(':name', $this->name);
+        $request->bindParam(':password', $this->password);
+        $request->bindParam(':mail', $this->mail);
+        $request->bindParam(':phone', $this->phone);
+        $request->bindParam(':role', $this->role);
+    
+        if ($request->execute()) {
+            return true;
+        }
+        return false;
+    }
+
+    public function updateUser($data_type, $data) // ne pas oublier les paramètres 
+    {
+        $db = new Database();
+        $connection = $db->getConnection();
+    
+        $request = $connection->prepare('UPDATE Users SET ' . $data_type . ' = :data WHERE id = :id');
+        $request->bindParam(':id', $this->id);
+        $request->bindParam(':data_type', $data_type);
+        $request->bindParam(':data', $data);
+    
+        if ($request->execute()) {
+            switch ($data_type) {
+                case 'name':
+                    $this->name = $data;
+                    break;
+                case 'password':
+                    $this->password = $data;
+                    break;
+                case 'mail':
+                    $this->mail = $data;
+                    break;
+                case 'phone':
+                    $this->phone = $data;
+                    break;
+                case 'role':
+                    $this->role = $data;
+                    break;
+                default:
+                    return false;
+                    break;
+            }
+            return true;
+        }
+        return false;
+    }
+
+    public function deleteUser()
+    {
+        $db = new Database();
+        $connection = $db->getConnection();
+    
+        $request = $connection->prepare('DELETE FROM Users WHERE id = :id');
+        $request->bindParam(':id', $this->id);
+    
+        if ($request->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    public function getUserById($user_id)
+    {
+        $db = new Database();
+        $connection = $db->getConnection();
+    
+        $request = $connection->prepare('SELECT * FROM Users WHERE id = :id');
+        $request->bindParam(':id', $user_id);
+    
+        if ($request->execute()) {
+            $result = $request->fetch(PDO::FETCH_ASSOC);
+    
+            if ($result) {
+                $this->id = $user_id;
+                $this->name = $result['name'];
+                $this->password = $result['password'];
+                $this->mail = $result['mail'];
+                $this->phone = $result['phone'];
+                $this->role = $result['role'];
+                $this->createdAt = $result['created_at'];
+                return true;
+            }
+        }
+    
+        return false;
+    }
+    
+    public static function getAllUsers()
+{
+    $db = new Database();
+    $connection = $db->getConnection();
+
+    $request = $connection->prepare('SELECT * FROM Users');
+
+    if ($request->execute()) {
+        $users = array();
+
+        while ($row = $request->fetch(PDO::FETCH_ASSOC)) {
+            $user = new User(
+                $row['id'],
+                $row['name'],
+                $row['mail'],
+                $row['phone'],
+                $row['role'],
+                $row['password'],
+                $row['created_at']
+            );
+
+            $users[] = $user;
+        }
+
+        return $users;
+    }
+
+    return null;
+}
+    
+
 }
