@@ -1,3 +1,25 @@
 .logo {
     color: var(--goldPrimary);
 }
+
+ul {
+    display: flex;
+    flex-direction: row;
+    gap: 70px;
+    list-style: none;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 90px;
+    border-bottom: black 2px solid;
+}
+
+@media (max-width: 1024px) {
+    header {
+        padding: 10px 10px;
+    }
+}
