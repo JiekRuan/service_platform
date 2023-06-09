@@ -32,6 +32,8 @@
     --shadow1: 0px 4px 20px rgba(0, 0, 0, 0.15);
     --bglight: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.5)), url(../../public/images/bglight.png);
     --bgdark: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.5)), url(../../public/images/bglight.png);
+    --pad: 100px 90px;
+    --padMobile: 100px 20px;
 }
 
 *>img {
@@ -80,7 +82,12 @@ input {
     font-family: 'Poppins';
 }
 
-.fa-regular, .fa-solid {
+a {
+    text-decoration: none;
+}
+
+.fa-regular,
+.fa-solid {
     cursor: pointer;
 }
 
