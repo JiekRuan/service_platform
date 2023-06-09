@@ -30,6 +30,16 @@
     --goldPrimary: #C29B40;
     --goldDark: #9B7B31;
     --shadow1: 0px 4px 20px rgba(0, 0, 0, 0.15);
+    --bglight: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.5)), url(../../public/images/bglight.png);
+    --bgdark: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.5)), url(../../public/images/bglight.png);
+}
+
+*>img {
+    user-select: none;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 * {
@@ -61,7 +71,77 @@ h3 {
 h4 {
     font-family: "athenaLight", sans-serif;
     font-size: 24px;
+}
 
+input {
+    padding: 5px;
+    border: none;
+    border-bottom: 1px solid var(--black);
+    font-family: 'Poppins';
+}
+
+.fa-regular, .fa-solid {
+    cursor: pointer;
+}
+
+.goldenButton {
+    display: flex;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 4px;
+    background-color: var(--goldPrimary);
+    color: var(--white);
+    padding: 20px 30px;
+}
+
+.goldenButton:hover {
+    background-color: var(--goldLight);
+}
+
+.goldenButton:active {
+    background-color: var(--goldDark);
+}
+
+
+.blueButton {
+    display: flex;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 4px;
+    background-color: var(--bluePrimary);
+    color: var(--white);
+    padding: 20px 30px;
+}
+
+.blueButton:hover {
+    background-color: var(--blueLight);
+}
+
+.blueButton:active {
+    background-color: var(--blueDark);
+}
+
+.blueGoldButton {
+    display: flex;
+    text-transform: uppercase;
+    border: 1px solid var(--goldPrimary);
+    border-radius: 4px;
+    background-color: var(--bluePrimary);
+    color: var(--goldPrimary);
+    padding: 20px 30px;
+}
+
+.blueGoldButton:hover {
+    background-color: var(--blueLight);
+    color: var(--goldLight);
+    border: 2px solid var(--goldLight);
+
+}
+
+.blueGoldButton:active {
+    background-color: var(--blueDark);
+    color: var(--goldDark);
+    border: 3px solid var(--goldDark);
 }
 
 @media (max-width: 1024px) {
