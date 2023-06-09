@@ -141,8 +141,9 @@ class User
     {
         $db = new Database();
         $connection = $db->getConnection();
-    
+
         $request = $connection->prepare('UPDATE users SET :data_type = :data WHERE id = :id');
+
         $request->bindParam(':id', $this->id);
         $request->bindParam(':data_type', $data_type);
         $request->bindParam(':data', $data);
