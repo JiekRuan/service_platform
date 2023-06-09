@@ -57,3 +57,30 @@ align-items: center;
     color:grey;
 }
 
+@media (max-width: 1080px) {
+
+    .footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 30px 60px;
+    width: 100%;
+    }
+    .footerinput {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 0px;
+    }
+
+    .footer1 {
+        display: flex;
+        gap: 20px;
+    }
+    .submit {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
