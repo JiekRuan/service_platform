@@ -1,0 +1,60 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #3333;
+    font-family: sans-serif;
+    justify-content: left;
+    margin-left: 200px;
+    align-items: center;
+    display: flex;
+    
+}
+
+h3, p {
+    padding: 5px;
+}
+
+.cover {
+    width: 400px;
+    height: 400px;
+    margin-top: 40px;
+    display: flex;
+}
+
+.box {
+    margin:5px;
+    width: 800px;
+    height: 350px;
+    box-shadow: -1px 0 10px #000000;
+    align-items: center;
+
+}
+
+.price {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.price2 {
+    text-align: end;
+}
+
+
+img {
+    width: 450px;
+    height: 250px;
+}
+
+
+
+.star {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-right: 5px;
+} 
