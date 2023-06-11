@@ -1,0 +1,29 @@
+a{
+    color: var(--black);
+}
+
+.filterList {
+    flex-direction: column;
+}
+
+.filterSub1,
+.filterSub2 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 20px;
+}
+
+.filterSub p {
+    white-space: nowrap;
+}
+
+@media (max-width: 1024px) {
+
+    .filterSub1,
+    .filterSub2 {
+        flex-direction: column;
+    }
+}
