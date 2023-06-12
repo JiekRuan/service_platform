@@ -2,7 +2,7 @@
     color: var(--goldPrimary);
 }
 
-ul {
+header ul {
     display: flex;
     flex-direction: row;
     gap: 70px;
@@ -72,7 +72,7 @@ header {
         display: flex;
     }
 
-    ul {
+    header ul {
         gap: 10px;
     }
 

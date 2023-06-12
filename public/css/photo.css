@@ -3,7 +3,7 @@
     padding: 0;
 }
 
-body {
+.corps {
     background: #3333;
     font-family: sans-serif;
     justify-content: left;
@@ -13,7 +13,8 @@ body {
     
 }
 
-h3, p {
+
+.monaco, p {
     padding: 5px;
 }
 

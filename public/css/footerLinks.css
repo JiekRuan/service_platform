@@ -1,0 +1,82 @@
+/* about-us.php */
+
+.about_us_text {
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+}
+
+.mainFooterLinkContainer {
+    margin-bottom: 100px;
+}
+
+.mainFooterLinkContainerTitle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url(../images/bgdark.png);
+    width: 100%;
+    padding-bottom: 50px;
+    padding: 0 20px 50px 20px;
+}
+
+.mainFooterLinkTitle {
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 83vh;
+    color: var(--white);
+    text-align: center;
+}
+
+.footerLinkText {
+    display: flex;
+    flex-direction: column;
+    row-gap: 40px;
+    max-width: 755px;
+    width: 100%;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.footerLinkSubText {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.footerLinkUL {
+    list-style-position: inside;
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+}
+
+.expandMore,
+.expandMore:visited {
+    color: var(--goldPrimary);
+}
+
+.expandMore:hover {
+    color: var(--goldLight);
+}
+
+.expandMore:active {
+    color: var(--goldDark);
+}
+
+@media (max-width: 1024px) {
+
+    .footerLinkText {
+        padding: 0px 20px;
+    }
+
+    .contact_h1 {
+        font-size: 42px;
+        text-align: center;
+    }
+}

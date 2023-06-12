@@ -1,0 +1,50 @@
+.checklistState{
+    font-size: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 50px 90px 0px 90px;
+}
+
+.user ul{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.user ul li {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user ul li label {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.checklistAddNote {
+    text-transform: uppercase;
+}
+
+.checklistAddNote{
+    cursor: pointer;
+}
+
+.bl {
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+}
+
+@media (max-width: 1024px) {
+    .checklistState{
+        font-size: 20px;
+        font-weight: 700;
+        text-transform: uppercase;
+        padding: 50px 20px 0px 20px;
+    }
+}

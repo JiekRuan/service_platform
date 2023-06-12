@@ -32,6 +32,8 @@
     --shadow1: 0px 4px 20px rgba(0, 0, 0, 0.15);
     --bglight: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.5)), url(../../public/images/bglight.png);
     --bgdark: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.5)), url(../../public/images/bglight.png);
+    --pad: 100px 90px;
+    --padMobile: 100px 20px;
 }
 
 *>img {
@@ -78,71 +80,323 @@ input {
     border: none;
     border-bottom: 1px solid var(--black);
     font-family: 'Poppins';
+    font-size: 16px;
 }
 
-.fa-regular, .fa-solid {
+a {
+    text-decoration: none;
+}
+
+.fa-regular,
+.fa-solid {
     cursor: pointer;
 }
 
+/* goldenButton */
 .goldenButton {
     display: flex;
     text-transform: uppercase;
     border: none;
     border-radius: 4px;
-    background-color: var(--goldPrimary);
     color: var(--white);
-    padding: 20px 30px;
+    padding: 15px 25px;
+    background-color: var(--goldPrimary);
+    border: 2px solid var(--goldPrimary);
+
 }
 
 .goldenButton:hover {
     background-color: var(--goldLight);
+    border: 2px solid var(--goldLight);
+
 }
 
 .goldenButton:active {
     background-color: var(--goldDark);
+    border: 2px solid var(--goldDark);
+
 }
 
-
+/* blueButton */
 .blueButton {
     display: flex;
     text-transform: uppercase;
     border: none;
     border-radius: 4px;
-    background-color: var(--bluePrimary);
     color: var(--white);
-    padding: 20px 30px;
+    padding: 15px 25px;
+    background-color: var(--bluePrimary);
+    border: 2px solid var(--bluePrimary);
+
 }
 
 .blueButton:hover {
     background-color: var(--blueLight);
+    border: 2px solid var(--blueLight);
+
 }
 
 .blueButton:active {
     background-color: var(--blueDark);
+    border: 2px solid var(--blueDark);
+
 }
 
+/* blueGoldButton */
 .blueGoldButton {
     display: flex;
     text-transform: uppercase;
-    border: 1px solid var(--goldPrimary);
     border-radius: 4px;
+    border: 2px solid var(--goldPrimary);
     background-color: var(--bluePrimary);
     color: var(--goldPrimary);
-    padding: 20px 30px;
+    padding: 15px 25px;
 }
 
 .blueGoldButton:hover {
     background-color: var(--blueLight);
     color: var(--goldLight);
     border: 2px solid var(--goldLight);
-
 }
 
 .blueGoldButton:active {
     background-color: var(--blueDark);
     color: var(--goldDark);
-    border: 3px solid var(--goldDark);
+    border: 2px solid var(--goldDark);
 }
+
+.container404,
+.containerDisable,
+.banner {
+    background-color: var(--bluePrimary);
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    padding: var(--pad);
+}
+
+.container404 ul {
+    list-style-type: none;
+}
+
+.container404 h1,
+.containerDisable h1,
+.banner h1 {
+    color: var(--goldPrimary);
+}
+
+.containerDisable,
+.container404 {
+    height: 92vh;
+    justify-content: center;
+}
+
+.banner,
+.containerDisable {
+    align-items: center;
+}
+
+.filter {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    text-transform: uppercase;
+}
+
+.filterSub {
+    display: flex;
+    flex-direction: row;
+    gap: 2px;
+}
+
+.filterSubNumber {
+    color: var(--greyDark);
+}
+
+.separator {
+    color: var(--goldPrimary);
+}
+
+.filterList {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.filterSub {
+    cursor: pointer;
+}
+
+.filterSub.selected {
+    font-weight: 700;
+}
+
+.userContainer {
+    flex-direction: column;
+    display: flex;
+    gap: 50px;
+    padding: var(--pad);
+}
+
+.user {
+    display: flex;
+    flex-direction: row;
+    box-shadow: var(--shadow1);
+    padding: 50px;
+    justify-content: space-between;
+    align-items: center;
+    gap: 50px;
+}
+
+.planningDate {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    gap: 20px;
+    align-items: center;
+}
+
+.state {
+    text-transform: uppercase;
+}
+
+.planningState {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.colorTablet {
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+}
+
+.colorTablet.toClean {
+    background-color: #E90000;
+}
+
+.colorTablet.inProgress {
+    background-color: #DB8300;
+}
+
+.colorTablet.pending {
+    background-color: #0083E2;
+}
+
+.colorTablet.readyToWelcome {
+    background-color: #a100cd;
+}
+
+.colorTablet.completed {
+    background-color: #008D00;
+}
+
+.userInfo {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+/* pour les form select option
+https://codepen.io/wallaceerick/pen/nJLPvN
+adapté en CSS par ChatGPT*/
+
+.select-hidden {
+    display: none;
+    visibility: hidden;
+    padding-right: 10px;
+}
+
+.select {
+    border: 1px solid var(--goldPrimary);
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    color: var(--goldPrimary);
+    width: 200px;
+    user-select: none;
+    text-transform: uppercase;
+}
+
+.select-styled {
+    background-color: var(--white);
+    padding: 10px;
+}
+
+.select-styled:after {
+    content: "";
+    width: 0;
+    height: 0;
+    border: 7px solid transparent;
+    border-color: var(--goldPrimary) transparent transparent transparent;
+    position: absolute;
+    top: 12px;
+    right: 10px;
+}
+
+.select-styled.active:after {
+    transform: rotate(180deg);
+    top: 20px;
+    right: 10px;
+}
+
+.select-styled:active,
+.select-styled.active {
+    background-color: var(--white);
+}
+
+.select-styled:after {
+    top: 12px;
+    border-color: transparent transparent var(--goldPrimary) transparent;
+}
+
+.select-options {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    z-index: 999;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    background-color: var(--white);
+}
+
+.select-options li {
+    margin: 0;
+    padding: 10px 0;
+    text-indent: 15px;
+    border: 1px solid var(--goldPrimary);
+}
+
+.select-options li:not(:last-child) {
+    border-bottom: none;
+}
+
+.select-styled:hover,
+.select-options li:hover,
+.select-options li.is-selected {
+    background: var(--greyLight);
+}
+
+.hidden {
+    display: none;
+}
+
+.strikethrough {
+    text-decoration: line-through;
+  }
+  
+
 
 @media (max-width: 1024px) {
     body {
@@ -164,5 +418,47 @@ input {
     h4 {
         font-size: 18px;
 
+    }
+
+    input {
+        font-size: 14px;
+    }
+
+    .container404,
+    .containerDisable,
+    .banner {
+        padding: var(--padMobile);
+    }
+
+    .filter {
+        overflow: auto;
+        padding: 10px;
+        width: 100%;
+    }
+
+    .filterList {
+        flex-direction: column;
+    }
+
+    .userContainer {
+        padding: var(--padMobile);
+    }
+
+    .user,
+    .userForm {
+        flex-direction: column;
+    }
+
+    .user {
+        padding: 20px;
+    }
+
+    .planningDate {
+        flex-direction: column-reverse;
+    }
+
+    .userInfo {
+        width: 100%;
+        align-items: flex-start;
     }
 }
