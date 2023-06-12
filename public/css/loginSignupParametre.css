@@ -1,0 +1,102 @@
+body{
+    background-image: url(../images/bglight.png);
+    background-size: cover;
+}
+
+.superContainer {
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--white);
+    padding: 100px;
+    box-shadow: var(--shadow1);
+    margin: 100px auto;
+}
+
+.Container{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.Container h1{
+    text-align: center;
+}
+
+.Container .goldenButton{
+    display: flex;
+    gap: 110px;
+    width: fit-content;
+    align-self: center;
+}
+
+
+.infoForm {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    gap: 110px;
+
+}
+
+
+.row {
+    display: flex;
+    width: 800px;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+    gap: 110px;
+}
+
+
+.inputText {
+    width: 100%;
+    border: none;
+    outline: none;
+}
+
+.inputText::placeholder {
+    font-family: "Poppins";
+}
+
+
+.radiobox {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    column-gap: 30px;
+    gap: 110px;
+}
+
+.role {
+    display: flex;
+    flex-direction: row;
+    column-gap: 5px;
+}
+
+.descritionParametre{
+    text-align: center;
+    margin-top: 20px;
+}
+
+
+@media (max-width: 1024px) {
+    .superContainer {
+        width: fit-content;
+        padding: 50px 20px;
+        margin: 20px auto;
+    }
+    .infoForm {
+        width: fit-content;
+        gap: 50px;
+    }
+    .radiobox {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .row {
+        width: fit-content;
+    }
+    
+}
