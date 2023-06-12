@@ -19,11 +19,11 @@ class Router {
             $this->url = explode('?', $this->url)[0];
         }
 
-        // on sépare l'url
-        $decomposed_url = preg_split('/\//', $this->url);
+        // on récupère le domaine (pas d'utilité pour le moment)
+        $this->domain = preg_split('/\//', $this->url)[0];
 
-        $this->domain = array_shift($decomposed_url);
-        $this->route = $decomposed_url;
+        //  on récupère le reste de la requêta après le nom de domaine
+        $this->route = preg_replace('/^' . $this->domain . '\//', '$0 --> $2 $1', $this->url);
     }
 
 
