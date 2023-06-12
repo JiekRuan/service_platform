@@ -2,9 +2,6 @@
 
 namespace Router;
 
-require_once './controllers/userController.php';
-
-
 // TODO faire les routes en objet et le routeur
 // gerer les param dans les fonctions
 // avoir des param dynamique
