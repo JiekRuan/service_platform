@@ -6,7 +6,7 @@
 function checklistPiece($state)
 {
 ?>
-    <div class="user">
+    <form action="" method="" class="user">
         <div class="userInfo">
             <div class="planningDate">
                 <h3>Nom de la pièce</h3>
@@ -49,10 +49,14 @@ function checklistPiece($state)
                 </li>
             </ul>
 
-
+            <div>
+                <input type="submit" value="Mettre à jour" class="goldenButton">
+            </div>
 
         </div>
-    </div>
+
+
+    </form>
 <?php
 }
 ?>
