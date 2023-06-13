@@ -3,11 +3,12 @@ body {
     background-size: cover;
 }
 
-.Container h1, .Container h2 {
+
+.Container h1 {
     text-align: center;
 }
 
-.Container .goldenButton {
+.Container .blueGoldButton {
     display: flex;
     gap: 110px;
     width: fit-content;
@@ -41,24 +42,13 @@ body {
 }
 
 
-.radiobox {
+.buttonAvis{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
-    column-gap: 30px;
-    gap: 110px;
+    gap: 100px;
+    align-self: center;
 }
 
-.role {
-    display: flex;
-    flex-direction: row;
-    column-gap: 5px;
-}
-
-.descritionParametre {
-    text-align: center;
-    margin-top: 20px;
-}
 
 
 @media (max-width: 1024px) {
@@ -67,18 +57,19 @@ body {
         margin: 100px 20px;
     }
 
-    .infoForm {
-        width: 100%;
-        gap: 50px;
+    .banner h1{
+        text-align: center;
     }
 
-    .radiobox {
+    .buttonAvis{
         flex-direction: column;
-        gap: 15px;
+        gap: 50px;
+        align-self: center;
     }
 
-    .row {
-        width: 100%;
+    .buttonAvis a{
+        align-self: center;
     }
 
+    
 }
