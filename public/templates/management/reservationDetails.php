@@ -1,5 +1,4 @@
 <?php include "../componant/header.html" ?>
-<link rel="stylesheet" href="../../css/global.css">
 <link rel="stylesheet" href="../../css/reservationDetails.css">
 
 <?php function reservation()
@@ -20,8 +19,12 @@
 
             </div>
         </div>
+        <p class="blueGoldButton">Envoyer un message</p>
+        <form action="">
+            <input type="submit" value="Annuler la réservation" class="goldenButton">
+        </form>
     </div>
-    </div>
+
 <?php
 } ?>
 
@@ -30,5 +33,9 @@
 </div>
 
 <?php for ($i = 0; $i < 10; $i++) {
-        reservation();
+    reservation();
 } ?>
+
+</body>
+
+</html>
