@@ -1,5 +1,4 @@
 <?php include "../componant/header.html" ?>
-<link rel="stylesheet" href="../../css/global.css">
 <link rel="stylesheet" href="../../css/reservationDetails.css">
 
 <?php function reservation()

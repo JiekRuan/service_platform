@@ -1,10 +1,9 @@
 <?php include "../componant/header.html" ?>
 <link rel="stylesheet" href="../../css/avis.css">
-<link rel="stylesheet" href="../../css/global.css">
 
 
 <div class="banner">
-    <h1> Merci de nous avoir fait confiance </h1>
+    <h1>Merci de nous avoir fait confiance </h1>
         <h1>Exprimez votre expérience </h1>
     
         <p>Nous vous remercions d'avoir choisi notre établissement pour vos vacances de luxe. Votre satisfaction est notre priorité absolue. 
@@ -33,8 +32,5 @@
     </div>
 
 </div>
-
-
-
 
 <?php include "../componant/footer.html" ?>

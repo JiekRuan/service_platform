@@ -26,7 +26,7 @@
         <div class="chatheader">
             <div class="profile-info">
                 <a href="#" class="chat_return">
-                <span class="material-symbols-outlined">arrow_back</span>
+                    <span class="material-symbols-outlined">arrow_back</span>
                 </a>
                 <h3>adresse</h3>
             </div>
@@ -97,4 +97,7 @@
     </div>
 </div>
 
+</body>
 <script src="../../js/chat.js"></script>
+
+</html>
