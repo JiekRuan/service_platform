@@ -1,0 +1,67 @@
+body {
+    background-image: url(../images/bglight.png);
+    background-size: cover;
+}
+
+
+.Container h1 {
+    text-align: center;
+}
+
+.Container .blueGoldButton {
+    display: flex;
+    gap: 110px;
+    width: fit-content;
+    align-self: center;
+}
+
+.infoForm {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 110px;
+}
+
+.row {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+    gap: 110px;
+}
+
+
+.inputText {
+    width: 100%;
+    border: none;
+    outline: none;
+}
+
+.inputText::placeholder {
+    font-family: "Poppins";
+}
+
+
+.buttonAvis{
+    display: flex;
+    flex-direction: row;
+    gap: 100px;
+    align-self: center;
+}
+
+
+
+@media (max-width: 1024px) {
+    .superContainer {
+        padding: 50px 20px;
+        margin: 100px 20px;
+    }
+
+    .banner h1{
+        text-align: center;
+    }
+
+    
+
+    
+}

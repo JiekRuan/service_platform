@@ -2,7 +2,7 @@
     color: var(--goldPrimary);
 }
 
-ul {
+header ul {
     display: flex;
     flex-direction: row;
     gap: 70px;
@@ -17,6 +17,7 @@ header {
     padding: 10px 90px;
     border-bottom: black 2px solid;
     gap: 10px;
+    background-color: var(--white);
 }
 
 #desktop {
@@ -72,7 +73,7 @@ header {
         display: flex;
     }
 
-    ul {
+    header ul {
         gap: 10px;
     }
 

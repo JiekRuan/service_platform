@@ -1,0 +1,160 @@
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.conciergePresentationOffer {
+    background-color: var(--bluePrimary);
+    color: var(--white);
+    padding: var(--pad);
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    width: 100%;
+}
+
+.conciergePresentation>img {
+    width: 100%;
+    display: block;
+}
+
+.conciergeOffer {
+    padding: var(--pad);
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+}
+
+.conciergeOffer h3 {
+    color: var(--goldPrimary);
+}
+
+.conciergeOfferSub {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.conciergeOfferSub ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.conciergeOfferSub ul li {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.unvailable {
+    color: var(--greyLight);
+}
+
+.conciergeOfferSubImg>img {
+    width: 100%;
+    display: block;
+}
+
+.conciergeExplore p {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+}
+
+.conciergeExplore {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 100px;
+}
+
+.conciergeService {
+    background-color: var(--bluePrimary);
+    padding: var(--pad);
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+}
+
+.conciergeService p,
+.conciergeExperience p {
+    border-left: 2px solid var(--white);
+    padding-left: 20px;
+}
+
+.conciergeMainPicture {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.conciergePicture {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.conciergeExperience {
+    background-color: var(--goldPrimary);
+    color: var(--white);
+    padding: var(--pad);
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    width: 100%;
+}
+
+.conciergePicture img {
+    width: 100%;
+    display: block;
+}
+
+.conciergeExperienceContent {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.conciergeExpPictures {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    width: 50%;
+}
+
+@media (max-width: 1024px) {
+    .conciergePresentationOffer {
+        flex-direction: column;
+        padding: var(--padMobile);
+    }
+
+    .conciergeOffer{
+        flex-direction: column;
+        padding: var(--padMobile);
+
+    }
+
+    .conciergeService{
+        padding: var(--padMobile);
+
+    }
+
+    .conciergeExperience{
+        flex-direction: column;
+        padding: var(--padMobile);
+    }
+
+    .conciergeExpPictures, .conciergeExperienceContent {
+        width: 100%;
+    }
+}

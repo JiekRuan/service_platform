@@ -1,0 +1,59 @@
+.background {
+    background-image: url(../images/bglight.png);
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.infoTemoignage{
+    display: flex;
+    gap: 10px;
+    flex-direction: row;
+}
+
+.infoNomTemoignage{
+    display: flex;
+    flex-direction: row;
+    align-self:flex-end;
+    gap: 10px;
+}
+
+.readImage {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.readImage figure img {
+    width: 100%;
+    object-fit: cover;
+}
+
+
+.superContainer{
+    gap: 60px;
+}
+
+.blueGoldButton{
+    width: fit-content;
+    margin: 100px 90px;
+}
+
+
+@media (max-width: 1024px) {
+    .superContainer {
+        padding: 50px 20px;
+        margin: 100px 20px;
+    }
+
+    .banner h1{
+        text-align: center;
+    }
+    .readImage{
+        flex-direction: column;
+    }
+    .blueGoldButton{
+        text-align: center;
+    }
+}

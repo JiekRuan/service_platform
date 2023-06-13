@@ -1,15 +1,14 @@
-.footer {
-  background-color: var(--blueDark);
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 30px 60px;
+footer {
+    background-color: var(--blueDark);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 50px;
+    padding: var(--pad);
+    color: var(--white);
 }
-p {
-    color: white;
-    gap: 20px;
-}
-h3 {
+
+footer h3 {
     color: var(--goldPrimary);
 }
 
@@ -17,19 +16,13 @@ h3 {
     display: flex;
     flex-direction: column;
     gap: 20px;
-
 }
 
-.h3footer{
-    color: white;
-}
+.footer2 {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
 
-input {
-    margin: 20px 0px;
-    border: 2px solid grey;
-    width: 501px;
-    height: 46px;
-    background-color: var(--blueDark);
 }
 
 .icons {
@@ -38,26 +31,57 @@ input {
     align-items: flex-start;
     padding: 0px;
     gap: 20px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    color: white;
+    color: var(--white)
 }
 
 .submit {
-display: flex;
-flex-direction: row;
-align-items: center;
-}
-
-.submit input {
-    margin-right: 20px;
-}
-
-.submit button {
-    width: 131px;
-    height: 64px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
 }
 
 .ely {
-    color:grey;
+    color: grey;
+}
+
+.newsletterInput {
+    background-color: inherit;
+    border: 2px solid var(--greyDark);
+    border-radius: 4px;
+    color: var(--white);
+    flex: 1;
+}
+
+.footerinput {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+@media (max-width: 1080px) {
+
+    footer {
+        flex-direction: column;
+        padding: var(--padMobile);
+        width: 100%;
+    }
+
+    .footerinput {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .footer1 {
+        gap: 20px;
+    }
+
+    .submit {
+        flex-direction: column;
+    }
+
+    .newsletterInput {
+        width: 100%;
+    }
+
 }
