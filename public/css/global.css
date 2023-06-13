@@ -483,11 +483,7 @@ adapté en CSS par ChatGPT*/
         width: 100%;
         align-items: flex-start;
     }
-}
 
-
-
-@media (max-width: 1024px) {
     .superContainer {
         padding: 50px 20px;
         margin: 100px 20px;
