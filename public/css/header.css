@@ -17,6 +17,7 @@ header {
     padding: 10px 90px;
     border-bottom: black 2px solid;
     gap: 10px;
+    background-color: var(--white);
 }
 
 #desktop {
