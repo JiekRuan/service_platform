@@ -1,0 +1,45 @@
+.infoReservation{
+    display: flex;
+    flex-direction: row;
+    gap:100px;
+
+}
+.detailClient{
+    display: flex;
+    flex-direction: row;
+    gap: 100px;
+}
+.detailDate{
+    display: flex;
+    flex-direction: row;
+    gap:100px;
+}
+
+.superContainer{
+    padding: 20px 50px;
+}
+
+@media (max-width: 1024px) {
+    .superContainer {
+        padding: 50px 20px;
+        margin: 50px 20px;
+    }
+
+    .banner h1{
+        text-align: center;
+    }
+    .infoReservation{
+        flex-direction: column;
+        gap:26px;
+    }
+
+    .detailClient{
+        flex-direction: row;
+        gap: 12px;
+    }
+    .detailDate{
+        flex-direction: row;
+        gap: 11px;
+    }
+
+}
