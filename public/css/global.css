@@ -21,6 +21,7 @@
 :root {
     --black: #000000;
     --white: #FFFFFF;
+    --whiteCream: #F0F0F0;
     --greyLight: #D9D9D9;
     --greyDark: #888888;
     --blueLight: #003166;
@@ -400,9 +401,9 @@ adapté en CSS par ChatGPT*/
 
 .strikethrough {
     text-decoration: line-through;
-  }
-  
-  .superContainer {
+}
+
+.superContainer {
     display: flex;
     justify-content: center;
     flex-direction: column;
