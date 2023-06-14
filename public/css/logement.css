@@ -153,6 +153,13 @@ hr {
     width: 100px;
 }
 
+button {
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: .7;
+}
 
 .add {
     color: #fff;
