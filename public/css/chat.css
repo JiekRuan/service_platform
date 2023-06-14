@@ -62,7 +62,7 @@ body {
 
 .send-icons {
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     padding: 10px;
     border-top: 1px solid #ddd;
 }
@@ -254,14 +254,14 @@ body {
 }
 
 .chat_return {
-    display: flex;
-    align-items: center;
+    display: none;
 }
 
 @media only screen and (max-width: 1024px) {
 
     .chat_return {
         display: flex;
+        align-items: center;
     }
 
     .sidebar {

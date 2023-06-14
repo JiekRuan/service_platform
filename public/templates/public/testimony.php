@@ -1,6 +1,6 @@
 <?php include "../componant/header.html" ?>
-<link rel="stylesheet" href="../../css/testimony.css">
 <link rel="stylesheet" href="../../css/global.css">
+<link rel="stylesheet" href="../../css/testimony.css">
 
     <?php function testimony()
 { ?>
@@ -32,17 +32,18 @@
     </div>
     <?php
 } ?>
-<div class="background">
+<div class="banner">
+    <h1>Vos témoignages</h1>
+    <p>Votre satisfaction est notre priorité absolue, c'est pourquoi nous attachons une grande importance à vos témoignages sur notre site. 
+        Vos retours d'expérience sont précieux pour nous, car ils nous permettent d'évaluer et d'améliorer continuellement nos services. 
+        Votre confiance et vos commentaires nous guident dans notre volonté constante de vous offrir une expérience exceptionnelle.
+    </p>
+</div>
 
-<?php for ($i = 0; $i < 10; $i++) {
+<?php for ($i = 0; $i < 5; $i++) {
         testimony();
 } ?>
 
-
-    
     <a href="#" class="blueGoldButton">Voir plus de témoignages</a>
-
-</div>
-
 
 <?php include "../componant/footer.html" ?>

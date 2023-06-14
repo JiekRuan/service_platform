@@ -1,6 +1,4 @@
 <?php include "../componant/header.html" ?>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <link rel="stylesheet" href="../../css/chat.css">
 
 <div class="messenger">
@@ -26,7 +24,7 @@
         <div class="chatheader">
             <div class="profile-info">
                 <a href="#" class="chat_return">
-                    <span class="material-symbols-outlined">arrow_back</span>
+                <i class="fa-solid fa-arrow-left"></i>
                 </a>
                 <h3>adresse</h3>
             </div>
@@ -84,8 +82,8 @@
         </div>
         <div class="send-icons">
             <div class="icons_chat">
-                <span class="material-icons-outlined">image</span>
-                <span class="material-icons-outlined" id="description">description</span>
+            <i class="fa-solid fa-image"></i>
+            <i class="fa-regular fa-file"></i>
             </div>
             <div class="send-message">
                 <div class="input-with-icon">
