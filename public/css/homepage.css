@@ -1,10 +1,11 @@
-main{
+main {
     max-width: 1920px;
     margin: 0 auto;
     overflow: hidden;
 }
 
-.goldenButton {
+.goldenButton,
+.blueButton {
     width: fit-content;
     white-space: nowrap;
 }
@@ -25,6 +26,7 @@ main{
 .homepageSearch {
     display: flex;
     flex-direction: row;
+    align-items: center;
     gap: 10px;
     width: 100%;
 }
@@ -285,5 +287,9 @@ main{
     .homepageResearvationContainer {
         padding-bottom: 300px;
         padding-right: 20px;
+    }
+
+    .homepageFormContainer {
+        padding: 0 20px;
     }
 }
