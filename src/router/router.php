@@ -53,7 +53,10 @@ class Router {
 
     //  fonction qui récupère les routes concernées par la requête
     //  faire un json pour stocker toutes les routes
-    public function getRoutes(){
+    private function getRoutes(){
+        $filename = 'routes.json';
+        $data = file_get_contents($filename);
 
+        return json_decode($data);
     }
 }
