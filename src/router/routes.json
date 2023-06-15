@@ -1,9 +1,206 @@
 {
-    "0" : 
-    {
-        "url" : "aboutUs",
-        "method" : "null",
-        "function" : "aboutUs",
-        "controllerClass" : "userController"
+    "Public_0": {
+        "url": "homepage",
+        "method": "null",
+        "function": "homepage",
+        "controllerClass": "userController"
+    },
+    "Public_1": {
+        "url": "aboutUs",
+        "method": "null",
+        "function": "aboutUs",
+        "controllerClass": "userController"
+    },
+    "Public_2": {
+        "url": "logement",
+        "method": "null",
+        "function": "logement",
+        "controllerClass": "apartmentController"
+    },
+    "Public_3": {
+        "url": "aboutUs",
+        "method": "null",
+        "function": "aboutUs",
+        "controllerClass": "userController"
+    },
+    "Public_4": {
+        "url": "contactUs",
+        "method": "null",
+        "function": "contactUs",
+        "controllerClass": "userController"
+    },
+    "Public_5": {
+        "url": "conciergeService",
+        "method": "null",
+        "function": "conciergeService",
+        "controllerClass": "apartmentController"
+    },
+    "Public_6": {
+        "url": "login",
+        "method": "GET",
+        "function": "login",
+        "controllerClass": "userController"
+    },
+    "Public_7": {
+        "url": "mentions",
+        "method": "null",
+        "function": "mentions",
+        "controllerClass": "userController"
+    },
+    "Public_8": {
+        "url": "policy",
+        "method": "null",
+        "function": "policy",
+        "controllerClass": "userController"
+    },
+    "Public_9": {
+        "url": "searchPage",
+        "method": "GET",
+        "function": "searchPage",
+        "controllerClass": "userController"
+    },
+    "Public_10": {
+        "url": "signup",
+        "method": "POST",
+        "function": "signup",
+        "controllerClass": "userController"
+    },
+    "Public_11": {
+        "url": "testimony",
+        "method": "null",
+        "function": "testimony",
+        "controllerClass": "userController"
+    },
+    "Public_12": {
+        "url": "404",
+        "method": "GET",
+        "function": "404",
+        "controllerClass": "userController"
+    },
+    "Management_1": {
+        "url": "chat",
+        "method": "null",
+        "function": "chat",
+        "controllerClass": "reservationController"
+    },
+    "Management_2": {
+        "url": "createApartement",
+        "method": "POST",
+        "function": "createApartement",
+        "controllerClass": "apartmentController"
+    },
+    "Management_3": {
+        "url": "listApartement",
+        "method": "GET",
+        "function": "listApartement",
+        "controllerClass": "apartmentController"
+    },
+    "Management_4": {
+        "url": "moderateTestimony",
+        "method": "GET",
+        "function": "moderateTestimony",
+        "controllerClass": "apartmentController"
+    },
+    "Management_5": {
+        "url": "readApartement",
+        "method": "GET",
+        "function": "readApartement",
+        "controllerClass": "apartmentController"
+    },
+    "Management_6": {
+        "url": "reservationDetails",
+        "method": "GET",
+        "function": "reservationDetails",
+        "controllerClass": "reservationController"
+    },
+    "Management_7": {
+        "url": "updateApartement",
+        "method": "POST",
+        "function": "updateApartement",
+        "controllerClass": "apartmentController"
+    },
+    "Logistic_1": {
+        "url": "checklist",
+        "method": "null",
+        "function": "checklist",
+        "controllerClass": "apartmentController"
+    },
+    "Logistic_2": {
+        "url": "planning",
+        "method": "GET",
+        "function": "planning",
+        "controllerClass": "apartmentController"
+    },
+    "Logistic_3": {
+        "url": "todo",
+        "method": "GET",
+        "function": "todo",
+        "controllerClass": "apartmentController"
+    },
+    "Customer_1": {
+        "url": "chat",
+        "method": "POST",
+        "function": "chat",
+        "controllerClass": "userController"
+    },
+    "Customer_2": {
+        "url": "createTestimony",
+        "method": "null",
+        "function": "createTestimony",
+        "controllerClass": "reservationController"
+    },
+    "Customer_3": {
+        "url": "disableAccount",
+        "method": "null",
+        "function": "disableAccount",
+        "controllerClass": "userController"
+    },
+    "Customer_4": {
+        "url": "reservation",
+        "method": "UPDATE",
+        "function": "reservation",
+        "controllerClass": "reservationController"
+    },
+    "Customer_5": {
+        "url": "reservationList",
+        "method": "GET",
+        "function": "reservationList",
+        "controllerClass": "reservationController"
+    },
+    "Customer_6": {
+        "url": "settings",
+        "method": "UPDATE",
+        "function": "settings",
+        "controllerClass": "userController"
+    },
+    "Customer_7": {
+        "url": "listTestimony",
+        "method": "GET",
+        "function": "listTestimony",
+        "controllerClass": "apartmentController"
+    },
+    "Customer_8": {
+        "url": "confirmReservation",
+        "method": "POST",
+        "function": "confirmReservation",
+        "controllerClass": "reservationController"
+    },
+    "Customer_9": {
+        "url": "thanksTestimony",
+        "method": "null",
+        "function": "thanksTestimony",
+        "controllerClass": "apartmentController"
+    },
+    "Customer_10": {
+        "url": "bookmark",
+        "method": "UPDATE",
+        "function": "bookmark",
+        "controllerClass": "apartmentController"
+    },
+    "Admin": {
+        "url": "admin",
+        "method": "null",
+        "function": "admin",
+        "controllerClass": "userController"
     }
 }
