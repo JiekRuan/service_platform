@@ -24,4 +24,8 @@
         width: 100%;
         align-items: flex-start;
     }
+
+    .userForm {
+        flex-direction: column;
+    }
 }

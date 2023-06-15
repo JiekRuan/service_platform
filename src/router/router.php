@@ -46,7 +46,15 @@ class Router {
 
         foreach($routes as $route) {
             if($route['url'] == $this->route){
+                if($route['method'] != $this->method) {
+                    header("HTTP/1.1 405 Method not Allowed");
+                    //  require page d'erreur
+                    //
+                    //
+                    return false;
+                }
                 require_once $route['file_path'];
+                return true;
             }
         }
     }
