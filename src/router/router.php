@@ -2,10 +2,6 @@
 
 namespace MyApp\Router;
 
-// TODO faire les routes en objet et le routeur
-// gerer les param dans les fonctions
-// avoir des param dynamique
-
 class Router {
 
     public function __construct() {
@@ -48,9 +44,8 @@ class Router {
             if($route['url'] == $this->route){
                 if($route['method'] != $this->method) {
                     header("HTTP/1.1 405 Method not Allowed");
-                    //  require page d'erreur
-                    //
-                    //
+                    $controller = new userController;
+                    $controller->error404();
                     return false;
                 }
                 $className = $route['controllerClass'];

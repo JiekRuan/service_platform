@@ -74,7 +74,7 @@
     "Public_12": {
         "url": "404",
         "method": "GET",
-        "function": "404",
+        "function": "error404",
         "controllerClass": "userController"
     },
     "Management_1": {
