@@ -4,6 +4,10 @@ namespace MyApp\Router;
 
 class Router {
 
+    use MyApp\Controllers\ApartmentController;
+    use MyApp\Controllers\ReservationController;
+    use MyApp\Controllers\UserController;
+
     public function __construct() {
         $this->request = $_SERVER['REQUEST_URI'];
         $this->method = $_SERVER['REQUEST_METHOD'];

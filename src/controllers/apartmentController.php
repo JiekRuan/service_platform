@@ -1,5 +1,5 @@
 <?php
-namespace MyApp\Controllers\apartmentController;
+namespace MyApp\Controllers;
 
 require_once 'Apartment.php';
 

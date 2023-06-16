@@ -1,6 +1,6 @@
 <?php 
 
-namespace MyApp\Controllers\userController;
+namespace MyApp\Controllers;
 
     require_once '../model/User.php';
 

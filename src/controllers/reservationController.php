@@ -1,3 +1,3 @@
 <?php
 
-namespace MyApp\Controllers\reservationController;
+namespace MyApp\Controllers;
