@@ -105,6 +105,8 @@ a {
     border: 2px solid var(--goldPrimary);
     cursor: pointer;
     user-select: none;
+    width: fit-content;
+    white-space: nowrap;
 
 }
 
@@ -132,6 +134,8 @@ a {
     border: 2px solid var(--bluePrimary);
     cursor: pointer;
     user-select: none;
+    width: fit-content;
+    white-space: nowrap;
 
 }
 
@@ -158,6 +162,8 @@ a {
     padding: 15px 25px;
     cursor: pointer;
     user-select: none;
+    width: fit-content;
+    white-space: nowrap;
 }
 
 .blueGoldButton:hover {
@@ -173,6 +179,7 @@ a {
 }
 
 .container404,
+.thanksTestimony,
 .containerDisable,
 .banner {
     background-color: var(--bluePrimary);
@@ -188,6 +195,7 @@ a {
 }
 
 .container404 h1,
+.thanksTestimony h1,
 .containerDisable h1,
 .banner h1 {
     color: var(--goldPrimary);
@@ -421,6 +429,10 @@ adapté en CSS par ChatGPT*/
     gap: 50px;
 }
 
+.thanksClose{
+    align-self: center;
+}
+
 @media (max-width: 1024px) {
     body {
         font-size: 14px;
@@ -448,6 +460,7 @@ adapté en CSS par ChatGPT*/
     }
 
     .container404,
+    .thanksTestimony,
     .containerDisable,
     .banner {
         padding: var(--padMobile);

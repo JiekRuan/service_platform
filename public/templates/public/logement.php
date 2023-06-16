@@ -135,5 +135,5 @@
 
 </main>
 
-<script src="../../js/app.js"></script>
+<script src="../../js/date.js"></script>
 <?php include '../componant/footer.html' ?>

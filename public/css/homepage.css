@@ -4,6 +4,18 @@ main {
     overflow: hidden;
 }
 
+header {
+    position: absolute;
+    border-bottom: 0px;
+    background-color: transparent;
+    width: 100%;
+}
+
+header .logo, #desktop, #mobile {
+    color: var(--white);
+
+}
+
 .goldenButton,
 .blueButton {
     width: fit-content;
@@ -11,6 +23,7 @@ main {
 }
 
 .presentation {
+    height: 100vh;
     color: var(--white);
     display: flex;
     flex-direction: column;

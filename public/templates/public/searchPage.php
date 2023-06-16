@@ -177,5 +177,6 @@ function apartementTemplate()
 
 <script src="../../js/searchPageDate.js"></script>
 <script src="../../js/searchPageDualRange.js"></script>
+<script src="../../js/date.js"></script>
 
 <?php include '../componant/footer.html' ?>
