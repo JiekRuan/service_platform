@@ -83,7 +83,6 @@
         <div class="send-icons">
             <div class="icons_chat">
             <i class="fa-solid fa-image"></i>
-            <i class="fa-regular fa-file"></i>
             </div>
             <div class="send-message">
                 <div class="input-with-icon">

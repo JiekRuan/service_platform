@@ -1,0 +1,33 @@
+.user {
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow1);
+    padding: 50px;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 50px;
+}
+
+.bookmarkList {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    gap: 50px;
+}
+
+.bookmarkName {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 50px;
+    align-items: center;
+    width: 100%;
+}
+
+
+.userForm figure img{
+    width: 100%;
+    display: block;
+}

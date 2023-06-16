@@ -26,7 +26,10 @@
         <h1>Appartement exceptionnel 4 pièces au Trocadéro</h1>
 
         <article class="containerContent">
-            <h2>Description</h2>
+            <div class="descriptionBookmark">
+                <h2>Description</h2>
+                <i class="fa-regular fa-bookmark"></i>
+            </div>
             <p class="info">300m2 | 5 chambres | 4 salles de bain</p>
 
             <figure class="containerImage">
