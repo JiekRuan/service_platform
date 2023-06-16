@@ -1,6 +1,6 @@
 <?php
 
-namespace Router;
+namespace MyApp\Router;
 
 // TODO faire les routes en objet et le routeur
 // gerer les param dans les fonctions
@@ -53,7 +53,11 @@ class Router {
                     //
                     return false;
                 }
-                require_once $route['file_path'];
+                $className = $route['controllerClass'];
+                $controller = new $className;
+                $function = $route['function'];
+                $controller->$function();
+
                 return true;
             }
         }
