@@ -4,32 +4,16 @@
 <script src="../../js/filter.js"></script>
 
 <?php
-$value1 = 15;
-$value2 = 4;
-$value3 = 5;
-$value4 = 6;
-
-$filters = [
-    ['text' => 'Tous', 'number' => $value1],
-    ['text' => 'Client', 'number' => $value2],
-    ['text' => 'Gestion', 'number' => $value3],
-    ['text' => 'Logistique', 'number' => $value4]
-];
-?>
-
-<script>
-    var filters = <?php echo json_encode($filters); ?>;
-    var filterElement = createFilter(filters);
-</script>
-
-<?php
 
 function adminUserTemplate($i)
 {
 ?>
 <div class="user">
 <div class="bookmarkName">
-    <h2>#nomdulogement_<?= $i ?></h2>
+    <div>
+        <h2>#nomdulogement_<?= $i ?> blabla</h2>
+        <p>XVII arrondissement</p>
+    </div>
     <i class="fa-regular fa-bookmark"></i>
 </div>
     <div class="bookmarkList">

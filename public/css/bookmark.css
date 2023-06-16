@@ -27,7 +27,25 @@
 }
 
 
-.userForm figure img{
+.userForm figure img {
     width: 100%;
     display: block;
+}
+
+@media (max-width: 1024px) {
+    .bookmarkList {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .user {
+        padding: 20px;
+        gap: 20px;
+    }
+
+    .bookmarkName {
+        flex-direction: column;
+        gap: 20px;
+    }
+
 }
