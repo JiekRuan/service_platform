@@ -43,8 +43,31 @@ function adminUserTemplate($i)
                     <option value="option3">Logistique</option>
                 </select>
             </form>
-            <form action="" method="POST"><input type="submit" value="Désactiver" class="blueGoldButton"></form>
-            <form action="" method="POST"><input type="submit" value="Supprimer" class="goldenButton"></form>
+
+            <p class="blueGoldButton readDesactivate">Désactiver</p>
+
+            <div class="readDesactivateMenu">
+                <p>Êtes-vous sûr(e) de vouloir désactiver ce compte ?</p>
+                <div id="readDeleteMenuButton">
+                    <div class="userForm">
+                        <p class="blueButton cancelDesactivate">Annuler</p>
+                    </div>
+                    <form action="" method="POST"><input type="submit" value="Désactiver" class="goldenButton"></form>
+                </div>
+            </div>
+
+            <p class="goldenButton readDelete">Supprimer</p>
+
+            <div class="readDeleteMenu">
+                <p>Êtes-vous sûr(e) de vouloir supprimer ce compte ?</p>
+                <div id="readDeleteMenuButton">
+                    <div class="userForm">
+                        <p class="blueButton cancelDelete">Annuler</p>
+                    </div>
+                    <form action="" method="POST"><input type="submit" value="Supprimer" class="goldenButton"></form>
+                </div>
+            </div>
+
         </div>
     </div>
 <?php
@@ -92,5 +115,6 @@ function adminUserTemplate($i)
 
 </body>
 <script src="../../js/optionSelect.js"></script>
+<script src="../../js/admin.js"></script>
 
 </html>
