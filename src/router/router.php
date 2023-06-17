@@ -1,17 +1,13 @@
 <?php
 
-namespace MyApp\Router;
+namespace MyApp;
+
 
 class Router {
-
-    use MyApp\Controllers\ApartmentController;
-    use MyApp\Controllers\ReservationController;
-    use MyApp\Controllers\UserController;
 
     public function __construct() {
         $this->request = $_SERVER['REQUEST_URI'];
         $this->method = $_SERVER['REQUEST_METHOD'];
-
         //on enlève le 'http://' de l'url
         $this->url = preg_replace('/^http:\/{2}/', '$0 --> $2 $1', $this->request);
 

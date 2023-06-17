@@ -1,4 +1,6 @@
 <?php
+namespace MyApp\Models;
+
 
 require_once './database/Database.php';
 

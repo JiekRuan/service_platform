@@ -1,5 +1,4 @@
 <?php 
-
 namespace MyApp\Controllers;
 
     require_once '../model/User.php';
