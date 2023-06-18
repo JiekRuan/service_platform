@@ -20,6 +20,10 @@ class Router {
 
         //  on récupère le reste de la requêta après le nom de domaine
         $this->route = preg_replace('/^' . $this->domain . '/', '$0 --> $2 $1', $this->url);
+
+        if($this->route == '/'){
+            $this->route = '';
+        }
     }
 
 
