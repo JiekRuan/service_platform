@@ -1,6 +1,6 @@
 {
     "Public_0": {
-        "url": "homepage",
+        "url": "home",
         "method": "null",
         "function": "homepage",
         "controllerClass": "UserController"

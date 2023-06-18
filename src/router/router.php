@@ -20,10 +20,6 @@ class Router {
 
         //  on récupère le reste de la requêta après le nom de domaine
         $this->route = preg_replace('/^' . $this->domain . '/', '$0 --> $2 $1', $this->url);
-
-        if($this->route[0] == '/'){
-            array_shift($this->route);
-        }
     }
 
 
@@ -33,10 +29,10 @@ class Router {
         //je récupère les routes
         $routes = $this->getRoutes();
 
-        if($routes == []) {
-            //  require la homepage
-            //
-            //
+        //je vérifie si ma route est vide (que l'on a juste tapé le nom du domaine), ex : http://localhost:3000
+        if($this->route == '') {
+            $controller = new UserController;
+            $controller->homepage();
             return true;
         }
 
@@ -44,7 +40,7 @@ class Router {
             if($route['url'] == $this->route){
                 if($route['method'] != $this->method) {
                     header("HTTP/1.1 405 Method not Allowed");
-                    $controller = new userController;
+                    $controller = new UserController;
                     $controller->error404();
                     return false;
                 }
@@ -56,6 +52,11 @@ class Router {
                 return true;
             }
         }
+        //si aucune route ne correspond on lui envoie une erreur 404
+        header("HTTP/1.1 404 Content not Found");
+        $controller = new UserController;
+        $controller->error404();
+        return false;
     }
 
     //  fonction qui récupère les routes concernées par la requête
