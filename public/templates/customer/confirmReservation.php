@@ -1,7 +1,13 @@
 <?php include '../componant/header.html' ?>
 <link rel="stylesheet" href="../../css/confirmReservation.css">
+<link rel="stylesheet" href="../../css/picture.css">
 
 <main>
+
+    <div id="modal">
+        <span class="close"><i class="fa-solid fa-xmark"></i></span>
+        <img id="modalImage" src="" alt="Image en grand">
+    </div>
 
     <div class="banner">
         <h1>Votre réservation</h1>
@@ -17,18 +23,18 @@
         <div class="subContainer">
 
             <figure class="containerImage">
-                <img src="../../images/troca.png" alt="appartement 4 pièces">
+                <img src="../../images/troca.png" alt="appartement 4 pièces" class="clickable-image">
             </figure>
 
             <div class="galerie">
                 <figure>
-                    <img src="../../images/sdb.png" alt="salle de bain">
+                    <img src="../../images/sdb.png" alt="salle de bain" class="clickable-image">
                 </figure>
                 <figure>
-                    <img src="../../images/salon.png" alt="salon">
+                    <img src="../../images/salon.png" alt="salon" class="clickable-image">
                 </figure>
                 <figure>
-                    <img src="../../images/cuisine.png" alt="cuisine">
+                    <img src="../../images/cuisine.png" alt="cuisine" class="clickable-image">
                 </figure>
             </div>
 
@@ -108,4 +114,5 @@
 
 </main>
 <script src="../../js/confirmDate.js"></script>
+<script src="../../js/picture.js"></script>
 <?php include '../componant/footer.html' ?>

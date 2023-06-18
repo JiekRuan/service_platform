@@ -1,9 +1,17 @@
 <?php include '../componant/header.html' ?>
 <link rel="stylesheet" href="../../css/searchPage.css">
 <link rel="stylesheet" href="../../css/logement.css">
+<link rel="stylesheet" href="../../css/picture.css">
+<link rel="stylesheet" href="../../css/carousel.css">
 
 
 <main>
+    <div id="modal">
+        <span class="close"><i class="fa-solid fa-xmark"></i></span>
+        <img id="modalImage" src="" alt="Image en grand">
+    </div>
+
+    <div>
     <div class="banner">
         <form action="" method="GET" class="formSearch">
             <div class="date">
@@ -20,7 +28,10 @@
             </div>
         </form>
     </div>
-
+    <figure class="containerImage">
+        <img src="../../images/troca.png" alt="appartement 4 pièces" class="clickable-image">
+    </figure>
+</div>
 
     <section class="container">
         <h1>Appartement exceptionnel 4 pièces au Trocadéro</h1>
@@ -32,13 +43,24 @@
             </div>
             <p class="info">300m2 | 5 chambres | 4 salles de bain</p>
 
-            <figure class="containerImage">
-                <img src="../../images/troca.png" alt="appartement 4 pièces">
-            </figure>
+
+            <!-- <div class="carousel">
+                <div class="image-list">
+                    <ul class="image-thumbnails">
+                        <li><img src="../../images/troca.png" alt="appartement 4 pièces" class="thumbnail active"></li>
+                        <li><img src="../../images/sdb.png" alt="Image 1" class="thumbnail"></li>
+                        <li><img src="../../images/salon.png" alt="Image 2" class="thumbnail"></li>
+                        <li><img src="../../images/cuisine.png" alt="Image 3" class="thumbnail"></li>
+                    </ul>
+                </div>
+                <div class="image-display">
+                    <img src="../../images/troca.png" alt="Image 1" class="displayed-image clickable-image">
+                </div>
+            </div> -->
 
             <div class="text-describe">
-                <p>Cette superbe proriété de quatre chambres est l’expression ultime de l’architecture contemporaine, offrant à ses résidents un décor inpeccable dans une palette de couleurs élégantes pour créer une atmosphère luxieuse et rayonante.</p>
-                <p>La propriété comprend une cuisine ultra moderne et trois grands espaces de vie avec des baies vitrées, permettant à la lumière naturelle d’inondée l’espace. </p>
+                <p>Cette superbe proriété de quatre chambres est l'expression ultime de l'architecture contemporaine, offrant à ses résidents un décor inpeccable dans une palette de couleurs élégantes pour créer une atmosphère luxieuse et rayonante.</p>
+                <p>La propriété comprend une cuisine ultra moderne et trois grands espaces de vie avec des baies vitrées, permettant à la lumière naturelle d'inondée l'espace. </p>
                 <p>Les équipements du batiment sont conçus pour une expérience clé en main, offrant au résident un parking privé, une cave, une conciergerie, une sécurité 24h/24 et une piscine olympique. De plus, la terrasse vous offrira un cadre sublime pour vous imprénier du paysage et d’un soleil radieux.</p>
             </div>
         </article>
@@ -79,13 +101,13 @@
 
             <div class="galerie">
                 <figure>
-                    <img src="../../images/sdb.png" alt="salle de bain">
+                    <img src="../../images/sdb.png" alt="salle de bain" class="clickable-image">
                 </figure>
                 <figure>
-                    <img src="../../images/salon.png" alt="salon">
+                    <img src="../../images/salon.png" alt="salon" class="clickable-image">
                 </figure>
                 <figure>
-                    <img src="../../images/cuisine.png" alt="cuisine">
+                    <img src="../../images/cuisine.png" alt="cuisine" class="clickable-image">
                 </figure>
             </div>
         </article>
@@ -136,4 +158,6 @@
 </main>
 
 <script src="../../js/date.js"></script>
+<script src="../../js/picture.js"></script>
+<script src="../../js/carousel.js"></script>
 <?php include '../componant/footer.html' ?>

@@ -2,9 +2,16 @@
 <link rel="stylesheet" href="../../css/searchPage.css">
 <link rel="stylesheet" href="../../css/logement.css">
 <link rel="stylesheet" href="../../css/reservation.css">
+<link rel="stylesheet" href="../../css/picture.css">
 
 
 <main>
+
+    <div id="modal">
+        <span class="close"><i class="fa-solid fa-xmark"></i></span>
+        <img id="modalImage" src="" alt="Image en grand">
+    </div>
+
     <div class="banner">
         <h1>Votre réservation</h1>
         <p>Bonjour [nom d'utilisateur], nous avons le plaisir de vous accueillir chez nous. Voici le détail concernant votre réservation au sein de notre établissement.</p>
@@ -21,7 +28,7 @@
             <p class="info">300m2 | 5 chambres | 4 salles de bain</p>
 
             <figure class="containerImage">
-                <img src="../../images/troca.png" alt="appartement 4 pièces">
+                <img src="../../images/troca.png" alt="appartement 4 pièces" class="clickable-image">
             </figure>
 
             <section class="galleryContainer">
@@ -29,13 +36,13 @@
 
                     <div class="galerie">
                         <figure>
-                            <img src="../../images/sdb.png" alt="salle de bain">
+                            <img src="../../images/sdb.png" alt="salle de bain" class="clickable-image">
                         </figure>
                         <figure>
-                            <img src="../../images/salon.png" alt="salon">
+                            <img src="../../images/salon.png" alt="salon" class="clickable-image">
                         </figure>
                         <figure>
-                            <img src="../../images/cuisine.png" alt="cuisine">
+                            <img src="../../images/cuisine.png" alt="cuisine" class="clickable-image">
                         </figure>
                     </div>
                 </article>
@@ -137,5 +144,6 @@
 </main>
 
 <script src="../../js/reservation.js"></script>
+<script src="../../js/picture.js"></script>
 
 <?php include '../componant/footer.html' ?>

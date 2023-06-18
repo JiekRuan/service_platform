@@ -30,10 +30,17 @@ h2 {
 
 .containerImage {
     width: 100%;
+    overflow: hidden;
+}
+
+.containerImage img:hover {
+    transform: scale(1.05);
 }
 
 .containerImage img {
     width: 100%;
+    display: block;
+    transition: transform 0.3s ease-in-out;
 }
 
 .containerContent {
@@ -85,15 +92,19 @@ hr {
 }
 
 .galerie figure {
+    overflow: hidden;
     width: calc(100%/3);
 }
 
 .galerie figure img {
     width: 100%;
-    /* width: 300px;
-    height: 250px; */
     object-fit: cover;
-    display: block;
+    display: block;    
+    transition: transform 0.3s ease-in-out;
+}
+
+.galerie figure img:hover {
+    transform: scale(1.05);
 }
 
 .further {
