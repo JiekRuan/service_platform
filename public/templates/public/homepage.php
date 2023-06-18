@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="../../css/homepage.css">
 <main>
     <section>
-        <article class="presentation">
+        <!-- <article class="presentation">
             <h1>Créez des souvenirs de vacances inoubliables.</h1>
             <p>Profitez d'un séjour d'exception au cœur de nos somptueux appartements haut de gamme, nichés dans les quartiers les plus prestigieux de Paris.</p>
 
@@ -13,7 +13,23 @@
                 </form>
                 <p class="homepageRoadmap">Besoin d'une roadmap personnalisé ?</p>
             </div>
+        </article> -->
+
+        <article class="presentation">
+            <div class="zoom-background"></div>
+
+            <h1>Créez des souvenirs de vacances inoubliables.</h1>
+            <p>Profitez d'un séjour d'exception au cœur de nos somptueux appartements haut de gamme, nichés dans les quartiers les plus prestigieux de Paris.</p>
+
+            <div class="homepageFormContainer">
+                <form class="homepageSearch">
+                    <input type="text" placeholder="Rechercher..." class="homepageSearchInput">
+                    <input type="submit" value="Rechercher" class="blueButton homepageSearchButton">
+                </form>
+                <p class="homepageRoadmap">Besoin d'une roadmap personnalisée ?</p>
+            </div>
         </article>
+
 
         <article class="homepageDiscover">
             <h2>Découvrez nos résidences luxueuses au cœur des quartiers les plus prisés</h2>
@@ -29,19 +45,19 @@
             <h2>Nos appartements</h2>
 
             <div class="homepageContainer">
-                <figure class="figure">
+                <figure class="figure figure-animation">
                     <img src="../../images/homepage/appart_6.jpg" alt="" class="image">
                     <figcaption class="imageText">Santa Monica</figcaption>
                     <figcaption class="imageText">XVIème arrondissement</figcaption>
                 </figure>
 
-                <figure class="figure">
+                <figure class="figure figure-animation">
                     <img src="../../images/homepage/appart_7.jpg" alt="" class="image">
                     <figcaption class="imageText">Santa Dominica</figcaption>
                     <figcaption class="imageText">XVIIème arrondissement</figcaption>
                 </figure>
 
-                <figure class="figure">
+                <figure class="figure figure-animation">
                     <img src="../../images/homepage/appart_8.jpg" alt="" class="image">
                     <figcaption class="imageText">Santa Colada</figcaption>
                     <figcaption class="imageText">XVIIème arrondissement</figcaption>
@@ -62,21 +78,21 @@
             <img src="../../images/homepage/appart_4.jpg" alt="">
         </article>
 
-        <article class="homepageOurHome">
+        <article class="homepageOurHome homepageExperience">
             <h2>Une expérience mémorable</h2>
             <div class="homepageDiscoverParagraph">
                 <p>Demandez votre roadmap personnalisé par notre équipe entièrement pensé pour vous. Surprenant, fascinant et complet, nous construisons votre circuit pour vous avec un art du détail incomparable, en s'inspirant de vos envies et de vos passions.</p>
             </div>
             <a href="#" class="homepageInformation">Contactez-nous pour votre roadmap</a>
             <div class="imageContainer">
-                <figure>
+                <figure class="figure-animation">
                     <img src="../../images/homepage/exp_1.jpg" alt="">
                     <div class="homepageExp">
                         <p>Restaurant Carotte</p>
                         <p class="homepageArrondissement">XVIIème arrondissement</p>
                     </div>
                 </figure>
-                <figure>
+                <figure class="figure-animation">
                     <img src="../../images/homepage/exp_2.jpg" alt="">
                     <div class="homepageExp">
                         <p>Restaurant gastronomique</p>
@@ -84,7 +100,7 @@
                     </div>
 
                 </figure>
-                <figure>
+                <figure class="figure-animation">
                     <img src="../../images/homepage/exp_3.jpg" alt="">
                     <div class="homepageExp">
                         <p>Restaurant Jambon</p>
@@ -92,15 +108,15 @@
                     </div>
 
                 </figure>
-                <figure>
+                <figure class="figure-animation">
                     <img src="../../images/homepage/exp_4.jpg" alt="">
                     <div class="homepageExp">
                         <p>Restaurant Beurre</p>
                         <p class="homepageArrondissement">XVIIème arrondissement</p>
                     </div>
-
                 </figure>
             </div>
+        
         </article>
 
         <article class="homepageResearvationContainer">
@@ -139,4 +155,6 @@
 
     </section>
 </main>
+
+<script src="../../js/homepageAnimation.js"></script>
 <?php include '../componant/footer.html' ?>

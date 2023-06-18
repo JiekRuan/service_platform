@@ -11,7 +11,9 @@ header {
     width: 100%;
 }
 
-header .logo, #desktop, #mobile {
+header .logo,
+#desktop,
+#mobile {
     color: var(--white);
 
 }
@@ -23,6 +25,37 @@ header .logo, #desktop, #mobile {
 }
 
 .presentation {
+    position: relative;
+    height: 100vh;
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    width: 100%;
+    padding: 220px 90px;
+}
+
+.zoom-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(../images/homepage/champs-elysees-paris.jpg.webp);
+    transition: transform 0.3s ease-out;
+    z-index: -999;
+}
+
+.presentation:hover .zoom-background {
+    transform: scale(1.05);
+}
+
+/* .presentation {
     height: 100vh;
     color: var(--white);
     display: flex;
@@ -34,7 +67,7 @@ header .logo, #desktop, #mobile {
     padding: 220px 90px;
     background-size: cover;
     background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(../images/homepage/champs-elysees-paris.jpg.webp);
-}
+} */
 
 .homepageSearch {
     display: flex;
@@ -259,6 +292,15 @@ header .logo, #desktop, #mobile {
     white-space: nowrap;
 }
 
+  .figure-animation {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  
+  .figure-animation.visible {
+    opacity: 1;
+  }
+
 @media (max-width: 1024px) {
     .homepageFooter {
         flex-direction: column;
@@ -306,4 +348,16 @@ header .logo, #desktop, #mobile {
     .homepageFormContainer {
         padding: 0 20px;
     }
+
+    .imageContainer figure {
+        position: relative;
+        flex: 0 0 calc(50% - 20px);
+        height: 650px;
+    }
+
+    .imageContainer figure:nth-child(3),
+    .imageContainer figure:nth-child(4) {
+        display: none;
+    }
+
 }
