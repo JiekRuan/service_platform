@@ -26,7 +26,8 @@
     object-fit: cover;
 }
 
-#readDeleteMenu, .readDeleteMenu {
+#readDeleteMenu,
+.readDeleteMenu {
     background-color: var(--white);
     box-shadow: var(--shadow1);
     display: none;
@@ -40,16 +41,70 @@
     transform: translate(-50%, -50%);
 }
 
-#readDeleteMenuButton, .readDeleteMenuButton {
+#readDeleteMenuButton,
+.readDeleteMenuButton {
     display: flex;
     flex-direction: row;
     gap: 20px;
 }
 
+.addPhoto {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.close {
+    color: var(--white);
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 99;
+}
+
+#publication_image {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#publication_image img {
+    width: 100%;
+    display: block;
+}
+
+.image-container {
+    position: relative;
+}
+
+.divMaxImages {
+    background-color: var(--white);
+    box-shadow: var(--shadow1);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    padding: 50px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.divMaxImages p {
+    width: max-content;
+}
+
+.userContainer{
+    position: relative;
+}
+
 @media (max-width: 1024px) {
-    /* input {
+    input {
         width: 100%;
-    } */
+    }
 
     .userForm {
         flex-direction: row;
@@ -61,6 +116,10 @@
 
     .readImage {
         flex-direction: column;
+    }
+
+    .divMaxImages {
+        padding: 20px;
     }
 
 }
