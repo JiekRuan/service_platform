@@ -1,4 +1,5 @@
 <?php
+namespace MyApp\Models;
 
 require_once './database/Database.php';
 
@@ -21,23 +22,23 @@ class Apartment
     
     
     
-    public function __construct($id,$name,$address,$arrondissement,$price,$description,$squareMeter,$numberBathroom,$housingType,$balcon,$terasse,$capacity,)
-    {
-        $this->id = $id;
-        $this->name = $name;
-        $this->address = $address;
-        $this->arrondissement = $arrondissement;
-        $this->price = $price;
-        $this->description = $description;
-        $this->squareMeter = $squareMeter;
-        $this->numberBathroom = $numberBathroom;
-        $this->housingType = $housingType;
-        $this->balcon = $balcon;
-        $this->terasse = $terasse;
-        $this->capacity = $capacity;
-        $this->vueSur = $vueSur;
-        $this->quartier = $quartier;
-    }
+    // public function __construct($id,$name,$address,$arrondissement,$price,$description,$squareMeter,$numberBathroom,$housingType,$balcon,$terasse,$capacity,$vueSur,$quartier)
+    // {
+    //     $this->id = $id;
+    //     $this->name = $name;
+    //     $this->address = $address;
+    //     $this->arrondissement = $arrondissement;
+    //     $this->price = $price;
+    //     $this->description = $description;
+    //     $this->squareMeter = $squareMeter;
+    //     $this->numberBathroom = $numberBathroom;
+    //     $this->housingType = $housingType;
+    //     $this->balcon = $balcon;
+    //     $this->terasse = $terasse;
+    //     $this->capacity = $capacity;
+    //     $this->vueSur = $vueSur;
+    //     $this->quartier = $quartier;
+    // }
 
     /**
      * @return mixed
@@ -90,7 +91,7 @@ class Apartment
     /**
      * @param mixed $arrondissement
      */
-    public function setName($arrondissement): void
+    public function setArrondissement($arrondissement): void
     {
         $this->name = $arrondissement;
     }
@@ -106,7 +107,7 @@ class Apartment
     /**
      * @param mixed $balcon
      */
-    public function setName($balcon): void
+    public function setBalcon($balcon): void
     {
         $this->name = $balcon;
     }
@@ -122,7 +123,7 @@ class Apartment
     /**
      * @param mixed $terasse
      */
-    public function setName($terasse): void
+    public function setTerasse($terasse): void
     {
         $this->name = $terasse;
     }
@@ -138,7 +139,7 @@ class Apartment
     /**
      * @param mixed $squareMeter
      */
-    public function setName($squareMeter): void
+    public function setSquareMeter($squareMeter): void
     {
         $this->name = $squareMeter;
     }
@@ -154,7 +155,7 @@ class Apartment
     /**
      * @param mixed $numberBathroom
      */
-    public function setName($numberBathroom): void
+    public function setNumberBathroom($numberBathroom): void
     {
         $this->name = $numberBathroom;
     }
@@ -170,7 +171,7 @@ class Apartment
     /**
      * @param mixed $housingType
      */
-    public function setName($housingType): void
+    public function setHousingType($housingType): void
     {
         $this->name = $housingType;
     }
@@ -246,7 +247,7 @@ class Apartment
     /**
      * @param mixed $vueSur
      */
-    public function setDescription($vueSur): void
+    public function setVueSur($vueSur): void
     {
         $this->description = $vueSur;
     }
@@ -273,9 +274,10 @@ class Apartment
         $request->execute();
 
         $apartments = [];
-
+        
         while ($row = $request->fetch(PDO::FETCH_ASSOC)) {
             $apartment = new Apartment();
+            
             $apartment->id = $row['id'];
             $apartment->name = $row['name'];
             $apartment->address = $row['address'];
@@ -290,7 +292,6 @@ class Apartment
             $apartment->capacity = $row['capacity'];
             $apartment->vueSur = $row['vueSur'];
             $apartment->quartier = $row['quartier'];
-
             $apartments[] = $apartment;
         }
 
@@ -353,7 +354,7 @@ class Apartment
 
         $request = $connection->prepare("SELECT * FROM apartment WHERE name LIKE :name OR location LIKE :location OR capacity = :capacity OR price <= :price OR description LIKE :description");
         $request->bindParam(':name', "%" . $this->name . "%");
-        $request->bindParam(':location', "%" . $this->location . "%");
+        //$request->bindParam(':location', "%" . $this->location . "%");
         $request->bindParam(':capacity', $this->capacity);
         $request->bindParam(':price', $this->price);
         $request->bindParam(':description', "%" . $this->description . "%");

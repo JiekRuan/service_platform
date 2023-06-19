@@ -1,6 +1,8 @@
 <?php
 namespace MyApp\Controllers;
 
+use MyApp\Models\Apartment as Apartment;
+
 require_once './model/Apartment.php';
 
 class ApartmentController {
