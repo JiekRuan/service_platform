@@ -313,7 +313,7 @@ class Apartment
         return false;
     }
 
-    public function saveData()
+    public function saveData()//pas oublier de mettre l'image.
     {
         $db = new Database();
         $connection = $db->getConnection();
@@ -365,5 +365,6 @@ class Apartment
 
         return false;
     }
+    
 }
 //revoir la dernier fonction et terminer le controller !
