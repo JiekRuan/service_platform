@@ -1,41 +1,62 @@
-body {
-    background-color: #002349;
-    color: #fff;
-    padding: 100px;
-  }
+#calendar {
+    margin-bottom: 20px;
+}
 
-  h1 {
+.containerCalendar {
+    background-color: var(--bluePrimary);
+    margin: 50px;
+    padding: 20px;
+    color: white;
+}
+
+#calendar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+#calendar-header button {
+    font-size: 20px;
+    color: var(--goldPrimary);
+    background-color: var(--bluePrimary);
+    border: none;
+    cursor: pointer;
+}
+
+#monthYear {
+    font-size: 24px;
+}
+
+#calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+}
+
+.day {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    border: 1px solid #ccc;
+}
+
+.selected {
+    background-color: var(--goldDark);
+}
+
+
+.day:hover {
+    background-color: var(--goldLight);
+    cursor: pointer;
+}
+
+.range {
+    background-color: lightblue;
+}
+
+.weekday {
+    font-weight: bold;
     text-align: center;
-  }
-
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-  }
-
-  th,
-  td {
-    padding: 10px;
-    text-align: center;
-  }
-
-  th {
-    background-color: #004c7f;
-  }
-
-  td {
-    background-color: #005ea6;
-  }
-
-  td.available {
-    background-color: #0070c0;
-  }
-
-  td:hover {
-    background-color: #0096ff;
-  }
-
-  td.selected {
-    background-color: #ff6600;
-  }
+}
