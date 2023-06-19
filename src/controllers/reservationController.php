@@ -2,7 +2,7 @@
 
 namespace MyApp\Controllers;
 
-require_once '../Controllers/Reservation.php';
+require_once '../model/Reservation.php';
 
 class ReservationController {
     function delReservation(){

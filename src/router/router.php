@@ -2,6 +2,9 @@
 
 namespace MyApp;
 
+require_once '../controllers/reservationController.php';
+require_once '../controllers/userController.php';
+require_once '../controllers/apartmentController.php';
 
 class Router {
 
