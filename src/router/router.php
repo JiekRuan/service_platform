@@ -1,17 +1,13 @@
 <?php
 
-namespace Router;
+namespace MyApp;
 
-// TODO faire les routes en objet et le routeur
-// gerer les param dans les fonctions
-// avoir des param dynamique
 
 class Router {
 
     public function __construct() {
         $this->request = $_SERVER['REQUEST_URI'];
         $this->method = $_SERVER['REQUEST_METHOD'];
-
         //on enlève le 'http://' de l'url
         $this->url = preg_replace('/^http:\/{2}/', '$0 --> $2 $1', $this->request);
 
@@ -25,8 +21,8 @@ class Router {
         //  on récupère le reste de la requêta après le nom de domaine
         $this->route = preg_replace('/^' . $this->domain . '/', '$0 --> $2 $1', $this->url);
 
-        if($this->route[0] == '/'){
-            array_shift($this->route);
+        if($this->route == '/'){
+            $this->route = '';
         }
     }
 
@@ -37,10 +33,10 @@ class Router {
         //je récupère les routes
         $routes = $this->getRoutes();
 
-        if($routes == []) {
-            //  require la homepage
-            //
-            //
+        //je vérifie si ma route est vide (que l'on a juste tapé le nom du domaine), ex : http://localhost:3000
+        if($this->route == '') {
+            $controller = new UserController;
+            $controller->homepage();
             return true;
         }
 
@@ -48,19 +44,31 @@ class Router {
             if($route['url'] == $this->route){
                 if($route['method'] != $this->method) {
                     header("HTTP/1.1 405 Method not Allowed");
-                    //  require page d'erreur
-                    //
-                    //
+                    $controller = new UserController;
+                    $controller->error404();
                     return false;
                 }
-                require_once $route['file_path'];
+                $className = $route['controllerClass'];
+                $controller = new $className;
+                $function = $route['function'];
+                $controller->$function();
+
                 return true;
             }
         }
+        //si aucune route ne correspond on lui envoie une erreur 404
+        header("HTTP/1.1 404 Content not Found");
+        $controller = new UserController;
+        $controller->error404();
+        return false;
     }
 
     //  fonction qui récupère les routes concernées par la requête
-    public function getRoutes(){
+    //  faire un json pour stocker toutes les routes
+    private function getRoutes(){
+        $filename = 'routes.json';
+        $data = file_get_contents($filename);
 
+        return json_decode($data);
     }
 }

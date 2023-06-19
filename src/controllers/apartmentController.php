@@ -1,32 +1,33 @@
 <?php
-require_once '../model/apartment.php';
+namespace MyApp\Controllers;
+
+require_once 'Apartment.php';
 
 class ApartmentController {
-    public function readApartment()
-    {
+    public function readApartment(){
+    {   
+        $id = $_POST['id'];
+        $name = $_POST['name'];
+        $address = $_POST['address'];
+        $arrondissement = $_POST['arrondissement'];
+        $price = $_POST['price'];
+        $description = $_POST['description'];
+        $squareMeter = $_POST['squareMeter'];
+        $numberBathroom = $_POST['numberBathroom'];
+        $housingType = $_POST['housingType'];
+        $balcon = $_POST['balcon'];
+        $terasse = $_POST['terasse'];
+        $capacity = $_POST['capacity'];
+        $vueSur = $_POST['vueSur'];
+        $quartier = $_POST['quartier'];
+        
         $apartments = new Apartment();
-        $apartmentList = $apartments->readAllApartments();
+        $apartmentList = $apartments->readAllApartments($id, $name, $address, $arrondissement, $price, $description, $squareMeter, $numberBathroom, $housingType, $balcon, $terasse, $capacity, $vueSur, $quartier);
 
         //afficher la vue lier a la function
         require_once('readApartment.php');
 
-        foreach ($apartmentList as $apartment) {
-            // Affichage des informations de chaque appartement
-            echo "ID: " . $apartment->id . "<br>";
-            echo "Nom: " . $apartment->name . "<br>";
-            echo "Adresse: " . $apartment->address . "<br>";
-            echo "Arrondissement: " . $apartment->arrondissement . "<br>";
-            echo "Prix: " . $apartment->price . "<br>";
-            echo "Description: " . $apartment->description . "<br>";
-            echo "Mètre carré: " . $apartment->squareMeter . "<br>";
-            echo "Nombre de salles de bain: " . $apartment->numberBathroom . "<br>";
-            echo "Type de logement: " . $apartment->housingType . "<br>";
-            echo "Balcon: " . $apartment->balcon . "<br>";
-            echo "Terrasse: " . $apartment->terasse . "<br>";
-            echo "Capacité: " . $apartment->capacity . "<br>";
-            echo "Vue sur: " . $apartment->vueSur . "<br>";
-            echo "Quartier: " . $apartment->quartier . "<br>";
-            echo "<br>";
+        //cree varible des donnee que je vais utiliser pour la vue
         }
     }
     public function deleteApartment()
