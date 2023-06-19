@@ -2,6 +2,10 @@
 
 namespace MyApp;
 
+use MyApp\Controllers\UserController as UserController;
+use MyApp\Controllers\ReservationController as ReservationController;
+use MyApp\Controllers\ApartmentController as ApartmentController;
+
 require_once './controllers/reservationController.php';
 require_once './controllers/userController.php';
 require_once './controllers/apartmentController.php';
