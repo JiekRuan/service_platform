@@ -1,48 +1,41 @@
-    let superContainer = document.querySelector('.superContainer');
-    let chevronDown = superContainer.querySelector('#arrow');
-    let superContainer2 = document.querySelector('.superContainer2');
-    let chevronUp = superContainer2.querySelector('#arrow2');
-    let isSuperContainer2Hidden = true;
-    let isSuperContainerHidden = false;
-  
-    function toggleSuperContainer2() {
-      if (isSuperContainer2Hidden) {
-        superContainer2.style.display = '';
-        superContainer.style.display = 'none';
-        chevronUp.classList.remove('fa-chevron-up');
-        chevronUp.classList.add('fa-chevron-down');
-        isSuperContainer2Hidden = false;
-      } else {
-        superContainer2.style.display = 'none';
-        superContainer.style.display = '';
-        chevronUp.classList.remove('fa-chevron-down');
-        chevronUp.classList.add('fa-chevron-up');
-        isSuperContainer2Hidden = true;
-      }
-      chevronUp.classList.add('fa-chevron-down');
-      chevronUp.classList.remove('fa-chevron-up');
-    }
-  
-    function toggleSuperContainer() {
-      if (isSuperContainer2Hidden) {
-        superContainer.style.display = '';
-        superContainer2.style.display = 'none';
-        chevronDown.classList.remove('fa-chevron-up');
-        chevronDown.classList.add('fa-chevron-down');
-        isSuperContainer2Hidden = false;
-      } else {
-        superContainer.style.display = 'none';
-        superContainer2.style.display = '';
-        chevronDown.classList.remove('fa-chevron-down');
-        chevronDown.classList.add('fa-chevron-up');
-        isSuperContainer2Hidden = true;
-      }
+let superContainers = document.querySelectorAll('.superContainer');
+let superContainers2 = document.querySelectorAll('.unroll');
+let chevronDowns = document.querySelectorAll('.superContainer .arrow');
+let isSuperContainer2Hidden = false;
 
-      chevronDown.classList.add('fa-chevron-down');
-      chevronDown.classList.remove('fa-chevron-up');
-    }
-  
-    toggleSuperContainer();
-  
-    chevronDown.addEventListener('click', toggleSuperContainer);
-    chevronUp.addEventListener('click', toggleSuperContainer2);  
+function toggleSuperContainer(index) {
+  if (isSuperContainer2Hidden) {
+    chevronDowns[index].classList.remove('fa-chevron-up');
+    chevronDowns[index].classList.add('fa-chevron-down');
+    superContainers2[index].style.display = "none";
+    console.log("cacher");
+    isSuperContainer2Hidden = false;
+  } else {
+    chevronDowns[index].classList.remove('fa-chevron-down');
+    chevronDowns[index].classList.add('fa-chevron-up');
+    superContainers2[index].style.display = "flex";
+    console.log("pas cacher");
+    isSuperContainer2Hidden = true;
+  }
+}
+
+superContainers.forEach((container, index) => {
+  chevronDowns[index].addEventListener('click', () => {
+    toggleSuperContainer(index);
+  });
+});
+
+let cancelReservation = document.querySelectorAll('.cancelReservation');
+let cancelReservationConfirm = document.querySelectorAll('.cancelReservationConfirm');
+
+cancelReservation.forEach(function (element, index) {
+  toggleMenu(element, cancelReservationConfirm[index]);
+});
+
+let cancel = document.querySelectorAll('.cancelDesactivate');
+
+cancel.forEach(function (element, index) {
+    element.addEventListener('click', () => {
+      cancelReservationConfirm[index].style.display = "none";
+    });
+});
