@@ -48,6 +48,11 @@ header {
     justify-content: space-between;
 }
 
+#headerBurgerContent li p {
+    width: 100%;
+    text-align: left;
+}
+
 #searchForm, #searchFormMobile {
     display: none;
 }

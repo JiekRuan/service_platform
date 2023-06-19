@@ -1,0 +1,236 @@
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+    margin-bottom: 100px;
+}
+
+.further h2,
+.gallery h2 {
+    color: var(--goldPrimary);
+    text-align: center;
+}
+
+.info,
+h2 {
+    color: var(--goldPrimary);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    /* margin: var(--pad); */
+    margin: 0 90px;
+}
+
+.container h1 {
+    color: var(--goldPrimary);
+}
+
+.containerImage {
+    width: 100%;
+    overflow: hidden;
+}
+
+.containerImage img:hover {
+    transform: scale(1.05);
+}
+
+.containerImage img {
+    width: 100%;
+    display: block;
+    transition: transform 0.3s ease-in-out;
+}
+
+.containerContent {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.text-describe {
+    border: 2px solid var(--goldPrimary);
+    padding: 20px;
+}
+
+
+.features {
+    padding: var(--pad);
+    width: 100%;
+    background-color: #002349;
+    display: flex;
+    justify-content: space-around;
+    gap: 50px;
+}
+
+hr {
+    border: 1px solid var(--goldPrimary);
+}
+
+.caracteristic h2 {
+    color: var(--goldPrimary);
+}
+
+.caracteristic p {
+    color: var(--white);
+}
+
+.caracteristic {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.galerie {
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.galerie figure {
+    overflow: hidden;
+    width: calc(100%/3);
+}
+
+.galerie figure img {
+    width: 100%;
+    object-fit: cover;
+    display: block;    
+    transition: transform 0.3s ease-in-out;
+}
+
+.galerie figure img:hover {
+    transform: scale(1.05);
+}
+
+.further {
+    border: 2px solid var(--goldPrimary);
+    margin: 0 90px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.further-footer {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.logementInfo {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.logementInfoImage {
+    width: 30%;
+    object-fit: cover;
+}
+
+.logementInfoImage>img {
+    width: 100%;
+}
+
+.logementMoreInfo {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.gallery {
+    /* margin: var(--pad); */
+    margin: 0 90px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.date {
+    align-items: center
+}
+
+.descriptionBookmark{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 50px;
+}
+/* .search {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    justify-content: space-evenly;
+    margin-left: 10px;
+    margin-right: 10px;
+} */
+
+/* .recherche {
+    background-color: #C29B40;
+    color: #fff;
+    border: 1px solid #C29B40;
+} */
+
+/* .filtre {
+    color: #C29B40;
+    background: #002349;
+    border: 1px solid #C29B40;
+} */
+
+/* .journey {
+    display: flex;
+    justify-content: center;
+    justify-content: space-evenly;
+    margin-top: 3em;
+    padding: 1em;
+} */
+
+/* .journey input {
+    width: 350px;
+    height: 35px;
+} */
+
+@media (max-width: 1024px) {
+    .features {
+        flex-direction: column;
+        padding: var(--padMobile);
+    }
+
+    .further {
+        margin: 0 20px;
+    }
+
+    .logementInfo {
+        flex-direction: column-reverse;
+    }
+
+    .logementMoreInfo,
+    .logementInfoImage {
+        width: 100%;
+    }
+
+    .gallery {
+        margin: 0 20px;
+    }
+
+    .galerie {
+        flex-direction: column;
+    }
+
+    .galerie figure {
+        width: 100%;
+    }
+
+    .container{
+        margin: 0 20px;
+    }
+
+}

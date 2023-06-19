@@ -1,0 +1,52 @@
+.gallery {
+    margin: 0px;
+}
+
+#cancel {
+    align-self: center;
+}
+
+.updateService {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: end;
+}
+
+.nb {
+    padding: 10px 0;
+    font-size: 12px;
+}
+
+#cancelReservation {
+    background-color: var(--white);
+    box-shadow: var(--shadow1);
+    display: none;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    padding: 50px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    justify-content: center;
+}
+
+#readDeleteMenuButton {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+#cancelReservation p {
+    text-align: center;
+}
+
+.serviceButton {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 50px;
+    align-items: center;
+    justify-content: center;
+}

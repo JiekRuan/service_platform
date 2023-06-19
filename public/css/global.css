@@ -21,6 +21,7 @@
 :root {
     --black: #000000;
     --white: #FFFFFF;
+    --whiteCream: #F0F0F0;
     --greyLight: #D9D9D9;
     --greyDark: #888888;
     --blueLight: #003166;
@@ -104,6 +105,8 @@ a {
     border: 2px solid var(--goldPrimary);
     cursor: pointer;
     user-select: none;
+    width: fit-content;
+    white-space: nowrap;
 
 }
 
@@ -131,6 +134,8 @@ a {
     border: 2px solid var(--bluePrimary);
     cursor: pointer;
     user-select: none;
+    width: fit-content;
+    white-space: nowrap;
 
 }
 
@@ -157,6 +162,8 @@ a {
     padding: 15px 25px;
     cursor: pointer;
     user-select: none;
+    width: fit-content;
+    white-space: nowrap;
 }
 
 .blueGoldButton:hover {
@@ -172,6 +179,7 @@ a {
 }
 
 .container404,
+.thanksTestimony,
 .containerDisable,
 .banner {
     background-color: var(--bluePrimary);
@@ -187,6 +195,7 @@ a {
 }
 
 .container404 h1,
+.thanksTestimony h1,
 .containerDisable h1,
 .banner h1 {
     color: var(--goldPrimary);
@@ -400,9 +409,19 @@ adapté en CSS par ChatGPT*/
 
 .strikethrough {
     text-decoration: line-through;
-  }
-  
-  .superContainer {
+}
+
+.superContainer {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--white);
+    box-shadow: var(--shadow1);
+    padding: 100px 90px;
+    margin: 100px 90px;
+}
+.superContainer2 {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -418,6 +437,10 @@ adapté en CSS par ChatGPT*/
     display: flex;
     flex-direction: column;
     gap: 50px;
+}
+
+.thanksClose{
+    align-self: center;
 }
 
 @media (max-width: 1024px) {
@@ -447,6 +470,7 @@ adapté en CSS par ChatGPT*/
     }
 
     .container404,
+    .thanksTestimony,
     .containerDisable,
     .banner {
         padding: var(--padMobile);
@@ -483,11 +507,7 @@ adapté en CSS par ChatGPT*/
         width: 100%;
         align-items: flex-start;
     }
-}
 
-
-
-@media (max-width: 1024px) {
     .superContainer {
         padding: 50px 20px;
         margin: 100px 20px;
