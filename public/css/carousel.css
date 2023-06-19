@@ -1,0 +1,31 @@
+.carousel {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.image-list {
+  flex: 1;
+}
+
+.image-thumbnails {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+  width: fit-content;
+}
+
+.thumbnail {
+  cursor: pointer;
+  width: 150px;
+}
+
+.displayed-image {
+  width: 100%;
+  min-height: 500px;
+  max-height: 500px;
+}

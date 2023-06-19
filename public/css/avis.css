@@ -61,15 +61,7 @@ body {
         text-align: center;
     }
 
-    .buttonAvis{
-        flex-direction: column;
-        gap: 50px;
-        align-self: center;
-    }
-
-    .buttonAvis a{
-        align-self: center;
-    }
+    
 
     
 }

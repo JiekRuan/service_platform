@@ -99,3 +99,8 @@
 		</div>
 	</div>
 </div>
+
+</body>
+<script src="../../js/chat.js"></script>
+
+</html>

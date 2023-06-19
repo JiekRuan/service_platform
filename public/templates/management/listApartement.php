@@ -23,7 +23,7 @@ function listApartement($i)
                 <p>Êtes-vous sûr(e) de vouloir supprimer ce logement ?</p>
                 <div id="readDeleteMenuButton">
                     <div class="userForm">
-                        <a href="" class="blueButton">Annuler</a>
+                        <p class="blueButton cancel">Annuler</p>
                     </div>
                     <form action="" method="POST"><input type="submit" value="Supprimer" class="goldenButton"></form>
                 </div>

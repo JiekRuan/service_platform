@@ -1,0 +1,31 @@
+.testimonyInfo{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.testimonyUser{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.testimonyForm{
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 1024px) {
+
+    .testimonyInfo{
+        flex-direction: column-reverse;
+    }
+
+    input:not([type="submit"]) {
+        width: 100%;
+      }
+}

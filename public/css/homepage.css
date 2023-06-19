@@ -1,0 +1,363 @@
+main {
+    max-width: 1920px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+header {
+    position: absolute;
+    border-bottom: 0px;
+    background-color: transparent;
+    width: 100%;
+}
+
+header .logo,
+#desktop,
+#mobile {
+    color: var(--white);
+
+}
+
+.goldenButton,
+.blueButton {
+    width: fit-content;
+    white-space: nowrap;
+}
+
+.presentation {
+    position: relative;
+    height: 100vh;
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    width: 100%;
+    padding: 220px 90px;
+}
+
+.zoom-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(../images/homepage/champs-elysees-paris.jpg.webp);
+    transition: transform 0.3s ease-out;
+    z-index: -999;
+}
+
+.presentation:hover .zoom-background {
+    transform: scale(1.05);
+}
+
+/* .presentation {
+    height: 100vh;
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    width: 100%;
+    padding: 220px 90px;
+    background-size: cover;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(../images/homepage/champs-elysees-paris.jpg.webp);
+} */
+
+.homepageSearch {
+    display: flex;
+    flex-direction: row;
+    /* align-items: center; */
+    gap: 10px;
+    width: 100%;
+}
+
+.homepageSearchButton {
+    border-radius: 0px;
+}
+
+.homepageRoadmap {
+    color: var(--white);
+}
+
+.homepageSearchInput {
+    width: 100%;
+    border-bottom: 0px;
+}
+
+.homepageFormContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 0px 90px;
+}
+
+.homepageDiscover,
+.homepageOurSelection {
+    background-color: var(--white);
+    padding: var(--pad);
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    color: var(--black);
+}
+
+.homepageDiscoverParagraph {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-left: 2px var(--goldPrimary) solid;
+    padding-left: 10px;
+}
+
+.homepageMoreInfo {
+    text-align: end;
+}
+
+.homepageOurHome {
+    padding: var(--pad);
+    color: var(--white);
+    background-color: var(--bluePrimary);
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    align-items: center;
+}
+
+.homepageContainer {
+    display: flex;
+    gap: 20px;
+}
+
+.image {
+    width: 100%;
+    height: 550px;
+    object-fit: cover;
+}
+
+.image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.imageText {
+    text-align: center;
+    font-size: 16px;
+}
+
+.homepageInformation {
+    text-align: center;
+}
+
+.imageContainer {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    overflow: hidden;
+}
+
+.imageContainer figure {
+    position: relative;
+    flex: 0 0 calc(25% - 20px);
+    height: 650px;
+}
+
+.imageContainer figure:nth-child(2) {
+    margin-top: 150px;
+}
+
+.imageContainer figure:nth-child(3) {
+    margin-top: 50px;
+}
+
+.imageContainer figure:nth-child(4) {
+    margin-top: 100px;
+}
+
+.imageContainer img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.imageContainer figure::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.imageContainer figure:hover::before {
+    opacity: 1;
+}
+
+.imageContainer figure div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    user-select: none;
+    text-align: center;
+}
+
+.imageContainer figure:hover div {
+    opacity: 1;
+}
+
+.homepageArrondissement {
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.homepageExp {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.homepageResearvationContainer {
+    background-color: var(--white);
+    padding: var(--pad);
+    padding: 100px 90px 360px 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    color: var(--black);
+    position: relative;
+}
+
+.homepageReservation {
+    background-color: var(--whiteCream);
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 100px 150px 100px 90px;
+    position: relative;
+}
+
+.homepageReservationContent {
+    position: relative;
+    z-index: 1;
+}
+
+.homepageReservationImage img {
+    width: 400px;
+}
+
+.homepageReservationImage {
+    position: absolute;
+    top: 14%;
+    right: -27%;
+}
+
+.homepageFooter {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    padding: var(--pad);
+    background-color: var(--whiteCream);
+}
+
+.homepageSection {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.homepageSection h4 {
+    white-space: nowrap;
+}
+
+  .figure-animation {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  
+  .figure-animation.visible {
+    opacity: 1;
+  }
+
+@media (max-width: 1024px) {
+    .homepageFooter {
+        flex-direction: column;
+        gap: 100px;
+    }
+
+    .homepageReservationImage {
+        /* display: none; */
+        /* bottom: 44%; */
+        top: 85%;
+        right: -4%;
+    }
+
+    .homepageReservationImage img {
+        width: 100%;
+        max-width: 200px;
+    }
+
+    .homepageReservation {
+        padding: 100px 20px 100px 20px;
+    }
+
+    .homepageOurHome,
+    .homepageDiscover,
+    .homepageOurSelection,
+    .presentation {
+        padding: var(--padMobile);
+    }
+
+    .homepageSearch {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .homepageContainer {
+        flex-direction: column;
+        gap: 50px;
+    }
+
+    .homepageResearvationContainer {
+        padding-bottom: 300px;
+        padding-right: 20px;
+    }
+
+    .homepageFormContainer {
+        padding: 0 20px;
+    }
+
+    .imageContainer figure {
+        position: relative;
+        flex: 0 0 calc(50% - 20px);
+        height: 650px;
+    }
+
+    .imageContainer figure:nth-child(3),
+    .imageContainer figure:nth-child(4) {
+        display: none;
+    }
+
+}

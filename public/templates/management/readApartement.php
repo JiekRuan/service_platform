@@ -38,7 +38,7 @@
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam qui animi sunt cupiditate asperiores pariatur eligendi voluptate facere officiis enim dolorem, recusandae repellat, aliquid accusantium dicta in at illo excepturi.</p>
             </div>
             <div class="userInfo">
-                <h3>Photo</h3>
+                <h3>Photos</h3>
                 <div class="readImage">
                     <figure><img src="../../images/concierge/service_1.png" alt="placeholder"></figure>
                     <figure><img src="../../images/concierge/service_1.png" alt="placeholder"></figure>

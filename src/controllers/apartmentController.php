@@ -1,7 +1,7 @@
 <?php
 namespace MyApp\Controllers;
 
-require_once 'Apartment.php';
+require_once './model/Apartment.php';
 
 class ApartmentController {
     public function readApartment(){

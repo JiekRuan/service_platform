@@ -47,9 +47,9 @@
 }
 
 @media (max-width: 1024px) {
-    input {
+    /* input {
         width: 100%;
-    }
+    } */
 
     .userForm {
         flex-direction: row;
