@@ -4,10 +4,12 @@ namespace MyApp\Controllers;
 
 class ReservationController {
     function delReservation(){
-        //get les données de la réservation
 
         //  on instancie la réservation
         $reservation = new Reservation();
+
+        //  on récupère l'id de la réservation en POST
+        $reservation_id = $_POST['reservation_id'];
 
         //  on récupère les infos de la réservation à supprimer
         $reservation->getReservationById($reservation_id);
@@ -16,6 +18,7 @@ class ReservationController {
         $reservation->deleteReservation();
 
         //  on redirige l'utilisateur vers la page d'affichage des réservation
-        header('Location :');
+        $domain = $_SERVER['HTTP_HOST'];
+        header('Location : http://' . $domain .'/ReservationList');
     }
 }
