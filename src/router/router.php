@@ -2,9 +2,9 @@
 
 namespace MyApp;
 
-require_once '../controllers/reservationController.php';
-require_once '../controllers/userController.php';
-require_once '../controllers/apartmentController.php';
+require_once './controllers/reservationController.php';
+require_once './controllers/userController.php';
+require_once './controllers/apartmentController.php';
 
 class Router {
 
@@ -38,8 +38,9 @@ class Router {
 
         //je vérifie si ma route est vide (que l'on a juste tapé le nom du domaine), ex : http://localhost:3000
         if($this->route == '') {
-            $controller = new UserController;
-            $controller->homepage();
+            //$controller = new UserController();
+            //$controller->homepage();
+            echo "home";
             return true;
         }
 
@@ -47,8 +48,8 @@ class Router {
             if($route['url'] == $this->route){
                 if($route['method'] != $this->method) {
                     header("HTTP/1.1 405 Method not Allowed");
-                    $controller = new UserController;
-                    $controller->error404();
+                    //$controller = new UserController;
+                    //$controller->error404();
                     return false;
                 }
                 $className = $route['controllerClass'];
@@ -69,9 +70,9 @@ class Router {
     //  fonction qui récupère les routes concernées par la requête
     //  faire un json pour stocker toutes les routes
     private function getRoutes(){
-        $filename = 'routes.json';
-        $data = file_get_contents($filename);
+        $filepath = './router/routes.json';
+        $data = file_get_contents($filepath);
 
-        return json_decode($data);
+        return json_decode($data, true);
     }
 }

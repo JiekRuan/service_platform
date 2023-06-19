@@ -2,9 +2,19 @@
 
 namespace MyApp\Controllers;
 
-require_once '../model/Reservation.php';
+require_once './model/Reservation.php';
 
 class ReservationController {
+    function reservationList(){
+        $user_id = $_SESSION['user_id'];
+
+        $reservation = new Reservation;
+        $reservations = $reservation->getUserReservations($user_id);
+
+        //  require de la page reservationList
+        require_once '.../public\templates\customer\reservationList.php';
+    }
+
     function delReservation(){
 
         //  on instancie la réservation

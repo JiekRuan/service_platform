@@ -1,6 +1,10 @@
 <?php
+session_start();
 
-require_once 'router.php';
+use MyApp\Router as Router;
 
-$router = new Router;
+require_once './router/router.php';
+
+
+$router = new Router();
 $router->dispatch();

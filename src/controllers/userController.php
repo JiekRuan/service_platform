@@ -1,7 +1,7 @@
 <?php 
 namespace MyApp\Controllers;
 
-    require_once '../model/User.php';
+    require_once './model/User.php';
 
     class UserController {
         public function addUser($data) {
