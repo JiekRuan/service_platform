@@ -2,6 +2,8 @@
 
 namespace MyApp\Controllers;
 
+require_once '../Controllers/Reservation.php';
+
 class ReservationController {
     function delReservation(){
 
