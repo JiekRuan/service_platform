@@ -32,7 +32,7 @@ CREATE TABLE `Opinion` (
   `reservation_id` int,
   `user_id` int,
   `content` varchar(255),
-  `created_at` timestamp
+  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE `Opinion_photos` (
@@ -59,7 +59,7 @@ CREATE TABLE `Reservation` (
   `appartment_id` int,
   `start_time` date,
   `end_time` date,
-  `created_at` timestamp
+  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE `Reservation_support` (
@@ -71,7 +71,7 @@ CREATE TABLE `Reservation_support` (
 CREATE TABLE `Reservation_support_messages` (
   `reservation_support_id` int,
   `content` varchar(255) NOT NULL,
-  `created_at` timestamp
+  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 ALTER TABLE `Reservation` ADD FOREIGN KEY (`user_id`) REFERENCES `Users` (`id`);
