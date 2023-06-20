@@ -5,6 +5,31 @@ namespace MyApp\Controllers;
 require_once './model/Reservation.php';
 
 class ReservationController {
+    function confirmReservation(): void{
+        // get les infos de la réservation
+
+
+
+        $domain = $_SERVER['HTTP_HOST'];
+        header('Location : http://' . $domain .'/reservationList');
+    }
+
+    function reservation(){
+        $reservation_id = $_POST['reservation_id'];
+
+        $reservation = new Reservation();
+        $reservation->getReservationById($reservation_id);
+
+        //  require de la page reservation detail
+        require_once 'public\templates\customer\reservation.php';
+    }
+
+    function createTestimony(){
+        $reservation_id = $_POST['reservation_id'];
+
+        require_once 'public\templates\customer\createTestimony.php';
+    }
+
     function reservationList(){
         $user_id = $_SESSION['user_id'];
 
@@ -12,7 +37,17 @@ class ReservationController {
         $reservations = $reservation->getUserReservations($user_id);
 
         //  require de la page reservationList
-        require_once '.../public\templates\customer\reservationList.php';
+        require_once 'public\templates\customer\reservationList.php';
+    }
+
+    function reservationDetails(){
+        $reservation_id = $_GET['reservation_id'];
+
+        $reservation = new Reservation();
+        $reservation->getReservationById($reservation_id);
+
+        //  require de la page reservation detail
+        require_once 'public\templates\management\reservationDetails.php';
     }
 
     function delReservation(){
