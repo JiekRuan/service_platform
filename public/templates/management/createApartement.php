@@ -33,19 +33,21 @@
                 <h3>Particularité</h3>
                 <input type="text" name="description" placeholder="Blabla no jutsu" required>
             </div>
+
             <div class="userInfo">
-                <h3>Photo</h3>
-                <input type="text" name="photo1" placeholder="URL de l'image 1" required>
-                <input type="text" name="photo2" placeholder="URL de l'image 2">
-                <input type="text" name="photo3" placeholder="URL de l'image 3">
-                <input type="text" name="photo4" placeholder="URL de l'image 4">
-                <!-- <div class="readImage">
-                    <figure><img src="../../images/concierge/service_1.png" alt="placeholder"></figure>
-                    <figure><img src="../../images/concierge/service_1.png" alt="placeholder"></figure>
-                    <figure><img src="../../images/concierge/service_1.png" alt="placeholder"></figure>
-                    <figure><img src="../../images/concierge/service_1.png" alt="placeholder"></figure>
-                </div> -->
+                <h3>Photos</h3>
+
+                <div id="publication_image">
+
+                </div>
+
+                <label id="custom-img-btn" class="addPhoto blueGoldButton">
+                    <i class="fa-solid fa-camera"></i>
+                    <p>Ajouter des images</p>
+                </label>
+
             </div>
+
             <div class="userForm">
                 <input type="submit" value="Ajouter un logement" class="goldenButton">
             </div>
@@ -60,5 +62,9 @@
 
 
 </body>
+<script>
+    let userContainer = document.querySelector('.userContainer');
+</script>
+<script src="../../js/addPhoto.js"></script>
 
 </html>

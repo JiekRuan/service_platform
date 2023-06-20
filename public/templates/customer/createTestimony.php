@@ -21,7 +21,19 @@
                 <input name="name" type="text" class="inputText" placeholder="Note" required>
             </div>
             
-            <input type="file" class="blueGoldButton" value="Ajouter des photos">
+            <div class="userInfo">
+                <h3>Photos</h3>
+
+                <div id="publication_image">
+
+                </div>
+
+                <label id="custom-img-btn" class="addPhoto blueGoldButton">
+                    <i class="fa-solid fa-camera"></i>
+                    <p>Ajouter des images</p>
+                </label>
+
+            </div>
 
             <div class="buttonAvis">
                 <a href="#" class="blueButton">Fermer</a>
@@ -32,5 +44,10 @@
     </div>
 
 </div>
+
+<script>
+    let userContainer = document.querySelector('.superContainer');
+</script>
+<script src="../../js/addPhoto.js"></script>
 
 <?php include "../componant/footer.html" ?>

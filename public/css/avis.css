@@ -8,11 +8,12 @@ body {
     text-align: center;
 }
 
-.Container .blueGoldButton {
+#custom-img-btn {
     display: flex;
-    gap: 110px;
+    gap: 20px;
     width: fit-content;
     align-self: center;
+    align-items: center;
 }
 
 .infoForm {
@@ -49,7 +50,43 @@ body {
     align-self: center;
 }
 
+.image-container {
+    position: relative;
+}
 
+#publication_image {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#publication_image img {
+    width: 100%;
+    display: block;
+}
+
+.close {
+    color: var(--white);
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 99;
+}
+
+.divMaxImages {
+    background-color: var(--white);
+    box-shadow: var(--shadow1);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    padding: 50px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 
 @media (max-width: 1024px) {
     .superContainer {
@@ -61,7 +98,8 @@ body {
         text-align: center;
     }
 
-    
+    .divMaxImages {
+        padding: 20px;
+    }
 
-    
 }
