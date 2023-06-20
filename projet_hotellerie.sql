@@ -1,75 +1,75 @@
 CREATE TABLE `Users` (
-  `id` int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  `id` int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `name` varchar(255),
   `password` varchar(255) NOT NULL,
-  `mail` varchar(255) UNIQUE NOT NULL,
-  `phone` varchar(255),
-  `role` varchar(255) DEFAULT null,
+  `email` varchar(255) UNIQUE NOT NULL,
+  `phone` varchar(15),
+  `role` varchar(30) DEFAULT null,
   `created_at` timestamp
 );
 
 CREATE TABLE `Appartments` (
-  `id` int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  `id` int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `name` varchar(255),
   `location` varchar(255),
-  `capacity` int,
-  `price` int,
+  `capacity` int(5),
+  `price` int(6),
   `description` varchar(255)
 );
 
 CREATE TABLE `Appartment_photos` (
-  `appartment_id` int,
+  `appartment_id` int(11),
   `photo` varchar(255)
 );
 
 CREATE TABLE `Services` (
-  `appartment_id` int,
+  `appartment_id` int(11),
   `service` varchar(255)
 );
 
 CREATE TABLE `Opinion` (
   `id` int PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  `reservation_id` int,
-  `user_id` int,
+  `reservation_id` int(11),
+  `user_id` int(11),
   `content` varchar(255),
   `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE `Opinion_photos` (
-  `opinion_id` int,
+  `opinion_id` int(11),
   `picture` varchar(255)
 );
 
 CREATE TABLE `Maintenance` (
-  `reservation_id` int,
+  `reservation_id` int(11),
   `start_time` date,
-  `appartment_id` int,
-  `team_id` int,
+  `appartment_id` int(11),
+  `team_id` int(4),
   `note` varchar(255)
 );
 
 CREATE TABLE `Favorites` (
-  `user_id` int,
+  `user_id` int(11),
   `appartment_id` int
 );
 
 CREATE TABLE `Reservation` (
-  `id` int PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  `user_id` int,
-  `appartment_id` int,
+  `id` int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  `user_id` int(11),
+  `appartment_id` int(11),
   `start_time` date,
   `end_time` date,
   `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE `Reservation_support` (
-  `id` int PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  `reservation_id` int,
-  `intern_id` int
+  `id` int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  `reservation_id` int(11),
+  `intern_id` int(11)
 );
 
 CREATE TABLE `Reservation_support_messages` (
-  `reservation_support_id` int,
+  `reservation_support_id` int(11),
   `content` varchar(255) NOT NULL,
   `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
