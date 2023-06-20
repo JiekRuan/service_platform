@@ -1,25 +1,19 @@
 {
-    "Public_0": {
-        "url": "home",
-        "method": "null",
-        "function": "homepage",
-        "controllerClass": "UserController"
-    },
     "Public_1": {
-        "url": "aboutUs",
-        "method": "null",
-        "function": "aboutUs",
+        "url": "home",
+        "method": "GET",
+        "function": "toHomepage",
         "controllerClass": "UserController"
     },
     "Public_2": {
         "url": "logement",
-        "method": "null",
+        "method": "GET",
         "function": "logement",
         "controllerClass": "ApartmentController"
     },
     "Public_3": {
         "url": "aboutUs",
-        "method": "null",
+        "method": "GET",
         "function": "aboutUs",
         "controllerClass": "UserController"
     },
@@ -43,13 +37,13 @@
     },
     "Public_7": {
         "url": "mentions",
-        "method": "null",
+        "method": "GET",
         "function": "mentions",
         "controllerClass": "UserController"
     },
     "Public_8": {
         "url": "policy",
-        "method": "null",
+        "method": "GET",
         "function": "policy",
         "controllerClass": "UserController"
     },
@@ -66,62 +60,68 @@
         "controllerClass": "UserController"
     },
     "Public_11": {
-        "url": "testimony",
-        "method": "null",
-        "function": "testimony",
+        "url": "signIn",
+        "method": "POST",
+        "function": "addUser",
         "controllerClass": "UserController"
     },
     "Public_12": {
+        "url": "testimony",
+        "method": "GET",
+        "function": "testimony",
+        "controllerClass": "UserController"
+    },
+    "Public_13": {
         "url": "404",
         "method": "GET",
         "function": "error404",
         "controllerClass": "UserController"
     },
     "Management_1": {
-        "url": "chat",
-        "method": "null",
+        "url": "management/chat",
+        "method": "GET",
         "function": "chat",
         "controllerClass": "ReservationController"
     },
     "Management_2": {
-        "url": "createApartement",
+        "url": "management/createApartement",
         "method": "POST",
         "function": "createApartement",
         "controllerClass": "ApartmentController"
     },
     "Management_3": {
-        "url": "listApartement",
+        "url": "management/listApartement",
         "method": "GET",
         "function": "listApartement",
         "controllerClass": "ApartmentController"
     },
     "Management_4": {
-        "url": "moderateTestimony",
+        "url": "management/moderateTestimony",
         "method": "GET",
         "function": "moderateTestimony",
         "controllerClass": "ApartmentController"
     },
     "Management_5": {
-        "url": "readApartement",
+        "url": "management/readApartement",
         "method": "GET",
         "function": "readApartement",
         "controllerClass": "ApartmentController"
     },
     "Management_6": {
-        "url": "reservationDetails",
+        "url": "management/reservationDetails",
         "method": "GET",
         "function": "reservationDetails",
         "controllerClass": "ReservationController"
     },
     "Management_7": {
-        "url": "updateApartement",
+        "url": "management/updateApartement",
         "method": "POST",
         "function": "updateApartement",
         "controllerClass": "ApartmentController"
     },
     "Logistic_1": {
         "url": "checklist",
-        "method": "null",
+        "method": "GET",
         "function": "checklist",
         "controllerClass": "ApartmentController"
     },
@@ -145,19 +145,19 @@
     },
     "Customer_2": {
         "url": "createTestimony",
-        "method": "null",
+        "method": "POST",
         "function": "createTestimony",
         "controllerClass": "ReservationController"
     },
     "Customer_3": {
         "url": "disableAccount",
-        "method": "null",
+        "method": "POST",
         "function": "disableAccount",
         "controllerClass": "UserController"
     },
     "Customer_4": {
         "url": "reservation",
-        "method": "UPDATE",
+        "method": "POST",
         "function": "reservation",
         "controllerClass": "ReservationController"
     },
@@ -169,7 +169,7 @@
     },
     "Customer_6": {
         "url": "settings",
-        "method": "UPDATE",
+        "method": "POST",
         "function": "settings",
         "controllerClass": "UserController"
     },
@@ -187,19 +187,19 @@
     },
     "Customer_9": {
         "url": "thanksTestimony",
-        "method": "null",
+        "method": "GET",
         "function": "thanksTestimony",
         "controllerClass": "ApartmentController"
     },
     "Customer_10": {
         "url": "bookmark",
-        "method": "UPDATE",
+        "method": "GET",
         "function": "bookmark",
         "controllerClass": "ApartmentController"
     },
     "Admin": {
         "url": "admin",
-        "method": "null",
+        "method": "POST",
         "function": "admin",
         "controllerClass": "UserController"
     }
