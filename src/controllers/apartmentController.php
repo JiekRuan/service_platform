@@ -7,11 +7,11 @@ require_once 'src/model/Apartment.php';
 
 class ApartmentController {
 
-    public function createApartment()
+    public function createApartement()
     {
     // verifier que le form soit en POST
     if ($_SERVER['REQUEST_METHOD'] === 'POST') 
-    {
+        {
         // recup les donnee du form create
         $name = $_POST['name'];
         $address = $_POST['address'];
@@ -45,15 +45,15 @@ class ApartmentController {
         
         //Enregistrer les infos
         if($apartment->saveData())
-        {
-            header('Location: listApartment');
-        }else{
-            header('Location: 404');
-        }
+            {
+                header('Location: listApartment');
+            }else{
+                header('Location: 404');
+            }
 
         }
     }  
-    public function modifyApartment()
+    public function updateApartement()
     {
         if($_SERVER['REQUEST_METHOD'] === 'POST')
         {
@@ -95,15 +95,16 @@ class ApartmentController {
         
         //Enregistrer les infos
         if($apartment->saveData())
-        {
-            header('Location: listApartment');
-        }else{
-            header('Location: 404');
-        }
+            {
+                header('Location: listApartment');
+            }else{
+                header('Location: 404');
+            }
         }
     }
-    public function readApartment()
-    { 
+    public function readApartement()
+    {   if($_SERVER['REQUEST_METHOD'] === 'GET'){
+
         $id = $_GET['id'];
         $name = $_GET['name'];
         $address = $_GET['address'];
@@ -123,29 +124,29 @@ class ApartmentController {
         $apartmentList = $apartments->readAllApartments($id, $name, $address, $arrondissement, $price, $description, $squareMeter, $numberBathroom, $housingType, $balcon, $terasse, $capacity, $vueSur, $quartier);
 
         //afficher la vue lier a la function
-        require_once('readApartment.php');
-
-        //cree varible des donnee que je vais utiliser pour la vue
-        
+        require_once('public\templates\management\readApartement.php');  
+        }    
     }
-    public function deleteApartment()
+    public function deleteApartement()
     {
         $id = $_GET['id'];
 
         $apartment = new Apartment();
         $apartment->id = $id;
         $result = $apartment->deleteApartment();
-        header('Location: listApartment');//a revoir pour les Location.
+        header('Location: public\templates\management\listApartement.php');//a revoir pour les Location.
     }
 
-    public function logement()
+    public function listApartement()
     {
 
     }
+
     public function displayPageDelete()
     {
         require_once 'public\templates\management\readApartement.php';
     }
+
     public function displayFormAdd()
     {
         require_once 'public\templates\management\createApartement.php';
@@ -155,5 +156,50 @@ class ApartmentController {
     {
         require_once 'public\templates\management\updateApartement.php';
     }
+
+    public function logement()
+    {   
+        //ICI on doit juste require ou on doit aussi envoyer de la donnee ?
+        require_once 'public\templates\public\logement.php';
+    }
+
+    public function moderateTestimony()
+    {
+
+    }
+
+    public function listTestimony()
+    {
+
+    }    
+    public function thanksTestimony()
+    {
+
+    }
+    public function bookmark()
+    {
+        
+    } 
+    public function checklist()
+    {
+
+    }    
+
+    public function planning()
+    {
+
+    }
+
+    public function todo()
+    {
+
+    }           
+    public function consiergeService()
+    {
+
+    }
+
+
+
 }
 //affichier les appart cree une function avec un [].
