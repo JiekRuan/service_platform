@@ -13,7 +13,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 #calendar-header button {
@@ -59,4 +59,10 @@
 .weekday {
     font-weight: bold;
     text-align: center;
+}
+
+.entete {
+    display: flex;
+    margin: 10px;
+    justify-content: center;
 }
