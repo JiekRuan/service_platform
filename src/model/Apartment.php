@@ -1,24 +1,44 @@
 <?php
+namespace MyApp\Models;
+
+require_once './database/Database.php';
 
 class Apartment
 {
     private $id;
     private $name;
-    private $location;
+    private $address;
+    private $arrondissement;
     private $capacity;
     private $price;
     private $description;
-
-
-    public function __construct($id,$name,$capacity,$description,$price,$location)
-    {
-        $this->id = $id;
-        $this->name = $name;
-        $this->location = $location;
-        $this->capacity = $capacity;
-        $this->price = $price;
-        $this->description = $description;
-    }
+    private $squareMeter;
+    private $numberBathroom;
+    private $housingType;
+    private $balcon;
+    private $terasse;
+    private $vueSur;
+    private $quartier;
+    
+    
+    
+    // public function __construct($id,$name,$address,$arrondissement,$price,$description,$squareMeter,$numberBathroom,$housingType,$balcon,$terasse,$capacity,$vueSur,$quartier)
+    // {
+    //     $this->id = $id;
+    //     $this->name = $name;
+    //     $this->address = $address;
+    //     $this->arrondissement = $arrondissement;
+    //     $this->price = $price;
+    //     $this->description = $description;
+    //     $this->squareMeter = $squareMeter;
+    //     $this->numberBathroom = $numberBathroom;
+    //     $this->housingType = $housingType;
+    //     $this->balcon = $balcon;
+    //     $this->terasse = $terasse;
+    //     $this->capacity = $capacity;
+    //     $this->vueSur = $vueSur;
+    //     $this->quartier = $quartier;
+    // }
 
     /**
      * @return mixed
@@ -47,18 +67,130 @@ class Apartment
     /**
      * @return mixed
      */
-    public function getLocation()
+    public function getAddress()
     {
-        return $this->location;
+        return $this->address;
     }
 
     /**
-     * @param mixed $location
+     * @param mixed $address
      */
-    public function setLocation($location): void
+    public function setAddress($address): void
     {
-        $this->location = $location;
+        $this->name = $address;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getArrondissement()
+    {
+        return $this->arrondissement;
+    }
+
+    /**
+     * @param mixed $arrondissement
+     */
+    public function setArrondissement($arrondissement): void
+    {
+        $this->name = $arrondissement;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBalcon()
+    {
+        return $this->balcon;
+    }
+
+    /**
+     * @param mixed $balcon
+     */
+    public function setBalcon($balcon): void
+    {
+        $this->name = $balcon;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTerasse()
+    {
+        return $this->terasse;
+    }
+
+    /**
+     * @param mixed $terasse
+     */
+    public function setTerasse($terasse): void
+    {
+        $this->name = $terasse;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSquareMeter()
+    {
+        return $this->squareMeter;
+    }
+
+    /**
+     * @param mixed $squareMeter
+     */
+    public function setSquareMeter($squareMeter): void
+    {
+        $this->name = $squareMeter;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNumberBathroom()
+    {
+        return $this->numberBathroom;
+    }
+
+    /**
+     * @param mixed $numberBathroom
+     */
+    public function setNumberBathroom($numberBathroom): void
+    {
+        $this->name = $numberBathroom;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function gethousingType()
+    {
+        return $this->housingType;
+    }
+
+    /**
+     * @param mixed $housingType
+     */
+    public function setHousingType($housingType): void
+    {
+        $this->name = $housingType;
+    }
+
+    // /**
+    //  * @return mixed
+    //  */
+    // public function getLocation()
+    // {
+    //     return $this->location;
+    // }
+
+    // /**
+    //  * @param mixed $location
+    //  */
+    // public function setLocation($location): void
+    // {
+    //     $this->location = $location;
+    // }
 
     /**
      * @return mixed
@@ -107,4 +239,132 @@ class Apartment
     {
         $this->description = $description;
     }
+    public function getVueSur()
+    {
+        return $this->vueSur;
+    }
+
+    /**
+     * @param mixed $vueSur
+     */
+    public function setVueSur($vueSur): void
+    {
+        $this->description = $vueSur;
+    }
+    public function getQuartier()
+    {
+        return $this->quartier;
+    }
+
+    /**
+     * @param mixed $quartier;
+     */
+    public function setQuartier($quartier): void
+    {
+        $this->quartier = $quartier;
+    }
+
+    // fonction pour afficher les appartements
+    public function readAllApartments()
+    {
+        $db = new Database();
+        $connection = $db->getConnection();
+
+        $request = $connection->prepare("SELECT * FROM apartment");
+        $request->execute();
+
+        $apartments = [];
+        
+        while ($row = $request->fetch(PDO::FETCH_ASSOC)) {
+            $apartment = new Apartment();
+            
+            $apartment->id = $row['id'];
+            $apartment->name = $row['name'];
+            $apartment->address = $row['address'];
+            $apartment->arrondissement = $row['arrondissement'];
+            $apartment->price = $row['price'];
+            $apartment->description = $row['description'];
+            $apartment->squareMeter = $row['squareMeter'];
+            $apartment->numberBathroom = $row['numberBathroom'];
+            $apartment->housingType = $row['housingType'];
+            $apartment->balcon = $row['balcon'];
+            $apartment->terasse = $row['terasse'];
+            $apartment->capacity = $row['capacity'];
+            $apartment->vueSur = $row['vueSur'];
+            $apartment->quartier = $row['quartier'];
+            $apartments[] = $apartment;
+        }
+
+        return $apartments;
+    }
+
+    public function deleteApartment()
+    {
+        $db = new Database();
+        $connection = $db->getConnection();
+
+        $request = $connection->prepare('DELETE FROM apartment WHERE id = :id');
+        $request->bindParam(':id', $this->id);
+
+        if ($request->execute()) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public function saveData()//pas oublier de mettre l'image.
+    {
+        $db = new Database();
+        $connection = $db->getConnection();
+
+        if ($this->id) {
+            $request = $connection->prepare('UPDATE apartment SET name = :name, address = :address, arrondissement = :arrondissement, price = :price, description = :description, squareMeter = :squareMeter, numberBathroom = :numberBathroom, housingType = :housingType, balcon = :balcon, terasse = :terasse, capacity = :capacity, vueSur = :vueSur, quartier = :quartier WHERE id = :id');
+        } else {
+            $request = $connection->prepare('INSERT INTO apartment (name, address, arrondissement, price, description, squareMeter, numberBathroom, housingType, balcon, terasse, capacity, vueSur, quartier) VALUES (:name, :address, :arrondissement, :price, :description, :squareMeter, :numberBathroom, :housingType, :balcon, :terasse, :capacity, :vueSur, :quartier)');
+        }
+
+        $request->bindParam(':name', $this->name);
+        $request->bindParam(':address', $this->address);
+        $request->bindParam(':arrondissement', $this->arrondissement);
+        $request->bindParam(':price', $this->price);
+        $request->bindParam(':description', $this->description);
+        $request->bindParam(':squareMeter', $this->squareMeter);
+        $request->bindParam(':numberBathroom', $this->numberBathroom);
+        $request->bindParam(':housingType', $this->housingType);
+        $request->bindParam(':balcon', $this->balcon);
+        $request->bindParam(':terasse', $this->terasse);
+        $request->bindParam(':capacity', $this->capacity);
+        $request->bindParam(':vueSur', $this->vueSur);
+        $request->bindParam(':quartier', $this->quartier);
+
+        if ($this->id) {
+            $request->bindParam(':id', $this->id);
+        }
+
+        $result = $request->execute();
+
+        return $result;
+    }
+
+    public function searchApartment()
+    {
+        $db = new Database();
+        $connection = $db->getConnection();
+
+        $request = $connection->prepare("SELECT * FROM apartment WHERE name LIKE :name OR location LIKE :location OR capacity = :capacity OR price <= :price OR description LIKE :description");
+        $request->bindParam(':name', "%" . $this->name . "%");
+        //$request->bindParam(':location', "%" . $this->location . "%");
+        $request->bindParam(':capacity', $this->capacity);
+        $request->bindParam(':price', $this->price);
+        $request->bindParam(':description', "%" . $this->description . "%");
+
+        if ($request->execute()) {
+            return true;
+        }
+
+        return false;
+    }
+    
 }
+//revoir la dernier fonction et terminer le controller !

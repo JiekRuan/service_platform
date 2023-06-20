@@ -1,4 +1,6 @@
 <?php
+namespace MyApp\Models;
+
 
 require_once './database/Database.php';
 
@@ -162,7 +164,7 @@ class Reservation
         return false;
     }
 
-    //  fonction qui récupère toutes les réservations d'un utilisateur via son ID
+    //  fonction qui récupère toutes les réservations d'un utilisateur via son ID(celle de l'utilisateur)
     public  function getUserReservations($user_id){
         $db = new Database();
         $connection = $db->getConnection();

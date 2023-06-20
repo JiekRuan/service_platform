@@ -1,4 +1,6 @@
 <?php
+namespace MyApp\Models;
+
 
 class User
 {
@@ -123,7 +125,7 @@ class User
         $db = new Database();
         $connection = $db->getConnection();
     
-        $request = $connection->prepare('INSERT INTO Users VALUES(:id, :name, :password, :mail, :phone, :role)');
+        $request = $connection->prepare('INSERT INTO users VALUES(:id, :name, :password, :mail, :phone, :role)');
         $request->bindParam(':id', $this->id);
         $request->bindParam(':name', $this->name);
         $request->bindParam(':password', $this->password);
@@ -137,12 +139,13 @@ class User
         return false;
     }
 
-    public function updateUser($data_type, $data) // ne pas oublier les paramètres 
+    public function updateUser($data_type, $data) 
     {
         $db = new Database();
         $connection = $db->getConnection();
-    
-        $request = $connection->prepare('UPDATE Users SET ' . $data_type . ' = :data WHERE id = :id');
+
+        $request = $connection->prepare('UPDATE users SET :data_type = :data WHERE id = :id');
+
         $request->bindParam(':id', $this->id);
         $request->bindParam(':data_type', $data_type);
         $request->bindParam(':data', $data);
@@ -178,7 +181,7 @@ class User
         $db = new Database();
         $connection = $db->getConnection();
     
-        $request = $connection->prepare('DELETE FROM Users WHERE id = :id');
+        $request = $connection->prepare('DELETE FROM users WHERE id = :id');
         $request->bindParam(':id', $this->id);
     
         if ($request->execute()) {
@@ -193,7 +196,7 @@ class User
         $db = new Database();
         $connection = $db->getConnection();
     
-        $request = $connection->prepare('SELECT * FROM Users WHERE id = :id');
+        $request = $connection->prepare('SELECT * FROM users WHERE id = :id');
         $request->bindParam(':id', $user_id);
     
         if ($request->execute()) {
@@ -215,34 +218,77 @@ class User
     }
     
     public static function getAllUsers()
-{
-    $db = new Database();
-    $connection = $db->getConnection();
+    {
+        $db = new Database();
+        $connection = $db->getConnection();
 
-    $request = $connection->prepare('SELECT * FROM Users');
+        $request = $connection->prepare('SELECT * FROM users');
 
-    if ($request->execute()) {
-        $users = array();
+        if ($request->execute()) {
+            $users = array();
 
-        while ($row = $request->fetch(PDO::FETCH_ASSOC)) {
-            $user = new User(
-                $row['id'],
-                $row['name'],
-                $row['mail'],
-                $row['phone'],
-                $row['role'],
-                $row['password'],
-                $row['created_at']
-            );
+            while ($row = $request->fetch(PDO::FETCH_ASSOC)) {
+                $user = new User(
+                    $row['id'],
+                    $row['name'],
+                    $row['mail'],
+                    $row['phone'],
+                    $row['role'],
+                    $row['password'],
+                    $row['created_at']
+                );
 
-            $users[] = $user;
+                $users[] = $user;
+            }
+
+            return $users;
         }
 
-        return $users;
+        return null;
+    }
+    
+    public function verifyAccount($email, $password) {
+        $db = new Database();
+        $connection = $db->getConnection();
+    
+        $request = $connection->prepare('SELECT * FROM users WHERE email = :email');
+        $request->bindParam(':email', $email);
+        $request->execute();
+    
+        $user = $request->fetch(PDO::FETCH_ASSOC);
+    
+        if ($user && password_verify($password, $user['password'])) {
+
+            return new User(
+                $user['id'],
+                $user['name'],
+                $user['email'],
+                $user['phone'],
+                $user['role'],
+                $user['password'],
+                $user['created_at']
+            );
+        } else {
+            return "Votre identifiant ou votre mot de passe de correspondent pas.";
+        }
     }
 
-    return null;
-}
+    public function updatePassword($newPassword) {
+        $db = new Database();
+        $connection = $db->getConnection();
     
+        $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
+    
+        $request = $connection->prepare('UPDATE users SET password = :password WHERE id = :id');
+        $request->bindParam(':id', $this->id);
+        $request->bindParam(':password', $hashedPassword);
+    
+        if ($request->execute()) {
+            $this->password = $hashedPassword;
+            return true;
+        } else {
+            return false;
+        }
+    }
 
 }
