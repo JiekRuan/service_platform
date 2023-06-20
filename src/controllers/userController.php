@@ -1,13 +1,12 @@
 <?php 
 namespace MyApp\Controllers;
 
-    require_once './model/User.php';
+    require_once 'src/model/User.php';
 
     class UserController {
         public function toHomepage() {      
-            // Redirection vers la page d'accueil
-            header("Location: homepage.php");
-            exit(); 
+            // Require de la page d'accueil
+            require_once '../public\templates\public\homepage.php';
         }
 
         public function addUser() {

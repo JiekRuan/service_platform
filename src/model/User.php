@@ -1,6 +1,7 @@
 <?php
 namespace MyApp\Models;
 
+require_once 'src/database/Database.php';
 
 class User
 {

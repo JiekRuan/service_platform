@@ -2,7 +2,7 @@
 
 namespace MyApp\Controllers;
 
-require_once './model/Reservation.php';
+require_once 'src/model/Reservation.php';
 
 class ReservationController {
     function confirmReservation(): void{

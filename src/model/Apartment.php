@@ -1,7 +1,7 @@
 <?php
 namespace MyApp\Models;
 
-require_once './database/Database.php';
+require_once 'src/database/Database.php';
 
 class Apartment
 {

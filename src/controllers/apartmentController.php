@@ -3,7 +3,7 @@ namespace MyApp\Controllers;
 
 use MyApp\Models\Apartment as Apartment;
 
-require_once './model/Apartment.php';
+require_once 'src/model/Apartment.php';
 
 class ApartmentController {
 
