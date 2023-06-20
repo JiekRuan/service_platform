@@ -1,11 +1,7 @@
-<head>
-    <link rel="stylesheet" href="../../css/chat.css">
-    <link rel="stylesheet" href="../../css/global.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-</head>
-<?php include "../componant/header.html" ?>
+<?php include 'public/templates/componant/header.php' ?>
+<link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+<link rel="stylesheet" href="public/css/chat.css">
 <div class="messenger">
 	<div class="sidebar">
 		<div class="titre">
@@ -16,13 +12,13 @@
 			<li>client 1</li>
 			<li>client 2</li>
 			<li>client 3</li>
-			<li> client 4</li>
-			<li> client 5</li>
-			<li> client 6</li>
+			<li>client 4</li>
+			<li>client 5</li>
+			<li>client 6</li>
 			<li>client 7</li>
-			<li> client 8</li>
-			<li> client 9</li>
-			<li> client 10</li>
+			<li>client 8</li>
+			<li>client 9</li>
+			<li>client 10</li>
 		</ul>
 	</div>
 	<div class="chat">
@@ -94,13 +90,13 @@
 					<input type="text" placeholder="Tapez un message...">
 					<span class="material-icons-outlined">sentiment_satisfied</span>
 				</div>
-                <button class="blueGoldButton">Envoyer</button>
+				<button class="blueGoldButton">Envoyer</button>
 			</div>
 		</div>
 	</div>
 </div>
 
 </body>
-<script src="../../js/chat.js"></script>
+<script src="public/js/chat.js"></script>
 
 </html>

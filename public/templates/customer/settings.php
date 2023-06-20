@@ -1,6 +1,6 @@
-<?php include '../componant/header.html' ?>
-<link rel="stylesheet" href="../../css/loginSignupParametre.css">
-<link rel="stylesheet" href="../../css/global.css">
+<?php include 'public/templates/componant/header.php' ?>
+<link rel="stylesheet" href="public/css/loginSignupParametre.css">
+<link rel="stylesheet" href="public/css/global.css">
 
 
 
@@ -57,4 +57,4 @@
 </div>
 
 
-<?php include '../componant/footer.html' ?>
+<?php include 'public/templates/componant/footer.html' ?>

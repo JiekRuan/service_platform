@@ -1,5 +1,5 @@
-<?php include '../componant/header.html' ?>
-<link rel="stylesheet" href="../../css/searchPage.css">
+<?php include 'public/templates/componant/header.php' ?>
+<link rel="stylesheet" href="public/css/searchPage.css">
 
 <?php
 
@@ -175,8 +175,8 @@ function apartementTemplate()
 
 </main>
 
-<script src="../../js/searchPageDate.js"></script>
-<script src="../../js/searchPageDualRange.js"></script>
-<script src="../../js/date.js"></script>
+<script src="public/js/searchPageDate.js"></script>
+<script src="public/js/searchPageDualRange.js"></script>
+<script src="public/js/date.js"></script>
 
-<?php include '../componant/footer.html' ?>
+<?php include 'public/templates/componant/footer.html' ?>

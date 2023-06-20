@@ -1,8 +1,8 @@
-<?php include '../componant/header.html' ?>
-<link rel="stylesheet" href="../../css/searchPage.css">
-<link rel="stylesheet" href="../../css/logement.css">
-<link rel="stylesheet" href="../../css/picture.css">
-<link rel="stylesheet" href="../../css/carousel.css">
+<?php include 'public/templates/componant/header.php' ?>
+<link rel="stylesheet" href="public/css/searchPage.css">
+<link rel="stylesheet" href="public/css/logement.css">
+<link rel="stylesheet" href="public/css/picture.css">
+<link rel="stylesheet" href="public/css/carousel.css">
 
 
 <main>
@@ -29,7 +29,7 @@
         </form>
     </div>
     <figure class="containerImage">
-        <img src="../../images/troca.png" alt="appartement 4 pièces" class="clickable-image">
+        <img src="public/images/troca.png" alt="appartement 4 pièces" class="clickable-image">
     </figure>
 </div>
 
@@ -47,14 +47,14 @@
             <!-- <div class="carousel">
                 <div class="image-list">
                     <ul class="image-thumbnails">
-                        <li><img src="../../images/troca.png" alt="appartement 4 pièces" class="thumbnail active"></li>
-                        <li><img src="../../images/sdb.png" alt="Image 1" class="thumbnail"></li>
-                        <li><img src="../../images/salon.png" alt="Image 2" class="thumbnail"></li>
-                        <li><img src="../../images/cuisine.png" alt="Image 3" class="thumbnail"></li>
+                        <li><img src="public/images/troca.png" alt="appartement 4 pièces" class="thumbnail active"></li>
+                        <li><img src="public/images/sdb.png" alt="Image 1" class="thumbnail"></li>
+                        <li><img src="public/images/salon.png" alt="Image 2" class="thumbnail"></li>
+                        <li><img src="public/images/cuisine.png" alt="Image 3" class="thumbnail"></li>
                     </ul>
                 </div>
                 <div class="image-display">
-                    <img src="../../images/troca.png" alt="Image 1" class="displayed-image clickable-image">
+                    <img src="public/images/troca.png" alt="Image 1" class="displayed-image clickable-image">
                 </div>
             </div> -->
 
@@ -101,13 +101,13 @@
 
             <div class="galerie">
                 <figure>
-                    <img src="../../images/sdb.png" alt="salle de bain" class="clickable-image">
+                    <img src="public/images/sdb.png" alt="salle de bain" class="clickable-image">
                 </figure>
                 <figure>
-                    <img src="../../images/salon.png" alt="salon" class="clickable-image">
+                    <img src="public/images/salon.png" alt="salon" class="clickable-image">
                 </figure>
                 <figure>
-                    <img src="../../images/cuisine.png" alt="cuisine" class="clickable-image">
+                    <img src="public/images/cuisine.png" alt="cuisine" class="clickable-image">
                 </figure>
             </div>
         </article>
@@ -149,7 +149,7 @@
                     </article>
                 </div>
                 <figure class="logementInfoImage">
-                    <img src="../../images/agence.png" alt="">
+                    <img src="public/images/agence.png" alt="">
                 </figure>
             </div>
         </article>
@@ -157,7 +157,7 @@
 
 </main>
 
-<script src="../../js/date.js"></script>
-<script src="../../js/picture.js"></script>
-<script src="../../js/carousel.js"></script>
-<?php include '../componant/footer.html' ?>
+<script src="public/js/date.js"></script>
+<script src="public/js/picture.js"></script>
+<script src="public/js/carousel.js"></script>
+<?php include 'public/templates/componant/footer.html' ?>

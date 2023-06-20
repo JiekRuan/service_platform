@@ -1,6 +1,6 @@
-<?php include '../componant/header.html' ?>
-<link rel="stylesheet" href="../../css/admin.css">
-<link rel="stylesheet" href="../../css/managementCrud.css">
+<?php include 'public/templates/componant/header.php' ?>
+<link rel="stylesheet" href="public/css/admin.css">
+<link rel="stylesheet" href="public/css/managementCrud.css">
 
 
 <?php
@@ -70,8 +70,8 @@ function listApartement($i)
 
 
 </body>
-<script src="../../js/optionSelect.js"></script>
-<script src="../../js/listApartement.js"></script>
+<script src="public/js/optionSelect.js"></script>
+<script src="public/js/listApartement.js"></script>
 
 
 </html>

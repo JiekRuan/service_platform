@@ -1,5 +1,5 @@
-<?php include '../componant/header.html' ?>
-<link rel="stylesheet" href="../../css/homepage.css">
+<?php include 'public/templates/componant/header.php' ?>
+<link rel="stylesheet" href="public/css/homepage.css">
 <main>
     <section>
         <!-- <article class="presentation">
@@ -46,19 +46,19 @@
 
             <div class="homepageContainer">
                 <figure class="figure figure-animation">
-                    <img src="../../images/homepage/appart_6.jpg" alt="" class="image">
+                    <img src="public/images/homepage/appart_6.jpg" alt="" class="image">
                     <figcaption class="imageText">Santa Monica</figcaption>
                     <figcaption class="imageText">XVIème arrondissement</figcaption>
                 </figure>
 
                 <figure class="figure figure-animation">
-                    <img src="../../images/homepage/appart_7.jpg" alt="" class="image">
+                    <img src="public/images/homepage/appart_7.jpg" alt="" class="image">
                     <figcaption class="imageText">Santa Dominica</figcaption>
                     <figcaption class="imageText">XVIIème arrondissement</figcaption>
                 </figure>
 
                 <figure class="figure figure-animation">
-                    <img src="../../images/homepage/appart_8.jpg" alt="" class="image">
+                    <img src="public/images/homepage/appart_8.jpg" alt="" class="image">
                     <figcaption class="imageText">Santa Colada</figcaption>
                     <figcaption class="imageText">XVIIème arrondissement</figcaption>
                 </figure>
@@ -75,7 +75,7 @@
                 <p>Chaque maison de notre collection est une rencontre entre nos critères d’excellence et un véritable coup de cœur. Nos conseillers vous accompagnent avec une transparence totale pour trouver votre maison idéale, celle qui correspond parfaitement à vos envies.</p>
             </div>
             <a href="#" class="homepageInformation">Se renseigner sur notre catalogue</a>
-            <img src="../../images/homepage/appart_4.jpg" alt="">
+            <img src="public/images/homepage/appart_4.jpg" alt="">
         </article>
 
         <article class="homepageOurHome homepageExperience">
@@ -86,14 +86,14 @@
             <a href="#" class="homepageInformation">Contactez-nous pour votre roadmap</a>
             <div class="imageContainer">
                 <figure class="figure-animation">
-                    <img src="../../images/homepage/exp_1.jpg" alt="">
+                    <img src="public/images/homepage/exp_1.jpg" alt="">
                     <div class="homepageExp">
                         <p>Restaurant Carotte</p>
                         <p class="homepageArrondissement">XVIIème arrondissement</p>
                     </div>
                 </figure>
                 <figure class="figure-animation">
-                    <img src="../../images/homepage/exp_2.jpg" alt="">
+                    <img src="public/images/homepage/exp_2.jpg" alt="">
                     <div class="homepageExp">
                         <p>Restaurant gastronomique</p>
                         <p class="homepageArrondissement">XVIIème arrondissement</p>
@@ -101,7 +101,7 @@
 
                 </figure>
                 <figure class="figure-animation">
-                    <img src="../../images/homepage/exp_3.jpg" alt="">
+                    <img src="public/images/homepage/exp_3.jpg" alt="">
                     <div class="homepageExp">
                         <p>Restaurant Jambon</p>
                         <p class="homepageArrondissement">XVIIème arrondissement</p>
@@ -109,7 +109,7 @@
 
                 </figure>
                 <figure class="figure-animation">
-                    <img src="../../images/homepage/exp_4.jpg" alt="">
+                    <img src="public/images/homepage/exp_4.jpg" alt="">
                     <div class="homepageExp">
                         <p>Restaurant Beurre</p>
                         <p class="homepageArrondissement">XVIIème arrondissement</p>
@@ -125,7 +125,7 @@
                 <p>Profiter de vos vacances dans un cadre exceptionnel</p>
                 <a href="" class="goldenButton">Découvrez nos logements</a>
                 <figure class="homepageReservationImage">
-                    <img src="../../images/homepage/appart_5.jpg" alt="">
+                    <img src="public/images/homepage/appart_5.jpg" alt="">
                 </figure>
             </div>
         </article>
@@ -156,5 +156,5 @@
     </section>
 </main>
 
-<script src="../../js/homepageAnimation.js"></script>
-<?php include '../componant/footer.html' ?>
+<script src="public/js/homepageAnimation.js"></script>
+<?php include 'public/templates/componant/footer.html' ?>

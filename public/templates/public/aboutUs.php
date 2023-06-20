@@ -1,5 +1,5 @@
-<?php include '../componant/header.html' ?>
-<link rel="stylesheet" href="../../css/footerLinks.css">
+<?php include 'public/templates/componant/header.php' ?>
+<link rel="stylesheet" href="public/css/footerLinks.css">
 
 <div class="mainFooterLinkContainer">
     <div class="mainFooterLinkContainerTitle">
@@ -11,7 +11,7 @@
 
         <div class="about_us_text">
             <div style="align-self:center;">
-                <img src="../../images/logo.png" alt="logo de Elysians Paris">
+                <img src="public/images/logo.png" alt="logo de Elysians Paris">
             </div>
             <p>
                 Bienvenue sur Elysians Paris, votre portail exclusif vers l'élégance et le luxe au cœur de la capitale française ! </p>
@@ -29,4 +29,4 @@
     </div>
 </div>
 
-<?php include '../componant/footer.html' ?>
+<?php include 'public/templates/componant/footer.html' ?>

@@ -1,7 +1,7 @@
-<?php include "../componant/header.html" ?>
-<link rel="stylesheet" href="../../css/global.css">
-<link rel="stylesheet" href="../../css/testimony.css">
-<script src="../../js/filter.js"></script>
+<?php include 'public/templates/componant/header.php' ?>
+<link rel="stylesheet" href="public/css/global.css">
+<link rel="stylesheet" href="public/css/testimony.css">
+<script src="public/js/filter.js"></script>
 
 <?php
 $value1 = 15;
@@ -41,10 +41,10 @@ $filters = [
             </div>
         </div>
         <div class="readImage">
-            <figure><img src="../../images/concierge/service_1.png" alt="placeholder"></figure>
-            <figure><img src="../../images/concierge/service_1.png" alt="placeholder"></figure>
-            <figure><img src="../../images/concierge/service_1.png" alt="placeholder"></figure>
-            <figure><img src="../../images/concierge/service_1.png" alt="placeholder"></figure>
+            <figure><img src="public/images/concierge/service_1.png" alt="placeholder"></figure>
+            <figure><img src="public/images/concierge/service_1.png" alt="placeholder"></figure>
+            <figure><img src="public/images/concierge/service_1.png" alt="placeholder"></figure>
+            <figure><img src="public/images/concierge/service_1.png" alt="placeholder"></figure>
         </div>
     </div>
 <?php
@@ -68,4 +68,4 @@ $filters = [
 
 <a href="#" class="blueGoldButton">Voir plus de témoignages</a>
 
-<?php include "../componant/footer.html" ?>
+<?php include "public/templates/componant/footer.html" ?>

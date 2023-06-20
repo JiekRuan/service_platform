@@ -1,6 +1,6 @@
-<?php include "../componant/header.html" ?>
-<link rel="stylesheet" href="../../css/global.css">
-<link rel="stylesheet" href="../../css/reservationList.css">
+<?php include 'public/templates/componant/header.php' ?>
+<link rel="stylesheet" href="public/css/global.css">
+<link rel="stylesheet" href="public/css/reservationList.css">
 
 <?php function reservationList()
 {
@@ -47,7 +47,7 @@
                 </div>
             </div>
             <figure>
-                <img class="img-reservation" src="../../images/salon.png" alt="image du logement">
+                <img class="img-reservation" src="public/images/salon.png" alt="image du logement">
             </figure>
         </div>
     </div>
@@ -68,6 +68,6 @@
     reservationList();
 } ?>
 
-<script src="../../js/reservationList.js"></script>
+<script src="public/js/reservationList.js"></script>
 
-<?php include "../componant/footer.html" ?>
+<?php include "public/templates/componant/footer.html" ?>

@@ -1,6 +1,6 @@
-<?php include '../componant/header.html' ?>
-<link rel="stylesheet" href="../../css/admin.css">
-<script src="../../js/filter.js"></script>
+<?php include 'public/templates/componant/header.php' ?>
+<link rel="stylesheet" href="public/css/admin.css">
+<script src="public/js/filter.js"></script>
 
 <?php
 $value1 = 15;
@@ -114,7 +114,7 @@ function adminUserTemplate($i)
 
 
 </body>
-<script src="../../js/optionSelect.js"></script>
-<script src="../../js/admin.js"></script>
+<script src="public/js/optionSelect.js"></script>
+<script src="public/js/admin.js"></script>
 
 </html>

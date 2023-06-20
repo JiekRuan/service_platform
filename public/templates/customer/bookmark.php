@@ -1,7 +1,7 @@
-<?php include '../componant/header.html' ?>
-<link rel="stylesheet" href="../../css/admin.css">
-<link rel="stylesheet" href="../../css/bookmark.css">
-<script src="../../js/filter.js"></script>
+<?php include 'public/templates/componant/header.php' ?>
+<link rel="stylesheet" href="public/css/admin.css">
+<link rel="stylesheet" href="public/css/bookmark.css">
+<script src="public/js/filter.js"></script>
 
 <?php
 
@@ -18,7 +18,7 @@ function adminUserTemplate($i)
 </div>
     <div class="bookmarkList">
         <div class="userForm">
-            <figure><img src="../../images/concierge/service_1.png" alt=""></figure>
+            <figure><img src="public/images/concierge/service_1.png" alt=""></figure>
         </div>
         <div class="userInfo">
             <p>Description</p>
@@ -49,7 +49,5 @@ function adminUserTemplate($i)
 </main>
 
 
-</body>
-<script src="../../js/optionSelect.js"></script>
-
-</html>
+<script src="public/js/optionSelect.js"></script>
+<?php include 'public/templates/componant/footer.html' ?>

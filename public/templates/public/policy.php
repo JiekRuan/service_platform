@@ -1,5 +1,5 @@
-<?php include '../componant/header.html' ?>
-<link rel="stylesheet" href="../../css/footerLinks.css">
+<?php include 'public/templates/componant/header.php' ?>
+<link rel="stylesheet" href="public/css/footerLinks.css">
 
 <div class="mainFooterLinkContainer">
     <div class="mainFooterLinkContainerTitle">
@@ -55,4 +55,4 @@ Lorsque nous sommes tenus de le faire par la loi, les autorités gouvernementale
     </div>
 </div>
 
-<?php include '../componant/footer.html'?>
+<?php include 'public/templates/componant/footer.html'?>

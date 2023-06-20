@@ -1,4 +1,4 @@
-<?php include '../componant/header.html' ?>
+<?php include 'public/templates/componant/header.php' ?>
 
 <main class="container404">
     <h1>Erreur 404</h1>
@@ -10,4 +10,4 @@
     </ul>
 </main>
 
-<?php include '../componant/footer.html' ?>
+<?php include 'public/templates/componant/footer.html' ?>

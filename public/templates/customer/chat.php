@@ -1,5 +1,5 @@
-<?php include "../componant/header.html" ?>
-<link rel="stylesheet" href="../../css/chat.css">
+<?php include 'public/templates/componant/header.php' ?>
+<link rel="stylesheet" href="public/css/chat.css">
 
 <div class="messenger">
     <div class="sidebar">
@@ -9,14 +9,14 @@
         <input class="amisinput" type="text" placeholder="  Rechercher...">
         <ul>
             <li>adresse 1</li>
-            <li> adresse 2</li>
-            <li> adresse 3</li>
+            <li>adresse 2</li>
+            <li>adresse 3</li>
             <li>adresse 4</li>
-            <li> adresse 5</li>
+            <li>adresse 5</li>
             <li>adresse 6</li>
-            <li> adresse 7</li>
+            <li>adresse 7</li>
             <li>adresse 8</li>
-            <li> adresse 9</li>
+            <li>adresse 9</li>
         </ul>
     </div>
 
@@ -24,7 +24,7 @@
         <div class="chatheader">
             <div class="profile-info">
                 <a href="#" class="chat_return">
-                <i class="fa-solid fa-arrow-left"></i>
+                    <i class="fa-solid fa-arrow-left"></i>
                 </a>
                 <h3>adresse</h3>
             </div>
@@ -82,7 +82,7 @@
         </div>
         <div class="send-icons">
             <div class="icons_chat">
-            <i class="fa-solid fa-image"></i>
+                <i class="fa-solid fa-image"></i>
             </div>
             <div class="send-message">
                 <div class="input-with-icon">
@@ -95,6 +95,6 @@
 </div>
 
 </body>
-<script src="../../js/chat.js"></script>
+<script src="public/js/chat.js"></script>
 
 </html>

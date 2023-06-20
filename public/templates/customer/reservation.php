@@ -1,8 +1,8 @@
-<?php include '../componant/header.html' ?>
-<link rel="stylesheet" href="../../css/searchPage.css">
-<link rel="stylesheet" href="../../css/logement.css">
-<link rel="stylesheet" href="../../css/reservation.css">
-<link rel="stylesheet" href="../../css/picture.css">
+<?php include 'public/templates/componant/header.php' ?>
+<link rel="stylesheet" href="public/css/searchPage.css">
+<link rel="stylesheet" href="public/css/logement.css">
+<link rel="stylesheet" href="public/css/reservation.css">
+<link rel="stylesheet" href="public/css/picture.css">
 
 
 <main>
@@ -28,7 +28,7 @@
             <p class="info">300m2 | 5 chambres | 4 salles de bain</p>
 
             <figure class="containerImage">
-                <img src="../../images/troca.png" alt="appartement 4 pièces" class="clickable-image">
+                <img src="public/images/troca.png" alt="appartement 4 pièces" class="clickable-image">
             </figure>
 
             <section class="galleryContainer">
@@ -36,13 +36,13 @@
 
                     <div class="galerie">
                         <figure>
-                            <img src="../../images/sdb.png" alt="salle de bain" class="clickable-image">
+                            <img src="public/images/sdb.png" alt="salle de bain" class="clickable-image">
                         </figure>
                         <figure>
-                            <img src="../../images/salon.png" alt="salon" class="clickable-image">
+                            <img src="public/images/salon.png" alt="salon" class="clickable-image">
                         </figure>
                         <figure>
-                            <img src="../../images/cuisine.png" alt="cuisine" class="clickable-image">
+                            <img src="public/images/cuisine.png" alt="cuisine" class="clickable-image">
                         </figure>
                     </div>
                 </article>
@@ -123,7 +123,7 @@
                     </article>
                 </div>
                 <figure class="logementInfoImage">
-                    <img src="../../images/agence.png" alt="">
+                    <img src="public/images/agence.png" alt="">
                 </figure>
             </div>
         </article>
@@ -143,7 +143,7 @@
 
 </main>
 
-<script src="../../js/reservation.js"></script>
-<script src="../../js/picture.js"></script>
+<script src="public/js/reservation.js"></script>
+<script src="public/js/picture.js"></script>
 
-<?php include '../componant/footer.html' ?>
+<?php include 'public/templates/componant/footer.html' ?>

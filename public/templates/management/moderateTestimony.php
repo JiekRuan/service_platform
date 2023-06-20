@@ -1,8 +1,8 @@
-<?php include '../componant/header.html' ?>
-<link rel="stylesheet" href="../../css/managementCrud.css">
-<link rel="stylesheet" href="../../css/moderateTestimony.css">
-<link rel="stylesheet" href="../../css/planning.css">
-<script src="../../js/filter.js"></script>
+<?php include 'public/templates/componant/header.php' ?>
+<link rel="stylesheet" href="public/css/managementCrud.css">
+<link rel="stylesheet" href="public/css/moderateTestimony.css">
+<link rel="stylesheet" href="public/css/planning.css">
+<script src="public/js/filter.js"></script>
 
 <?php
 $value2 = 4;
@@ -50,10 +50,10 @@ function logisticPlanning($i)
             <div class="userInfo">
                 <p>Photos :</p>
                 <div class="readImage">
-                    <figure><img src="../../images/concierge/service_1.png" alt="placeholder"></figure>
-                    <figure><img src="../../images/concierge/service_1.png" alt="placeholder"></figure>
-                    <figure><img src="../../images/concierge/service_1.png" alt="placeholder"></figure>
-                    <figure><img src="../../images/concierge/service_1.png" alt="placeholder"></figure>
+                    <figure><img src="public/images/concierge/service_1.png" alt="placeholder"></figure>
+                    <figure><img src="public/images/concierge/service_1.png" alt="placeholder"></figure>
+                    <figure><img src="public/images/concierge/service_1.png" alt="placeholder"></figure>
+                    <figure><img src="public/images/concierge/service_1.png" alt="placeholder"></figure>
                 </div>
 
             </div>
@@ -109,6 +109,6 @@ function logisticPlanning($i)
 
 
 </body>
-<script src="../../js/optionSelect.js"></script>
+<script src="public/js/optionSelect.js"></script>
 
 </html>

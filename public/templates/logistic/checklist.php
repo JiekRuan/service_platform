@@ -1,5 +1,5 @@
-<?php include '../componant/header.html' ?>
-<link rel="stylesheet" href="../../css/checklist.css">
+<?php include 'public/templates/componant/header.php' ?>
+<link rel="stylesheet" href="public/css/checklist.css">
 
 <?php
 
@@ -95,7 +95,7 @@ function checklistPiece($state)
 
 
 </body>
-<script src="../../js/colorTablet.js"></script>
-<script src="../../js/addNote.js"></script>
+<script src="public/js/colorTablet.js"></script>
+<script src="public/js/addNote.js"></script>
 
 </html>

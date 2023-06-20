@@ -1,6 +1,6 @@
-<?php include '../componant/header.html' ?>
-<link rel="stylesheet" href="../../css/admin.css">
-<link rel="stylesheet" href="../../css/managementCrud.css">
+<?php include 'public/templates/componant/header.php' ?>
+<link rel="stylesheet" href="public/css/admin.css">
+<link rel="stylesheet" href="public/css/managementCrud.css">
 
 <main>
     <div class="banner">
@@ -40,10 +40,10 @@
                 <input type="text" name="photo3" placeholder="URL de l'image 3">
                 <input type="text" name="photo4" placeholder="URL de l'image 4">
                 <!-- <div class="readImage">
-                    <figure><img src="../../images/concierge/service_1.png" alt="placeholder"></figure>
-                    <figure><img src="../../images/concierge/service_1.png" alt="placeholder"></figure>
-                    <figure><img src="../../images/concierge/service_1.png" alt="placeholder"></figure>
-                    <figure><img src="../../images/concierge/service_1.png" alt="placeholder"></figure>
+                    <figure><img src="public/images/concierge/service_1.png" alt="placeholder"></figure>
+                    <figure><img src="public/images/concierge/service_1.png" alt="placeholder"></figure>
+                    <figure><img src="public/images/concierge/service_1.png" alt="placeholder"></figure>
+                    <figure><img src="public/images/concierge/service_1.png" alt="placeholder"></figure>
                 </div> -->
             </div>
             <div class="userForm">

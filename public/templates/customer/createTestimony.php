@@ -1,5 +1,5 @@
-<?php include "../componant/header.html" ?>
-<link rel="stylesheet" href="../../css/avis.css">
+<?php include 'public/templates/componant/header.php' ?>
+<link rel="stylesheet" href="public/css/avis.css">
 
 
 <div class="banner">
@@ -48,6 +48,6 @@
 <script>
     let userContainer = document.querySelector('.superContainer');
 </script>
-<script src="../../js/addPhoto.js"></script>
+<script src="public/js/addPhoto.js"></script>
 
-<?php include "../componant/footer.html" ?>
+<?php include "public/templates/componant/footer.html" ?>

@@ -1,6 +1,6 @@
-<?php include '../componant/header.html' ?>
-<link rel="stylesheet" href="../../css/confirmReservation.css">
-<link rel="stylesheet" href="../../css/picture.css">
+<?php include 'public/templates/componant/header.php' ?>
+<link rel="stylesheet" href="public/css/confirmReservation.css">
+<link rel="stylesheet" href="public/css/picture.css">
 
 <main>
 
@@ -23,18 +23,18 @@
         <div class="subContainer">
 
             <figure class="containerImage">
-                <img src="../../images/troca.png" alt="appartement 4 pièces" class="clickable-image">
+                <img src="public/images/troca.png" alt="appartement 4 pièces" class="clickable-image">
             </figure>
 
             <div class="galerie">
                 <figure>
-                    <img src="../../images/sdb.png" alt="salle de bain" class="clickable-image">
+                    <img src="public/images/sdb.png" alt="salle de bain" class="clickable-image">
                 </figure>
                 <figure>
-                    <img src="../../images/salon.png" alt="salon" class="clickable-image">
+                    <img src="public/images/salon.png" alt="salon" class="clickable-image">
                 </figure>
                 <figure>
-                    <img src="../../images/cuisine.png" alt="cuisine" class="clickable-image">
+                    <img src="public/images/cuisine.png" alt="cuisine" class="clickable-image">
                 </figure>
             </div>
 
@@ -113,6 +113,6 @@
     </form>
 
 </main>
-<script src="../../js/confirmDate.js"></script>
-<script src="../../js/picture.js"></script>
-<?php include '../componant/footer.html' ?>
+<script src="public/js/confirmDate.js"></script>
+<script src="public/js/picture.js"></script>
+<?php include 'public/templates/componant/footer.html' ?>

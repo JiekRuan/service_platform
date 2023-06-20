@@ -1,6 +1,6 @@
-<?php include '../componant/header.html' ?>
-<link rel="stylesheet" href="../../css/admin.css">
-<link rel="stylesheet" href="../../css/managementCrud.css">
+<?php include 'public/templates/componant/header.php' ?>
+<link rel="stylesheet" href="public/css/admin.css">
+<link rel="stylesheet" href="public/css/managementCrud.css">
 
 <main>
     <div class="banner">
@@ -65,6 +65,6 @@
 <script>
     let userContainer = document.querySelector('.userContainer');
 </script>
-<script src="../../js/addPhoto.js"></script>
+<script src="public/js/addPhoto.js"></script>
 
 </html>

@@ -1,5 +1,5 @@
-<?php include "../componant/header.html" ?>
-<link rel="stylesheet" href="../../css/reservationDetails.css">
+<?php include 'public/templates/componant/header.php' ?>
+<link rel="stylesheet" href="public/css/reservationDetails.css">
 
 <?php function reservation()
 { ?>
