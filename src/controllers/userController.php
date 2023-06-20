@@ -4,7 +4,20 @@ namespace MyApp\Controllers;
     require_once './model/User.php';
 
     class UserController {
-        public function addUser($data) {
+        public function toHomepage() {      
+            // Redirection vers la page d'accueil
+            header("Location: homepage.php");
+            exit(); 
+        }
+
+        public function addUser() {
+            $data = [
+                'name' => $_POST['name'],
+                'email' => $_POST['email'],
+                'password' => $_POST['password'],
+                'phone' => $_POST['phone']
+            ];
+    
             $user = new User(
                 null, 
                 $data['name'], 
@@ -20,7 +33,15 @@ namespace MyApp\Controllers;
             }
         }
     
-        public function updateUser($data) {
+        public function updateUser() {
+            $data = [
+                'id' => $_POST['id'],
+                'name' => $_POST['name'],
+                'email' => $_POST['email'],
+                'password' => $_POST['password'],
+                'phone' => $_POST['phone']
+            ];
+        
             $user = new User(
                 $data['id'], 
                 $data['name'], 
@@ -28,7 +49,7 @@ namespace MyApp\Controllers;
                 $data['password'], 
                 $data['phone']
             );
-    
+        
             if ($user->updateUser()) {
                 echo "Les informations de l'utilisateur ont été mises à jour.";
             } else {
@@ -36,9 +57,16 @@ namespace MyApp\Controllers;
             }
         }
     
-        public function deleteUser($id) {
-            $user = new User($id, null, null, null, null);
-    
+        public function deleteUser() {
+            $id = $_POST['id'];
+        
+            $user = new User(
+                $id, 
+                null, 
+                null, 
+                null, 
+                null);
+
             if ($user->deleteUser()) {
                 echo "L'utilisateur a été supprimé avec succès.";
             } else {
@@ -50,10 +78,16 @@ namespace MyApp\Controllers;
             $user = new User();
             
             if ($user->getUserById($id)) {
-                echo "ID : ", $user->getId(), "<br>";
-                echo "Nom : ", $user->getName(), "<br>";
-                echo "Email : ", $user->getEmail(), "<br>";
-                echo "Téléphone : ", $user->getPhone(), "<br>";
+                $userInfo = $user->getUserInfo();
+                
+                if ($userInfo) {
+                    echo "ID : ", $userInfo['id'], "<br>";
+                    echo "Nom : ", $userInfo['name'], "<br>";
+                    echo "Email : ", $userInfo['email'], "<br>";
+                    echo "Téléphone : ", $userInfo['phone'], "<br>";
+                } else {
+                    echo "Aucune information disponible pour l'utilisateur avec l'ID spécifié.";
+                }
             } else {
                 echo "Erreur lors de la récupération des informations de l'utilisateur.";
             }
