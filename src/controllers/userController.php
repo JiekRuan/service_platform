@@ -6,7 +6,7 @@ namespace MyApp\Controllers;
     class UserController {
         public function toHomepage() {      
             // Require de la page d'accueil
-            require_once '../public\templates\public\homepage.php';
+            require_once 'public\templates\public\homepage.php';
         }
 
         public function addUser() {

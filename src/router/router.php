@@ -6,9 +6,9 @@ use MyApp\Controllers\UserController as UserController;
 use MyApp\Controllers\ReservationController as ReservationController;
 use MyApp\Controllers\ApartmentController as ApartmentController;
 
-require_once './controllers/reservationController.php';
-require_once './controllers/userController.php';
-require_once './controllers/apartmentController.php';
+require_once 'src/controllers/reservationController.php';
+require_once 'src/controllers/userController.php';
+require_once 'src/controllers/apartmentController.php';
 
 class Router {
 
@@ -65,7 +65,7 @@ class Router {
     //  fonction qui récupère les routes concernées par la requête
     //  faire un json pour stocker toutes les routes
     private function getRoutes(){
-        $filepath = './router/routes.json';
+        $filepath = 'src/router/routes.json';
         $data = file_get_contents($filepath);
 
         return json_decode($data, true);
