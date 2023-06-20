@@ -51,7 +51,8 @@ class ApartmentController {
             header('Location: 404');
         }
 
-    }    
+        }
+    }  
     public function modifyApartment()
     {
         if($_SERVER['REQUEST_METHOD'] === 'POST')
@@ -154,6 +155,5 @@ class ApartmentController {
     {
         require_once 'public\templates\management\updateApartement.php';
     }
-}
 }
 //affichier les appart cree une function avec un [].
