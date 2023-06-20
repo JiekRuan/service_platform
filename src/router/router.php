@@ -42,9 +42,8 @@ class Router {
 
         //je vérifie si ma route est vide (que l'on a juste tapé le nom du domaine), ex : http://localhost:3000
         if($this->route == '') {
-            //$controller = new UserController();
-            //$controller->homepage();
-            echo "home";
+            $controller = new UserController();
+            $controller->homepage();
             return true;
         }
 
@@ -52,8 +51,8 @@ class Router {
             if($route['url'] == $this->route){
                 if($route['method'] != $this->method) {
                     header("HTTP/1.1 405 Method not Allowed");
-                    //$controller = new UserController;
-                    //$controller->error404();
+                    $controller = new UserController;
+                    $controller->error404();
                     return false;
                 }
                 $className = $route['controllerClass'];
