@@ -145,7 +145,7 @@
     },
     "Customer_2": {
         "url": "user/createTestimony",
-        "method": "POST",
+        "method": "GET",
         "function": "createTestimony",
         "controllerClass": "ReservationController"
     },

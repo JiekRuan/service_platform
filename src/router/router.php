@@ -21,8 +21,6 @@ class Router {
         }
 
         $this->route = substr($this->route, 1);
-
-        echo "la route est : $this->route";
     }
 
 
@@ -48,7 +46,22 @@ class Router {
                     return false;
                 }
                 $className = $route['controllerClass'];
-                $controller = new ReflectionClass($className);
+                switch ($className) {
+                    case 'UserController':
+                        $controller = new UserController();
+                        break;
+                    case 'ReservationController':
+                        $controller = new ReservationController();
+                        break;
+                    case 'ApartmentController':
+                        $controller = new ApartmentController();
+                        break;
+                    default:
+                        $controller = new UserController();
+                        $controller->error404();
+                        return false;
+                        break;
+                }
                 $function = $route['function'];
                 $controller->$function();
 
