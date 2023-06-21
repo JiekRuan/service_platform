@@ -93,5 +93,41 @@ class UserController {
             echo "Erreur lors de la récupération des informations de l'utilisateur.";
         }
     }
+    // redirection vers les vues
+    public function toError404(){
+        require_once 'public\404.php';
+    }
+
+    public function aboutUs(){
+        require_once 'public\aboutUs.php';
+    }
+
+    public function contactUs(){
+        require_once 'public\contactUs.php';
+    }
+
+    public function logement(){
+        require_once 'public\logement.php';
+    }
+
+    public function mentions(){
+        require_once 'public\mentions.php';
+    }
+
+    public function policy(){
+        require_once 'public\policy.php';
+    }
+
+    public function searchPage(){
+        require_once 'public\searchPage.php';
+    }
+
+    public function signup(){
+        require_once 'public\signup.php';
+    }
+
+    public function testimony(){
+        require_once 'public\testimony.php';
+    }
 }
 ?>
