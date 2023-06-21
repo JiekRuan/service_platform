@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="public/css/global.css">
     <link rel="stylesheet" href="public/css/header.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/png" href="../../images/logo.png">
+    <link rel="icon" type="image/png" href="public/images/logo.png">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet"
@@ -67,5 +67,5 @@
             </ul>
         </nav>
     </header>
-    <script src="../../js/app.js"></script>
-    <script src="../../js/header.js"></script>
+    <script src="public/js/app.js"></script>
+    <script src="public/js/header.js"></script>
