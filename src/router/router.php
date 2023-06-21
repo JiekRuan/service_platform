@@ -48,7 +48,7 @@ class Router {
                     return false;
                 }
                 $className = $route['controllerClass'];
-                $controller = new $className;
+                $controller = new ReflectionClass($className);
                 $function = $route['function'];
                 $controller->$function();
 
