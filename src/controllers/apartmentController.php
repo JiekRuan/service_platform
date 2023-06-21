@@ -96,9 +96,9 @@ class ApartmentController {
         //Enregistrer les infos
         if($apartment->saveData())
             {
-                header('Location: listApartment');
+                header('Location: management\listApartment.php');
             }else{
-                header('Location: 404');
+                header('Location: management\404.php');
             }
         }
     }
@@ -124,7 +124,7 @@ class ApartmentController {
         $apartmentList = $apartments->readAllApartments($id, $name, $address, $arrondissement, $price, $description, $squareMeter, $numberBathroom, $housingType, $balcon, $terasse, $capacity, $vueSur, $quartier);
 
         //afficher la vue lier a la function
-        require_once('public\templates\management\readApartement.php');  
+        require_once('management\readApartement.php');  
         }    
     }
     public function deleteApartement()
@@ -134,7 +134,7 @@ class ApartmentController {
         $apartment = new Apartment();
         $apartment->id = $id;
         $result = $apartment->deleteApartment();
-        header('Location: public\templates\management\listApartement.php');//a revoir pour les Location.
+        header('Location: management\listApartement.php');//a revoir pour les Location.
     }
 
     public function listApartement()
@@ -144,23 +144,23 @@ class ApartmentController {
 
     public function displayPageDelete()
     {
-        require_once 'public\templates\management\readApartement.php';
+        require_once 'management\readApartement.php';
     }
 
     public function displayFormAdd()
     {
-        require_once 'public\templates\management\createApartement.php';
+        require_once 'management\createApartement.php';
     }
 
     public function displayFormModify()
     {
-        require_once 'public\templates\management\updateApartement.php';
+        require_once 'management\updateApartement.php';
     }
 
     public function logement()
     {   
         //ICI on doit juste require ou on doit aussi envoyer de la donnee ?
-        require_once 'public\templates\public\logement.php';
+        require_once 'public\logement.php';
     }
 
     public function moderateTestimony()
@@ -196,7 +196,7 @@ class ApartmentController {
     }           
     public function consiergeService()
     {
-
+        require_once 'public\conciergeService.php';
     }
 
 
