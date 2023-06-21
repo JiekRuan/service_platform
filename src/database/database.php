@@ -9,7 +9,7 @@ class Database {
         $dbname = "service_plateforme";
         $username = "root";
         $password = "";
-        $port = 3000;
+        $port = 3306;
 
         $connection = null;
         try {

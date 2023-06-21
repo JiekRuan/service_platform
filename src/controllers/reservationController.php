@@ -5,6 +5,14 @@ namespace MyApp\Controllers;
 require_once 'src/model/Reservation.php';
 
 class ReservationController {
+    function reservationCancel(){
+        require_once 'public\templates\customer\reservationCancel.php';
+    }
+
+    function reservationThanks(){
+        require_once 'public\templates\customer\reservationThanks.php';
+    }
+
     function confirmReservation(): void{
         // get les infos de la réservation
 
