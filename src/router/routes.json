@@ -3,210 +3,210 @@
         "url": "home",
         "method": "GET",
         "function": "toHomepage",
-        "controllerClass": "UserController"
+        "controllerClass": "MyApp\\Controllers\\UserController"
     },
     "Public_2": {
         "url": "logement",
         "method": "GET",
         "function": "logement",
-        "controllerClass": "ApartmentController"
+        "controllerClass": "MyApp\\Controllers\\ApartmentController"
     },
     "Public_3": {
         "url": "aboutUs",
         "method": "GET",
         "function": "aboutUs",
-        "controllerClass": "UserController"
+        "controllerClass": "MyApp\\Controllers\\UserController"
     },
     "Public_4": {
         "url": "contactUs",
         "method": "GET",
         "function": "contactUs",
-        "controllerClass": "UserController"
+        "controllerClass": "MyApp\\Controllers\\UserController"
     },
     "Public_5": {
         "url": "conciergeService",
         "method": "GET",
         "function": "conciergeService",
-        "controllerClass": "ApartmentController"
+        "controllerClass": "MyApp\\Controllers\\ApartmentController"
     },
     "Public_6": {
         "url": "user/login",
         "method": "GET",
         "function": "login",
-        "controllerClass": "UserController"
+        "controllerClass": "MyApp\\Controllers\\UserController"
     },
     "Public_7": {
         "url": "mentions",
         "method": "GET",
         "function": "mentions",
-        "controllerClass": "UserController"
+        "controllerClass": "MyApp\\Controllers\\UserController"
     },
     "Public_8": {
         "url": "policy",
         "method": "GET",
         "function": "policy",
-        "controllerClass": "UserController"
+        "controllerClass": "MyApp\\Controllers\\UserController"
     },
     "Public_9": {
         "url": "searchPage",
         "method": "GET",
         "function": "searchPage",
-        "controllerClass": "UserController"
+        "controllerClass": "MyApp\\Controllers\\UserController"
     },
     "Public_10": {
         "url": "user/signup",
         "method": "POST",
         "function": "signup",
-        "controllerClass": "UserController"
+        "controllerClass": "MyApp\\Controllers\\UserController"
     },
     "Public_11": {
         "url": "user/signIn",
         "method": "POST",
         "function": "addUser",
-        "controllerClass": "UserController"
+        "controllerClass": "MyApp\\Controllers\\UserController"
     },
     "Public_12": {
         "url": "testimony",
         "method": "GET",
         "function": "testimony",
-        "controllerClass": "UserController"
+        "controllerClass": "MyApp\\Controllers\\UserController"
     },
     "Public_13": {
         "url": "404",
         "method": "GET",
         "function": "error404",
-        "controllerClass": "UserController"
+        "controllerClass": "MyApp\\Controllers\\UserController"
     },
     "Management_1": {
         "url": "reservation/chat",
         "method": "GET",
         "function": "chat",
-        "controllerClass": "ReservationController"
+        "controllerClass": "MyApp\\Controllers\\ReservationController"
     },
     "Management_2": {
         "url": "apartment/createApartement",
         "method": "POST",
         "function": "createApartement",
-        "controllerClass": "ApartmentController"
+        "controllerClass": "MyApp\\Controllers\\ApartmentController"
     },
     "Management_3": {
         "url": "apartment/listApartement",
         "method": "GET",
         "function": "listApartement",
-        "controllerClass": "ApartmentController"
+        "controllerClass": "MyApp\\Controllers\\ApartmentController"
     },
     "Management_4": {
         "url": "apartment/moderateTestimony",
         "method": "GET",
         "function": "moderateTestimony",
-        "controllerClass": "ApartmentController"
+        "controllerClass": "MyApp\\Controllers\\ApartmentController"
     },
     "Management_5": {
         "url": "apartment/readApartement",
         "method": "GET",
         "function": "readApartement",
-        "controllerClass": "ApartmentController"
+        "controllerClass": "MyApp\\Controllers\\ApartmentController"
     },
     "Management_6": {
         "url": "apartment/reservationDetails",
         "method": "GET",
         "function": "reservationDetails",
-        "controllerClass": "ReservationController"
+        "controllerClass": "MyApp\\Controllers\\ReservationController"
     },
     "Management_7": {
         "url": "apartment/updateApartement",
         "method": "POST",
         "function": "updateApartement",
-        "controllerClass": "ApartmentController"
+        "controllerClass": "MyApp\\Controllers\\ApartmentController"
     },
     "Logistic_1": {
         "url": "intern/checklist",
         "method": "GET",
         "function": "checklist",
-        "controllerClass": "ApartmentController"
+        "controllerClass": "MyApp\\Controllers\\ApartmentController"
     },
     "Logistic_2": {
         "url": "intern/planning",
         "method": "GET",
         "function": "planning",
-        "controllerClass": "ApartmentController"
+        "controllerClass": "MyApp\\Controllers\\ApartmentController"
     },
     "Logistic_3": {
         "url": "intern/todo",
         "method": "GET",
         "function": "todo",
-        "controllerClass": "ApartmentController"
+        "controllerClass": "MyApp\\Controllers\\ApartmentController"
     },
     "Customer_1": {
         "url": "user/chat",
         "method": "POST",
         "function": "chat",
-        "controllerClass": "UserController"
+        "controllerClass": "MyApp\\Controllers\\UserController"
     },
     "Customer_2": {
         "url": "user/createTestimony",
         "method": "GET",
         "function": "createTestimony",
-        "controllerClass": "ReservationController"
+        "controllerClass": "MyApp\\Controllers\\MyApp\\Controllers\\ReservationController"
     },
     "Customer_3": {
         "url": "user/disableAccount",
         "method": "POST",
         "function": "disableAccount",
-        "controllerClass": "UserController"
+        "controllerClass": "MyApp\\Controllers\\UserController"
     },
     "Customer_4": {
         "url": "user/reservation",
         "method": "POST",
         "function": "reservation",
-        "controllerClass": "ReservationController"
+        "controllerClass": "MyApp\\Controllers\\ReservationController"
     },
     "Customer_5": {
         "url": "user/reservationList",
         "method": "GET",
         "function": "reservationList",
-        "controllerClass": "ReservationController"
+        "controllerClass": "MyApp\\Controllers\\ReservationController"
     },
     "Customer_6": {
         "url": "user/settings",
         "method": "POST",
         "function": "settings",
-        "controllerClass": "UserController"
+        "controllerClass": "MyApp\\Controllers\\UserController"
     },
     "Customer_7": {
         "url": "user/confirmReservation",
         "method": "POST",
         "function": "confirmReservation",
-        "controllerClass": "ReservationController"
+        "controllerClass": "MyApp\\Controllers\\ReservationController"
     },
     "Customer_8": {
         "url": "user/thanksTestimony",
         "method": "GET",
         "function": "thanksTestimony",
-        "controllerClass": "ApartmentController"
+        "controllerClass": "MyApp\\Controllers\\ApartmentController"
     },
     "Customer_9": {
         "url": "user/bookmark",
         "method": "GET",
         "function": "bookmark",
-        "controllerClass": "ApartmentController"
+        "controllerClass": "MyApp\\Controllers\\ApartmentController"
     },
     "Customer_10": {
         "url": "reservation/reservationCancel",
         "method": "GET",
         "function": "reservationCancel",
-        "controllerClass": "reservationController"
+        "controllerClass": "MyApp\\Controllers\\reservationController"
     },
     "Customer_11": {
         "url": "reservation/reservationThanks",
         "method": "GET",
         "function": "reservationThanks",
-        "controllerClass": "reservationController"
+        "controllerClass": "MyApp\\Controllers\\reservationController"
     },
     "Admin": {
         "url": "admin",
         "method": "POST",
         "function": "admin",
-        "controllerClass": "UserController"
+        "controllerClass": "MyApp\\Controllers\\UserController"
     }
 }

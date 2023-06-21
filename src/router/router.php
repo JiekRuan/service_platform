@@ -46,22 +46,7 @@ class Router {
                     return false;
                 }
                 $className = $route['controllerClass'];
-                switch ($className) {
-                    case 'UserController':
-                        $controller = new UserController();
-                        break;
-                    case 'ReservationController':
-                        $controller = new ReservationController();
-                        break;
-                    case 'ApartmentController':
-                        $controller = new ApartmentController();
-                        break;
-                    default:
-                        $controller = new UserController();
-                        $controller->error404();
-                        return false;
-                        break;
-                }
+                $controller = new $className;
                 $function = $route['function'];
                 $controller->$function();
 
