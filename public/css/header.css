@@ -2,6 +2,10 @@
     color: var(--goldPrimary);
 }
 
+.logo a:hover {
+    text-decoration: none;
+}
+
 header ul {
     display: flex;
     flex-direction: row;
@@ -53,7 +57,8 @@ header {
     text-align: left;
 }
 
-#searchForm, #searchFormMobile {
+#searchForm,
+#searchFormMobile {
     display: none;
 }
 

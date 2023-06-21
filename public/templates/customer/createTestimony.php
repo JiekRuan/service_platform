@@ -1,4 +1,4 @@
-<?php include 'public/templates/componant/header.php' ?>
+<?php include 'public/templates/component/header.php' ?>
 <link rel="stylesheet" href="public/css/avis.css">
 
 
@@ -50,4 +50,4 @@
 </script>
 <script src="public/js/addPhoto.js"></script>
 
-<?php include "public/templates/componant/footer.html" ?>
+<?php include "public/templates/component/footer.php" ?>

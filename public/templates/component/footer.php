@@ -3,15 +3,15 @@
 
     <div class="footer1">
         <h3>Découvrir</h3>
-        <p>Comment ça marche</p>
-        <p>Notre conciergerie</p>
+        <!-- <p>Comment ça marche</p> -->
+        <p><a href=<?= "http://" . $domain . "/conciergeService" ?>>Notre conciergerie</a></p>
     </div>
     <div class="footer1">
         <h3>S'informer</h3>
-        <p>À propos</p>
-        <p>Politique de confidentialité</p>
-        <p>Mentions légales</p>
-        <p>Contactez-nous</p>
+        <p><a href=<?= "http://" . $domain . "/aboutUs" ?>>À propos</a></p>
+        <p><a href=<?= "http://" . $domain . "/policy" ?>>Politique de confidentialité</a></p>
+        <p><a href=<?= "http://" . $domain . "/mentions" ?>>Mentions légales</a></p>
+        <p><a href=<?= "http://" . $domain . "/contactUs" ?>>Contactez-nous</a></p>
     </div>
 
     <div class="footer2">

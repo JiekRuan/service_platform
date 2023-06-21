@@ -1,4 +1,4 @@
-<?php include '../../templates/componant/header.html' ?>
+<?php include '../../templates/component/header.html' ?>
 <link rel="stylesheet" href="../../css/calendar.css">
 <!DOCTYPE html>
 <html>

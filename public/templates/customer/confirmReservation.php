@@ -1,4 +1,4 @@
-<?php include 'public/templates/componant/header.php' ?>
+<?php include 'public/templates/component/header.php' ?>
 <link rel="stylesheet" href="public/css/confirmReservation.css">
 <link rel="stylesheet" href="public/css/picture.css">
 
@@ -115,4 +115,4 @@
 </main>
 <script src="public/js/confirmDate.js"></script>
 <script src="public/js/picture.js"></script>
-<?php include 'public/templates/componant/footer.html' ?>
+<?php include 'public/templates/component/footer.php' ?>
