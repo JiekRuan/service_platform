@@ -20,7 +20,7 @@ class Router {
             $this->route = explode('?', $this->route)[0];
         }
 
-        array_shift($this->route);
+        $this->route = substr($this->route, 1);
 
         echo "la route est : $this->route";
     }
