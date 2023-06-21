@@ -23,6 +23,7 @@ class Router {
         if($this->route == '/'){
             $this->route = '';
         }
+        echo "la route est : $this->route";
     }
 
 
