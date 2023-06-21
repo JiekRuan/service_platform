@@ -1,4 +1,4 @@
-<?php include 'public/templates/componant/header.php' ?>
+<?php include 'public/templates/component/header.php' ?>
 <link rel="stylesheet" href="public/css/searchPage.css">
 <link rel="stylesheet" href="public/css/logement.css">
 <link rel="stylesheet" href="public/css/picture.css">
@@ -160,4 +160,4 @@
 <script src="public/js/date.js"></script>
 <script src="public/js/picture.js"></script>
 <script src="public/js/carousel.js"></script>
-<?php include 'public/templates/componant/footer.html' ?>
+<?php include 'public/templates/component/footer.php' ?>

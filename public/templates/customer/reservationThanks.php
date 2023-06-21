@@ -1,4 +1,4 @@
-<?php include 'public/templates/componant/header.php' ?>
+<?php include 'public/templates/component/header.php' ?>
 
 <main class="thanksTestimony">
     <h1>Merci d'avoir réservé chez nous</h1>
@@ -35,4 +35,4 @@
 
 </main>
 
-<?php include 'public/templates/componant/footer.html' ?>
+<?php include 'public/templates/component/footer.php' ?>

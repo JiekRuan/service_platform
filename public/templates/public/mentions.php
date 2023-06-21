@@ -1,4 +1,4 @@
-<?php include 'public/templates/componant/header.php' ?>
+<?php include 'public/templates/component/header.php' ?>
 <link rel="stylesheet" href="public/css/footerLinks.css">
 
 <main class="mainFooterLinkContainer">
@@ -62,4 +62,4 @@
     </div>
 </main>
 
-<?php include 'public/componant/footer.html'?>
+<?php include 'public/component/footer.php'?>

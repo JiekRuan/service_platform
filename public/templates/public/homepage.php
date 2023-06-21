@@ -1,4 +1,4 @@
-<?php include 'public/templates/componant/header.php' ?>
+<?php include 'public/templates/component/header.php' ?>
 <link rel="stylesheet" href="public/css/homepage.css">
 <main>
     <section>
@@ -65,16 +65,16 @@
             </div>
 
 
-            <a href="#" class="goldenButton">Découvrez nos logements</a>
+            <a href=<?= "http://" . $domain . "/searchPage" ?> class="goldenButton">Découvrez nos logements</a>
 
         </article>
 
         <article class="homepageOurSelection">
             <h2>Une sélection de résidence d'exceptions</h2>
             <div class="homepageDiscoverParagraph">
-                <p>Chaque maison de notre collection est une rencontre entre nos critères d’excellence et un véritable coup de cœur. Nos conseillers vous accompagnent avec une transparence totale pour trouver votre maison idéale, celle qui correspond parfaitement à vos envies.</p>
+                <p>Chaque maison de notre collection est une rencontre entre nos critères d'excellence et un véritable coup de cœur. Nos conseillers vous accompagnent avec une transparence totale pour trouver votre maison idéale, celle qui correspond parfaitement à vos envies.</p>
             </div>
-            <a href="#" class="homepageInformation">Se renseigner sur notre catalogue</a>
+            <a href=<?= "http://" . $domain . "/searchPage" ?> class="homepageInformation">Se renseigner sur notre catalogue</a>
             <img src="public/images/homepage/appart_4.jpg" alt="">
         </article>
 
@@ -83,7 +83,7 @@
             <div class="homepageDiscoverParagraph">
                 <p>Demandez votre roadmap personnalisé par notre équipe entièrement pensé pour vous. Surprenant, fascinant et complet, nous construisons votre circuit pour vous avec un art du détail incomparable, en s'inspirant de vos envies et de vos passions.</p>
             </div>
-            <a href="#" class="homepageInformation">Contactez-nous pour votre roadmap</a>
+            <a href=<?= "http://" . $domain . "/contactUs" ?> class="homepageInformation">Contactez-nous pour votre roadmap</a>
             <div class="imageContainer">
                 <figure class="figure-animation">
                     <img src="public/images/homepage/exp_1.jpg" alt="">
@@ -116,14 +116,14 @@
                     </div>
                 </figure>
             </div>
-        
+
         </article>
 
         <article class="homepageResearvationContainer">
             <div class="homepageReservation homepageReservationContent">
                 <h2>Réservez votre logement dès maintenant</h2>
                 <p>Profiter de vos vacances dans un cadre exceptionnel</p>
-                <a href="" class="goldenButton">Découvrez nos logements</a>
+                <a href=<?= "http://" . $domain . "/searchPage" ?> class="goldenButton">Découvrez nos logements</a>
                 <figure class="homepageReservationImage">
                     <img src="public/images/homepage/appart_5.jpg" alt="">
                 </figure>
@@ -157,4 +157,4 @@
 </main>
 
 <script src="public/js/homepageAnimation.js"></script>
-<?php include 'public/templates/componant/footer.html' ?>
+<?php include 'public/templates/component/footer.php' ?>

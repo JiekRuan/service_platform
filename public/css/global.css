@@ -86,6 +86,11 @@ input {
 
 a {
     text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    text-decoration: underline;
 }
 
 .fa-regular,
@@ -319,6 +324,11 @@ a {
     gap: 20px;
 }
 
+.goldenButton:hover,
+.blueButton:hover,
+.blueGoldButton:hover {
+    text-decoration: none;
+}
 
 /* pour les form select option
 https://codepen.io/wallaceerick/pen/nJLPvN
@@ -421,6 +431,7 @@ adapté en CSS par ChatGPT*/
     padding: 100px 90px;
     margin: 100px 90px;
 }
+
 .superContainer2 {
     display: flex;
     justify-content: center;
@@ -439,7 +450,7 @@ adapté en CSS par ChatGPT*/
     gap: 50px;
 }
 
-.thanksClose{
+.thanksClose {
     align-self: center;
 }
 

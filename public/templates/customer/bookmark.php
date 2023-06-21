@@ -1,4 +1,4 @@
-<?php include 'public/templates/componant/header.php' ?>
+<?php include 'public/templates/component/header.php' ?>
 <link rel="stylesheet" href="public/css/admin.css">
 <link rel="stylesheet" href="public/css/bookmark.css">
 <script src="public/js/filter.js"></script>
@@ -50,4 +50,4 @@ function adminUserTemplate($i)
 
 
 <script src="public/js/optionSelect.js"></script>
-<?php include 'public/templates/componant/footer.html' ?>
+<?php include 'public/templates/component/footer.php' ?>

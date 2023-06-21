@@ -1,4 +1,4 @@
-<?php include 'public/templates/componant/header.php' ?>
+<?php include 'public/templates/component/header.php' ?>
 <link rel="stylesheet" href="public/css/global.css">
 <link rel="stylesheet" href="public/css/reservationList.css">
 
@@ -70,4 +70,4 @@
 
 <script src="public/js/reservationList.js"></script>
 
-<?php include "public/templates/componant/footer.html" ?>
+<?php include "public/templates/component/footer.php" ?>
