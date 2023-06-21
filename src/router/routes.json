@@ -119,6 +119,18 @@
         "function": "updateApartement",
         "controllerClass": "ApartmentController"
     },
+    "Management_8": {
+        "url": "reservation/reservationCancel",
+        "method": "GET",
+        "function": "reservationCancel",
+        "controllerClass": "reservationController"
+    },
+    "Management_9": {
+        "url": "reservation/reservationThanks",
+        "method": "GET",
+        "function": "reservationThanks",
+        "controllerClass": "reservationController"
+    },
     "Logistic_1": {
         "url": "intern/checklist",
         "method": "GET",
@@ -174,24 +186,18 @@
         "controllerClass": "UserController"
     },
     "Customer_7": {
-        "url": "user/listTestimony",
-        "method": "GET",
-        "function": "listTestimony",
-        "controllerClass": "ApartmentController"
-    },
-    "Customer_8": {
         "url": "user/confirmReservation",
         "method": "POST",
         "function": "confirmReservation",
         "controllerClass": "ReservationController"
     },
-    "Customer_9": {
+    "Customer_8": {
         "url": "user/thanksTestimony",
         "method": "GET",
         "function": "thanksTestimony",
         "controllerClass": "ApartmentController"
     },
-    "Customer_10": {
+    "Customer_9": {
         "url": "user/bookmark",
         "method": "GET",
         "function": "bookmark",

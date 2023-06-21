@@ -93,10 +93,5 @@ class UserController {
             echo "Erreur lors de la récupération des informations de l'utilisateur.";
         }
     }
-
-    public function ()
-    {
-
-    }
 }
 ?>
