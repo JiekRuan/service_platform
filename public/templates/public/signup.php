@@ -8,7 +8,7 @@
     <div class="Container">
         <h1>INSCRIPTION</h1>
 
-        <form class="infoForm">
+        <form class="infoForm" method="POST" action="">
             <div class="radiobox">
                 <label class="role"><input name="role" type="radio" name="bouton" value="madame" checked>Madame</label>
                 <label class="role"><input name="role" type="radio" name="bouton" value="monsieur">Monsieur</label>

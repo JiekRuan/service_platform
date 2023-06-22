@@ -6,7 +6,7 @@ include 'public/templates/component/header.php' ?>
     <div class="Container">
         <h1>CONNEXION</h1>
 
-        <form class="infoForm">
+        <form class="infoForm" method="POST" action="">
             <div class="row">
                 <input name="name" type="text" class="inputText" placeholder="Email" required>
             </div>
