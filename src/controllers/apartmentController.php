@@ -138,8 +138,8 @@ class ApartmentController {
     }
 
     public function listApartement()
-    {
-
+    {         
+        require_once 'public\templates\management\listApartement.php';
     }
 
     public function displayPageDelete()
