@@ -39,19 +39,21 @@ class UserController {
 
     public function updateUser() {
         $data = [
-            'id' => $_POST['id'],
             'name' => $_POST['name'],
             'email' => $_POST['email'],
             'password' => $_POST['password'],
-            'phone' => $_POST['phone']
+            'phone' => $_POST['phone'],
+            'role' => $_POST['role']
         ];
     
         $user = new User(
-            $data['id'], 
+            null, 
             $data['name'], 
             $data['email'], 
             $data['password'], 
-            $data['phone']
+            $data['phone'],
+            $data['role'],
+            null
         );
     
         if ($user->updateUser()) {
