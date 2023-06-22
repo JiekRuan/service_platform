@@ -33,6 +33,7 @@ class UserController
 
         if ($user->addUser()) {
             $_SESSION["loggedin"] = true;
+            $_SESSION["role"] = $user->getRole();
             global $domain;
             header('Location: http://' . $domain . '/home');
         } else {
@@ -100,6 +101,7 @@ class UserController
 
                 if ($loggedInUser instanceof User) {
                     $_SESSION["loggedin"] = true;
+                    $_SESSION["role"] = $loggedInUser->getRole();
                     global $domain;
                     header('Location: http://' . $domain . '/home');
                 } else {

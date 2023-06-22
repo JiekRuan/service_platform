@@ -70,6 +70,18 @@ header {
     border: none;
     background-color: inherit;
     color: inherit;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    font-family: inherit;
+    font-size: inherit;
+    justify-content: flex-start;
+    cursor: pointer;
+}
+
+.buttonSubmit p:hover{
+    text-decoration: underline;
 }
 
 @media (max-width: 1024px) {
