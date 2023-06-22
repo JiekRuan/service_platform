@@ -9,12 +9,18 @@ CREATE TABLE `Users` (
 );
 
 CREATE TABLE `Appartments` (
-  `id` int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  `name` varchar(255),
-  `location` varchar(255),
-  `capacity` int(5),
-  `price` int(6),
-  `description` varchar(255)
+  `id` int(11) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `arrondissement` varchar(255) DEFAULT NULL,
+  `price` int(11) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `squareMeter` int(11) DEFAULT NULL,
+  `numberBathroom` int(11) DEFAULT NULL,
+  `housingType` varchar(255) DEFAULT NULL,
+  `balcon` varchar(255) DEFAULT NULL,
+  `terasse` varchar(255) DEFAULT NULL,
+  `capacity` int(11) DEFAULT NULL
 );
 
 CREATE TABLE `Appartment_photos` (
