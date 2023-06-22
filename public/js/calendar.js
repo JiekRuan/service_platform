@@ -10,9 +10,8 @@ let currentDate = new Date();
 // Variables pour la plage de dates
 let startDate = null;
 let endDate = null;
+let selectedDateRanges = []; // Ajoutez cette ligne en haut de votre script pour créer le tableau qui stocke les plages de dates
 
-// Mettez à jour le calendrier avec le mois et l'année actuels
-updateCalendar();
 
 // Ajoutez un gestionnaire d'événement clic au bouton précédent
 prevButton.addEventListener('click', function () {
@@ -61,60 +60,72 @@ function updateCalendar() {
         calendarGrid.appendChild(emptyDayElement);
     }
 
- // Bouclez sur chaque jour du mois
-for (let day = 1; day <= daysInMonth; day++) {
-    // Créez un élément div pour représenter le jour dans le calendrier
-    const dayElement = document.createElement('div');
-    dayElement.classList.add('day');
-    dayElement.innerText = day;
-    dayElement.dataset.day = day;
+    // Bouclez sur chaque jour du mois
+    for (let day = 1; day <= daysInMonth; day++) {
+        // Créez un nouvel objet Date pour le jour actuel
+        const currentDateInLoop = new Date(currentDate.getFullYear(), currentDate.getMonth(), day);
 
-    // Ajoutez un gestionnaire d'événement clic pour sélectionner le jour
-    dayElement.addEventListener('click', function() {
-      handleDayClick(this);
-    });
+        // Créez un élément div pour représenter le jour dans le calendrier
+        const dayElement = document.createElement('div');
+        dayElement.classList.add('day');
+        dayElement.innerText = day;
+        dayElement.dataset.day = day;
 
-    // Créez un nouvel objet Date pour le jour actuel
-    const currentDateInLoop = new Date(currentDate.getFullYear(), currentDate.getMonth(), day);
+        // Ajoutez un gestionnaire d'événement clic pour sélectionner le jour
+        dayElement.addEventListener('click', function() {
+          handleDayClick(this);
+        });
 
-    // Vérifie si le jour est inclus dans la plage de dates sélectionnée et si le jour appartient au même mois et à la même année
-    if (startDate && endDate && currentDateInLoop >= startDate && currentDateInLoop <= endDate 
-      && startDate.getMonth() === currentDate.getMonth() && startDate.getFullYear() === currentDate.getFullYear()) {
-        dayElement.classList.add('selected');
+        // Vérifiez si le jour est inclus dans une des plages de dates sélectionnées
+        for (let i = 0; i < selectedDateRanges.length; i++) {
+            const range = selectedDateRanges[i];
+            if (currentDateInLoop >= range.start && currentDateInLoop <= range.end
+                && range.start.getMonth() === currentDate.getMonth() && range.start.getFullYear() === currentDate.getFullYear()) {
+                dayElement.classList.add('selected');
+            }
+        }
+
+        // Ajoutez le jour au calendrier
+        calendarGrid.appendChild(dayElement);
     }
-
-    // Ajoutez le jour au calendrier
-    calendarGrid.appendChild(dayElement);
-  }
 }
 
+// Mettez à jour le calendrier avec le mois et l'année actuels
+updateCalendar();
 
 // Gère le clic sur un jour
 function handleDayClick(dayElement) {
     const selectedDay = parseInt(dayElement.dataset.day);
     const selectedDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), selectedDay);
 
+    // Si aucune date de début n'est définie ou si une plage de dates est complète, commencez une nouvelle plage de dates
     if (!startDate || (startDate && endDate)) {
-        // Début de la plage de dates
         startDate = selectedDate;
         endDate = null;
     } else if (selectedDate >= startDate) {
-        // Fin de la plage de dates
+        // Définissez la fin de la plage de dates
         endDate = selectedDate;
+
+        // Ajoutez la nouvelle plage de dates au tableau des plages de dates sélectionnées
+        selectedDateRanges.push({start: new Date(startDate), end: new Date(endDate)});
+
+        // Réinitialisez les dates de début et de fin
+        startDate = null;
+        endDate = null;
     } else {
-        // Si la date sélectionnée est antérieure à la date de début, remplacez la date de début
+        // Si la date sélectionnée est avant la date de début, faites de la date sélectionnée la nouvelle date de début
         startDate = selectedDate;
     }
 
     updateCalendar();
 
-    // Affiche les dates sélectionnées
-    if (startDate && endDate) {
-        const selectedDates = getSelectedDates(startDate, endDate);
-        console.log('Dates sélectionnées:', selectedDates);
+    // Affiche les plages de dates sélectionnées
+    for (let i = 0; i < selectedDateRanges.length; i++) {
+        const range = selectedDateRanges[i];
+        const dates = getSelectedDates(range.start, range.end);
+        console.log(`Plage de dates ${i + 1} :`, dates);
     }
 }
-
 
 // Obtient les dates sélectionnées dans une plage de dates
 function getSelectedDates(start, end) {
