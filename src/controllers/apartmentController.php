@@ -185,7 +185,7 @@ class ApartmentController {
 
     public function moderateTestimony()
     {
-        require_once 'public\templates\management\moderateTestimony.php'
+        require_once 'public\templates\management\moderateTestimony.php';
         //pas encore fait
     }
 
