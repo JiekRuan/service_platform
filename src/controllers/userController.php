@@ -1,37 +1,37 @@
-<?php 
+<?php
 namespace MyApp\Controllers;
 
 use MyApp\Models\User as User;
 
 require_once 'src/model/User.php';
 
-class UserController {
-    public function toHomepage() {      
+class UserController
+{
+    public function toHomepage()
+    {
         // Require de la page d'accueil
         require_once 'public\templates\public\homepage.php';
     }
 
-    public function addUser() {
+    public function addUser()
+    {
         $data = [
-            'id' => $_POST['id'],
             'name' => $_POST['name'],
             'email' => $_POST['email'],
             'password' => $_POST['password'],
-            'phone' => $_POST['phone'],
-            'role' => $_POST['role'],
-            'create_at' => $_POST['create_at']
+            'phone' => $_POST['phone']
         ];
 
         $user = new User(
-            null, 
-            $data['name'], 
-            $data['email'], 
-            $data['password'], 
+            null,
+            $data['name'],
+            $data['email'],
+            $data['password'],
             $data['phone'],
-            $data['role'],
+            null,
             null
         );
-        
+
         if ($user->addUser()) {
             echo "L'utilisateur a été créé avec succès.";
         } else {
@@ -39,7 +39,8 @@ class UserController {
         }
     }
 
-    public function updateUser() {
+    public function updateUser()
+    {
         $data = [
             'id' => $_POST['id'],
             'name' => $_POST['name'],
@@ -49,17 +50,17 @@ class UserController {
             'role' => $_POST['role'],
             'create_at' => $_POST['create_at']
         ];
-    
+
         $user = new User(
-            $data['id'], 
-            $data['name'], 
-            $data['email'], 
-            $data['password'], 
+            $data['id'],
+            $data['name'],
+            $data['email'],
+            $data['password'],
             $data['phone'],
             $data['role'],
             null
         );
-    
+
         if ($user->updateUser()) {
             echo "Les informations de l'utilisateur ont été mises à jour.";
         } else {
@@ -67,15 +68,17 @@ class UserController {
         }
     }
 
-    public function deleteUser() {
+    public function deleteUser()
+    {
         $id = $_POST['id'];
-    
+
         $user = new User(
-            $id, 
-            null, 
-            null, 
-            null, 
-            null);
+            $id,
+            null,
+            null,
+            null,
+            null
+        );
 
         if ($user->deleteUser()) {
             echo "L'utilisateur a été supprimé avec succès.";
@@ -84,38 +87,61 @@ class UserController {
         }
     }
 
-    public function login() {
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-    
-        $user = $this->verifyAccount($email, $password); // utilise la fonction verifyAccount dans le model User.php
-    
-        if ($user instanceof User) {
-            return "Connexion réussie.";
-        } else {
-            return "Identifiants invalides. Veuillez réessayer.";
+    // public function login() {
+    //     $email = $_POST['email'];
+    //     $password = $_POST['password'];
+
+    //     $user = $this->verifyAccount($email, $password); // utilise la fonction verifyAccount dans le model User.php
+
+    //     if ($user instanceof User) {
+    //         return "Connexion réussie.";
+    //     } else {
+    //         return "Identifiants invalides. Veuillez réessayer.";
+    //     }
+    // }
+
+    public function login()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (isset($_POST['email']) && isset($_POST['password'])) {
+                $email = $_POST['email'];
+                $password = $_POST['password'];
+                $user = $this->verifyAccount($email, $password); // utilise la fonction verifyAccount dans le model User.php
+
+                if ($user instanceof User) {
+                    return "Connexion réussie.";
+                } else {
+                    return "Identifiants invalides. Veuillez réessayer.";
+                }
+
+            } else {
+                return "Veuillez fournir une adresse e-mail et un mot de passe.";
+            }
         }
     }
 
-    public function displayLoginForm(){
+    public function displayLoginForm()
+    {
         require_once 'public/templates/public/login.php';
     }
 
-    public function logout() {
+    public function logout()
+    {
         // Détruire toutes les variables de session
         session_unset();
         // Détruire la session
         session_destroy();
         header("Location: login.php");
-        exit(); 
+        exit();
     }
 
-    public function getUserById($id) {
+    public function getUserById($id)
+    {
         $user = new User();
-        
+
         if ($user->getUserById($id)) {
             $userInfo = $user->getUserInfo();
-            
+
             if ($userInfo) {
                 echo "ID : ", $userInfo['id'], "<br>";
                 echo "Nom : ", $userInfo['name'], "<br>";
@@ -129,47 +155,58 @@ class UserController {
         }
     }
     // redirection vers les vues
-    public function Error404(){
+    public function Error404()
+    {
         require_once 'public\templates\public\404.php';
     }
 
-    public function Error405():void{
+    public function Error405(): void
+    {
         require_once 'public\templates\public\405.php';
     }
 
-    public function aboutUs(){
+    public function aboutUs()
+    {
         require_once 'public\templates\public\aboutUs.php';
     }
 
-    public function contactUs(){
+    public function contactUs()
+    {
         require_once 'public\templates\public\contactUs.php';
     }
 
-    public function logement(){
+    public function logement()
+    {
         require_once 'public\templates\public\logement.php';
     }
 
-    public function mentions(){
+    public function mentions()
+    {
         require_once 'public\templates\public\mentions.php';
     }
 
-    public function policy(){
+    public function policy()
+    {
         require_once 'public\templates\public\policy.php';
     }
 
-    public function searchPage(){
+    public function searchPage()
+    {
         require_once 'public\templates\public\searchPage.php';
     }
 
-    public function signup(){
+    public function signup()
+    {
         require_once 'public\templates\public\signup.php';
     }
 
-    public function testimony(){
+    public function testimony()
+    {
         require_once 'public\templates\public\testimony.php';
     }
 
-    public function generateToken(){
+    public function generateToken()
+    {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $charnum = strlen($characters);
         $token = '';

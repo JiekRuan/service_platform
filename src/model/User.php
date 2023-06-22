@@ -11,17 +11,17 @@ class User
     private $id;
     private $name;
     private $password;
-    private $mail;
+    private $email;
     private $phone;
     private $role;
     private $createdAt;
 
 
-    public function __construct($id,$name,$mail,$phone,$role,$password,$createdAt)
+    public function __construct($id, $name, $email, $phone, $role, $password, $createdAt)
     {
         $this->id = $id;
         $this->name = $name;
-        $this->mail = $mail;
+        $this->email = $email;
         $this->phone = $phone;
         $this->role = $role;
         $this->password = $password;
@@ -73,15 +73,15 @@ class User
      */
     public function getMail()
     {
-        return $this->mail;
+        return $this->email;
     }
 
     /**
-     * @param mixed $mail
+     * @param mixed $email
      */
-    public function setMail($mail): void
+    public function setMail($email): void
     {
-        $this->mail = $mail;
+        $this->email = $email;
     }
 
     /**
@@ -124,6 +124,27 @@ class User
         return $this->createdAt;
     }
 
+    // public function addUser()
+    // {
+    //     $db = new Database();
+    //     $connection = $db->getConnection();
+
+    //     $hashedPassword = password_hash($this->password, PASSWORD_DEFAULT);
+
+    //     $request = $connection->prepare('INSERT INTO users VALUES(:id, :name, :password, :mail, :phone, :role)');
+    //     $request->bindParam(':id', $this->id);
+    //     $request->bindParam(':name', $this->name);
+    //     $request->bindParam(':password', $hashedPassword);
+    //     $request->bindParam(':mail', $this->mail);
+    //     $request->bindParam(':phone', $this->phone);
+    //     $request->bindParam(':role', $this->role);
+
+    //     if ($request->execute()) {
+    //         return true;
+    //     }
+    //     return false;
+    // }
+
     public function addUser()
     {
         $db = new Database();
@@ -131,21 +152,20 @@ class User
 
         $hashedPassword = password_hash($this->password, PASSWORD_DEFAULT);
 
-        $request = $connection->prepare('INSERT INTO users VALUES(:id, :name, :password, :mail, :phone, :role)');
-        $request->bindParam(':id', $this->id);
+        $request = $connection->prepare('INSERT INTO users (name, password, email, phone) VALUES(:name, :password, :email, :phone)');
         $request->bindParam(':name', $this->name);
         $request->bindParam(':password', $hashedPassword);
-        $request->bindParam(':mail', $this->mail);
+        $request->bindParam(':email', $this->email);
         $request->bindParam(':phone', $this->phone);
-        $request->bindParam(':role', $this->role);
-    
+
+
         if ($request->execute()) {
             return true;
         }
         return false;
     }
 
-    public function updateUser($data_type, $data) 
+    public function updateUser($data_type, $data)
     {
         $db = new Database();
         $connection = $db->getConnection();
@@ -155,7 +175,7 @@ class User
         $request->bindParam(':id', $this->id);
         $request->bindParam(':data_type', $data_type);
         $request->bindParam(':data', $data);
-    
+
         if ($request->execute()) {
             switch ($data_type) {
                 case 'name':
@@ -165,7 +185,7 @@ class User
                     $this->password = $data;
                     break;
                 case 'mail':
-                    $this->mail = $data;
+                    $this->email = $data;
                     break;
                 case 'phone':
                     $this->phone = $data;
@@ -186,43 +206,43 @@ class User
     {
         $db = new Database();
         $connection = $db->getConnection();
-    
+
         $request = $connection->prepare('DELETE FROM users WHERE id = :id');
         $request->bindParam(':id', $this->id);
-    
+
         if ($request->execute()) {
             return true;
         } else {
             return false;
         }
     }
-    
+
     public function getUserById($user_id)
     {
         $db = new Database();
         $connection = $db->getConnection();
-    
+
         $request = $connection->prepare('SELECT * FROM users WHERE id = :id');
         $request->bindParam(':id', $user_id);
-    
+
         if ($request->execute()) {
             $result = $request->fetch(PDO::FETCH_ASSOC);
-    
+
             if ($result) {
                 $this->id = $user_id;
                 $this->name = $result['name'];
                 $this->password = $result['password'];
-                $this->mail = $result['mail'];
+                $this->email = $result['email'];
                 $this->phone = $result['phone'];
                 $this->role = $result['role'];
                 $this->createdAt = $result['created_at'];
                 return true;
             }
         }
-    
+
         return false;
     }
-    
+
     public static function getAllUsers()
     {
         $db = new Database();
@@ -237,7 +257,7 @@ class User
                 $user = new User(
                     $row['id'],
                     $row['name'],
-                    $row['mail'],
+                    $row['email'],
                     $row['phone'],
                     $row['role'],
                     $row['password'],
@@ -252,17 +272,18 @@ class User
 
         return null;
     }
-    
-    public function verifyAccount($email, $password) {
+
+    public function verifyAccount($email, $password)
+    {
         $db = new Database();
         $connection = $db->getConnection();
-    
+
         $request = $connection->prepare('SELECT * FROM users WHERE email = :email');
         $request->bindParam(':email', $email);
         $request->execute();
-    
+
         $user = $request->fetch(PDO::FETCH_ASSOC);
-    
+
         if ($user && password_verify($password, $user['password'])) {
 
             return new User(
@@ -279,16 +300,17 @@ class User
         }
     }
 
-    public function updatePassword($newPassword) {
+    public function updatePassword($newPassword)
+    {
         $db = new Database();
         $connection = $db->getConnection();
-    
+
         $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
-    
+
         $request = $connection->prepare('UPDATE users SET password = :password WHERE id = :id');
         $request->bindParam(':id', $this->id);
         $request->bindParam(':password', $hashedPassword);
-    
+
         if ($request->execute()) {
             $this->password = $hashedPassword;
             return true;

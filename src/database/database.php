@@ -1,12 +1,14 @@
 <?php
 ini_set('display_errors', 1);
-class Database {
+class Database
+{
 
-    function getConnection () {
+    function getConnection()
+    {
 
         // variables de connection a la bdd
         $host = "localhost";
-        $dbname = "service_plateforme";
+        $dbname = "service_plateform";
         $username = "root";
         $password = "";
         $port = 3306;
@@ -15,7 +17,7 @@ class Database {
         try {
             $connection = new PDO("mysql:host=" . $host . ";port=" . $port . ";dbname=" . $dbname, $username, $password);
             $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        }catch(PDOException $exception){
+        } catch (PDOException $exception) {
             echo "Erreur de connexion:" . $exception->getMessage();
         }
 
