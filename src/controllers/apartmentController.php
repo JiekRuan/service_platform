@@ -121,7 +121,7 @@ class ApartmentController {
         $quartier = $_GET['quartier'];
         
         $apartments = new Apartment();
-        $apartmentList = $apartments->readAllApartments($id, $name, $address, $arrondissement, $price, $description, $squareMeter, $numberBathroom, $housingType, $balcon, $terasse, $capacity, $vueSur, $quartier);
+        $apartments->readAllApartments($id, $name, $address, $arrondissement, $price, $description, $squareMeter, $numberBathroom, $housingType, $balcon, $terasse, $capacity, $vueSur, $quartier);
 
         //afficher la vue lier a la function
         require_once('public\templates\management\readApartement.php');  
@@ -156,6 +156,12 @@ class ApartmentController {
         }
         require_once 'public/templates/management/listApartement.php';
     }
+    //fonction recherche pour pouvoir faire des recherche
+    //sur ttes la table Apartment
+    public function searchAll()
+    {
+
+    }
     public function displayPageDelete()
     {
         require_once 'public\templates\management\readApartement.php';
@@ -179,7 +185,7 @@ class ApartmentController {
 
     public function moderateTestimony()
     {
-
+        //pas encore fait
     }
 
     public function listTestimony()
@@ -192,8 +198,20 @@ class ApartmentController {
     }
     public function bookmark()
     {
-        
-    } 
+    if ($_SERVER['REQUEST_METHOD'] === 'GET') 
+        {
+        $name = $_GET['name'];
+        $arrondissement = $_GET['arrondissement'];
+        $description = $_GET['description'];
+
+        $apartmentModel = new Apartment();
+        $apartments = $apartmentModel->readAllApartments();
+
+        // Utilisez les variables récupérées dans votre code ici
+
+        require_once 'public/templates/customer/bookmark.php';
+        }
+    }
     public function checklist()
     {
 
