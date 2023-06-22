@@ -91,6 +91,10 @@ class UserController {
         }
     }
 
+    public function displayLoginForm(){
+        require_once 'public/templates/public/login.php';
+    }
+
     public function logout() {
         // Détruire toutes les variables de session
         session_unset();

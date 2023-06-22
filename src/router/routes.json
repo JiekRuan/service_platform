@@ -32,7 +32,7 @@
     "Public_6": {
         "url": "user/login",
         "method": "GET",
-        "function": "login",
+        "function": "displayLoginForm",
         "controllerClass": "MyApp\\Controllers\\UserController"
     },
     "Public_7": {
@@ -75,6 +75,12 @@
         "url": "404",
         "method": "GET",
         "function": "error404",
+        "controllerClass": "MyApp\\Controllers\\UserController"
+    },
+    "Public_14": {
+        "url": "user/loginMethod",
+        "method": "POST",
+        "function": "login",
         "controllerClass": "MyApp\\Controllers\\UserController"
     },
     "Management_1": {
