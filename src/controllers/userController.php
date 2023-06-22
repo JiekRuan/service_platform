@@ -26,7 +26,7 @@ class UserController
             $data['name'],
             $data['email'],
             $data['phone'],
-            null,
+            'customer',
             $data['password'],
             null
         );

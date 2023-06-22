@@ -66,6 +66,12 @@ header {
     width: 300px;
 }
 
+.buttonSubmit {
+    border: none;
+    background-color: inherit;
+    color: inherit;
+}
+
 @media (max-width: 1024px) {
     header {
         padding: 10px 10px;
