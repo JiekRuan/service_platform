@@ -54,13 +54,13 @@
         "controllerClass": "MyApp\\Controllers\\UserController"
     },
     "Public_10": {
-        "url": "user/signup",
+        "url": "user/signUp",
         "method": "GET",
         "function": "signup",
         "controllerClass": "MyApp\\Controllers\\UserController"
     },
     "Public_11": {
-        "url": "user/signIn",
+        "url": "user/signUpMethod",
         "method": "POST",
         "function": "addUser",
         "controllerClass": "MyApp\\Controllers\\UserController"
