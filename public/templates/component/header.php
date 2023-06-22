@@ -68,5 +68,5 @@ global $domain;
             </ul>
         </nav>
     </header>
-    <script src="public/js/app.js"></script>
-    <script src="public/js/header.js"></script>
+    <script src="../public/js/app.js"></script>
+    <script src="../public/js/header.js"></script>
