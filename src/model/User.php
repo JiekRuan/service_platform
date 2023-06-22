@@ -124,25 +124,64 @@ class User
         return $this->createdAt;
     }
 
+    // public function addUser()
+    // {
+    //     $db = new Database();
+    //     $connection = $db->getConnection();
+
+    //     $hashedPassword = password_hash($this->password, PASSWORD_DEFAULT);
+
+    //     $request = $connection->prepare('INSERT INTO users (name, password, email, phone) VALUES(:name, :password, :email, :phone)');
+    //     $request->bindParam(':name', $this->name);
+    //     $request->bindParam(':password', $hashedPassword);
+    //     $request->bindParam(':email', $this->email);
+    //     $request->bindParam(':phone', $this->phone);
+
+
+    //     if ($request->execute()) {
+    //         return true;
+    //     }
+    //     return false;
+    // }
+
     public function addUser()
     {
+        // Vérifier si l'email existe déjà dans la base de données
+        if ($this->ifEmailExists($this->email)) {
+            return false; // L'email existe déjà, renvoyer false
+        }
+
         $db = new Database();
         $connection = $db->getConnection();
 
         $hashedPassword = password_hash($this->password, PASSWORD_DEFAULT);
 
-        $request = $connection->prepare('INSERT INTO users (name, password, email, phone) VALUES(:name, :password, :email, :phone)');
+        $request = $connection->prepare('INSERT INTO users (name, password, email, phone, role) VALUES(:name, :password, :email, :phone, :role)');
         $request->bindParam(':name', $this->name);
         $request->bindParam(':password', $hashedPassword);
         $request->bindParam(':email', $this->email);
         $request->bindParam(':phone', $this->phone);
-
+        $request->bindParam(':role', $this->role);
 
         if ($request->execute()) {
-            return true;
+            return true; // Utilisateur ajouté avec succès
         }
-        return false;
+        return false; // Erreur lors de l'ajout de l'utilisateur
     }
+
+    private function ifEmailExists($email)
+    {
+        $db = new Database();
+        $connection = $db->getConnection();
+
+        $request = $connection->prepare('SELECT COUNT(*) FROM users WHERE email = :email');
+        $request->bindParam(':email', $email);
+        $request->execute();
+
+        $count = $request->fetchColumn();
+        return $count > 0; // Renvoyer true si l'email existe, sinon false
+    }
+
 
     public function updateUser($data_type, $data)
     {
