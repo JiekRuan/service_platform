@@ -62,4 +62,4 @@
     </div>
 </main>
 
-<?php include 'public/component/footer.php'?>
+<?php include 'public/templates/component/footer.php'?>
