@@ -2,6 +2,8 @@
 
 namespace MyApp\Controllers;
 
+use MyApp\Models\Reservation as Reservation;
+
 require_once 'src/model/Reservation.php';
 
 class ReservationController {

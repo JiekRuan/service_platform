@@ -147,7 +147,7 @@
         "url": "user/createTestimony",
         "method": "GET",
         "function": "createTestimony",
-        "controllerClass": "MyApp\\Controllers\\MyApp\\Controllers\\ReservationController"
+        "controllerClass": "MyApp\\Controllers\\ReservationController"
     },
     "Customer_3": {
         "url": "user/disableAccount",
@@ -195,13 +195,13 @@
         "url": "reservation/reservationCancel",
         "method": "GET",
         "function": "reservationCancel",
-        "controllerClass": "MyApp\\Controllers\\reservationController"
+        "controllerClass": "MyApp\\Controllers\\ReservationController"
     },
     "Customer_11": {
         "url": "reservation/reservationThanks",
         "method": "GET",
         "function": "reservationThanks",
-        "controllerClass": "MyApp\\Controllers\\reservationController"
+        "controllerClass": "MyApp\\Controllers\\ReservationController"
     },
     "Admin": {
         "url": "admin",

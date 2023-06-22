@@ -13,7 +13,7 @@ class Database {
 
         $connection = null;
         try {
-            $connection = new PDO("pgsql:host=" . $host . ";port=" . $port . ";dbname=" . $dbname, $username, $password);
+            $connection = new PDO("mysql:host=" . $host . ";port=" . $port . ";dbname=" . $dbname, $username, $password);
             $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         }catch(PDOException $exception){
             echo "Erreur de connexion:" . $exception->getMessage();

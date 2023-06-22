@@ -19,6 +19,8 @@ class Router {
         if($this->method = 'GET'){
             $this->route = explode('?', $this->route)[0];
         }
+
+        //pour que les gens qui dev avec wamp arrêtent de se plaindre
         $this->route = preg_replace("#\/service_platform#",'',$this->route);
 
         $this->route = substr($this->route, 1);

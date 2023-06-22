@@ -1,6 +1,8 @@
 <?php
 namespace MyApp\Models;
 
+use Database;
+use PDO;
 
 require_once 'src/database/Database.php';
 
