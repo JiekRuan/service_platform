@@ -1,6 +1,6 @@
 <?php include 'public/templates/component/header.php' ?>
-<link rel="stylesheet" href="public/css/loginSignupParametre.css">
-<link rel="stylesheet" href="public/css/global.css">
+<link rel="stylesheet" href="../public/css/loginSignupParametre.css">
+<link rel="stylesheet" href="../public/css/global.css">
 
 
 
