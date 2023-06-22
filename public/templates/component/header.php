@@ -33,12 +33,24 @@ global $domain;
                         <input class="searchInput" type="text" placeholder="16ème arrondissement...">
                     </form>
                 </li>
-                <li><a href=<?= "http://" . $domain . "/testimony" ?>><i class="fas fa-quote-left"></i></a></li>
-                <li><a href=<?= "http://" . $domain . "/user/bookmark" ?>><i class="fa-regular fa-bookmark"></i></a></li>
-                <li><a href=<?= "http://" . $domain . "/user/chat" ?>><i class="fa-regular fa-message"></i></a></li>
-                <li><a href=<?= "http://" . $domain . "/user/reservationList" ?>><i class="fa-regular fa-calendar-check"></i></a></li>
-                <li><a href=<?= "http://" . $domain . "/user/settings" ?>><i class="fa-regular fa-user"></i></a></li>
+                <?php
+                if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+                ?>
+                    <li><a href=<?= "http://" . $domain . "/testimony" ?>>Témoignages</a></li>
+                    <li>
+                        <a href=<?= "http://" . $domain . "/user/login" ?> style="display: flex; flex-direction:row; align-items:center; gap:10px">
+                            Se connecter
+                        </a>
+                    <li>
 
+                    <?php
+                } else { ?>
+                    <li><a href=<?= "http://" . $domain . "/testimony" ?>><i class="fas fa-quote-left"></i></a></li>
+                    <li><a href=<?= "http://" . $domain . "/user/bookmark" ?>><i class="fa-regular fa-bookmark"></i></a></li>
+                    <li><a href=<?= "http://" . $domain . "/user/chat" ?>><i class="fa-regular fa-message"></i></a></li>
+                    <li><a href=<?= "http://" . $domain . "/user/reservationList" ?>><i class="fa-regular fa-calendar-check"></i></a></li>
+                    <li><a href=<?= "http://" . $domain . "/user/settings" ?>><i class="fa-regular fa-user"></i></a></li>
+                <?php } ?>
             </ul>
             <ul id="mobile">
                 <li id="searchMobile"><i class="fa-solid fa-magnifying-glass"></i></li>
@@ -50,31 +62,48 @@ global $domain;
                 <li id="headerBurger"><i class="fa-solid fa-bars"></i></li>
             </ul>
             <ul id="headerBurgerContent">
-                <a href=<?= "http://" . $domain . "/testimony" ?>>
+                <?php
+                if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+                ?>
+                    <a href=<?= "http://" . $domain . "/testimony" ?>>
+                        <li><i class="fas fa-quote-left"></i>
+                            <p>Témoignages</p>
+                        </li>
+                    </a>
+                    <a href=<?= "http://" . $domain . "/user/login" ?>>
+                        <li><i class="fa-solid fa-right-to-bracket"></i>
+                            <p>Se connecter</p>
+                        </li>
+                    </a>
+
+                    <?php
+                } else { ?>
+                        <a href=<?= "http://" . $domain . "/testimony" ?>>
                     <li><i class="fas fa-quote-left"></i>
                         <p>Témoignages</p>
                     </li>
-                </a>
-                <a href=<?= "http://" . $domain . "/user/bookmark" ?>>
-                    <li><i class="fa-regular fa-bookmark"></i>
-                        <p>Vos favoris</p>
-                    </li>
-                </a>
-                <a href=<?= "http://" . $domain . "/user/chat" ?>>
-                    <li><i class="fa-regular fa-message"></i>
-                        <p>Messagerie</p>
-                    </li>
-                </a>
-                <a href=<?= "http://" . $domain . "/user/reservationList" ?>>
-                    <li><i class="fa-regular fa-calendar-check"></i>
-                        <p>Vos réservations</p>
-                    </li>
-                </a>
-                <a href=<?= "http://" . $domain . "/user/settings" ?>>
-                    <li><i class="fa-regular fa-user"></i>
-                        <p>Votre Profil</p>
-                    </li>
-                </a>
+                    </a>
+                    <a href=<?= "http://" . $domain . "/user/bookmark" ?>>
+                        <li><i class="fa-regular fa-bookmark"></i>
+                            <p>Vos favoris</p>
+                        </li>
+                    </a>
+                    <a href=<?= "http://" . $domain . "/user/chat" ?>>
+                        <li><i class="fa-regular fa-message"></i>
+                            <p>Messagerie</p>
+                        </li>
+                    </a>
+                    <a href=<?= "http://" . $domain . "/user/reservationList" ?>>
+                        <li><i class="fa-regular fa-calendar-check"></i>
+                            <p>Vos réservations</p>
+                        </li>
+                    </a>
+                    <a href=<?= "http://" . $domain . "/user/settings" ?>>
+                        <li><i class="fa-regular fa-user"></i>
+                            <p>Votre Profil</p>
+                        </li>
+                    </a>
+                <?php } ?>
             </ul>
         </nav>
     </header>
