@@ -32,7 +32,8 @@ class UserController
         );
 
         if ($user->addUser()) {
-            header('Location: http://localhost:3000/home');
+            global $domain;
+            header('Location: http://' . $domain . '/home');
         } else {
             echo "Erreur lors de la création de l'utilisateur.";
         }
@@ -97,7 +98,8 @@ class UserController
                 $loggedInUser = $user->verifyAccount($email, $password);
 
                 if ($loggedInUser instanceof User) {
-                    header('Location: http://localhost:3000/home');
+                    global $domain;
+                    header('Location: http://' . $domain . '/home');
                 } else {
                     echo "Identifiants invalides. Veuillez réessayer.";
                 }
@@ -118,7 +120,8 @@ class UserController
         session_unset();
         // Détruire la session
         session_destroy();
-        header("Location: login.php");
+        global $domain;
+        header('Location: http://' . $domain . '/login');
         exit();
     }
 
