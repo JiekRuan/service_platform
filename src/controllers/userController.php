@@ -76,18 +76,15 @@ class UserController {
     }
 
     public function login() {
-        $data = [
-            'email' => $_POST['email'],
-            'password' => $_POST['password']
-        ];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
     
-        $user = new User();
-        $loggedIn = $user->login($data['email'], $data['password']);
+        $user = $this->verifyAccount($email, $password); // utilise la fonction verifyAccount dans le model User.php
     
-        if ($loggedIn) {
-            echo "Connexion réussie.";
+        if ($user instanceof User) {
+            return "Connexion réussie.";
         } else {
-            echo "Identifiants invalides. Veuillez réessayer.";
+            return "Identifiants invalides. Veuillez réessayer.";
         }
     }
 
