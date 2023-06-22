@@ -95,39 +95,39 @@ class UserController {
     }
     // redirection vers les vues
     public function toError404(){
-        require_once 'public\404.php';
+        require_once 'public\templates\public\404.php';
     }
 
     public function aboutUs(){
-        require_once 'public\aboutUs.php';
+        require_once 'public\templates\public\aboutUs.php';
     }
 
     public function contactUs(){
-        require_once 'public\contactUs.php';
+        require_once 'public\templates\public\contactUs.php';
     }
 
     public function logement(){
-        require_once 'public\logement.php';
+        require_once 'public\templates\public\logement.php';
     }
 
     public function mentions(){
-        require_once 'public\mentions.php';
+        require_once 'public\templates\public\mentions.php';
     }
 
     public function policy(){
-        require_once 'public\policy.php';
+        require_once 'public\templates\public\policy.php';
     }
 
     public function searchPage(){
-        require_once 'public\searchPage.php';
+        require_once 'public\templates\public\searchPage.php';
     }
 
     public function signup(){
-        require_once 'public\signup.php';
+        require_once 'public\templates\public\signup.php';
     }
 
     public function testimony(){
-        require_once 'public\testimony.php';
+        require_once 'public\templates\public\testimony.php';
     }
 }
 ?>
