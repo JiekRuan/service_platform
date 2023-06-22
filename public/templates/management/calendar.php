@@ -1,13 +1,14 @@
-<?php include '../../templates/component/header.html' ?>
+<?php include '../../templates/componant/header.html' ?>
 <link rel="stylesheet" href="../../css/calendar.css">
 <!DOCTYPE html>
 <html>
 <head>
+    <body>
     <div class="containerCalendar">
-        <title>Calendrier de réservation</title>
-        <body>
-            <h1>Sélectionnez une date de réservation</h1>
-            
+        <div class="entete">
+            <title>Calendrier de réservation</title>
+            <h1>Sélectionnez vos dates de réservation</h1>
+        </div>
             <div id="calendar">
                 <div id="calendar-header">
                     <button id="prevButton">&lt;</button>
