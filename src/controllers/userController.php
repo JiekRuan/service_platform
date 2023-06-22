@@ -158,5 +158,15 @@ class UserController {
     public function testimony(){
         require_once 'public\templates\public\testimony.php';
     }
+
+    public function generateToken(){
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charnum = strlen($characters);
+        $token = '';
+        for ($i = 0; $i < 10; $i++) {
+            $token .= $characters[random_int(0, $charnum - 1)];
+        }
+        return $token;
+    }
 }
 ?>
