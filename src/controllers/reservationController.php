@@ -20,7 +20,7 @@ class ReservationController {
 
 
 
-        $domain = $_SERVER['HTTP_HOST'];
+        global $domain;
         header('Location : http://' . $domain .'/reservationList');
     }
 
@@ -75,7 +75,7 @@ class ReservationController {
         $reservation->deleteReservation();
 
         //  on redirige l'utilisateur vers la page d'affichage des réservation
-        $domain = $_SERVER['HTTP_HOST'];
+        global $domain;
         header('Location : http://' . $domain .'/ReservationList');
     }
 }
