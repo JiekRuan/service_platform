@@ -12,7 +12,7 @@ global $domain;
     <link rel="stylesheet" href="../public/css/global.css">
     <link rel="stylesheet" href="../public/css/header.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/png" href="public/images/logo.png">
+    <link rel="icon" type="image/png" href="../public/images/logo.png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
@@ -50,21 +50,31 @@ global $domain;
                 <li id="headerBurger"><i class="fa-solid fa-bars"></i></li>
             </ul>
             <ul id="headerBurgerContent">
-                <li><i class="fas fa-quote-left"></i>
-                    <p>Témoignages</p>
-                </li>
-                <li><i class="fa-regular fa-bookmark"></i>
-                    <p>Vos favoris</p>
-                </li>
-                <li><i class="fa-regular fa-message"></i>
-                    <p>Messagerie</p>
-                </li>
-                <li><i class="fa-regular fa-calendar-check"></i>
-                    <p>Vos réservations</p>
-                </li>
-                <li><i class="fa-regular fa-user"></i>
-                    <p>Votre Profil</p>
-                </li>
+                <a href=<?= "http://" . $domain . "/testimony" ?>>
+                    <li><i class="fas fa-quote-left"></i>
+                        <p>Témoignages</p>
+                    </li>
+                </a>
+                <a href=<?= "http://" . $domain . "/user/bookmark" ?>>
+                    <li><i class="fa-regular fa-bookmark"></i>
+                        <p>Vos favoris</p>
+                    </li>
+                </a>
+                <a href=<?= "http://" . $domain . "/user/chat" ?>>
+                    <li><i class="fa-regular fa-message"></i>
+                        <p>Messagerie</p>
+                    </li>
+                </a>
+                <a href=<?= "http://" . $domain . "/user/reservationList" ?>>
+                    <li><i class="fa-regular fa-calendar-check"></i>
+                        <p>Vos réservations</p>
+                    </li>
+                </a>
+                <a href=<?= "http://" . $domain . "/user/settings" ?>>
+                    <li><i class="fa-regular fa-user"></i>
+                        <p>Votre Profil</p>
+                    </li>
+                </a>
             </ul>
         </nav>
     </header>
