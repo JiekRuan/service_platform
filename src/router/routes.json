@@ -55,7 +55,7 @@
     },
     "Public_10": {
         "url": "user/signup",
-        "method": "POST",
+        "method": "GET",
         "function": "signup",
         "controllerClass": "MyApp\\Controllers\\UserController"
     },
