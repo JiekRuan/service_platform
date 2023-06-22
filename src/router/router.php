@@ -15,7 +15,6 @@ class Router {
     public function __construct() {
         $this->route = $_SERVER['REQUEST_URI'];
         $this->method = $_SERVER['REQUEST_METHOD'];
-
         if($this->method = 'GET'){
             $this->route = explode('?', $this->route)[0];
         }
@@ -44,6 +43,7 @@ class Router {
             if($route['url'] == $this->route){
                 if($route['method'] != $this->method) {
                     header("HTTP/1.1 405 Method not Allowed");
+                    echo $this->method;
                     $controller = new UserController;
                     $controller->Error405();
                     return false;
