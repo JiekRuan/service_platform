@@ -13,13 +13,15 @@ class UserController {
 
     public function addUser() {
         $data = [
+            'id' => $_POST['id'],
             'name' => $_POST['name'],
             'email' => $_POST['email'],
             'password' => $_POST['password'],
             'phone' => $_POST['phone'],
-            'role' => $_POST['role']
+            'role' => $_POST['role'],
+            'create_at' => $_POST['create_at']
         ];
-    
+
         $user = new User(
             null, 
             $data['name'], 
@@ -39,15 +41,17 @@ class UserController {
 
     public function updateUser() {
         $data = [
+            'id' => $_POST['id'],
             'name' => $_POST['name'],
             'email' => $_POST['email'],
             'password' => $_POST['password'],
             'phone' => $_POST['phone'],
-            'role' => $_POST['role']
+            'role' => $_POST['role'],
+            'create_at' => $_POST['create_at']
         ];
     
         $user = new User(
-            null, 
+            $data['id'], 
             $data['name'], 
             $data['email'], 
             $data['password'], 
