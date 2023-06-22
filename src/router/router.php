@@ -41,13 +41,13 @@ class Router {
 
         foreach($routes as $route) {
             if($route['url'] == $this->route){
-                if($route['method'] != $this->method) {
+                /*if($route['method'] != $this->method) {
                     header("HTTP/1.1 405 Method not Allowed");
                     echo $this->method;
                     $controller = new UserController;
                     $controller->Error405();
                     return false;
-                }
+                }*/
                 $className = $route['controllerClass'];
                 $controller = new $className;
                 $function = $route['function'];
