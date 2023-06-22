@@ -45,7 +45,7 @@ class Router {
                 if($route['method'] != $this->method) {
                     header("HTTP/1.1 405 Method not Allowed");
                     $controller = new UserController;
-                    $controller->toError404();
+                    $controller->Error405();
                     return false;
                 }
                 $className = $route['controllerClass'];
@@ -59,7 +59,7 @@ class Router {
         //si aucune route ne correspond on lui envoie une erreur 404
         header("HTTP/1.1 404 Content not Found");
         $controller = new UserController;
-        $controller->toError404();
+        $controller->Error404();
         return false;
     }
 

@@ -119,8 +119,12 @@ class UserController {
         }
     }
     // redirection vers les vues
-    public function toError404(){
+    public function Error404(){
         require_once 'public\templates\public\404.php';
+    }
+
+    public function Error405():void{
+        require_once 'public\templates\public\405.php';
     }
 
     public function aboutUs(){
