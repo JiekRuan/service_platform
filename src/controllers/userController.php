@@ -75,6 +75,31 @@ class UserController {
         }
     }
 
+    public function login() {
+        $data = [
+            'email' => $_POST['email'],
+            'password' => $_POST['password']
+        ];
+    
+        $user = new User();
+        $loggedIn = $user->login($data['email'], $data['password']);
+    
+        if ($loggedIn) {
+            echo "Connexion réussie.";
+        } else {
+            echo "Identifiants invalides. Veuillez réessayer.";
+        }
+    }
+
+    public function logout() {
+        // Détruire toutes les variables de session
+        session_unset();
+        // Détruire la session
+        session_destroy();
+        header("Location: login.php");
+        exit(); 
+    }
+
     public function getUserById($id) {
         $user = new User();
         
