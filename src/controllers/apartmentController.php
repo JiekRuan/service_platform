@@ -214,17 +214,17 @@ class ApartmentController {
     }
     public function checklist()
     {
-
+        require_once 'public\templates\logistic\checklist.php';
     }    
 
     public function planning()
     {
-
+        require_once 'public\templates\logistic\planning.php';
     }
 
     public function todo()
     {
-
+        require_once 'public\templates\logistic\todo.php';
     }           
     public function conciergeService()
     {
