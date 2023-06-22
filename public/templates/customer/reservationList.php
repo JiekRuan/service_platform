@@ -1,6 +1,6 @@
 <?php include 'public/templates/component/header.php' ?>
-<link rel="stylesheet" href="public/css/global.css">
-<link rel="stylesheet" href="public/css/reservationList.css">
+<link rel="stylesheet" href="../public/css/global.css">
+<link rel="stylesheet" href="../public/css/reservationList.css">
 
 <?php function reservationList()
 {
@@ -47,7 +47,7 @@
                 </div>
             </div>
             <figure>
-                <img class="img-reservation" src="public/images/salon.png" alt="image du logement">
+                <img class="img-reservation" src="../public/images/salon.png" alt="image du logement">
             </figure>
         </div>
     </div>
@@ -64,10 +64,10 @@
     </p>
 </div>
 
-<?php for ($i = 0; $i < 10; $i++) {
+<?php for ($i = 0; $i < 5; $i++) {
     reservationList();
 } ?>
 
-<script src="public/js/reservationList.js"></script>
+<script src="../public/js/reservationList.js"></script>
 
 <?php include "public/templates/component/footer.php" ?>
