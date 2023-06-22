@@ -8,7 +8,7 @@ class Database
 
         // variables de connection a la bdd
         $host = "localhost";
-        $dbname = "service_plateform";
+        $dbname = "service_plateforme";
         $username = "root";
         $password = "";
         $port = 3306;

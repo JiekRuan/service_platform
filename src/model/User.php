@@ -124,27 +124,6 @@ class User
         return $this->createdAt;
     }
 
-    // public function addUser()
-    // {
-    //     $db = new Database();
-    //     $connection = $db->getConnection();
-
-    //     $hashedPassword = password_hash($this->password, PASSWORD_DEFAULT);
-
-    //     $request = $connection->prepare('INSERT INTO users VALUES(:id, :name, :password, :mail, :phone, :role)');
-    //     $request->bindParam(':id', $this->id);
-    //     $request->bindParam(':name', $this->name);
-    //     $request->bindParam(':password', $hashedPassword);
-    //     $request->bindParam(':mail', $this->mail);
-    //     $request->bindParam(':phone', $this->phone);
-    //     $request->bindParam(':role', $this->role);
-
-    //     if ($request->execute()) {
-    //         return true;
-    //     }
-    //     return false;
-    // }
-
     public function addUser()
     {
         $db = new Database();
@@ -285,7 +264,6 @@ class User
         $user = $request->fetch(PDO::FETCH_ASSOC);
 
         if ($user && password_verify($password, $user['password'])) {
-
             return new User(
                 $user['id'],
                 $user['name'],
@@ -296,7 +274,7 @@ class User
                 $user['created_at']
             );
         } else {
-            return "Votre identifiant ou votre mot de passe de correspondent pas.";
+            return null;
         }
     }
 

@@ -8,7 +8,7 @@ include 'public/templates/component/header.php' ?>
 
         <form class="infoForm" method="POST" action="loginMethod">
             <div class="row">
-                <input name="name" type="text" class="inputText" placeholder="Email" required>
+                <input name="email" type="text" class="inputText" placeholder="Email" required>
             </div>
             <div class="row">
                 <input name="password" type="password" class="inputText" placeholder="Mot de passe" required>
@@ -16,7 +16,8 @@ include 'public/templates/component/header.php' ?>
             <input type="submit" class="goldenButton" value="Se connecter">
 
         </form>
-        <p>Vous n'avez pas encore de compte ? <a href=<?= "http://" . $domain . "/user/signUp" ?>>Enregistrez-vous ici pour bénéficier de nos services exclusifs.</a></p>
+        <p>Vous n'avez pas encore de compte ? <a href=<?= "http://" . $domain . "/user/signUp" ?>>Enregistrez-vous ici
+                pour bénéficier de nos services exclusifs.</a></p>
     </div>
 
 </div>

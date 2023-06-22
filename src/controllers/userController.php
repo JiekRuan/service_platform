@@ -4,7 +4,6 @@ namespace MyApp\Controllers;
 use MyApp\Models\User as User;
 
 require_once 'src/model/User.php';
-
 class UserController
 {
     public function toHomepage()
@@ -17,8 +16,8 @@ class UserController
     {
         $data = [
             'name' => $_POST['name'],
-            'email' => $_POST['email'],
             'password' => $_POST['password'],
+            'email' => $_POST['email'],
             'phone' => $_POST['phone']
         ];
 
@@ -26,14 +25,14 @@ class UserController
             null,
             $data['name'],
             $data['email'],
-            $data['password'],
             $data['phone'],
             null,
+            $data['password'],
             null
         );
 
         if ($user->addUser()) {
-            echo "L'utilisateur a été créé avec succès.";
+            header('Location: http://localhost:3000/home');
         } else {
             echo "Erreur lors de la création de l'utilisateur.";
         }
@@ -44,8 +43,8 @@ class UserController
         $data = [
             'id' => $_POST['id'],
             'name' => $_POST['name'],
-            'email' => $_POST['email'],
             'password' => $_POST['password'],
+            'email' => $_POST['email'],
             'phone' => $_POST['phone'],
             'role' => $_POST['role'],
             'create_at' => $_POST['create_at']
@@ -54,8 +53,8 @@ class UserController
         $user = new User(
             $data['id'],
             $data['name'],
-            $data['email'],
             $data['password'],
+            $data['email'],
             $data['phone'],
             $data['role'],
             null
@@ -87,35 +86,23 @@ class UserController
         }
     }
 
-    // public function login() {
-    //     $email = $_POST['email'];
-    //     $password = $_POST['password'];
-
-    //     $user = $this->verifyAccount($email, $password); // utilise la fonction verifyAccount dans le model User.php
-
-    //     if ($user instanceof User) {
-    //         return "Connexion réussie.";
-    //     } else {
-    //         return "Identifiants invalides. Veuillez réessayer.";
-    //     }
-    // }
-
     public function login()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (isset($_POST['email']) && isset($_POST['password'])) {
                 $email = $_POST['email'];
                 $password = $_POST['password'];
-                $user = $this->verifyAccount($email, $password); // utilise la fonction verifyAccount dans le model User.php
 
-                if ($user instanceof User) {
-                    return "Connexion réussie.";
+                $user = new User(null, null, $email, null, null, $password, null);
+                $loggedInUser = $user->verifyAccount($email, $password);
+
+                if ($loggedInUser instanceof User) {
+                    header('Location: http://localhost:3000/home');
                 } else {
-                    return "Identifiants invalides. Veuillez réessayer.";
+                    echo "Identifiants invalides. Veuillez réessayer.";
                 }
-
             } else {
-                return "Veuillez fournir une adresse e-mail et un mot de passe.";
+                echo "Veuillez fournir une adresse e-mail et un mot de passe.";
             }
         }
     }
