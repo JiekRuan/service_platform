@@ -175,7 +175,7 @@
     },
     "Customer_6": {
         "url": "user/settings",
-        "method": "POST",
+        "method": "GET",
         "function": "settings",
         "controllerClass": "MyApp\\Controllers\\UserController"
     },
