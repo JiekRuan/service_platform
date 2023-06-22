@@ -132,7 +132,7 @@ class User
         $request = $connection->prepare('INSERT INTO users VALUES(:id, :name, :password, :mail, :phone, :role)');
         $request->bindParam(':id', $this->id);
         $request->bindParam(':name', $this->name);
-        $request->bindParam(':password', $this->password);
+        $request->bindParam(':password', $hashedPassword);
         $request->bindParam(':mail', $this->mail);
         $request->bindParam(':phone', $this->phone);
         $request->bindParam(':role', $this->role);
