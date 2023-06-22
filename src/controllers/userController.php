@@ -32,6 +32,7 @@ class UserController
         );
 
         if ($user->addUser()) {
+            $_SESSION["loggedin"] = true;
             global $domain;
             header('Location: http://' . $domain . '/home');
         } else {
@@ -98,6 +99,7 @@ class UserController
                 $loggedInUser = $user->verifyAccount($email, $password);
 
                 if ($loggedInUser instanceof User) {
+                    $_SESSION["loggedin"] = true;
                     global $domain;
                     header('Location: http://' . $domain . '/home');
                 } else {
