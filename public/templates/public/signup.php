@@ -9,20 +9,20 @@
         <h1>INSCRIPTION</h1>
 
         <form class="infoForm" method="POST" action="signUpMethod">
-            <div class="radiobox">
+            <!-- <div class="radiobox">
                 <label class="role"><input name="role" type="radio" name="bouton" value="madame" checked>Madame</label>
                 <label class="role"><input name="role" type="radio" name="bouton" value="monsieur">Monsieur</label>
                 <label class="role"><input name="role" type="radio" name="bouton" value="autres">Autre(s)</label>
-            </div>
+            </div> -->
             <div class="row">
-                <input name="first_name" type="text" class="inputText" placeholder="Prénom" required>
+                <input name="name" type="text" class="inputText" placeholder="Votre Nom et prénom" required>
             </div>
-            <div class="row">
+            <!-- <div class="row">
                 <input name="last_name" type="text" class="inputText" placeholder="Nom de famille" required>
-            </div>
-            <div class="row">
+            </div> -->
+            <!-- <div class="row">
                 <input name="birthdate" type="date" class="inputText" placeholder="Date de naissance" required>
-            </div>
+            </div> -->
             <div class="row">
                 <input name="phone" type="tel" class="inputText" placeholder="Téléphone" minlength="10" maxlength="14" required>
             </div>
