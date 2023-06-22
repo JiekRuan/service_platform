@@ -194,7 +194,7 @@ class ApartmentController {
     {
 
     }           
-    public function consiergeService()
+    public function conciergeService()
     {
         require_once 'public\templates\public\conciergeService.php';
     }
