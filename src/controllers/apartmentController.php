@@ -185,16 +185,17 @@ class ApartmentController {
 
     public function moderateTestimony()
     {
+        require_once 'public\templates\management\moderateTestimony.php'
         //pas encore fait
     }
 
     public function listTestimony()
     {
-
+        require_once '';
     }    
     public function thanksTestimony()
     {
-
+        require_once 'public\templates\customer\thanksTestimony.php';
     }
     public function bookmark()
     {
