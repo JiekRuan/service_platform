@@ -1,5 +1,6 @@
 <?php include 'public/templates/component/header.php' ?>
-<div class="allowed">
+
+<div class="container404">
   <h1>Erreur 405</h1>
   <h3>La page que vous recherchez semble introuvable.</h3>
   <p>La méthode de requête POST est inappropriée pour l'URL.</p>
