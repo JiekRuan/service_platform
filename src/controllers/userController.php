@@ -209,5 +209,11 @@ class UserController
         }
         return $token;
     }
+
+    public function settings(){
+        // manque la logique
+
+        require_once 'public\templates\customer\settings.php';
+    }
 }
 ?>

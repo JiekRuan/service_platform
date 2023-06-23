@@ -80,6 +80,14 @@ CREATE TABLE `Reservation_support_messages` (
   `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+CREATE TABLE `Session` (
+  `token` varchar(255) NOT NULL,
+  `user_id` int NOT NULL,
+  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, 
+  `expiration_date` TIMESTAMP DEFAULT DATEADD(hour, 1, CURRENT_TIMESTAMP)
+);
+
 ALTER TABLE `Reservation` ADD FOREIGN KEY (`user_id`) REFERENCES `Users` (`id`);
 
 ALTER TABLE `Reservation` ADD FOREIGN KEY (`appartment_id`) REFERENCES `Appartments` (`id`);
@@ -103,3 +111,5 @@ ALTER TABLE `Favorites` ADD FOREIGN KEY (`appartment_id`) REFERENCES `Appartment
 ALTER TABLE `Favorites` ADD FOREIGN KEY (`user_id`) REFERENCES `Users` (`id`);
 
 ALTER TABLE `Opinion_photos` ADD FOREIGN KEY (`opinion_id`) REFERENCES `Opinion` (`id`);
+
+ALTER TABLE `Session` ADD FOREIGN KEY (`user_id`) REFERENCES `Users` (`id`);
