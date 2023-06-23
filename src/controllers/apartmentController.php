@@ -54,55 +54,103 @@ class ApartmentController
             }
         }
     }
+    // public function updateApartement()
+    // {
+    //     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    //         // recup les donnee du form modify
+    //         $id = $_POST['id'];
+    //         $name = $_POST['name'];
+    //         $address = $_POST['address'];
+    //         $arrondissement = $_POST['arrondissement'];
+    //         $price = $_POST['price'];
+    //         $description = $_POST['description'];
+    //         $squareMeter = $_POST['squareMeter'];
+    //         $numberBathroom = $_POST['numberBathroom'];
+    //         $housingType = $_POST['housingType'];
+    //         $capacity = $_POST['capacity'];
+    //         $balcon = $_POST['balcon'];
+    //         $terasse = $_POST['terasse'];
+    //         $vueSur = $_POST['vueSur'];
+    //         $quartier = $_POST['quartier'];
+
+    //         //nouvel objet Apartment
+    //         $apartment = new Apartment;
+    //         // $updateApart = $apartment;
+    //         //l'ID de l'appart a modifier
+    //         $apartment->getId($id);
+    //         $apartment->setName($name);
+    //         $apartment->setAddress($address);
+    //         $apartment->setArrondissement($arrondissement);
+    //         $apartment->setPrice($price);
+    //         $apartment->setDescription($description);
+    //         $apartment->setSquareMeter($squareMeter);
+    //         $apartment->setNumberBathroom($numberBathroom);
+    //         $apartment->setHousingType($housingType);
+    //         $apartment->setBalcon($balcon);
+    //         $apartment->setTerasse($terasse);
+    //         $apartment->setCapacity($capacity);
+    //         $apartment->setVueSur($vueSur);
+    //         $apartment->setQuartier($quartier);
+    //         // var_dump($apartment);
+
+    //         //Enregistrer les infos
+    //         if ($apartment->saveData()) {
+    //             // header('Location: public\templates\management\listApartment.php');
+    //             global $domain;
+    //             header('Location: http://' . $domain . '/apartment/listApartement');
+    //         } else {
+    //             header('Location: public\templates\public\404.php');
+    //         }
+    //     }
+    // }
     public function updateApartement()
-    {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // recup les donnee du form modify
-            $id = $_POST['id'];
-            $name = $_POST['name'];
-            $address = $_POST['address'];
-            $arrondissement = $_POST['arrondissement'];
-            $price = $_POST['price'];
-            $description = $_POST['description'];
-            $squareMeter = $_POST['squareMeter'];
-            $numberBathroom = $_POST['numberBathroom'];
-            $housingType = $_POST['housingType'];
-            $capacity = $_POST['capacity'];
-            $balcon = $_POST['balcon'];
-            $terasse = $_POST['terasse'];
-            $vueSur = $_POST['vueSur'];
-            $quartier = $_POST['quartier'];
+{
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        // Récupérer les données du formulaire de modification
+        $id = $_POST['id'];
+        $name = $_POST['name'];
+        $address = $_POST['address'];
+        $arrondissement = $_POST['arrondissement'];
+        $price = $_POST['price'];
+        $description = $_POST['description'];
+        $squareMeter = $_POST['squareMeter'];
+        $numberBathroom = $_POST['numberBathroom'];
+        $housingType = $_POST['housingType'];
+        $capacity = $_POST['capacity'];
+        $balcon = $_POST['balcon'];
+        $terasse = $_POST['terasse'];
+        $vueSur = $_POST['vueSur'];
+        $quartier = $_POST['quartier'];
 
-            //nouvel objet Apartment
-            $apartment = new Apartment;
-            // $updateApart = $apartment;
-            //l'ID de l'appart a modifier
-            $apartment->getId($id);
-            $apartment->setName($name);
-            $apartment->setAddress($address);
-            $apartment->setArrondissement($arrondissement);
-            $apartment->setPrice($price);
-            $apartment->setDescription($description);
-            $apartment->setSquareMeter($squareMeter);
-            $apartment->setNumberBathroom($numberBathroom);
-            $apartment->setHousingType($housingType);
-            $apartment->setBalcon($balcon);
-            $apartment->setTerasse($terasse);
-            $apartment->setCapacity($capacity);
-            $apartment->setVueSur($vueSur);
-            $apartment->setQuartier($quartier);
-            // var_dump($apartment);
+        // Créer un nouvel objet Apartment
+        $apartment = new Apartment();
 
-            //Enregistrer les infos
-            if ($apartment->saveData()) {
-                // header('Location: public\templates\management\listApartment.php');
-                global $domain;
-                header('Location: http://' . $domain . '/apartment/listApartement');
-            } else {
-                header('Location: public\templates\public\404.php');
-            }
+        // Définir les nouvelles valeurs des propriétés de l'appartement
+        $apartment->setName($name);
+        $apartment->setAddress($address);
+        $apartment->setArrondissement($arrondissement);
+        $apartment->setPrice($price);
+        $apartment->setDescription($description);
+        $apartment->setSquareMeter($squareMeter);
+        $apartment->setNumberBathroom($numberBathroom);
+        $apartment->setHousingType($housingType);
+        $apartment->setBalcon($balcon);
+        $apartment->setTerasse($terasse);
+        $apartment->setCapacity($capacity);
+        $apartment->setVueSur($vueSur);
+        $apartment->setQuartier($quartier);
+
+        // Enregistrer les nouvelles informations
+        if ($apartment->updateData($id)) {
+            global $domain;
+            // Rediriger vers une autre page (par exemple, la liste des appartements)
+            header('Location: http://' . $domain . '/apartment/listApartement');
+            exit();
+        } else {
+            header('Location: public\templates\public\404.php');
         }
     }
+}
     public function readApartement()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
