@@ -81,6 +81,8 @@ class ReservationController {
 
     public function chat(){
 
+
+        
         require_once 'public\templates\management\chat.php';
     }
 }

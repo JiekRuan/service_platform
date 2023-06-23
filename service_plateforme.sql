@@ -18,7 +18,7 @@ CREATE TABLE `Appartments` (
   `squareMeter` int(11) DEFAULT NULL,
   `numberBathroom` int(11) DEFAULT NULL,
   `housingType` varchar(255) DEFAULT NULL,
-  `capacity` int(11) DEFAULT NULL
+  `capacity` int(11) DEFAULT NULL,
   `balcon` varchar(255) DEFAULT NULL,
   `terasse` varchar(255) DEFAULT NULL
 );
