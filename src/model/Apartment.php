@@ -81,7 +81,7 @@ class Apartment
      */
     public function setAddress($address): void
     {
-        $this->name = $address;
+        $this->address = $address;
     }
 
     /**
@@ -97,7 +97,7 @@ class Apartment
      */
     public function setArrondissement($arrondissement): void
     {
-        $this->name = $arrondissement;
+        $this->arrondissement = $arrondissement;
     }
 
     /**
@@ -113,7 +113,7 @@ class Apartment
      */
     public function setBalcon($balcon): void
     {
-        $this->name = $balcon;
+        $this->balcon = $balcon;
     }
 
     /**
@@ -129,7 +129,7 @@ class Apartment
      */
     public function setTerasse($terasse): void
     {
-        $this->name = $terasse;
+        $this->terasse = $terasse;
     }
 
     /**
@@ -145,7 +145,7 @@ class Apartment
      */
     public function setSquareMeter($squareMeter): void
     {
-        $this->name = $squareMeter;
+        $this->squareMeter = $squareMeter;
     }
 
     /**
@@ -161,7 +161,7 @@ class Apartment
      */
     public function setNumberBathroom($numberBathroom): void
     {
-        $this->name = $numberBathroom;
+        $this->numberBathroom = $numberBathroom;
     }
 
     /**
@@ -177,7 +177,7 @@ class Apartment
      */
     public function setHousingType($housingType): void
     {
-        $this->name = $housingType;
+        $this->housingType = $housingType;
     }
 
     // /**
@@ -253,7 +253,7 @@ class Apartment
      */
     public function setVueSur($vueSur): void
     {
-        $this->description = $vueSur;
+        $this->vueSur = $vueSur;
     }
     public function getQuartier()
     {
@@ -325,7 +325,8 @@ class Apartment
         if ($this->id) {
             $request = $connection->prepare('UPDATE apartments SET name = :name, address = :address, arrondissement = :arrondissement, price = :price, description = :description, squareMeter = :squareMeter, numberBathroom = :numberBathroom, housingType = :housingType, balcon = :balcon, terasse = :terasse, capacity = :capacity, vueSur = :vueSur, quartier = :quartier WHERE id = :id');
         } else {
-            $request = $connection->prepare('INSERT INTO apartments (name, address, arrondissement, price, description, squareMeter, numberBathroom, housingType, capacity, balcon, terasse, vueSur, quartier) VALUES (:name, :address, :arrondissement, :price, :description, :squareMeter, :numberBathroom, :housingType, :capacity,:balcon, :terasse,  :vueSur, :quartier)');
+            $request = $connection->prepare('INSERT INTO apartments (name, address, arrondissement, price, description, squareMeter, numberBathroom, housingType, capacity, balcon, terasse, vueSur, quartier) 
+            VALUES (:name, :address, :arrondissement, :price, :description, :squareMeter, :numberBathroom, :housingType, :capacity, :balcon, :terasse,  :vueSur, :quartier)');
         }
 
         $request->bindParam(':name', $this->name);
