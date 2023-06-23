@@ -35,7 +35,7 @@ use Ratchet\ConnectionInterface;
     require __DIR__ . '/vendor/autoload.php';
 
 /**
- * chat.php
+ * chatroom.php
  * Send any incoming messages to all connected clients (except sender)
  */
 class MyChat implements MessageComponentInterface {

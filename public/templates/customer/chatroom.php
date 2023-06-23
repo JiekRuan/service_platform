@@ -1,8 +1,9 @@
-<?php include 'public/templates/component/header.php';
-setcookie("userId",$_SESSION['userId'],time()+3600);
-setcookie("userName",$_SESSION['userName'],time()+3600);
+<?php
+
+
+include 'public/templates/component/header.php';
 ?>
-<link rel="stylesheet" href="public/css/chat.css">
+<link rel="stylesheet" href="../public/css/chat.css">
 
 <div class="messenger">
     <div class="sidebar">
@@ -33,31 +34,30 @@ setcookie("userName",$_SESSION['userName'],time()+3600);
             </div>
         </div>
 
-        <div class="messages">
-            <div class="message message-sent">
-            </div>
-            <div class="message message-received">
-            </div>
+        <div class="messages" id="messageSent">
+<!--            <div class="message message-sent" id="messageSent">-->
+<!--            </div>-->
+<!--            <div class="message message-received" id="messageReceived">-->
+<!--            </div>-->
         </div>
 
         <div class="send-icons">
             <div class="icons_chat">
                 <i class="fa-solid fa-image"></i>
             </div>
-            <div class="send-message">
-                <form action="" id="formMessage">
-                    <div class="input-with-icon">
-                        <input type="text" id="message" placeholder="Tapez un message...">
-                    </div>
-                    <button type="submit" class="blueGoldButton">Envoyer</button>
-                </form>
-            </div>
+            <form action="" id="formMessage" class="send-message">
+                <div class="input-with-icon">
+                    <input type="text" id="message" placeholder="Tapez un message...">
+                </div>
+                <button type="submit" class="blueGoldButton">Envoyer</button>
+            </form>
+
         </div>
     </div>
 </div>
 
 </body>
-<script src="client.js"></script>
-<script src="public/js/chat.js"></script>
+<script src="../../../websocket/client.js"></script>
+<script src="../public/js/chat.js"></script>
 
 </html>

@@ -48,12 +48,13 @@ include "../public/templates/componant/header.html";
 <!--        </div>-->
 
         <div class="messages">
-            <div class="message message-sent" id="messageSent">
+            <div class="message" id="messageSent">
 
             </div>
-            <div class="message message-received" id="messageReceived">
+            <div id="messageReceived">
 
             </div>
+            <p class="message message-sent">coucou</p>
         </div>
         <div class="send-icons">
             <div class="icons_chat">

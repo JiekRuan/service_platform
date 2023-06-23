@@ -18,23 +18,24 @@ class Chat implements MessageComponentInterface {
 
     public function onOpen(ConnectionInterface $conn) {
 
-
-        $conn->userName = $_SESSION['userName'];
-        $conn->userId = $_SESSION['userId'];
+        $conn->userName = $_COOKIE['userName'];
+        $conn->userId = $_COOKIE['userId'];
         $this->clients->attach($conn);
         echo "Nouvelle connexion ! ({$conn->resourceId})\n";
+//        echo $_SESSION['userName'];
+//        var_dump($conn->userName,$conn->userId);
     }
 
     public function onMessage(ConnectionInterface $from, $msg) {
         // Parse le json
         $data = json_decode($msg, true);
-
+        var_dump($data);
         // Récupère le nom de l'utilisateur émetteur
-        $userName = $from->userName;
-        $userId = $from->userId;
+//        $userName = $from->userName;
+//        $userId = $from->userId;
 
-        $data['userName'] = $userName;
-        $data['userId'] = $userId;
+//        $data['userName'] = $userName;
+//        $data['userId'] = $userId;
 
 
 

@@ -1,6 +1,7 @@
-let loggedInUserId = document.cookie.split("; ").find(row=>row.startsWith("userId=")).split("=")[1];
 let userName = document.cookie.split("; ").find(row=>row.startsWith("userName=")).split("=")[1];
+let loggedInUserId = document.cookie.split("; ").find(row=>row.startsWith("userId=")).split("=")[1];
 
+console.log(loggedInUserId,userName)
 const socket = new WebSocket('ws://localhost:8080');
 
 socket.onopen = () => {
@@ -14,7 +15,9 @@ socket.onopen = () => {
 
         // Créer un JSON contenant le message
         let data = {
-            message: message
+            message: message,
+            userId: loggedInUserId,
+            userName: userName
         };
 
         // Envoie le message au server
@@ -26,6 +29,9 @@ socket.onopen = () => {
 
         let messageP = document.createElement('p');
         messageP.textContent = message;
+        messageP.classList.add("message");
+        messageP.classList.add("message-sent");
+
 
         // Récupère la div de messages et ajoute le nouveau message à la fin
         let chat = document.getElementById('messageSent');
@@ -36,7 +42,8 @@ socket.onopen = () => {
 socket.onmessage = (event) => {
 
     let message = JSON.parse(event.data);
-    console.log('Nouveau message :', message);
+    console.log('Nouveau message :', message.message);
+    console.log(message);
 
     // Récupère le nom de l'utilisateur émetteur
     let userNameS = message.userName;
@@ -45,15 +52,21 @@ socket.onmessage = (event) => {
     // Vérifie si le message provient de l'utilisateur connecté
     const isOwnMessage = (userIdS === loggedInUserId);
 
-    const messageP = document.createElement('p');
+    let messageP = document.createElement('p');
+    messageP.textContent = message;
+
     if (isOwnMessage) {
         messageP.textContent = `Moi: ${message.message}`;
+        messageP.classList.add("message");
+        messageP.classList.add("message-received");
     } else {
-        messageP.textContent = `Utilisateur ${userNameS}:  ${message.message}`;
+        messageP.textContent = `${userNameS}:  ${message.message}`;
+        messageP.classList.add("message");
+        messageP.classList.add("message-received");
     }
 
     // Récupère la div de messages et ajoute le nouveau message à la fin
-    let chat = document.getElementById('messageReceived');
+    let chat = document.getElementById('messageSent');
     chat.appendChild(messageP);
 };
 

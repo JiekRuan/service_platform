@@ -1,7 +1,8 @@
 <?php
 namespace MyApp\Controllers;
 
-use MyApp\Models\User as User;
+use MyApp\Models\User;
+
 
 require_once 'src/model/User.php';
 class UserController
@@ -101,7 +102,11 @@ class UserController
 
                 if ($loggedInUser instanceof User) {
                     $_SESSION["loggedin"] = true;
+                    $_SESSION['userId'] = $loggedInUser->getId();
+                    $_SESSION['userName'] = $loggedInUser->getName();
                     $_SESSION["role"] = $loggedInUser->getRole();
+                    setcookie("userId",$_SESSION['userId'],time()+3600);
+                    setcookie("userName",$_SESSION['userName'],time()+3600);
                     global $domain;
                     header('Location: http://' . $domain . '/home');
                 } else {
@@ -200,7 +205,7 @@ class UserController
     }
     public function chat()
     {
-        require_once 'public\templates\customer\chat.php';
+        require_once 'public\templates\customer\chatroom.php';
     }
 
     public function generateToken()
