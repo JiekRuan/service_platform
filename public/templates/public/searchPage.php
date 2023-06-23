@@ -164,10 +164,9 @@ function apartementTemplate($apartments)
     </div>
     <div class="banner">
         <h1>Vos vacances méritent d'être inoubliables</h1>
-
-        <form action="" method="GET" class="formSearch">
+        <form action="searchPage" method="GET" class="formSearch">
             <div class="research">
-                <input type="text" placeholder="Rechercher..." class="homepageInput">
+                <input type="text" name="search" placeholder="Rechercher..." class="homepageInput">
                 <input type="submit" value="Rechercher" class="goldenButton">
                 <p class="blueGoldButton" id="filterBlock">Filtre</p>
             </div>
