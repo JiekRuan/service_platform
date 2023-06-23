@@ -42,8 +42,8 @@ function listApartement($i)
 
     <div class="userContainer">
 
-
         <div class="filterList">
+            <a href=<?= "http://" . $domain . "/apartment/createApartement" ?> class="goldenButton">Ajouter un logement</a>
             <form action="" method="GET">
                 <input type="text" placeholder="Rechercher...">
             </form>
