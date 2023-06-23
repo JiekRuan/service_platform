@@ -83,6 +83,12 @@
         "function": "login",
         "controllerClass": "MyApp\\Controllers\\UserController"
     },
+    "Public_15": {
+        "url": "user/logoutMethod",
+        "method": "GET",
+        "function": "logout",
+        "controllerClass": "MyApp\\Controllers\\UserController"
+    },
     "Management_1": {
         "url": "intern/chat",
         "method": "GET",

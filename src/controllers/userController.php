@@ -198,6 +198,10 @@ class UserController
     {
         require_once 'public\templates\public\testimony.php';
     }
+    public function chat()
+    {
+        require_once 'public\templates\customer\chat.php';
+    }
 
     public function generateToken()
     {
