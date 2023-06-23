@@ -10,6 +10,8 @@ require_once 'src/controllers/reservationController.php';
 require_once 'src/controllers/userController.php';
 require_once 'src/controllers/apartmentController.php';
 
+
+#[AllowDynamicPropertiies]
 class Router {
 
     public function __construct() {
