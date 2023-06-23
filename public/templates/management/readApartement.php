@@ -1,6 +1,6 @@
 <?php include 'public/templates/component/header.php' ?>
-<link rel="stylesheet" href="public/css/admin.css">
-<link rel="stylesheet" href="public/css/managementCrud.css">
+<link rel="stylesheet" href="../public/css/admin.css">
+<link rel="stylesheet" href="../public/css/managementCrud.css">
 
 <main>
     <div class="banner">
@@ -73,6 +73,6 @@
 </main>
 
 </body>
-<script src="public/js/readApartement.js"></script>
+<script src="../public/js/readApartement.js"></script>
 
 </html>

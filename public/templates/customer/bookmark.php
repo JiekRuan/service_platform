@@ -1,7 +1,7 @@
 <?php include 'public/templates/component/header.php' ?>
-<link rel="stylesheet" href="public/css/admin.css">
-<link rel="stylesheet" href="public/css/bookmark.css">
-<script src="public/js/filter.js"></script>
+<link rel="stylesheet" href="../public/css/admin.css">
+<link rel="stylesheet" href="../public/css/bookmark.css">
+<script src="../public/js/filter.js"></script>
 
 <?php
 
@@ -49,5 +49,5 @@ function adminUserTemplate($i)
 </main>
 
 
-<script src="public/js/optionSelect.js"></script>
+<script src="../public/js/optionSelect.js"></script>
 <?php include 'public/templates/component/footer.php' ?>

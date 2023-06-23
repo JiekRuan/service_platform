@@ -1,6 +1,6 @@
 <?php include 'public/templates/component/header.php' ?>
-<link rel="stylesheet" href="public/css/planning.css">
-<script src="public/js/filter.js"></script>
+<link rel="stylesheet" href="../public/css/planning.css">
+<script src="../public/js/filter.js"></script>
 
 <?php
 $value1 = 27;
@@ -101,7 +101,7 @@ function logisticPlanning($i)
 
 
 </body>
-<script src="public/js/optionSelect.js"></script>
-<script src="public/js/colorTablet.js"></script>
+<script src="../public/js/optionSelect.js"></script>
+<script src="../public/js/colorTablet.js"></script>
 
 </html>

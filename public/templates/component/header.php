@@ -60,26 +60,26 @@ global $domain;
                         </li>
 
                     <?php } else if ($_SESSION["role"] == "logistic") { ?>
-                        <li><a href=<?= "http://" . $domain . "/#" ?>><i class="fa-regular fa-calendar"></i></a></li>
-                        <li><a href=<?= "http://" . $domain . "/#" ?>><i class="fa-solid fa-list-check"></i></a></li>
-                        <li><a href=<?= "http://" . $domain . "/#" ?>><i class="fa-solid fa-list-ul"></i></a></li>
+                        <li><a href=<?= "http://" . $domain . "/intern/planning" ?>><i class="fa-regular fa-calendar"></i></a></li>
+                        <li><a href=<?= "http://" . $domain . "/intern/checklist" ?>><i class="fa-solid fa-list-check"></i></a></li>
+                        <li><a href=<?= "http://" . $domain . "/intern/todo" ?>><i class="fa-solid fa-list-ul"></i></a></li>
                     <?php } else if ($_SESSION["role"] == "management") { ?>
                         <li><a href=<?= "http://" . $domain . "/#" ?>><i class="fa-regular fa-calendar"></i></a></li>
-                        <li><a href=<?= "http://" . $domain . "/#" ?>><i class="fa-regular fa-message"></i></a></li>
-                        <li><a href=<?= "http://" . $domain . "/#" ?>><i class="fas fa-clipboard-check"></i></a></li>
-                        <li><a href=<?= "http://" . $domain . "/#" ?>><i class="fa-regular fa-building"></i></a></li>
+                        <li><a href=<?= "http://" . $domain . "/intern/chat" ?>><i class="fa-regular fa-message"></i></a></li>
+                        <li><a href=<?= "http://" . $domain . "/apartment/moderateTestimony" ?>><i class="fas fa-clipboard-check"></i></a></li>
+                        <li><a href=<?= "http://" . $domain . "/apartment/listApartement" ?>><i class="fa-regular fa-building"></i></a></li>
                     <?php } else if ($_SESSION["role"] == "admin") { ?>
                         <li><i class="fa-solid fa-user-gear"></i></li>
-                <?php }
-                } ?>
-                <li><a href=<?= "http://" . $domain . "/user/settings" ?>><i class="fa-regular fa-user"></i></a></li>
-                <li>
-                    <form action="" method="post">
-                        <button type="submit" class="buttonSubmit">
-                            <i class="fa-solid fa-right-from-bracket"></i>
-                        </button>
-                    </form>
-                </li>
+                    <?php } ?>
+                    <li><a href=<?= "http://" . $domain . "/user/settings" ?>><i class="fa-regular fa-user"></i></a></li>
+                    <li>
+                        <form action="" method="post">
+                            <button type="submit" class="buttonSubmit">
+                                <i class="fa-solid fa-right-from-bracket"></i>
+                            </button>
+                        </form>
+                    </li>
+                <?php } ?>
             </ul>
             <ul id="mobile">
                 <li id="searchMobile"><i class="fa-solid fa-magnifying-glass"></i></li>
@@ -129,20 +129,20 @@ global $domain;
                             </li>
                         </a>
                     <?php } else if ($_SESSION["role"] == "logistic") { ?>
-                        <a href=<?= "http://" . $domain . "/#" ?>>
+                        <a href=<?= "http://" . $domain . "/intern/planning" ?>>
                             <li><i class="fa-regular fa-calendar"></i>
                                 <p>Planning
                                 </p>
                             </li>
                         </a>
-                        <a href=<?= "http://" . $domain . "/#" ?>>
+                        <a href=<?= "http://" . $domain . "/intern/checklist" ?>>
                             <li>
                                 <i class="fa-solid fa-list-check"></i>
                                 <p>Checklist
                                 </p>
                             </li>
                         </a>
-                        <a href=<?= "http://" . $domain . "/#" ?>>
+                        <a href=<?= "http://" . $domain . "/intern/todo" ?>>
                             <li>
                                 <i class="fa-solid fa-list-ul"></i>
                                 <p>To do
@@ -156,19 +156,19 @@ global $domain;
                                 </p>
                             </li>
                         </a>
-                        <a href=<?= "http://" . $domain . "/#" ?>>
+                        <a href=<?= "http://" . $domain . "/reservation/chat" ?>>
                             <li><i class="fa-regular fa-message"></i>
                                 <p>Chat
                                 </p>
                             </li>
                         </a>
-                        <a href=<?= "http://" . $domain . "/#" ?>>
+                        <a href=<?= "http://" . $domain . "/apartment/moderateTestimony" ?>>
                             <li><i class="fas fa-clipboard-check"></i>
                                 <p>Modération des avis
                                 </p>
                             </li>
                         </a>
-                        <a href=<?= "http://" . $domain . "/#" ?>>
+                        <a href=<?= "http://" . $domain . "/apartment/listApartement" ?>>
                             <li><i class="fa-regular fa-building"></i>
                                 <p>Appartements
                                 </p>
@@ -181,21 +181,21 @@ global $domain;
                                 </p>
                             </li>
                         </a>
-                <?php }
-                } ?>
-                <a href=<?= "http://" . $domain . "/user/settings" ?>>
-                    <li><i class="fa-regular fa-user"></i>
-                        <p>Votre Profil</p>
-                    </li>
-                </a>
-                <form action="" method="post">
-                    <li>
-                        <button type="submit" class="buttonSubmit">
-                            <i class="fa-solid fa-right-from-bracket"></i>
-                            <p>Se déconnecter</p>
-                        </button>
-                    </li>
-                </form>
+                    <?php } ?>
+                    <a href=<?= "http://" . $domain . "/user/settings" ?>>
+                        <li><i class="fa-regular fa-user"></i>
+                            <p>Votre Profil</p>
+                        </li>
+                    </a>
+                    <form action="" method="post">
+                        <li>
+                            <button type="submit" class="buttonSubmit">
+                                <i class="fa-solid fa-right-from-bracket"></i>
+                                <p>Se déconnecter</p>
+                            </button>
+                        </li>
+                    </form>
+                <?php } ?>
             </ul>
         </nav>
     </header>
