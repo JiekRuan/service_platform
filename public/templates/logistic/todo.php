@@ -1,3 +1,10 @@
+<?php
+if ($_SESSION["role"] !== "logistic") {
+    global $domain;
+    header('Location: http://' . $domain . '/home');
+}
+?>
+
 <?php include 'public/templates/component/header.php' ?>
 <link rel="stylesheet" href="../public/css/planning.css">
 <script src="../public/js/filter.js"></script>

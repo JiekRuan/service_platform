@@ -1,3 +1,10 @@
+<?php
+if ($_SESSION["role"] !== "management") {
+    global $domain;
+    header('Location: http://' . $domain . '/home');
+}
+?>
+
 <?php include '../../templates/componant/header.html' ?>
 <link rel="stylesheet" href="../../css/calendar.css">
 <!DOCTYPE html>

@@ -1,3 +1,10 @@
+<?php
+if ($_SESSION["role"] !== "customer") {
+    global $domain;
+    header('Location: http://' . $domain . '/home');
+}
+?>
+
 <?php include 'public/templates/component/header.php' ?>
 <link rel="stylesheet" href="public/css/confirmReservation.css">
 <link rel="stylesheet" href="public/css/picture.css">
