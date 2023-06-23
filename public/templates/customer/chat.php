@@ -1,4 +1,7 @@
-<?php include 'public/templates/component/header.php' ?>
+<?php include 'public/templates/component/header.php';
+setcookie("userId",$_SESSION['userId'],time()+3600);
+setcookie("userName",$_SESSION['userName'],time()+3600);
+?>
 <link rel="stylesheet" href="public/css/chat.css">
 
 <div class="messenger">
@@ -32,69 +35,29 @@
 
         <div class="messages">
             <div class="message message-sent">
-                <p>Hello, how are you?</p>
             </div>
             <div class="message message-received">
-                <p>I'm doing well, thank you!</p>
-            </div>
-            <div class="message message-received">
-                <p>I'm doing well, thank you!</p>
-            </div>
-            <div class="message message-received">
-                <p>I'm doing well, thank you!</p>
-            </div>
-            <div class="message message-received">
-                <p>I'm doing well, thank you!</p>
-            </div>
-            <div class="message message-received">
-                <p>I'm doing well, thank you!</p>
-            </div>
-            <div class="message message-received">
-                <p>I'm doing well, thank you!</p>
-            </div>
-            <div class="message message-received">
-                <p>I'm doing well, thank you!</p>
-            </div>
-            <div class="message message-received">
-                <p>I'm doing well, thank you!</p>
-            </div>
-            <div class="message message-received">
-                <p>I'm doing well, thank you!</p>
-            </div>
-            <div class="message message-received">
-                <p>I'm doing well, thank you!</p>
-            </div>
-            <div class="message message-received">
-                <p>I'm doing well, thank you!</p>
-            </div>
-            <div class="message message-received">
-                <p>I'm doing well, thank you!</p>
-            </div>
-            <div class="message message-received">
-                <p>I'm doing well, thank you!</p>
-            </div>
-            <div class="message message-received">
-                <p>I'm doing well, thank you!</p>
-            </div>
-            <div class="message message-sent">
-                <p>I'm fine aswell</p>
             </div>
         </div>
+
         <div class="send-icons">
             <div class="icons_chat">
                 <i class="fa-solid fa-image"></i>
             </div>
             <div class="send-message">
-                <div class="input-with-icon">
-                    <input type="text" placeholder="Tapez un message...">
-                </div>
-                <button class="blueGoldButton">Envoyer</button>
+                <form action="" id="formMessage">
+                    <div class="input-with-icon">
+                        <input type="text" id="message" placeholder="Tapez un message...">
+                    </div>
+                    <button type="submit" class="blueGoldButton">Envoyer</button>
+                </form>
             </div>
         </div>
     </div>
 </div>
 
 </body>
+<script src="client.js"></script>
 <script src="public/js/chat.js"></script>
 
 </html>
