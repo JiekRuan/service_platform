@@ -65,7 +65,6 @@ include "../public/templates/componant/header.html";
                         <input type="text" id="message" placeholder="Tapez un message...">
                     </div>
                     <button type="submit" class="blueGoldButton">Envoyer</button>
-
                 </form>
             </div>
         </div>
