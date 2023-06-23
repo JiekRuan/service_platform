@@ -125,6 +125,12 @@
         "function": "updateApartement",
         "controllerClass": "MyApp\\Controllers\\ApartmentController"
     },
+    "Management_8": {
+        "url": "apartment/createApartementMethod",
+        "method": "POST",
+        "function": "createApartement",
+        "controllerClass": "MyApp\\Controllers\\ApartmentController"
+    },
     "Logistic_1": {
         "url": "intern/checklist",
         "method": "GET",

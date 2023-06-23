@@ -12,7 +12,7 @@ class ApartmentController {
     // verifier que le form soit en POST
     if ($_SERVER['REQUEST_METHOD'] === 'POST') 
         {
-        // recup les donnee du form create
+        // recup les données du form create
         $name = $_POST['name'];
         $address = $_POST['address'];
         $arrondissement = $_POST['arrondissement'];

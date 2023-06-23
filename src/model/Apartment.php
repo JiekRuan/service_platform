@@ -273,7 +273,7 @@ class Apartment
         $db = new Database();
         $connection = $db->getConnection();
 
-        $request = $connection->prepare("SELECT * FROM apartment");
+        $request = $connection->prepare("SELECT * FROM apartments");
         $request->execute();
 
         $apartments = [];
@@ -306,7 +306,7 @@ class Apartment
         $db = new Database();
         $connection = $db->getConnection();
 
-        $request = $connection->prepare('DELETE FROM apartment WHERE id = :id');
+        $request = $connection->prepare('DELETE FROM apartments WHERE id = :id');
         $request->bindParam(':id', $this->id);
 
         if ($request->execute()) {
@@ -322,9 +322,9 @@ class Apartment
         $connection = $db->getConnection();
 
         if ($this->id) {
-            $request = $connection->prepare('UPDATE apartment SET name = :name, address = :address, arrondissement = :arrondissement, price = :price, description = :description, squareMeter = :squareMeter, numberBathroom = :numberBathroom, housingType = :housingType, balcon = :balcon, terasse = :terasse, capacity = :capacity, vueSur = :vueSur, quartier = :quartier WHERE id = :id');
+            $request = $connection->prepare('UPDATE apartments SET name = :name, address = :address, arrondissement = :arrondissement, price = :price, description = :description, squareMeter = :squareMeter, numberBathroom = :numberBathroom, housingType = :housingType, balcon = :balcon, terasse = :terasse, capacity = :capacity, vueSur = :vueSur, quartier = :quartier WHERE id = :id');
         } else {
-            $request = $connection->prepare('INSERT INTO apartment (name, address, arrondissement, price, description, squareMeter, numberBathroom, housingType, balcon, terasse, capacity, vueSur, quartier) VALUES (:name, :address, :arrondissement, :price, :description, :squareMeter, :numberBathroom, :housingType, :balcon, :terasse, :capacity, :vueSur, :quartier)');
+            $request = $connection->prepare('INSERT INTO apartments (name, address, arrondissement, price, description, squareMeter, numberBathroom, housingType, balcon, terasse, capacity, vueSur, quartier) VALUES (:name, :address, :arrondissement, :price, :description, :squareMeter, :numberBathroom, :housingType, :balcon, :terasse, :capacity, :vueSur, :quartier)');
         }
 
         $request->bindParam(':name', $this->name);
@@ -355,7 +355,7 @@ class Apartment
         $db = new Database();
         $connection = $db->getConnection();
 
-        $request = $connection->prepare("SELECT * FROM apartment WHERE name LIKE :name OR location LIKE :location OR capacity = :capacity OR price <= :price OR description LIKE :description");
+        $request = $connection->prepare("SELECT * FROM apartments WHERE name LIKE :name OR location LIKE :location OR capacity = :capacity OR price <= :price OR description LIKE :description");
         $request->bindParam(':name', "%" . $this->name . "%");
         //$request->bindParam(':location', "%" . $this->location . "%");
         $request->bindParam(':capacity', $this->capacity);
