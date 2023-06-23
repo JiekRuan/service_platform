@@ -113,6 +113,14 @@ a.userInfo:hover {
     position: relative;
 }
 
+.createCheckbox{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    justify-content: flex-start;
+}
+
 @media (max-width: 1024px) {
     input {
         width: 100%;

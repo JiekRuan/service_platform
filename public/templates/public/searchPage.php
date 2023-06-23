@@ -6,23 +6,28 @@ global $apartments;
 
 function apartementTemplate($i)
 {
+    global $domain;
 
 ?>
-    <div class="box">
-        <figure>
-            <img src="../public/images/paris.jpeg" alt="logement2">
-        </figure>
-        <div class="information">
-            <div class="star">
-                <h3 class="monaco"><?= $i->getName() ?></h3><i class="fa-regular fa-bookmark"></i>
+
+
+    <a href="<?= "http://" . $domain . "/logement?id=" . $i->getId() ?>" class="userInfo box">
+        <!-- <div class="box"> -->
+            <figure>
+                <img src="../public/images/paris.jpeg" alt="logement2">
+            </figure>
+            <div class="information">
+                <div class="star">
+                    <h3 class="monaco"><?= $i->getName() ?></h3><i class="fa-regular fa-bookmark"></i>
+                </div>
+                <div class="price">
+                    <p><?= $i->getHousingType() ?> | <?= $i->getSquareMeter() ?> m² | <?= $i->getCapacity() ?> chambres</p>
+                    <p><?= $i->getPrice() ?>€</p>
+                </div>
+                <p class="price2">/jour</p>
             </div>
-            <div class="price">
-                <p><?= $i->getHousingType() ?> | <?= $i->getSquareMeter() ?> m² | <?= $i->getCapacity() ?> chambres</p>
-                <p><?= $i->getPrice() ?>€</p>
-            </div>
-            <p class="price2">/jour</p>
-        </div>
-    </div>
+        <!-- </div> -->
+    </a>
 <?php
 
 

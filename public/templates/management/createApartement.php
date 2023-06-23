@@ -28,8 +28,22 @@
                 <h3>Agréments</h3>
                 <input type="text" name="vueSur" placeholder="Vue sur">
                 <input type="text" name="quartier" placeholder="Situé dans le quartier">
-                <input type="text" name="balcon" placeholder="Balcon">
-                <input type="text" name="terasse" placeholder="Terasse">
+                <div class="createCheckbox">
+                    <input type="checkbox" name="balcon" id="balcon-checkbox">
+                    <label for="balcon-checkbox">Balcon</label>
+                </div>
+                <div class="createCheckbox">
+                    <input type="checkbox" name="terasse" id="terasse-checkbox">
+                    <label for="terasse-checkbox">Terrasse</label>
+                </div>
+                <!-- <div class="createCheckbox">
+                    <input type="checkbox" name="jacuzzi" id="terasse-checkbox">
+                    <label for="terasse-checkbox">Jacuzzi</label>
+                </div>
+                <div class="createCheckbox">
+                    <input type="checkbox" name="sport" id="terasse-checkbox">
+                    <label for="terasse-checkbox">Salle de sport</label>
+                </div> -->
             </div>
             <div class="userInfo">
                 <h3>Particularité</h3>

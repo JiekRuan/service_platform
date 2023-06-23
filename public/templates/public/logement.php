@@ -1,9 +1,13 @@
 <?php include 'public/templates/component/header.php' ?>
-<link rel="stylesheet" href="public/css/searchPage.css">
-<link rel="stylesheet" href="public/css/logement.css">
-<link rel="stylesheet" href="public/css/picture.css">
-<link rel="stylesheet" href="public/css/carousel.css">
+<link rel="stylesheet" href="../public/css/searchPage.css">
+<link rel="stylesheet" href="../public/css/logement.css">
+<link rel="stylesheet" href="../public/css/picture.css">
+<link rel="stylesheet" href="../public/css/carousel.css">
 
+<?php
+global $readApartment;
+$apartmentObject = $readApartment[0];
+?>
 
 <main>
     <div id="modal">
@@ -12,36 +16,44 @@
     </div>
 
     <div>
-    <div class="banner">
-        <form action="" method="GET" class="formSearch">
-            <div class="date">
-                <div class="dateInput">
-                    <label for="fromDate">De : </label>
-                    <input type="date" name="fromDate" id="fromDate" min="<?php echo date('Y-m-d'); ?>">
-                </div>
+        <div class="banner">
+            <form action="" method="GET" class="formSearch">
+                <div class="date">
+                    <div class="dateInput">
+                        <label for="fromDate">De : </label>
+                        <input type="date" name="fromDate" id="fromDate" min="<?php echo date('Y-m-d'); ?>">
+                    </div>
 
-                <div class="dateInput">
-                    <label for="toDate">Jusqu'à : </label>
-                    <input type="date" name="toDate" id="toDate" min="<?php echo date('Y-m-d'); ?>">
+                    <div class="dateInput">
+                        <label for="toDate">Jusqu'à : </label>
+                        <input type="date" name="toDate" id="toDate" min="<?php echo date('Y-m-d'); ?>">
+                    </div>
+                    <input type="submit" value="Réserver" class="goldenButton">
                 </div>
-                <input type="submit" value="Réserver" class="goldenButton">
-            </div>
-        </form>
+            </form>
+        </div>
+        <figure class="containerImage">
+            <img src="public/images/troca.png" alt="appartement 4 pièces" class="clickable-image">
+        </figure>
     </div>
-    <figure class="containerImage">
-        <img src="public/images/troca.png" alt="appartement 4 pièces" class="clickable-image">
-    </figure>
-</div>
 
     <section class="container">
-        <h1>Appartement exceptionnel 4 pièces au Trocadéro</h1>
+        <h1><?= $apartmentObject->getName() ?></h1>
 
         <article class="containerContent">
             <div class="descriptionBookmark">
                 <h2>Description</h2>
                 <i class="fa-regular fa-bookmark"></i>
             </div>
-            <p class="info">300m2 | 5 chambres | 4 salles de bain</p>
+            <p class="info"><?= $apartmentObject->getSquareMeter() ?> m² | <?= $apartmentObject->getCapacity() ?> chambres |
+                <?php
+                $numberBathroom = $apartmentObject->getNumberBathroom();
+                if ($numberBathroom == 1) {
+                    echo $numberBathroom . " salle";
+                } else {
+                    echo $numberBathroom . " salles";
+                }
+                ?> de bain</p>
 
 
             <!-- <div class="carousel">
@@ -59,9 +71,10 @@
             </div> -->
 
             <div class="text-describe">
-                <p>Cette superbe proriété de quatre chambres est l'expression ultime de l'architecture contemporaine, offrant à ses résidents un décor inpeccable dans une palette de couleurs élégantes pour créer une atmosphère luxieuse et rayonante.</p>
+                <?= $apartmentObject->getDescription() ?>
+                <!-- <p>Cette superbe proriété de quatre chambres est l'expression ultime de l'architecture contemporaine, offrant à ses résidents un décor inpeccable dans une palette de couleurs élégantes pour créer une atmosphère luxieuse et rayonante.</p>
                 <p>La propriété comprend une cuisine ultra moderne et trois grands espaces de vie avec des baies vitrées, permettant à la lumière naturelle d'inondée l'espace. </p>
-                <p>Les équipements du batiment sont conçus pour une expérience clé en main, offrant au résident un parking privé, une cave, une conciergerie, une sécurité 24h/24 et une piscine olympique. De plus, la terrasse vous offrira un cadre sublime pour vous imprénier du paysage et d’un soleil radieux.</p>
+                <p>Les équipements du batiment sont conçus pour une expérience clé en main, offrant au résident un parking privé, une cave, une conciergerie, une sécurité 24h/24 et une piscine olympique. De plus, la terrasse vous offrira un cadre sublime pour vous imprénier du paysage et d'un soleil radieux.</p> -->
             </div>
         </article>
     </section>
@@ -71,26 +84,40 @@
             <div class="caracteristic">
                 <h2>Caractéristiques</h2>
                 <hr>
-                <p>100m2</p>
+                <p><?= $apartmentObject->getSquareMeter() ?> m²</p>
                 <hr>
-                <p>1 jacuzzi</p>
+                <p><?php $apartmentObject->getNumberBathroom();
+                    if ($numberBathroom == 1) {
+                        echo $numberBathroom . " salle";
+                    } else {
+                        echo $numberBathroom . " salles";
+                    } ?></p>
                 <hr>
-                <p>5 chambres</p>
+                <p><?= $apartmentObject->getCapacity() ?> chambres</p>
                 <hr>
             </div>
             <div class="caracteristic">
                 <h2>Agréments</h2>
                 <hr>
-                <p>Vue sur la mer</p>
+                <p>Vue sur <?= $apartmentObject->getVueSur() ?></p>
                 <hr>
-                <p>terrasse</p>
+                <?php if ($apartmentObject->getTerasse() === 'on') : ?>
+                    <p>Possède une terrasse</p>
+                    <hr>
+                <?php endif; ?>
+                <?php if ($apartmentObject->getBalcon() === 'on') : ?>
+                    <p>Possède un balcon</p>
+                    <hr>
+                <?php endif; ?>
+
+                <p>Dans le quartier <?= $apartmentObject->getQuartier() ?></p>
                 <hr>
             </div>
-            <div class="caracteristic">
+            <!-- <div class="caracteristic">
                 <h2>Particularités</h2>
                 <hr>
                 <p class="carac-text">Situé au 28e étage d'une résidence exclusive les appartements du chateau du Périgord ont été magnifiquement conçu dans un esprit de luxe et de douceur de vivre. En tant que summum du paysage architectural monégasque, les résidents bénéficient d’une vue panorama sur Monaco et son paysage azur méditeranéen qui s’étend à perte de vue.</p>
-            </div>
+            </div> -->
         </article>
     </section>
 
@@ -116,7 +143,7 @@
     <section>
         <article class="further">
             <h2>Prix</h2>
-            <h4>560€/par jour</h4>
+            <h4><?= $apartmentObject->getPrice() ?> €/par jour</h4>
             <p>Notre tarif de base vous donne accès à une multitude d'avantages et de prestations haut de gamme qui rendront votre séjour des plus agréables.</p>
             <p>De plus, nous comprenons que chaque voyageur a des besoins et des préférences différents. C'est pourquoi nous sommes flexibles et prêts à vous fournir des renseignements supplémentaires sur les tarifs et à adapter nos offres en fonction de vos exigences spécifiques. Que vous souhaitiez bénéficier de services supplémentaires, prolonger votre séjour ou obtenir des tarifs pour un groupe, notre équipe est là pour vous accompagner et vous fournir toutes les informations nécessaires.</p>
             <p>Contactez-nous dès maintenant pour discuter de vos besoins et obtenir un devis personnalisé. Nous sommes impatients de vous aider à planifier votre séjour de luxe sur mesure et de vous offrir une expérience inoubliable.</p>
@@ -157,7 +184,7 @@
 
 </main>
 
-<script src="public/js/date.js"></script>
-<script src="public/js/picture.js"></script>
-<script src="public/js/carousel.js"></script>
+<script src="../public/js/date.js"></script>
+<script src="../public/js/picture.js"></script>
+<script src="../public/js/carousel.js"></script>
 <?php include 'public/templates/component/footer.php' ?>

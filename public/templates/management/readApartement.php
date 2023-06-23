@@ -34,10 +34,11 @@ $apartmentObject = $readApartment[0];
             <div class="userInfo">
                 <h3>Agréments</h3>
                 <ul>
-                    <li><?= $apartmentObject->getVueSur() ?></li>
-                    <li><?= $apartmentObject->getQuartier() ?></li>
-                    <li><?= $apartmentObject->getTerasse() ?></li>
-                    <li><?= $apartmentObject->getBalcon() ?></li>
+                    <li>Vue sur : <?= $apartmentObject->getVueSur() ?></li>
+                    <li>Quartier : <?= $apartmentObject->getQuartier() ?></li>
+                    <li>Terasse : <?= ($apartmentObject->getTerasse() === 'on') ? 'Oui' : 'Non' ?></li>
+                    <li>Balcon : <?= ($apartmentObject->getBalcon() === 'on') ? 'Oui' : 'Non' ?></li>
+
                 </ul>
             </div>
             <div class="userInfo">

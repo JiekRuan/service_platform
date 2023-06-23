@@ -154,26 +154,10 @@ class ApartmentController
     public function readApartement()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-
             $id = $_GET['id'];
-            // $name = $_GET['name'];
-            // $address = $_GET['address'];
-            // $arrondissement = $_GET['arrondissement'];
-            // $price = $_GET['price'];
-            // $description = $_GET['description'];
-            // $squareMeter = $_GET['squareMeter'];
-            // $numberBathroom = $_GET['numberBathroom'];
-            // $housingType = $_GET['housingType'];
-            // $balcon = $_GET['balcon'];
-            // $terasse = $_GET['terasse'];
-            // $capacity = $_GET['capacity'];
-            // $vueSur = $_GET['vueSur'];
-            // $quartier = $_GET['quartier'];
-
             $apart = new Apartment();
             global $readApartment;
             $readApartment = $apart->readAnApartment($id);
-            // echo var_dump($readApartment);
             //afficher la vue lier a la function
             require_once('public\templates\management\readApartement.php');
         }
@@ -245,8 +229,14 @@ class ApartmentController
 
     public function logement()
     {
-        //ICI on doit juste require ou on doit aussi envoyer de la donnee ?
-        require_once 'public\templates\public\logement.php';
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+            $id = $_GET['id'];
+            $apart = new Apartment();
+            global $readApartment;
+            $readApartment = $apart->readAnApartment($id);
+            //afficher la vue lier a la function
+            require_once 'public\templates\public\logement.php';
+        }
     }
 
     public function moderateTestimony()

@@ -34,8 +34,15 @@ $apartmentObject = $readApartment[0];
                 <h3>Agréments</h3>
                 <input type="text" name="vueSur" placeholder="Vue sur" value=<?= $apartmentObject->getVueSur() ?>>
                 <input type="text" name="quartier" placeholder="Quartier" value=<?= $apartmentObject->getQuartier() ?>>
-                <input type="text" name="terasse" placeholder="Terasse" value=<?= $apartmentObject->getTerasse() ?>>
-                <input type="text" name="balcon" placeholder="Balcon" value=<?= $apartmentObject->getBalcon() ?>>
+                <div class="createCheckbox">
+                    <input type="checkbox" name="balcon" id="balcon-checkbox" <?= ($apartmentObject->getBalcon() === 'on') ? 'checked' : '' ?>>
+                    <label for="balcon-checkbox">Balcon</label>
+                </div>
+                <div class="createCheckbox">
+                    <input type="checkbox" name="terasse" id="terasse-checkbox" <?= ($apartmentObject->getTerasse() === 'on') ? 'checked' : '' ?>>
+                    <label for="terasse-checkbox">Terrasse</label>
+                </div>
+
             </div>
             <div class="userInfo">
                 <h3>Particularité</h3>

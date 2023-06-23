@@ -16,6 +16,10 @@ header {
     padding: 10px;
 }
 
+.box:hover {
+    text-decoration: none;
+  }
+
 .formFilter{
     display: flex;
     flex-direction: column;
