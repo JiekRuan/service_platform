@@ -7,9 +7,10 @@
 global $apartments;
 function listApartement($i)
 {
+    global $domain;
 ?>
     <div class="user">
-        <a href="" class="userInfo">
+        <a href="<?= "http://" . $domain . "/apartment/readApartement?id=". $i->getId() ?>" class="userInfo">
             <p>ID : <?= $i->getId() ?></p>
             <p>Nom de l'appartement : <?= $i->getName() ?></p>
             <p>Arrondissement : <?= $i->getArrondissement() ?></p>

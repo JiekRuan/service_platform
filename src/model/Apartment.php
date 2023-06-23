@@ -302,6 +302,40 @@ class Apartment
         return $apartments;
     }
 
+    public function readAnApartment($id)
+    {
+        $db = new Database();
+        $connection = $db->getConnection();
+
+        $request = $connection->prepare("SELECT * FROM apartments WHERE id = :id");
+        $request->bindParam(':id', $id);
+        $request->execute();
+
+        $apartments = [];
+
+        while ($row = $request->fetch(PDO::FETCH_ASSOC)) {
+            $apartment = new Apartment();
+
+            $apartment->id = $row['id'];
+            $apartment->name = $row['name'];
+            $apartment->address = $row['address'];
+            $apartment->arrondissement = $row['arrondissement'];
+            $apartment->price = $row['price'];
+            $apartment->description = $row['description'];
+            $apartment->squareMeter = $row['squareMeter'];
+            $apartment->numberBathroom = $row['numberBathroom'];
+            $apartment->housingType = $row['housingType'];
+            $apartment->balcon = $row['balcon'];
+            $apartment->terasse = $row['terasse'];
+            $apartment->capacity = $row['capacity'];
+            $apartment->vueSur = $row['vueSur'];
+            $apartment->quartier = $row['quartier'];
+            $apartments[] = $apartment;
+        }
+    
+        return $apartments;
+    }
+
     public function deleteApartment()
     {
         $db = new Database();

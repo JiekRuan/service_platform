@@ -105,23 +105,24 @@ class ApartmentController
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
             $id = $_GET['id'];
-            $name = $_GET['name'];
-            $address = $_GET['address'];
-            $arrondissement = $_GET['arrondissement'];
-            $price = $_GET['price'];
-            $description = $_GET['description'];
-            $squareMeter = $_GET['squareMeter'];
-            $numberBathroom = $_GET['numberBathroom'];
-            $housingType = $_GET['housingType'];
-            $balcon = $_GET['balcon'];
-            $terasse = $_GET['terasse'];
-            $capacity = $_GET['capacity'];
-            $vueSur = $_GET['vueSur'];
-            $quartier = $_GET['quartier'];
+            // $name = $_GET['name'];
+            // $address = $_GET['address'];
+            // $arrondissement = $_GET['arrondissement'];
+            // $price = $_GET['price'];
+            // $description = $_GET['description'];
+            // $squareMeter = $_GET['squareMeter'];
+            // $numberBathroom = $_GET['numberBathroom'];
+            // $housingType = $_GET['housingType'];
+            // $balcon = $_GET['balcon'];
+            // $terasse = $_GET['terasse'];
+            // $capacity = $_GET['capacity'];
+            // $vueSur = $_GET['vueSur'];
+            // $quartier = $_GET['quartier'];
 
-            $apartment = new Apartment();
-            $apartments = $apartment->readAllApartments();
-
+            $apart = new Apartment();
+            global $readApartment;
+            $readApartment = $apart->readAnApartment($id);
+            // echo var_dump($readApartment);
             //afficher la vue lier a la function
             require_once('public\templates\management\readApartement.php');
         }
@@ -141,27 +142,27 @@ class ApartmentController
     {
         // if ($_SERVER['REQUEST_METHOD'] === 'GET') 
         // {
-            // $id = $_GET['id'];
-            // $name = $_GET['name'];
-            // $address = $_GET['address'];
-            // $arrondissement = $_GET['arrondissement'];
-            // $capacity = $_GET['capacity'];
+        // $id = $_GET['id'];
+        // $name = $_GET['name'];
+        // $address = $_GET['address'];
+        // $arrondissement = $_GET['arrondissement'];
+        // $capacity = $_GET['capacity'];
 
-            $apartment = new Apartment();
-            // $apartment->getId();
-            // $apartment->getName();
-            // $apartment->getAddress();
-            // $apartment->getArrondissement();
-            // $apartment->getCapacity();
+        $apartment = new Apartment();
+        // $apartment->getId();
+        // $apartment->getName();
+        // $apartment->getAddress();
+        // $apartment->getArrondissement();
+        // $apartment->getCapacity();
 
-            global $apartments;
-            $apartments = $apartment->readAllApartments();
-            // }
+        global $apartments;
+        $apartments = $apartment->readAllApartments();
+        // }
 
-            require_once 'public/templates/management/listApartement.php';
-            // return $apartments;
+        require_once 'public/templates/management/listApartement.php';
+        // return $apartments;
     }
-    
+
     //fonction recherche pour pouvoir faire des recherche
     //sur ttes la table Apartment
     public function searchAll()

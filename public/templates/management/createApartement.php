@@ -54,7 +54,7 @@
                 <input type="submit" value="Ajouter un logement" class="goldenButton">
             </div>
             <div class="userForm">
-                <a href="" class="blueButton">Retour</a>
+                <a href=<?= "http://" . $domain . "/apartment/listApartement" ?> class="blueButton">Retour</a>
             </div>
         </form>
 

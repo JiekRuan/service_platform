@@ -125,7 +125,7 @@ class UserController
         // Détruire la session
         session_destroy();
         global $domain;
-        header('Location: http://' . $domain . '/login');
+        header('Location: http://' . $domain . '/user/login');
         exit();
     }
 

@@ -65,11 +65,11 @@ global $domain;
                     <?php } ?>
                     <li><a href=<?= "http://" . $domain . "/user/settings" ?>><i class="fa-regular fa-user"></i></a></li>
                     <li>
-                        <form action="" method="post">
-                            <button type="submit" class="buttonSubmit">
-                                <i class="fa-solid fa-right-from-bracket"></i>
-                            </button>
-                        </form>
+
+                        <a href=<?= "http://" . $domain . "/user/logoutMethod" ?>>
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                        </a>
+
                     </li>
                 <?php } ?>
             </ul>
@@ -183,7 +183,7 @@ global $domain;
                         <li>
                             <button type="submit" class="buttonSubmit">
                                 <i class="fa-solid fa-right-from-bracket"></i>
-                                <p>Se déconnecter</p>
+                                <a href=<?= "http://" . $domain . "/user/logoutMethod" ?>>Se déconnecter</a>
                             </button>
                         </li>
                     </form>
