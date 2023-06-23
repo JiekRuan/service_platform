@@ -50,14 +50,6 @@ global $domain;
                         <li><a href=<?= "http://" . $domain . "/user/bookmark" ?>><i class="fa-regular fa-bookmark"></i></a></li>
                         <li><a href=<?= "http://" . $domain . "/user/chat" ?>><i class="fa-regular fa-message"></i></a></li>
                         <li><a href=<?= "http://" . $domain . "/user/reservationList" ?>><i class="fa-regular fa-calendar-check"></i></a></li>
-                        <li><a href=<?= "http://" . $domain . "/user/settings" ?>><i class="fa-regular fa-user"></i></a></li>
-                        <li>
-                            <form action="" method="post">
-                                <button type="submit" class="buttonSubmit">
-                                    <i class="fa-solid fa-right-from-bracket"></i>
-                                </button>
-                            </form>
-                        </li>
 
                     <?php } else if ($_SESSION["role"] == "logistic") { ?>
                         <li><a href=<?= "http://" . $domain . "/intern/planning" ?>><i class="fa-regular fa-calendar"></i></a></li>
@@ -73,11 +65,11 @@ global $domain;
                     <?php } ?>
                     <li><a href=<?= "http://" . $domain . "/user/settings" ?>><i class="fa-regular fa-user"></i></a></li>
                     <li>
-                        <form action="" method="post">
-                            <button type="submit" class="buttonSubmit">
-                                <i class="fa-solid fa-right-from-bracket"></i>
-                            </button>
-                        </form>
+
+                        <a href=<?= "http://" . $domain . "/user/logoutMethod" ?>>
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                        </a>
+
                     </li>
                 <?php } ?>
             </ul>
@@ -191,7 +183,7 @@ global $domain;
                         <li>
                             <button type="submit" class="buttonSubmit">
                                 <i class="fa-solid fa-right-from-bracket"></i>
-                                <p>Se déconnecter</p>
+                                <a href=<?= "http://" . $domain . "/user/logoutMethod" ?>>Se déconnecter</a>
                             </button>
                         </li>
                     </form>

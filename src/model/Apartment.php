@@ -1,4 +1,5 @@
 <?php
+
 namespace MyApp\Models;
 
 use Database;
@@ -22,9 +23,9 @@ class Apartment
     private $terasse;
     private $vueSur;
     private $quartier;
-    
-    
-    
+
+
+
     // public function __construct($id,$name,$address,$arrondissement,$price,$description,$squareMeter,$numberBathroom,$housingType,$balcon,$terasse,$capacity,$vueSur,$quartier)
     // {
     //     $this->id = $id;
@@ -80,7 +81,7 @@ class Apartment
      */
     public function setAddress($address): void
     {
-        $this->name = $address;
+        $this->address = $address;
     }
 
     /**
@@ -96,7 +97,7 @@ class Apartment
      */
     public function setArrondissement($arrondissement): void
     {
-        $this->name = $arrondissement;
+        $this->arrondissement = $arrondissement;
     }
 
     /**
@@ -112,7 +113,7 @@ class Apartment
      */
     public function setBalcon($balcon): void
     {
-        $this->name = $balcon;
+        $this->balcon = $balcon;
     }
 
     /**
@@ -128,7 +129,7 @@ class Apartment
      */
     public function setTerasse($terasse): void
     {
-        $this->name = $terasse;
+        $this->terasse = $terasse;
     }
 
     /**
@@ -144,7 +145,7 @@ class Apartment
      */
     public function setSquareMeter($squareMeter): void
     {
-        $this->name = $squareMeter;
+        $this->squareMeter = $squareMeter;
     }
 
     /**
@@ -160,7 +161,7 @@ class Apartment
      */
     public function setNumberBathroom($numberBathroom): void
     {
-        $this->name = $numberBathroom;
+        $this->numberBathroom = $numberBathroom;
     }
 
     /**
@@ -176,7 +177,7 @@ class Apartment
      */
     public function setHousingType($housingType): void
     {
-        $this->name = $housingType;
+        $this->housingType = $housingType;
     }
 
     // /**
@@ -252,7 +253,7 @@ class Apartment
      */
     public function setVueSur($vueSur): void
     {
-        $this->description = $vueSur;
+        $this->vueSur = $vueSur;
     }
     public function getQuartier()
     {
@@ -277,10 +278,10 @@ class Apartment
         $request->execute();
 
         $apartments = [];
-        
+
         while ($row = $request->fetch(PDO::FETCH_ASSOC)) {
             $apartment = new Apartment();
-            
+
             $apartment->id = $row['id'];
             $apartment->name = $row['name'];
             $apartment->address = $row['address'];
@@ -297,7 +298,41 @@ class Apartment
             $apartment->quartier = $row['quartier'];
             $apartments[] = $apartment;
         }
+    
+        return $apartments;
+    }
 
+    public function readAnApartment($id)
+    {
+        $db = new Database();
+        $connection = $db->getConnection();
+
+        $request = $connection->prepare("SELECT * FROM apartments WHERE id = :id");
+        $request->bindParam(':id', $id);
+        $request->execute();
+
+        $apartments = [];
+
+        while ($row = $request->fetch(PDO::FETCH_ASSOC)) {
+            $apartment = new Apartment();
+
+            $apartment->id = $row['id'];
+            $apartment->name = $row['name'];
+            $apartment->address = $row['address'];
+            $apartment->arrondissement = $row['arrondissement'];
+            $apartment->price = $row['price'];
+            $apartment->description = $row['description'];
+            $apartment->squareMeter = $row['squareMeter'];
+            $apartment->numberBathroom = $row['numberBathroom'];
+            $apartment->housingType = $row['housingType'];
+            $apartment->balcon = $row['balcon'];
+            $apartment->terasse = $row['terasse'];
+            $apartment->capacity = $row['capacity'];
+            $apartment->vueSur = $row['vueSur'];
+            $apartment->quartier = $row['quartier'];
+            $apartments[] = $apartment;
+        }
+    
         return $apartments;
     }
 
@@ -316,7 +351,7 @@ class Apartment
         return false;
     }
 
-    public function saveData()//pas oublier de mettre l'image.
+    public function saveData() //pas oublier de mettre l'image.
     {
         $db = new Database();
         $connection = $db->getConnection();
@@ -324,7 +359,8 @@ class Apartment
         if ($this->id) {
             $request = $connection->prepare('UPDATE apartments SET name = :name, address = :address, arrondissement = :arrondissement, price = :price, description = :description, squareMeter = :squareMeter, numberBathroom = :numberBathroom, housingType = :housingType, balcon = :balcon, terasse = :terasse, capacity = :capacity, vueSur = :vueSur, quartier = :quartier WHERE id = :id');
         } else {
-            $request = $connection->prepare('INSERT INTO apartments (name, address, arrondissement, price, description, squareMeter, numberBathroom, housingType, balcon, terasse, capacity, vueSur, quartier) VALUES (:name, :address, :arrondissement, :price, :description, :squareMeter, :numberBathroom, :housingType, :balcon, :terasse, :capacity, :vueSur, :quartier)');
+            $request = $connection->prepare('INSERT INTO apartments (name, address, arrondissement, price, description, squareMeter, numberBathroom, housingType, capacity, balcon, terasse, vueSur, quartier) 
+            VALUES (:name, :address, :arrondissement, :price, :description, :squareMeter, :numberBathroom, :housingType, :capacity, :balcon, :terasse,  :vueSur, :quartier)');
         }
 
         $request->bindParam(':name', $this->name);
@@ -335,9 +371,9 @@ class Apartment
         $request->bindParam(':squareMeter', $this->squareMeter);
         $request->bindParam(':numberBathroom', $this->numberBathroom);
         $request->bindParam(':housingType', $this->housingType);
+        $request->bindParam(':capacity', $this->capacity);
         $request->bindParam(':balcon', $this->balcon);
         $request->bindParam(':terasse', $this->terasse);
-        $request->bindParam(':capacity', $this->capacity);
         $request->bindParam(':vueSur', $this->vueSur);
         $request->bindParam(':quartier', $this->quartier);
 
@@ -368,6 +404,5 @@ class Apartment
 
         return false;
     }
-    
 }
 //revoir la dernier fonction et terminer le controller !

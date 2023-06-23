@@ -21,7 +21,9 @@ CREATE TABLE `apartments` (
   `housingType` varchar(255) DEFAULT NULL,
   `capacity` int(11) DEFAULT NULL,
   `balcon` varchar(255) DEFAULT NULL,
-  `terasse` varchar(255) DEFAULT NULL
+  `terasse` varchar(255) DEFAULT NULL,
+  `vueSur` varchar(255) DEFAULT NULL,
+  `quartier` varchar(255) DEFAULT NULL
 );
 
 CREATE TABLE `apartment_photos` (

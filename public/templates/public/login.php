@@ -16,7 +16,7 @@ include 'public/templates/component/header.php' ?>
             <input type="submit" class="goldenButton" value="Se connecter">
 
         </form>
-        <p>Vous n'avez pas encore de compte ? <a href=<?= "http://" . $domain . "/user/signUp" ?>>Enregistrez-vous ici
+        <p>Vous n'avez pas encore de compte ? <a href=<?= "http://" . $domain . "/user/signUp" ?> style="color:var(--goldPrimary)">Enregistrez-vous ici
                 pour bénéficier de nos services exclusifs.</a></p>
     </div>
 

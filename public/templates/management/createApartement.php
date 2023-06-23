@@ -9,12 +9,13 @@
 
     <div class="userContainer">
 
-        <form action="" method="POST" class="apartement">
+        <form action="createApartementMethod" method="POST" class="apartement">
             <div class="userInfo">
                 <h3>Informations principales</h3>
                 <input type="text" name="name" placeholder="Nom de l'appartement" required>
                 <input type="text" name="address" placeholder="Adresse" required>
                 <input type="text" name="arrondissement" placeholder="Arrondissement" required>
+                <input type="text" name="price" placeholder="Prix" required>
             </div>
             <div class="userInfo">
                 <h3>Caractéristiques</h3>
@@ -25,9 +26,10 @@
             </div>
             <div class="userInfo">
                 <h3>Agréments</h3>
-                <input type="text" name="specificity1" placeholder="Vue sur">
-                <input type="text" name="specificity2" placeholder="Situé dans le quartier">
-                <input type="text" name="specificity3" placeholder="Terasse/balcon">
+                <input type="text" name="vueSur" placeholder="Vue sur">
+                <input type="text" name="quartier" placeholder="Situé dans le quartier">
+                <input type="text" name="balcon" placeholder="Balcon">
+                <input type="text" name="terasse" placeholder="Terasse">
             </div>
             <div class="userInfo">
                 <h3>Particularité</h3>
@@ -52,7 +54,7 @@
                 <input type="submit" value="Ajouter un logement" class="goldenButton">
             </div>
             <div class="userForm">
-                <a href="" class="blueButton">Retour</a>
+                <a href=<?= "http://" . $domain . "/apartment/listApartement" ?> class="blueButton">Retour</a>
             </div>
         </form>
 
