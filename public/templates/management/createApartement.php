@@ -33,7 +33,7 @@
             </div>
             <div class="userInfo">
                 <h3>Particularité</h3>
-                <input type="text" name="description" placeholder="Blabla no jutsu" required>
+                <input type="text" name="description" placeholder="Proche de boutiques de luxes et restaurants..." required>
             </div>
 
             <div class="userInfo">

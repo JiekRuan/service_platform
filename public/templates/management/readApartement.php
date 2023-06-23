@@ -53,7 +53,7 @@ $apartmentObject = $readApartment[0];
                     <figure><img src="../public/images/concierge/service_5.png" alt="placeholder"></figure>
                 </div>
             </div>
-            
+
             <div class="userForm">
                 <a href=<?= "http://" . $domain . "/apartment/displayFormModify?id=" . $apartmentObject->getId() ?> class="blueGoldButton">Modifier</a>
                 <p class="goldenButton" id="readDelete">Supprimer</p>
@@ -62,17 +62,20 @@ $apartmentObject = $readApartment[0];
                     <p>Êtes-vous sûr(e) de vouloir supprimer ce logement ?</p>
                     <div id="readDeleteMenuButton">
                         <div class="userForm">
-                            <a href="" class="blueButton">Annuler</a>
+                            <p class="blueButton cancel">Annuler</p>
                         </div>
-                        <form action="deleteApartement" method="POST"><input type="submit" value="Supprimer" class="goldenButton"></form>
+                        <form action="deleteApartment" method="POST">
+                            <input type="hidden" name="id" value=<?= $apartmentObject->getId() ?>>
+                            <input type="submit" value="Supprimer" class="goldenButton">
+                        </form>
                     </div>
                 </div>
-
             </div>
 
             <div class="userForm">
                 <a href=<?= "http://" . $domain . "/apartment/listApartement" ?> class="blueButton">Retour</a>
             </div>
+
         </div>
 
     </div>
