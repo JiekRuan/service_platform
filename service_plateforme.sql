@@ -5,7 +5,8 @@ CREATE TABLE `Users` (
   `email` varchar(255) UNIQUE NOT NULL,
   `phone` varchar(15),
   `role` varchar(30) DEFAULT null,
-  `created_at` timestamp
+  `created_at` timestamp,
+  `status` varchar(15) DEFAULT 'active'
 );
 
 CREATE TABLE `Appartments` (

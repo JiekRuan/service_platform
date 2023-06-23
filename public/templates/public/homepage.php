@@ -46,38 +46,25 @@
 
             <div class="homepageContainer">
                 <figure class="figure figure-animation">
-<<<<<<< Updated upstream
-                    <img src="public/images/homepage/appart_6.jpg" alt="" class="image">
-=======
                     <div class="zoom-image">
-                        <img src="../../images/homepage/appart_6.jpg" alt="" class="image">
+                        <img src="../public/images/homepage/appart_6.jpg" alt="" class="image">
                     </div>
-                    
->>>>>>> Stashed changes
                     <figcaption class="imageText">Santa Monica</figcaption>
                     <figcaption class="imageText">XVIème arrondissement</figcaption>
                 </figure>
 
                 <figure class="figure figure-animation">
-<<<<<<< Updated upstream
-                    <img src="public/images/homepage/appart_7.jpg" alt="" class="image">
-=======
                     <div class="zoom-image">
-                        <img src="../../images/homepage/appart_7.jpg" alt="" class="image">
+                        <img src="../public/images/homepage/appart_7.jpg" alt="" class="image">
                     </div>
->>>>>>> Stashed changes
                     <figcaption class="imageText">Santa Dominica</figcaption>
                     <figcaption class="imageText">XVIIème arrondissement</figcaption>
                 </figure>
 
                 <figure class="figure figure-animation">
-<<<<<<< Updated upstream
-                    <img src="public/images/homepage/appart_8.jpg" alt="" class="image">
-=======
                     <div class="zoom-image">
-                        <img src="../../images/homepage/appart_8.jpg" alt="" class="image">
+                        <img src="../public/images/homepage/appart_8.jpg" alt="" class="image">
                     </div>
->>>>>>> Stashed changes
                     <figcaption class="imageText">Santa Colada</figcaption>
                     <figcaption class="imageText">XVIIème arrondissement</figcaption>
                 </figure>
