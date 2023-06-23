@@ -435,18 +435,20 @@ class Apartment
     
         $searchValue = "%" . $search . "%"; // Valeur de recherche avec les wildcards
     
-        $request = $connection->prepare("SELECT * FROM apartments WHERE name LIKE :searchValue OR address LIKE :searchValue OR capacity = :capacity OR price <= :price OR description LIKE :searchValue");
+        // $request = $connection->prepare("SELECT * FROM apartments WHERE id = :searchValue name LIKE :searchValue OR address LIKE :searchValue OR capacity LIKE :searchValue OR price LIKE :searchValue OR description LIKE :searchValue OR arrondissement LIKE :searchValue");
+        $request = $connection->prepare("SELECT * FROM apartments WHERE id LIKE :searchValue OR name LIKE :searchValue OR address LIKE :searchValue OR capacity LIKE :searchValue OR price LIKE :searchValue OR description LIKE :searchValue OR arrondissement LIKE :searchValue");
 
         // $request = $connection->prepare("SELECT * FROM apartments WHERE name LIKE :searchValue OR location LIKE :searchValue OR capacity = :capacity OR price <= :price OR description LIKE :searchValue");
         $request->bindParam(':searchValue', $searchValue);
-        $request->bindParam(':capacity', $this->capacity);
-        $request->bindParam(':price', $this->price);
+        // $request->bindParam(':capacity', $this->capacity);
+        // $request->bindParam(':arrondissement', $this->arrondissement);
+        // $request->bindParam(':price', $this->price);
     
         if ($request->execute()) {
             $results = $request->fetchAll(PDO::FETCH_ASSOC);
             return $results;
         }
-        
+
         return false;
     }
     

@@ -246,6 +246,11 @@ a:hover {
     gap: 20px;
 }
 
+.filterList button {
+    border: none;
+    background-color: inherit;
+}
+
 .filterSub {
     cursor: pointer;
 }

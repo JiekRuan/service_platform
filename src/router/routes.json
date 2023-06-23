@@ -149,6 +149,12 @@
         "function": "deleteApartment",
         "controllerClass": "MyApp\\Controllers\\ApartmentController"
     },
+    "Management_11": {
+        "url": "apartment/searchPageListApartment",
+        "method": "GET",
+        "function": "searchPageListApartment",
+        "controllerClass": "MyApp\\Controllers\\ApartmentController"
+    },
     "Logistic_1": {
         "url": "intern/checklist",
         "method": "GET",
