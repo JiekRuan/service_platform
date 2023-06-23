@@ -11,7 +11,7 @@ require_once 'src/controllers/userController.php';
 require_once 'src/controllers/apartmentController.php';
 
 
-#[AllowDynamicPropertiies]
+#[AllowDynamicProperties]
 class Router {
 
     public function __construct() {
