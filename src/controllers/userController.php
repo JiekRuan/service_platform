@@ -149,7 +149,7 @@ class UserController
         }
     }
     // redirection vers les vues
-    public function Error404()
+    public function Error404():void
     {
         require_once 'public\templates\public\404.php';
     }

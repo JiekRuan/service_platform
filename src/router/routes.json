@@ -84,7 +84,7 @@
         "controllerClass": "MyApp\\Controllers\\UserController"
     },
     "Management_1": {
-        "url": "reservation/chat",
+        "url": "intern/chat",
         "method": "GET",
         "function": "chat",
         "controllerClass": "MyApp\\Controllers\\ReservationController"

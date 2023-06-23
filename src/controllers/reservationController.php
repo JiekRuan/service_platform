@@ -78,4 +78,9 @@ class ReservationController {
         global $domain;
         header('Location : http://' . $domain .'/ReservationList');
     }
+
+    public function chat(){
+
+        require_once 'public\templates\management\chat.php';
+    }
 }
