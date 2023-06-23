@@ -17,20 +17,26 @@ $apartmentObject = $readApartment[0];
 
     <div>
         <div class="banner">
-            <form action="" method="GET" class="formSearch">
-                <div class="date">
-                    <div class="dateInput">
-                        <label for="fromDate">De : </label>
-                        <input type="date" name="fromDate" id="fromDate" min="<?php echo date('Y-m-d'); ?>">
-                    </div>
+            <?php
+            if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+            ?>
+                <p>Vous devez vous connecter pour pouvoir réserver.</p>
+            <?php } else { ?>
+                <form action="" method="GET" class="formSearch">
+                    <div class="date">
+                        <div class="dateInput">
+                            <label for="fromDate">De : </label>
+                            <input type="date" name="fromDate" id="fromDate" min="<?php echo date('Y-m-d'); ?>">
+                        </div>
 
-                    <div class="dateInput">
-                        <label for="toDate">Jusqu'à : </label>
-                        <input type="date" name="toDate" id="toDate" min="<?php echo date('Y-m-d'); ?>">
+                        <div class="dateInput">
+                            <label for="toDate">Jusqu'à : </label>
+                            <input type="date" name="toDate" id="toDate" min="<?php echo date('Y-m-d'); ?>">
+                        </div>
+                        <input type="submit" value="Réserver" class="goldenButton">
                     </div>
-                    <input type="submit" value="Réserver" class="goldenButton">
-                </div>
-            </form>
+                </form>
+            <?php } ?>
         </div>
         <figure class="containerImage">
             <img src="public/images/troca.png" alt="appartement 4 pièces" class="clickable-image">

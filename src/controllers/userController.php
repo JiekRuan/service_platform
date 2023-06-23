@@ -104,6 +104,8 @@ class UserController
                     $_SESSION["loggedin"] = true;
                     $_SESSION['userId'] = $loggedInUser->getId();
                     $_SESSION['userName'] = $loggedInUser->getName();
+                    $_SESSION['phone'] = $loggedInUser->getPhone();
+                    $_SESSION['email'] = $loggedInUser->getMail();
                     $_SESSION["role"] = $loggedInUser->getRole();
                     setcookie("userId",$_SESSION['userId'],time()+3600);
                     setcookie("userName",$_SESSION['userName'],time()+3600);
@@ -223,9 +225,31 @@ class UserController
     }
 
     public function settings(){
-        // manque la logique
-
         require_once 'public\templates\customer\settings.php';
+    }
+
+    public function settingsForm(){
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_POST['id'];
+            $name = $_POST['name'];
+            $email = $_POST['email'];
+            $phone = $_POST['phone'];
+
+            $user = new User($id, $name, $email, $phone, null, null, null);
+
+            // Enregistrer les nouvelles informations
+            if ($user->updateUser($id)) {
+                $_SESSION['userName'] = $user->getName();
+                $_SESSION['phone'] = $user->getPhone();
+                $_SESSION['email'] = $user->getMail();
+                global $domain;
+                header('Location: http://' . $domain . '/user/settings');
+                exit();
+            } else {
+                header('Location: public\templates\public\404.php');
+            }
+
+        }
     }
 }
 ?>

@@ -239,6 +239,12 @@
         "function": "reservationThanks",
         "controllerClass": "MyApp\\Controllers\\ReservationController"
     },
+    "Customer_12": {
+        "url": "user/settingsForm",
+        "method": "POST",
+        "function": "settingsForm",
+        "controllerClass": "MyApp\\Controllers\\UserController"
+    },
     "Admin": {
         "url": "admin",
         "method": "POST",

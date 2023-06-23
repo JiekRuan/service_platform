@@ -1,4 +1,5 @@
 <?php
+
 namespace MyApp\Models;
 
 use Database;
@@ -183,41 +184,25 @@ class User
     }
 
 
-    public function updateUser($data_type, $data)
+    public function updateUser($id)
     {
         $db = new Database();
         $connection = $db->getConnection();
 
-        $request = $connection->prepare('UPDATE users SET :data_type = :data WHERE id = :id');
+        $request = $connection->prepare('UPDATE users SET 
+        name = :name,
+        email = :email,
+        phone = :phone
+        WHERE id = :id');
 
-        $request->bindParam(':id', $this->id);
-        $request->bindParam(':data_type', $data_type);
-        $request->bindParam(':data', $data);
+        $request->bindParam(':name', $this->name);
+        $request->bindParam(':email', $this->email);
+        $request->bindParam(':phone', $this->phone);
+        $request->bindParam(':id', $id);
 
-        if ($request->execute()) {
-            switch ($data_type) {
-                case 'name':
-                    $this->name = $data;
-                    break;
-                case 'password':
-                    $this->password = $data;
-                    break;
-                case 'mail':
-                    $this->email = $data;
-                    break;
-                case 'phone':
-                    $this->phone = $data;
-                    break;
-                case 'role':
-                    $this->role = $data;
-                    break;
-                default:
-                    return false;
-                    break;
-            }
-            return true;
-        }
-        return false;
+        $result = $request->execute();
+
+        return $result;
     }
 
     public function deleteUser()
@@ -335,5 +320,4 @@ class User
             return false;
         }
     }
-
 }

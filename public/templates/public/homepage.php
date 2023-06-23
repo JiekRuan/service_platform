@@ -23,7 +23,7 @@
 
             <div class="homepageFormContainer">
                 <form action="searchPage" method="GET" class="homepageSearch">
-                    <input type="text" placeholder="Rechercher..." class="homepageSearchInput">
+                    <input type="text" name="search" placeholder="Rechercher..." class="homepageSearchInput">
                     <input type="submit" value="Rechercher" class="blueButton homepageSearchButton">
                 </form>
                 <p class="homepageRoadmap">Besoin d'une roadmap personnalisée ?</p>

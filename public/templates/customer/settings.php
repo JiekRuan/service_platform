@@ -1,5 +1,5 @@
 <?php
-if ($_SESSION["role"] !== "customer" || $_SESSION["role"] !== "logistic" || $_SESSION["role"] !== "management" || $_SESSION["role"] !== "admin") {
+if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     global $domain;
     header('Location: http://' . $domain . '/home');
 }
@@ -20,27 +20,31 @@ if ($_SESSION["role"] !== "customer" || $_SESSION["role"] !== "logistic" || $_SE
             mesures de sécurité appropriées soient en place pour garantir la protection de vos données confidentielles.
         </p>
 
-        <form class="infoForm">
-            <div class="radiobox">
+        <form method="POST" action="settingsForm" class="infoForm">
+            <!-- <div class="radiobox">
                 <label class="role"><input name="role" type="radio" name="bouton" value="madame" checked>Madame</label>
                 <label class="role"><input name="role" type="radio" name="bouton" value="monsieur">Monsieur</label>
                 <label class="role"><input name="role" type="radio" name="bouton" value="autres">Autre(s)</label>
-            </div>
-            <div class="row">
+            </div> -->
+            <!-- <div class="row">
                 <input name="first_name" type="text" class="inputText" placeholder="Prénom" required>
-            </div>
-            <div class="row">
+            </div> -->
+            <!-- <div class="row">
                 <input name="last_name" type="text" class="inputText" placeholder="Nom de famille" required>
-            </div>
+            </div> -->
             <div class="row">
+                <input name="name" type="text" class="inputText" placeholder="Votre nom et prénom" value=<?= $_SESSION["userName"] ?> required>
+            </div>
+            <!-- <div class="row">
                 <input name="birthdate" type="date" class="inputText" placeholder="Date de naissance" required>
+            </div> -->
+            <div class="row">
+                <input name="phone" type="tel" class="inputText" placeholder="Téléphone" minlength="10" maxlength="14" value=<?= $_SESSION["phone"] ?> required>
             </div>
             <div class="row">
-                <input name="phone" type="tel" class="inputText" placeholder="Téléphone" minlength="10" maxlength="14" required>
+                <input name="email" type="email" class="inputText" placeholder="Email" value=<?= $_SESSION["email"] ?> required>
             </div>
-            <div class="row">
-                <input name="email" type="email" class="inputText" placeholder="Email" required>
-            </div>
+            <input type="hidden" name="id" value=<?= $_SESSION["userId"] ?>>
             <input type="submit" class="goldenButton" value="Mettre à jour">
 
         </form>
