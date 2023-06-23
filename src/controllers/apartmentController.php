@@ -119,8 +119,8 @@ class ApartmentController
             $vueSur = $_GET['vueSur'];
             $quartier = $_GET['quartier'];
 
-            $apartments = new Apartment();
-            $apartments->readAllApartments($id, $name, $address, $arrondissement, $price, $description, $squareMeter, $numberBathroom, $housingType, $balcon, $terasse, $capacity, $vueSur, $quartier);
+            $apartment = new Apartment();
+            $apartments = $apartment->readAllApartments($id, $name, $address, $arrondissement, $price, $description, $squareMeter, $numberBathroom, $housingType, $balcon, $terasse, $capacity, $vueSur, $quartier);
 
             //afficher la vue lier a la function
             require_once('public\templates\management\readApartement.php');
@@ -139,21 +139,23 @@ class ApartmentController
 
     public function listApartement()
     {
-        // if ($_SERVER['REQUEST_METHOD'] === 'GET') 
-        // {
-        //     $id = $_GET['id'];
-        //     $name = $_GET['name'];
-        //     $address = $_GET['address'];
-        //     $arrondissement = $_GET['arrondissement'];
-        //     $capacity = $_GET['capacity'];
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') 
+        {
+            $id = $_GET['id'];
+            $name = $_GET['name'];
+            $address = $_GET['address'];
+            $arrondissement = $_GET['arrondissement'];
+            $capacity = $_GET['capacity'];
 
-        //     $apartment = new Apartment();
-        //     $apartment->getId();
-        //     $apartment->getName();
-        //     $apartment->getAddress();
-        //     $apartment->getArrondissement();
-        //     $apartment->getCapacity();
-        // }
+            $apartment = new Apartment();
+            $apartment->getId();
+            $apartment->getName();
+            $apartment->getAddress();
+            $apartment->getArrondissement();
+            $apartment->getCapacity();
+
+            $apartments = $apartment->readAllApartments($id, $name, $address, $arrondissement, $capacity);
+        }
         require_once 'public/templates/management/listApartement.php';
     }
     //fonction recherche pour pouvoir faire des recherche
