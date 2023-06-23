@@ -12,7 +12,7 @@ function listApartement($i)
     <div class="user">
         <a href="<?= "http://" . $domain . "/apartment/readApartement?id=" . $i->getId() ?>" class="userInfo">
             <p>ID : <?= $i->getId() ?></p>
-            <p>Nom de l'appartement : <?= $i->getName() ?></p>
+            <p>Nom : <?= $i->getName() ?></p>
             <p>Arrondissement : <?= $i->getArrondissement() ?></p>
             <p>Capacité : <?= $i->getCapacity() ?></p>
         </a>
@@ -21,17 +21,20 @@ function listApartement($i)
                 <input type="submit" value="Modifier" class="blueGoldButton">
             </form> -->
 
-            <p class="goldenButton readDelete">Supprimer</p>
             <a href=<?= "http://" . $domain . "/apartment/displayFormModify?id=" . $i->getId() ?> class="userInfo blueGoldButton">Modifier</a>
-                <div class="readDeleteMenu">
-                    <p>Êtes-vous sûr(e) de vouloir supprimer ce logement ?</p>
-                    <div id="readDeleteMenuButton">
-                        <div class="userForm">
-                            <p class="blueButton cancel">Annuler</p>
-                        </div>
-                        <form action="deleteApartement" method="POST"><input type="submit" value="Supprimer" class="goldenButton"></form>
+            <p class="goldenButton readDelete">Supprimer</p>
+            <div class="readDeleteMenu">
+                <p>Êtes-vous sûr(e) de vouloir supprimer ce logement ?</p>
+                <div id="readDeleteMenuButton">
+                    <div class="userForm">
+                        <p class="blueButton cancel">Annuler</p>
                     </div>
+                    <form action="deleteApartment" method="POST">
+                        <input type="hidden" name="id" value=<?= $i->getId() ?>>
+                        <input type="submit" value="Supprimer" class="goldenButton">
+                    </form>
                 </div>
+            </div>
 
         </div>
     </div>

@@ -144,7 +144,7 @@
         "controllerClass": "MyApp\\Controllers\\ApartmentController"
     },
     "Management_10": {
-        "url": "apartment/deleteApartement",
+        "url": "apartment/deleteApartment",
         "method": "POST",
         "function": "deleteApartment",
         "controllerClass": "MyApp\\Controllers\\ApartmentController"

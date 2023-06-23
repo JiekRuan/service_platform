@@ -15,6 +15,18 @@
     list-style-type: none;
 }
 
+.user:hover {
+    background-color: var(--whiteCream);
+}
+
+.user:active {
+    background-color: var(--greyLight);
+}
+
+a.userInfo:hover {
+    text-decoration: none;
+}
+
 .readImage {
     display: flex;
     flex-direction: row;
@@ -97,7 +109,7 @@
     width: max-content;
 }
 
-.userContainer{
+.userContainer {
     position: relative;
 }
 
