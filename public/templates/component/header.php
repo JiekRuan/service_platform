@@ -29,8 +29,9 @@ global $domain;
             <ul id="desktop">
                 <li id="search"><i class="fa-solid fa-magnifying-glass"></i></li>
                 <li id="searchForm">
-                    <form action="" method="GET">
+                    <form action="searchPage" method="GET" class="searchFormInput">
                         <input class="searchInput" type="text" placeholder="16ème arrondissement...">
+                        <button type="submit" class="homepageSearchButton homepageSearchButtonMobile"><i class="fa-solid fa-magnifying-glass"></i></button>
                     </form>
                 </li>
                 <?php
@@ -76,8 +77,9 @@ global $domain;
             <ul id="mobile">
                 <li id="searchMobile"><i class="fa-solid fa-magnifying-glass"></i></li>
                 <li id="searchFormMobile">
-                    <form action="" method="GET">
+                    <form action="searchPage" method="GET" class="searchFormInput">
                         <input class="searchInput" type="text" placeholder="16ème arrondissement...">
+                        <button type="submit" class="homepageSearchButton homepageSearchButtonMobile"><i class="fa-solid fa-magnifying-glass"></i></button>
                     </form>
                 </li>
                 <li id="headerBurger"><i class="fa-solid fa-bars"></i></li>

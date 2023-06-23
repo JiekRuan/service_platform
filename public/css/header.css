@@ -84,6 +84,19 @@ header {
     text-decoration: underline;
 }
 
+.homepageSearchButtonMobile{
+    border: none;
+    background-color: inherit;
+    color: inherit;
+}
+
+.searchFormInput{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    /* width: min-content; */
+}
+
 @media (max-width: 1024px) {
     header {
         padding: 10px 10px;

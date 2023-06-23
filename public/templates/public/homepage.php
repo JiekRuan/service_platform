@@ -22,7 +22,7 @@
             <p>Profitez d'un séjour d'exception au cœur de nos somptueux appartements haut de gamme, nichés dans les quartiers les plus prestigieux de Paris.</p>
 
             <div class="homepageFormContainer">
-                <form class="homepageSearch">
+                <form action="searchPage" method="GET" class="homepageSearch">
                     <input type="text" placeholder="Rechercher..." class="homepageSearchInput">
                     <input type="submit" value="Rechercher" class="blueButton homepageSearchButton">
                 </form>
