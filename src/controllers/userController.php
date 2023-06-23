@@ -189,10 +189,13 @@ class UserController
         require_once 'public\templates\public\policy.php';
     }
 
-    public function searchPage()
-    {
-        require_once 'public\templates\public\searchPage.php';
-    }
+    // public function searchPage()
+    // {
+    //     $apartment = new Apartment();
+    //     global $apartments;
+    //     $apartments = $apartment->readAllApartments();
+    //     require_once 'public\templates\public\searchPage.php';
+    // }
 
     public function signup()
     {

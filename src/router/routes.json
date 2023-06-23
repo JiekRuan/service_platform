@@ -51,7 +51,7 @@
         "url": "searchPage",
         "method": "GET",
         "function": "searchPage",
-        "controllerClass": "MyApp\\Controllers\\UserController"
+        "controllerClass": "MyApp\\Controllers\\ApartmentController"
     },
     "Public_10": {
         "url": "user/signUp",

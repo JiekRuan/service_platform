@@ -296,5 +296,13 @@ class ApartmentController
     {
         require_once 'public\templates\public\conciergeService.php';
     }
+
+    public function searchPage()
+    {
+        $apartment = new Apartment();
+        global $apartments;
+        $apartments = $apartment->readAllApartments();
+        require_once 'public\templates\public\searchPage.php';
+    }
 }
 //affichier les appart cree une function avec un [].

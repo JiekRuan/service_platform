@@ -2,24 +2,25 @@
 <link rel="stylesheet" href="public/css/searchPage.css">
 
 <?php
+global $apartments;
 
-function apartementTemplate()
+function apartementTemplate($i)
 {
 
 ?>
     <div class="box">
         <figure>
-            <img src="/public/images/paris.jpeg" alt="logement2">
+            <img src="../public/images/paris.jpeg" alt="logement2">
         </figure>
         <div class="information">
             <div class="star">
-                <h3 class="monaco">Monaco</h3><i class="fa-regular fa-bookmark"></i>
+                <h3 class="monaco"><?= $i->getName() ?></h3><i class="fa-regular fa-bookmark"></i>
             </div>
             <div class="price">
-                <p>Appartement de luxe | 169.8 m² | 4 pièces</p>
-                <p>17 050€</p>
+                <p><?= $i->getHousingType() ?> | <?= $i->getSquareMeter() ?> m² | <?= $i->getCapacity() ?> chambres</p>
+                <p><?= $i->getPrice() ?>€</p>
             </div>
-            <p class="price2">/mois</p>
+            <p class="price2">/jour</p>
         </div>
     </div>
 <?php
@@ -166,9 +167,9 @@ function apartementTemplate()
 
     <div class="listApartement">
         <?php
-        for ($i = 0; $i < 10; $i++) {
 
-            apartementTemplate();
+        foreach ($apartments as $apartment) {
+            apartementTemplate($apartment);
         }
         ?>
     </div>
