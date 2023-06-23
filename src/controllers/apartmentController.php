@@ -75,7 +75,7 @@ class ApartmentController
 
             //nouvel objet Apartment
             $apartment = new Apartment;
-
+            // $updateApart = $apartment;
             //l'ID de l'appart a modifier
             $apartment->getId($id);
             $apartment->setName($name);
@@ -91,10 +91,13 @@ class ApartmentController
             $apartment->setCapacity($capacity);
             $apartment->setVueSur($vueSur);
             $apartment->setQuartier($quartier);
+            // var_dump($apartment);
 
             //Enregistrer les infos
             if ($apartment->saveData()) {
-                header('Location: public\templates\management\listApartment.php');
+                // header('Location: public\templates\management\listApartment.php');
+                global $domain;
+                header('Location: http://' . $domain . '/apartment/listApartement');
             } else {
                 header('Location: public\templates\public\404.php');
             }
@@ -180,6 +183,13 @@ class ApartmentController
 
     public function displayFormModify()
     {
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+
+            $id = $_GET['id'];
+        }
+        $apart = new Apartment();
+        global $readApartment;
+        $readApartment = $apart->readAnApartment($id);
         require_once 'public\templates\management\updateApartement.php';
     }
 

@@ -10,25 +10,28 @@ function listApartement($i)
     global $domain;
 ?>
     <div class="user">
-        <a href="<?= "http://" . $domain . "/apartment/readApartement?id=". $i->getId() ?>" class="userInfo">
+        <a href="<?= "http://" . $domain . "/apartment/readApartement?id=" . $i->getId() ?>" class="userInfo">
             <p>ID : <?= $i->getId() ?></p>
             <p>Nom de l'appartement : <?= $i->getName() ?></p>
             <p>Arrondissement : <?= $i->getArrondissement() ?></p>
             <p>Capacité : <?= $i->getCapacity() ?></p>
         </a>
         <div class="userForm">
-            <form action="" method="POST"><input type="submit" value="Modifier" class="blueGoldButton"></form>
-            <p class="goldenButton readDelete">Supprimer</p>
+            <!-- <form action="#" method="POST">
+                <input type="submit" value="Modifier" class="blueGoldButton">
+            </form> -->
 
-            <div class="readDeleteMenu">
-                <p>Êtes-vous sûr(e) de vouloir supprimer ce logement ?</p>
-                <div id="readDeleteMenuButton">
-                    <div class="userForm">
-                        <p class="blueButton cancel">Annuler</p>
+            <p class="goldenButton readDelete">Supprimer</p>
+            <a href=<?= "http://" . $domain . "/apartment/displayFormModify?id=" . $i->getId() ?> class="userInfo blueGoldButton">Modifier</a>
+                <div class="readDeleteMenu">
+                    <p>Êtes-vous sûr(e) de vouloir supprimer ce logement ?</p>
+                    <div id="readDeleteMenuButton">
+                        <div class="userForm">
+                            <p class="blueButton cancel">Annuler</p>
+                        </div>
+                        <form action="" method="POST"><input type="submit" value="Supprimer" class="goldenButton"></form>
                     </div>
-                    <form action="" method="POST"><input type="submit" value="Supprimer" class="goldenButton"></form>
                 </div>
-            </div>
 
         </div>
     </div>

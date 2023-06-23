@@ -2,6 +2,7 @@
 <link rel="stylesheet" href="../public/css/admin.css">
 <link rel="stylesheet" href="../public/css/managementCrud.css">
 <?php
+global $domain;
 global $readApartment;
 $apartmentObject = $readApartment[0];
 ?>
@@ -52,9 +53,9 @@ $apartmentObject = $readApartment[0];
                     <figure><img src="../public/images/concierge/service_5.png" alt="placeholder"></figure>
                 </div>
             </div>
-
+            
             <div class="userForm">
-                <form action="" method="POST"><input type="submit" value="Modifier" class="blueGoldButton"></form>
+                <a href=<?= "http://" . $domain . "/apartment/displayFormModify?id=" . $apartmentObject->getId() ?> class="blueGoldButton">Modifier</a>
                 <p class="goldenButton" id="readDelete">Supprimer</p>
 
                 <div id="readDeleteMenu">

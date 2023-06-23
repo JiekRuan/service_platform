@@ -137,6 +137,12 @@
         "function": "createApartement",
         "controllerClass": "MyApp\\Controllers\\ApartmentController"
     },
+    "Management_9": {
+        "url": "apartment/displayFormModify",
+        "method": "POST",
+        "function": "displayFormModify",
+        "controllerClass": "MyApp\\Controllers\\ApartmentController"
+    },
     "Logistic_1": {
         "url": "intern/checklist",
         "method": "GET",
