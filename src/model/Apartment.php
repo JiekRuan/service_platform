@@ -298,7 +298,7 @@ class Apartment
             $apartment->quartier = $row['quartier'];
             $apartments[] = $apartment;
         }
-    
+
         return $apartments;
     }
 
@@ -332,17 +332,17 @@ class Apartment
             $apartment->quartier = $row['quartier'];
             $apartments[] = $apartment;
         }
-    
+
         return $apartments;
     }
 
-    public function deleteApartment()
+    public function deleteApartement($id)
     {
         $db = new Database();
         $connection = $db->getConnection();
 
         $request = $connection->prepare('DELETE FROM apartments WHERE id = :id');
-        $request->bindParam(':id', $this->id);
+        $request->bindParam(':id', $id);
 
         if ($request->execute()) {
             return true;
@@ -356,12 +356,12 @@ class Apartment
         $db = new Database();
         $connection = $db->getConnection();
 
-        if ($this->id) {
-            $request = $connection->prepare('UPDATE apartments SET name = :name, address = :address, arrondissement = :arrondissement, price = :price, description = :description, squareMeter = :squareMeter, numberBathroom = :numberBathroom, housingType = :housingType, balcon = :balcon, terasse = :terasse, capacity = :capacity, vueSur = :vueSur, quartier = :quartier WHERE id = :id');
-        } else {
-            $request = $connection->prepare('INSERT INTO apartments (name, address, arrondissement, price, description, squareMeter, numberBathroom, housingType, capacity, balcon, terasse, vueSur, quartier) 
+        // if ($this->id) {
+        //     $request = $connection->prepare('UPDATE apartments SET name = :name, address = :address, arrondissement = :arrondissement, price = :price, description = :description, squareMeter = :squareMeter, numberBathroom = :numberBathroom, housingType = :housingType, balcon = :balcon, terasse = :terasse, capacity = :capacity, vueSur = :vueSur, quartier = :quartier WHERE id = :id');
+        // } else {
+        $request = $connection->prepare('INSERT INTO apartments (name, address, arrondissement, price, description, squareMeter, numberBathroom, housingType, capacity, balcon, terasse, vueSur, quartier) 
             VALUES (:name, :address, :arrondissement, :price, :description, :squareMeter, :numberBathroom, :housingType, :capacity, :balcon, :terasse,  :vueSur, :quartier)');
-        }
+        // }
 
         $request->bindParam(':name', $this->name);
         $request->bindParam(':address', $this->address);
@@ -385,12 +385,13 @@ class Apartment
 
         return $result;
     }
-    public function updateData()
-{
-    $db = new Database();
-    $connection = $db->getConnection();
 
-    $request = $connection->prepare('UPDATE apartments SET 
+    public function updateData($id)
+    {
+        $db = new Database();
+        $connection = $db->getConnection();
+
+        $request = $connection->prepare('UPDATE apartments SET 
         name = :name,
         address = :address,
         arrondissement = :arrondissement,
@@ -406,25 +407,26 @@ class Apartment
         quartier = :quartier
         WHERE id = :id');
 
-    $request->bindParam(':name', $this->name);
-    $request->bindParam(':address', $this->address);
-    $request->bindParam(':arrondissement', $this->arrondissement);
-    $request->bindParam(':price', $this->price);
-    $request->bindParam(':description', $this->description);
-    $request->bindParam(':squareMeter', $this->squareMeter);
-    $request->bindParam(':numberBathroom', $this->numberBathroom);
-    $request->bindParam(':housingType', $this->housingType);
-    $request->bindParam(':balcon', $this->balcon);
-    $request->bindParam(':terasse', $this->terasse);
-    $request->bindParam(':capacity', $this->capacity);
-    $request->bindParam(':vueSur', $this->vueSur);
-    $request->bindParam(':quartier', $this->quartier);
-    $request->bindParam(':id', $this->id);
+        $request->bindParam(':name', $this->name);
+        $request->bindParam(':address', $this->address);
+        $request->bindParam(':arrondissement', $this->arrondissement);
+        $request->bindParam(':price', $this->price);
+        $request->bindParam(':description', $this->description);
+        $request->bindParam(':squareMeter', $this->squareMeter);
+        $request->bindParam(':numberBathroom', $this->numberBathroom);
+        $request->bindParam(':housingType', $this->housingType);
+        $request->bindParam(':balcon', $this->balcon);
+        $request->bindParam(':terasse', $this->terasse);
+        $request->bindParam(':capacity', $this->capacity);
+        $request->bindParam(':vueSur', $this->vueSur);
+        $request->bindParam(':quartier', $this->quartier);
+        $request->bindParam(':id', $id);
 
-    $result = $request->execute();
+        $result = $request->execute();
 
-    return $result;
-}
+        return $result;
+    }
+
 
     public function searchApartment()
     {

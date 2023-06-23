@@ -64,7 +64,7 @@ $apartmentObject = $readApartment[0];
                         <div class="userForm">
                             <a href="" class="blueButton">Annuler</a>
                         </div>
-                        <form action="" method="POST"><input type="submit" value="Supprimer" class="goldenButton"></form>
+                        <form action="deleteApartement" method="POST"><input type="submit" value="Supprimer" class="goldenButton"></form>
                     </div>
                 </div>
 

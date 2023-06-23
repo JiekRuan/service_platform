@@ -181,13 +181,15 @@ class ApartmentController
     public function deleteApartement()
     {
         $id = $_GET['id'];
-
+    
         $apartment = new Apartment();
-        $apartment->id = $id;
-        $result = $apartment->deleteApartment();
+        $result = $apartment->deleteApartement($id);
+    
         global $domain;
-        header('Location: http://' . $domain . '/apartment/listApartement'); //a revoir pour les Location.
+        header('Location: http://' . $domain . '/apartment/listApartement');
+        
     }
+    
 
     public function listApartement()
     {

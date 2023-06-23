@@ -29,7 +29,7 @@ function listApartement($i)
                         <div class="userForm">
                             <p class="blueButton cancel">Annuler</p>
                         </div>
-                        <form action="" method="POST"><input type="submit" value="Supprimer" class="goldenButton"></form>
+                        <form action="deleteApartement" method="POST"><input type="submit" value="Supprimer" class="goldenButton"></form>
                     </div>
                 </div>
 

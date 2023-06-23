@@ -143,6 +143,12 @@
         "function": "displayFormModify",
         "controllerClass": "MyApp\\Controllers\\ApartmentController"
     },
+    "Management_10": {
+        "url": "apartment/deleteApartement",
+        "method": "POST",
+        "function": "deleteApartment",
+        "controllerClass": "MyApp\\Controllers\\ApartmentController"
+    },
     "Logistic_1": {
         "url": "intern/checklist",
         "method": "GET",
