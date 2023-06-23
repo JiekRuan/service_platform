@@ -92,7 +92,7 @@
     "Management_2": {
         "url": "apartment/createApartement",
         "method": "POST",
-        "function": "createApartement",
+        "function": "displayFormAdd",
         "controllerClass": "MyApp\\Controllers\\ApartmentController"
     },
     "Management_3": {
