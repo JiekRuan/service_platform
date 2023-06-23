@@ -56,6 +56,17 @@ header .logo,
     transform: scale(1.05);
 }
 
+
+
+.zoom-image{
+    transition: transform 0.3s ease-out;
+    z-index: -999;
+    
+}
+
+.zoom-image:hover{
+    transform: scale(1.05);
+}
 /* .presentation {
     height: 100vh;
     color: var(--white);
@@ -153,6 +164,7 @@ header .logo,
 .imageText {
     text-align: center;
     font-size: 16px;
+    margin-top: 15px;
 }
 
 .homepageInformation {
@@ -296,6 +308,7 @@ header .logo,
   .figure-animation {
     opacity: 0;
     transition: opacity 0.5s ease;
+    overflow: hidden;
   }
   
   .figure-animation.visible {
