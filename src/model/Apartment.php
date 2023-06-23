@@ -298,7 +298,7 @@ class Apartment
             $apartment->quartier = $row['quartier'];
             $apartments[] = $apartment;
         }
-
+    
         return $apartments;
     }
 

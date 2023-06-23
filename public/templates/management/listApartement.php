@@ -4,16 +4,16 @@
 
 
 <?php
-
+global $apartments;
 function listApartement($i)
 {
 ?>
     <div class="user">
         <a href="" class="userInfo">
-            <p>#location_<?= $i ?></p>
-            <p>Nom de l'appartement</p>
-            <p>Arrondissement</p>
-            <p>Capacité</p>
+            <p>ID : <?= $i->getId() ?></p>
+            <p>Nom de l'appartement : <?= $i->getName() ?></p>
+            <p>Arrondissement : <?= $i->getArrondissement() ?></p>
+            <p>Capacité : <?= $i->getCapacity() ?></p>
         </a>
         <div class="userForm">
             <form action="" method="POST"><input type="submit" value="Modifier" class="blueGoldButton"></form>
@@ -59,8 +59,9 @@ function listApartement($i)
 
 
         <?php
-        for ($i = 0; $i < 5; $i++) {
-            listApartement($i);
+
+        foreach ($apartments as $apartment) {
+            listApartement($apartment);
         }
         ?>
 
