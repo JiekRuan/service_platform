@@ -4,6 +4,10 @@ const prevButton = document.getElementById('prevButton');
 const nextButton = document.getElementById('nextButton');
 const monthYearText = document.getElementById('monthYear');
 
+let myDateRanges = [];
+let otherDateRanges = [{ start: new Date(2023, 6, 10), end: new Date(2023, 6, 15) }]; // déplacez cette ligne vers le haut
+
+
 // Créez un objet Date pour la date actuelle
 let currentDate = new Date();
 
@@ -72,18 +76,37 @@ function updateCalendar() {
         dayElement.dataset.day = day;
 
         // Ajoutez un gestionnaire d'événement clic pour sélectionner le jour
-        dayElement.addEventListener('click', function() {
-          handleDayClick(this);
+        dayElement.addEventListener('click', function () {
+            handleDayClick(this);
         });
 
         // Vérifiez si le jour est inclus dans une des plages de dates sélectionnées
-        for (let i = 0; i < selectedDateRanges.length; i++) {
-            const range = selectedDateRanges[i];
+        for (let i = 0; i < myDateRanges.length; i++) {
+            const range = myDateRanges[i];
             if (currentDateInLoop >= range.start && currentDateInLoop <= range.end
                 && range.start.getMonth() === currentDate.getMonth() && range.start.getFullYear() === currentDate.getFullYear()) {
-                dayElement.classList.add('selected');
+                dayElement.classList.add('my-date'); // ajoutez une classe 'my-date' à vos dates
             }
         }
+        for (let i = 0; i < otherDateRanges.length; i++) {
+            const range = otherDateRanges[i];
+            if (isDateInRange(currentDateInLoop, range)) {
+                dayElement.classList.add('other-date');
+            }
+        }
+        
+        function isDateInRange(date, range) {
+            const dateWithoutTime = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+            const rangeStartWithoutTime = new Date(range.start.getFullYear(), range.start.getMonth(), range.start.getDate());
+            const rangeEndWithoutTime = range.end ? new Date(range.end.getFullYear(), range.end.getMonth(), range.end.getDate()) : null;
+        
+            if (rangeEndWithoutTime) {
+                return dateWithoutTime >= rangeStartWithoutTime && dateWithoutTime <= rangeEndWithoutTime;
+            } else {
+                return datesAreEqual(dateWithoutTime, rangeStartWithoutTime);
+            }
+        }
+        
 
         // Ajoutez le jour au calendrier
         calendarGrid.appendChild(dayElement);
@@ -92,7 +115,6 @@ function updateCalendar() {
 
 // Mettez à jour le calendrier avec le mois et l'année actuels
 updateCalendar();
-
 // Gère le clic sur un jour
 function handleDayClick(dayElement) {
     const selectedDay = parseInt(dayElement.dataset.day);
@@ -102,12 +124,25 @@ function handleDayClick(dayElement) {
     if (!startDate || (startDate && endDate)) {
         startDate = selectedDate;
         endDate = null;
+
+        // Vous êtes le seul à pouvoir commencer une nouvelle plage de dates
+        // Vérifiez si la date de début est déjà dans myDateRanges
+        let alreadyExists = myDateRanges.find(range => datesAreEqual(range.start, startDate));
+
+        // Si la date n'existe pas déjà, ajoutez-la à myDateRanges
+        if (!alreadyExists) {
+            myDateRanges.push({ start: new Date(startDate), end: new Date(endDate) });
+        } else {
+            // Sinon, supprimez la date de myDateRanges
+            myDateRanges = myDateRanges.filter(range => !datesAreEqual(range.start, startDate));
+        }
     } else if (selectedDate >= startDate) {
         // Définissez la fin de la plage de dates
         endDate = selectedDate;
 
-        // Ajoutez la nouvelle plage de dates au tableau des plages de dates sélectionnées
-        selectedDateRanges.push({start: new Date(startDate), end: new Date(endDate)});
+        // Seulement vous pouvez terminer une plage de dates, donc mettez à jour la dernière plage de dates que vous avez commencée
+        let rangeToUpdate = myDateRanges.find(range => datesAreEqual(range.start, startDate));
+        if (rangeToUpdate) rangeToUpdate.end = new Date(endDate);
 
         // Réinitialisez les dates de début et de fin
         startDate = null;
@@ -118,14 +153,23 @@ function handleDayClick(dayElement) {
     }
 
     updateCalendar();
-
-    // Affiche les plages de dates sélectionnées
-    for (let i = 0; i < selectedDateRanges.length; i++) {
-        const range = selectedDateRanges[i];
-        const dates = getSelectedDates(range.start, range.end);
-        console.log(`Plage de dates ${i + 1} :`, dates);
-    }
 }
+
+// Fonction pour vérifier si deux dates sont égales
+function datesAreEqual(date1, date2) {
+    return date1.getFullYear() === date2.getFullYear() &&
+        date1.getMonth() === date2.getMonth() &&
+        date1.getDate() === date2.getDate();
+}
+
+
+// Affiche les plages de dates sélectionnées
+for (let i = 0; i < selectedDateRanges.length; i++) {
+    const range = selectedDateRanges[i];
+    const dates = getSelectedDates(range.start, range.end);
+    console.log(`Plage de dates ${i + 1} :`, dates);
+}
+
 
 // Obtient les dates sélectionnées dans une plage de dates
 function getSelectedDates(start, end) {
