@@ -38,7 +38,7 @@ $apartmentObject = $readApartment[0];
     </div>
 
     <section class="container">
-        <h1><?= $apartmentObject->getName() ?></h1>
+        <h1><?= $apartmentObject->gethousingType() ?> <?= $apartmentObject->getName() ?></h1>
 
         <article class="containerContent">
             <div class="descriptionBookmark">

@@ -428,23 +428,27 @@ class Apartment
     }
 
 
-    public function searchApartment()
+    public function searchApartment($search)
     {
         $db = new Database();
         $connection = $db->getConnection();
+    
+        $searchValue = "%" . $search . "%"; // Valeur de recherche avec les wildcards
+    
+        $request = $connection->prepare("SELECT * FROM apartments WHERE name LIKE :searchValue OR address LIKE :searchValue OR capacity = :capacity OR price <= :price OR description LIKE :searchValue");
 
-        $request = $connection->prepare("SELECT * FROM apartments WHERE name LIKE :name OR location LIKE :location OR capacity = :capacity OR price <= :price OR description LIKE :description");
-        $request->bindParam(':name', "%" . $this->name . "%");
-        //$request->bindParam(':location', "%" . $this->location . "%");
+        // $request = $connection->prepare("SELECT * FROM apartments WHERE name LIKE :searchValue OR location LIKE :searchValue OR capacity = :capacity OR price <= :price OR description LIKE :searchValue");
+        $request->bindParam(':searchValue', $searchValue);
         $request->bindParam(':capacity', $this->capacity);
         $request->bindParam(':price', $this->price);
-        $request->bindParam(':description', "%" . $this->description . "%");
-
+    
         if ($request->execute()) {
-            return true;
+            $results = $request->fetchAll(PDO::FETCH_ASSOC);
+            return $results;
         }
-
+        
         return false;
     }
+    
 }
 //revoir la dernier fonction et terminer le controller !

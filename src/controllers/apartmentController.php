@@ -289,10 +289,20 @@ class ApartmentController
 
     public function searchPage()
     {
-        $apartment = new Apartment();
-        global $apartments;
-        $apartments = $apartment->readAllApartments();
-        require_once 'public\templates\public\searchPage.php';
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+            $search = $_GET['search'];
+            $apartment = new Apartment();
+            global $apartments;
+    
+            if (empty($search)) {
+                $apartments = $apartment->readAllApartments();
+            } else {
+                $apartments = $apartment->searchApartment($search);
+            }
+    
+            require_once 'public\templates\public\searchPage.php';
+        }
     }
+    
 }
 //affichier les appart cree une function avec un [].

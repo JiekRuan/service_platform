@@ -3,16 +3,15 @@
 
 <?php
 global $apartments;
-
-function apartementTemplate($i)
+// echo var_dump($apartments);
+function apartementTemplate($apartments)
 {
     global $domain;
 
-?>
-
-
-    <a href="<?= "http://" . $domain . "/logement?id=" . $i->getId() ?>" class="userInfo box">
-        <!-- <div class="box"> -->
+    if (is_object($apartments)) {
+        $i = $apartments;
+        ?>
+        <a href="<?= "http://" . $domain . "/logement?id=" . $i->getId() ?>" class="userInfo box">
             <figure>
                 <img src="../public/images/paris.jpeg" alt="logement2">
             </figure>
@@ -26,14 +25,32 @@ function apartementTemplate($i)
                 </div>
                 <p class="price2">/jour</p>
             </div>
-        <!-- </div> -->
-    </a>
-<?php
-
-
-}
-
-?>
+        </a>
+        <?php
+    } elseif (is_array($apartments)) {
+        // foreach ($apartments as $i) {
+            ?>
+            <a href="<?= "http://" . $domain . "/logement?id=" . $apartments['id'] ?>" class="userInfo box">
+                <figure>
+                    <img src="../public/images/paris.jpeg" alt="logement2">
+                </figure>
+                <div class="information">
+                    <div class="star">
+                        <h3 class="monaco"><?= $apartments['name'] ?></h3><i class="fa-regular fa-bookmark"></i>
+                    </div>
+                    <div class="price">
+                        <p><?= $apartments['housingType'] ?> | <?= $apartments['squareMeter'] ?> m² | <?= $apartments['capacity'] ?> chambres</p>
+                        <p><?= $apartments['price'] ?>€</p>
+                    </div>
+                    <p class="price2">/jour</p>
+                </div>
+            </a>
+            <?php
+        // }
+    } else {
+        echo "Type de données non pris en charge pour \$apartments.";
+    }
+} ?>
 
 <main>
     <div id="searchFilter" class="searchFilter">
@@ -173,9 +190,14 @@ function apartementTemplate($i)
     <div class="listApartement">
         <?php
 
-        foreach ($apartments as $apartment) {
-            apartementTemplate($apartment);
+        if (count($apartments) > 0) {
+            foreach ($apartments as $apartment) {
+                apartementTemplate($apartment);
+            }
+        } else {
+            echo "<p>Pas de logement correspondant à cette cette recherche.</p>";
         }
+
         ?>
     </div>
 

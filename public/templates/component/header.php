@@ -30,7 +30,7 @@ global $domain;
                 <li id="search"><i class="fa-solid fa-magnifying-glass"></i></li>
                 <li id="searchForm">
                     <form action="searchPage" method="GET" class="searchFormInput">
-                        <input class="searchInput" type="text" placeholder="16ème arrondissement...">
+                        <input class="searchInput" name="search" type="text" placeholder="16ème arrondissement...">
                         <button type="submit" class="homepageSearchButton homepageSearchButtonMobile"><i class="fa-solid fa-magnifying-glass"></i></button>
                     </form>
                 </li>

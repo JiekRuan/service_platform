@@ -17,10 +17,6 @@ function listApartement($i)
             <p>Capacité : <?= $i->getCapacity() ?></p>
         </a>
         <div class="userForm">
-            <!-- <form action="#" method="POST">
-                <input type="submit" value="Modifier" class="blueGoldButton">
-            </form> -->
-
             <a href=<?= "http://" . $domain . "/apartment/displayFormModify?id=" . $i->getId() ?> class="userInfo blueGoldButton">Modifier</a>
             <p class="goldenButton readDelete">Supprimer</p>
             <div class="readDeleteMenu">
