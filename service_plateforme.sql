@@ -9,7 +9,7 @@ CREATE TABLE `Users` (
   `status` varchar(15) DEFAULT 'active'
 );
 
-CREATE TABLE `Appartments` (
+CREATE TABLE `apartments` (
   `id` int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
   `address` varchar(255) DEFAULT NULL,
@@ -24,13 +24,13 @@ CREATE TABLE `Appartments` (
   `terasse` varchar(255) DEFAULT NULL
 );
 
-CREATE TABLE `Appartment_photos` (
-  `appartment_id` int(11),
+CREATE TABLE `apartment_photos` (
+  `apartment_id` int(11),
   `photo` varchar(255)
 );
 
 CREATE TABLE `Services` (
-  `appartment_id` int(11),
+  `apartment_id` int(11),
   `service` varchar(255)
 );
 
@@ -50,20 +50,20 @@ CREATE TABLE `Opinion_photos` (
 CREATE TABLE `Maintenance` (
   `reservation_id` int(11),
   `start_time` date,
-  `appartment_id` int(11),
+  `apartment_id` int(11),
   `team_id` int(4),
   `note` varchar(255)
 );
 
 CREATE TABLE `Favorites` (
   `user_id` int(11),
-  `appartment_id` int
+  `apartment_id` int
 );
 
 CREATE TABLE `Reservation` (
   `id` int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `user_id` int(11),
-  `appartment_id` int(11),
+  `apartment_id` int(11),
   `start_time` date,
   `end_time` date,
   `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
@@ -91,15 +91,15 @@ CREATE TABLE `Session` (
 
 ALTER TABLE `Reservation` ADD FOREIGN KEY (`user_id`) REFERENCES `Users` (`id`);
 
-ALTER TABLE `Reservation` ADD FOREIGN KEY (`appartment_id`) REFERENCES `Appartments` (`id`);
+ALTER TABLE `Reservation` ADD FOREIGN KEY (`apartment_id`) REFERENCES `apartments` (`id`);
 
-ALTER TABLE `Appartment_photos` ADD FOREIGN KEY (`appartment_id`) REFERENCES `Appartments` (`id`);
+ALTER TABLE `apartment_photos` ADD FOREIGN KEY (`apartment_id`) REFERENCES `apartments` (`id`);
 
 ALTER TABLE `Maintenance` ADD FOREIGN KEY (`reservation_id`) REFERENCES `Reservation` (`id`);
 
 ALTER TABLE `Opinion` ADD FOREIGN KEY (`reservation_id`) REFERENCES `Reservation` (`id`);
 
-ALTER TABLE `Services` ADD FOREIGN KEY (`appartment_id`) REFERENCES `Appartments` (`id`);
+ALTER TABLE `Services` ADD FOREIGN KEY (`apartment_id`) REFERENCES `apartments` (`id`);
 
 ALTER TABLE `Reservation_support` ADD FOREIGN KEY (`reservation_id`) REFERENCES `Reservation` (`id`);
 
@@ -107,7 +107,7 @@ ALTER TABLE `Reservation_support` ADD FOREIGN KEY (`intern_id`) REFERENCES `User
 
 ALTER TABLE `Reservation_support_messages` ADD FOREIGN KEY (`reservation_support_id`) REFERENCES `Reservation_support` (`id`);
 
-ALTER TABLE `Favorites` ADD FOREIGN KEY (`appartment_id`) REFERENCES `Appartments` (`id`);
+ALTER TABLE `Favorites` ADD FOREIGN KEY (`apartment_id`) REFERENCES `apartments` (`id`);
 
 ALTER TABLE `Favorites` ADD FOREIGN KEY (`user_id`) REFERENCES `Users` (`id`);
 
