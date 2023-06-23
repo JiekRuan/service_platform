@@ -1,5 +1,5 @@
 <?php
-if ($_SESSION["role"] !== "customer" || $_SESSION["role"] !== "logistic" || $_SESSION["role"] !== "management" || $_SESSION["role"] !== "admin") {
+if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     global $domain;
     header('Location: http://' . $domain . '/home');
 }

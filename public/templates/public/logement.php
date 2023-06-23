@@ -20,8 +20,16 @@ $apartmentObject = $readApartment[0];
             <?php
             if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
             ?>
+                <input type="hidden" name="fromDate" id="fromDate" min="<?php echo date('Y-m-d'); ?>">
+                <input type="hidden" name="toDate" id="toDate" min="<?php echo date('Y-m-d'); ?>">
                 <p>Vous devez vous connecter pour pouvoir réserver.</p>
-            <?php } else { ?>
+            <?php } else if ($_SESSION["status"] === "desactive") { ?>
+                <input type="hidden" name="fromDate" id="fromDate" min="<?php echo date('Y-m-d'); ?>">
+                <input type="hidden" name="toDate" id="toDate" min="<?php echo date('Y-m-d'); ?>">
+                <p>Vous compte est désactiver, vous ne pouvez pas réserver.</p>
+            <?php
+
+            } else { ?>
                 <form action="" method="GET" class="formSearch">
                     <div class="date">
                         <div class="dateInput">

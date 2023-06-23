@@ -187,7 +187,7 @@
     },
     "Customer_3": {
         "url": "user/disableAccount",
-        "method": "POST",
+        "method": "GET",
         "function": "disableAccount",
         "controllerClass": "MyApp\\Controllers\\UserController"
     },
@@ -243,6 +243,18 @@
         "url": "user/settingsForm",
         "method": "POST",
         "function": "settingsForm",
+        "controllerClass": "MyApp\\Controllers\\UserController"
+    },
+    "Customer_13": {
+        "url": "user/deleteUser",
+        "method": "POST",
+        "function": "deleteUser",
+        "controllerClass": "MyApp\\Controllers\\UserController"
+    },
+    "Customer_14": {
+        "url": "user/UpdateStatus",
+        "method": "POST",
+        "function": "UpdateStatus",
         "controllerClass": "MyApp\\Controllers\\UserController"
     },
     "Admin": {

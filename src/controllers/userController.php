@@ -1,4 +1,5 @@
 <?php
+
 namespace MyApp\Controllers;
 
 use MyApp\Models\User;
@@ -29,7 +30,8 @@ class UserController
             $data['phone'],
             'customer',
             $data['password'],
-            null
+            null,
+            'active'
         );
 
         if ($user->addUser()) {
@@ -51,7 +53,8 @@ class UserController
             'email' => $_POST['email'],
             'phone' => $_POST['phone'],
             'role' => $_POST['role'],
-            'create_at' => $_POST['create_at']
+            'create_at' => $_POST['create_at'],
+            'status' => $_POST['status']
         ];
 
         $user = new User(
@@ -61,10 +64,11 @@ class UserController
             $data['email'],
             $data['phone'],
             $data['role'],
-            null
+            $data['create_at'],
+            $data['status'],
         );
 
-        if ($user->updateUser()) {
+        if ($user->updateUser($data['id'])) {
             echo "Les informations de l'utilisateur ont été mises à jour.";
         } else {
             echo "Erreur lors de la mise à jour des informations de l'utilisateur.";
@@ -75,16 +79,12 @@ class UserController
     {
         $id = $_POST['id'];
 
-        $user = new User(
-            $id,
-            null,
-            null,
-            null,
-            null
-        );
+        $user = new User($id, null, null, null, null, null, null, null);
 
-        if ($user->deleteUser()) {
+        if ($user->deleteUser($id)) {
             echo "L'utilisateur a été supprimé avec succès.";
+            global $domain;
+            header('Location: http://' . $domain . '/admin');
         } else {
             echo "Erreur lors de la suppression de l'utilisateur.";
         }
@@ -97,7 +97,7 @@ class UserController
                 $email = $_POST['email'];
                 $password = $_POST['password'];
 
-                $user = new User(null, null, $email, null, null, $password, null);
+                $user = new User(null, null, $email, null, null, $password, null, null);
                 $loggedInUser = $user->verifyAccount($email, $password);
 
                 if ($loggedInUser instanceof User) {
@@ -107,8 +107,9 @@ class UserController
                     $_SESSION['phone'] = $loggedInUser->getPhone();
                     $_SESSION['email'] = $loggedInUser->getMail();
                     $_SESSION["role"] = $loggedInUser->getRole();
-                    setcookie("userId",$_SESSION['userId'],time()+3600);
-                    setcookie("userName",$_SESSION['userName'],time()+3600);
+                    $_SESSION["status"] = $loggedInUser->getStatus();
+                    setcookie("userId", $_SESSION['userId'], time() + 3600);
+                    setcookie("userName", $_SESSION['userName'], time() + 3600);
                     global $domain;
                     header('Location: http://' . $domain . '/home');
                 } else {
@@ -138,10 +139,10 @@ class UserController
 
     public function getUserById($id)
     {
-        $user = new User();
+        $user = new User(null, null, null, null, null, null, null, null);
 
         if ($user->getUserById($id)) {
-            $userInfo = $user->getUserInfo();
+            $userInfo = $user->getUserInfo($id);
 
             if ($userInfo) {
                 echo "ID : ", $userInfo['id'], "<br>";
@@ -156,7 +157,7 @@ class UserController
         }
     }
     // redirection vers les vues
-    public function Error404():void
+    public function Error404(): void
     {
         require_once 'public\templates\public\404.php';
     }
@@ -191,14 +192,6 @@ class UserController
         require_once 'public\templates\public\policy.php';
     }
 
-    // public function searchPage()
-    // {
-    //     $apartment = new Apartment();
-    //     global $apartments;
-    //     $apartments = $apartment->readAllApartments();
-    //     require_once 'public\templates\public\searchPage.php';
-    // }
-
     public function signup()
     {
         require_once 'public\templates\public\signup.php';
@@ -213,6 +206,12 @@ class UserController
         require_once 'public\templates\customer\chatroom.php';
     }
 
+    public function disableAccount()
+    {
+        require_once 'public\templates\customer\disableAccount.php';
+    }
+
+
     public function generateToken()
     {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -224,18 +223,20 @@ class UserController
         return $token;
     }
 
-    public function settings(){
+    public function settings()
+    {
         require_once 'public\templates\customer\settings.php';
     }
 
-    public function settingsForm(){
+    public function settingsForm()
+    {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id = $_POST['id'];
             $name = $_POST['name'];
             $email = $_POST['email'];
             $phone = $_POST['phone'];
 
-            $user = new User($id, $name, $email, $phone, null, null, null);
+            $user = new User($id, $name, $email, $phone, null, null, null, null);
 
             // Enregistrer les nouvelles informations
             if ($user->updateUser($id)) {
@@ -248,8 +249,36 @@ class UserController
             } else {
                 header('Location: public\templates\public\404.php');
             }
-
         }
     }
+
+    public function UpdateStatus()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_POST['id'];
+            $status = $_POST['status'];
+
+            $user = new User($id, null, null, null, null, null, null, $status);
+
+            // Enregistrer les nouvelles informations
+            if ($user->status($id)) {
+                $_SESSION['status'] = $user->getStatus();
+                global $domain;
+                header('Location: http://' . $domain . '/admin');
+                exit();
+            } else {
+                header('Location: public\templates\public\404.php');
+            }
+        }
+    }
+
+    public function admin()
+    {
+        $user = new User(null, null, null, null, null, null, null, null);
+
+        global $users;
+        $users = $user->getAllUsers();
+        // echo var_dump($users);
+        require_once 'public\templates\admin\admin.php';
+    }
 }
-?>

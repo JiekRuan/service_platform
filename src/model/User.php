@@ -16,9 +16,10 @@ class User
     private $phone;
     private $role;
     private $createdAt;
+    private $status;
 
 
-    public function __construct($id, $name, $email, $phone, $role, $password, $createdAt)
+    public function __construct($id, $name, $email, $phone, $role, $password, $createdAt, $status)
     {
         $this->id = $id;
         $this->name = $name;
@@ -27,6 +28,7 @@ class User
         $this->role = $role;
         $this->password = $password;
         $this->createdAt = $createdAt;
+        $this->status = $status;  // Correction ici
     }
 
     /**
@@ -125,6 +127,22 @@ class User
         return $this->createdAt;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param mixed $status
+     */
+    public function setStatus($status): void
+    {
+        $this->status = $status;
+    }
+
     // public function addUser()
     // {
     //     $db = new Database();
@@ -205,19 +223,35 @@ class User
         return $result;
     }
 
-    public function deleteUser()
+    public function status($id)
+    {
+        $db = new Database();
+        $connection = $db->getConnection();
+
+        $request = $connection->prepare('UPDATE users SET 
+        status = :status
+        WHERE id = :id');
+
+        $request->bindParam(':status', $this->status);
+        $request->bindParam(':id', $id);
+
+        $result = $request->execute();
+
+        return $result;
+    }
+
+    public function deleteUser($id)
     {
         $db = new Database();
         $connection = $db->getConnection();
 
         $request = $connection->prepare('DELETE FROM users WHERE id = :id');
-        $request->bindParam(':id', $this->id);
+        $request->bindParam(':id', $id);
 
         if ($request->execute()) {
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
 
     public function getUserById($user_id)
@@ -264,7 +298,8 @@ class User
                     $row['phone'],
                     $row['role'],
                     $row['password'],
-                    $row['created_at']
+                    $row['created_at'],
+                    $row['status'],
                 );
 
                 $users[] = $user;
@@ -295,7 +330,8 @@ class User
                 $user['phone'],
                 $user['role'],
                 $user['password'],
-                $user['created_at']
+                $user['created_at'],
+                $user['status']
             );
         } else {
             return null;

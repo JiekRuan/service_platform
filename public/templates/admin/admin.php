@@ -1,12 +1,20 @@
+<?php
+if ($_SESSION["role"] !== "admin") {
+    global $domain;
+    header('Location: http://' . $domain . '/home');
+}
+?>
+
 <?php include 'public/templates/component/header.php' ?>
-<link rel="stylesheet" href="public/css/admin.css">
-<script src="public/js/filter.js"></script>
+<link rel="stylesheet" href="../public/css/admin.css">
+<script src="../public/js/filter.js"></script>
 
 <?php
-$value1 = 15;
-$value2 = 4;
-$value3 = 5;
-$value4 = 6;
+global $users;
+$value1 = count($users);
+$value2 = 0;
+$value3 = 0;
+$value4 = 0;
 
 $filters = [
     ['text' => 'Tous', 'number' => $value1],
@@ -25,52 +33,79 @@ $filters = [
 
 function adminUserTemplate($i)
 {
+    global $domain;
+    if (is_object($i)) {
 ?>
-    <div class="user">
-        <div class="userInfo">
-            <p>#<?= $i ?></p>
-            <p>adresse@email.fr</p>
-            <p>Nom</p>
-            <p>Prénom</p>
-            <p>Statut : Actif</p>
-            <p>Date de création : 02/12/2020</p>
-        </div>
-        <div class="userForm">
-            <form action="" method="POST" class="form">
-                <select>
-                    <option value="option1">Client</option>
-                    <option value="option2">Gestion</option>
-                    <option value="option3">Logistique</option>
-                </select>
-            </form>
-
-            <p class="blueGoldButton readDesactivate">Désactiver</p>
-
-            <div class="readDesactivateMenu">
-                <p>Êtes-vous sûr(e) de vouloir désactiver ce compte ?</p>
-                <div id="readDeleteMenuButton">
-                    <div class="userForm">
-                        <p class="blueButton cancelDesactivate">Annuler</p>
-                    </div>
-                    <form action="" method="POST"><input type="submit" value="Désactiver" class="goldenButton"></form>
-                </div>
+        <div class="user">
+            <div class="userInfo">
+                <p>ID : <?= $i->getId() ?></p>
+                <p><?= $i->getMail() ?></p>
+                <p><?= $i->getName() ?></p>
+                <!-- <p>Prénom</p> -->
+                <p>Statut : <?= $i->getStatus() ?></p>
+                <!-- <p>Date de création : 02/12/2020</p> -->
             </div>
+            <div class="userForm">
+                <form action="" method="POST" class="form">
+                    <select>
+                        <option value="option1">Client</option>
+                        <option value="option2">Gestion</option>
+                        <option value="option3">Logistique</option>
+                    </select>
+                </form>
 
-            <p class="goldenButton readDelete">Supprimer</p>
+                <?php if ($i->getStatus() === "active") : ?>
+                    <p class="blueGoldButton readDesactivate">Désactiver</p>
+                <?php elseif ($i->getStatus() === "desactive") : ?>
+                    <p class="blueGoldButton readDesactivate">Activer</p>
+                <?php endif; ?>
 
-            <div class="readDeleteMenu">
-                <p>Êtes-vous sûr(e) de vouloir supprimer ce compte ?</p>
-                <div id="readDeleteMenuButton">
-                    <div class="userForm">
-                        <p class="blueButton cancelDelete">Annuler</p>
+                <!-- <p class="blueGoldButton readDesactivate">Désactiver</p> -->
+
+                <div class="readDesactivateMenu">
+                    <?php if ($i->getStatus() === "active") : ?>
+                        <p>Êtes-vous sûr(e) de vouloir activer ce compte ?</p>
+                    <?php elseif ($i->getStatus() === "desactive") : ?>
+                        <p>Êtes-vous sûr(e) de vouloir désactiver ce compte ?</p>
+                    <?php endif; ?>
+                    <div id="readDeleteMenuButton">
+                        <div class="userForm">
+                            <p class="blueButton cancelDesactivate">Annuler</p>
+                        </div>
+                        <form action="user/UpdateStatus" method="POST">
+                            <input type="hidden" name="id" value=<?= $i->getId() ?>>
+                            <?php if ($i->getStatus() === "active") : ?>
+                                <input type="hidden" name="status" value="desactive">
+
+                                <input type="submit" value="Désactiver" class="goldenButton">
+                            <?php elseif ($i->getStatus() === "desactive") : ?>
+                                <input type="hidden" name="status" value="active">
+
+                                <input type="submit" value="Activer" class="goldenButton">
+                            <?php endif; ?>
+                        </form>
                     </div>
-                    <form action="" method="POST"><input type="submit" value="Supprimer" class="goldenButton"></form>
                 </div>
-            </div>
 
+                <p class="goldenButton readDelete">Supprimer</p>
+
+                <div class="readDeleteMenu">
+                    <p>Êtes-vous sûr(e) de vouloir supprimer ce compte ?</p>
+                    <div id="readDeleteMenuButton">
+                        <div class="userForm">
+                            <p class="blueButton cancelDelete">Annuler</p>
+                        </div>
+                        <form action="user/deleteUser" method="POST">
+                            <input type="hidden" name="id" value=<?= $i->getId() ?>>
+                            <input type="submit" value="Supprimer" class="goldenButton">
+                        </form>
+                    </div>
+                </div>
+
+            </div>
         </div>
-    </div>
 <?php
+    }
 }
 ?>
 
@@ -103,8 +138,12 @@ function adminUserTemplate($i)
 
 
         <?php
-        for ($i = 0; $i < 5; $i++) {
-            adminUserTemplate($i);
+        if (count($users) > 0) {
+            foreach ($users as $user) {
+                adminUserTemplate($user);
+            }
+        } else {
+            echo "<p>Pas d'utilisateur correspondant à cette cette recherche.</p>";
         }
         ?>
 
@@ -114,7 +153,7 @@ function adminUserTemplate($i)
 
 
 </body>
-<script src="public/js/optionSelect.js"></script>
-<script src="public/js/admin.js"></script>
+<script src="../public/js/optionSelect.js"></script>
+<script src="../public/js/admin.js"></script>
 
 </html>

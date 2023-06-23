@@ -3,6 +3,10 @@ if ($_SESSION["role"] !== "customer") {
     global $domain;
     header('Location: http://' . $domain . '/home');
 }
+if ($_SESSION["status"] === "desactive") {
+    global $domain;
+    header('Location: http://' . $domain . '/user/disableAccount');
+}
 ?>
 
 

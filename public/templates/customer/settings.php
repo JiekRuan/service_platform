@@ -3,6 +3,10 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     global $domain;
     header('Location: http://' . $domain . '/home');
 }
+if ($_SESSION["status"] === "desactive") {
+    global $domain;
+    header('Location: http://' . $domain . '/user/disableAccount');
+}
 ?>
 
 

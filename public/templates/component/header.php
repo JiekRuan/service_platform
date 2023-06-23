@@ -62,7 +62,7 @@ global $domain;
                         <li><a href=<?= "http://" . $domain . "/apartment/moderateTestimony" ?>><i class="fas fa-clipboard-check"></i></a></li>
                         <li><a href=<?= "http://" . $domain . "/apartment/listApartement" ?>><i class="fa-regular fa-building"></i></a></li>
                     <?php } else if ($_SESSION["role"] == "admin") { ?>
-                        <li><i class="fa-solid fa-user-gear"></i></li>
+                        <li><a href=<?= "http://" . $domain . "/admin" ?>><i class="fa-solid fa-user-gear"></i></a></li>
                     <?php } ?>
                     <li><a href=<?= "http://" . $domain . "/user/settings" ?>><i class="fa-regular fa-user"></i></a></li>
                     <li>
@@ -169,7 +169,7 @@ global $domain;
                             </li>
                         </a>
                     <?php } else if ($_SESSION["role"] == "admin") { ?>
-                        <a href=<?= "http://" . $domain . "/#" ?>>
+                        <a href=<?= "http://" . $domain . "/admin" ?>>
                             <li><i class="fa-solid fa-user-gear"></i>
                                 <p>Gérer les utilisateurs
                                 </p>
