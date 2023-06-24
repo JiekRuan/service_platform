@@ -253,6 +253,7 @@ class ApartmentController
     {
         require_once 'public\templates\customer\thanksTestimony.php';
     }
+    
     public function bookmark()
     {
         // if ($_SERVER['REQUEST_METHOD'] === 'GET') {
@@ -268,6 +269,17 @@ class ApartmentController
         // }
             require_once 'public/templates/customer/bookmark.php';
     }
+
+    public function bookmarkAdd()
+    {
+            require_once 'public/templates/customer/bookmark.php';
+    }
+
+    public function bookmarkDelete()
+    {
+            require_once 'public/templates/customer/bookmark.php';
+    }
+
     public function checklist()
     {
         require_once 'public\templates\logistic\checklist.php';

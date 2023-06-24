@@ -281,6 +281,18 @@
         "function": "searchUser",
         "controllerClass": "MyApp\\Controllers\\UserController"
     },
+    "Customer_18": {
+        "url": "user/bookmarkAdd",
+        "method": "POST",
+        "function": "bookmarkAdd",
+        "controllerClass": "MyApp\\Controllers\\ApartmentController"
+    },
+    "Customer_19": {
+        "url": "user/bookmarkDelete",
+        "method": "POST",
+        "function": "bookmarkDelete",
+        "controllerClass": "MyApp\\Controllers\\ApartmentController"
+    },
     "Admin": {
         "url": "admin/admin",
         "method": "POST",
