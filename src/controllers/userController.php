@@ -84,9 +84,11 @@ class UserController
 
                 if ($password === $confirmedPassword) {
                     $userId = $_SESSION["userId"];
-                    $user = new User();
+                    $user = new User(null, null, null, null, null, null, null, null);
                     if ($user->updateUserPassword($userId, $password)) {
-                        echo "Le mot de passe a été mis à jour avec succès.";
+                        // echo "Le mot de passe a été mis à jour avec succès.";
+                        global $domain;
+                        header('Location: http://' . $domain . '/user/settings');
                     } else {
                         echo "Erreur lors de la mise à jour du mot de passe.";
                     }
