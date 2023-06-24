@@ -1,4 +1,5 @@
 <?php
+
 namespace MyApp\Models;
 
 use Database;
@@ -90,24 +91,25 @@ class Reservation
     {
         $db = new Database();
         $connection = $db->getConnection();
-    
+
         $request = $connection->prepare('INSERT INTO reservation (user_id, apartment_id, start_time, end_time) VALUES (:user_id, :apartment_id, :start_time, :end_time)');
         $request->bindParam(':user_id', $this->user_id);
         $request->bindParam(':apartment_id', $this->apartment_id);
         $request->bindParam(':start_time', $this->start_time);
         $request->bindParam(':end_time', $this->end_time);
-    
+
         if ($request->execute()) {
             return true;
         }
-        
+
         return false;
     }
-    
+
 
     //  fonction qui modifie une réservation (changement d'appartement, de début ou de fin) / prend en paramètre le type de donnée modifiée et la donnée en question
     //  attention la classe doit déjà être instanciée pour avoir l'ID de la réservation à modifier
-    public function modifyReservation($data, $data_type){
+    public function modifyReservation($data, $data_type)
+    {
         $db = new Database();
         $connection = $db->getConnection();
 
@@ -116,8 +118,8 @@ class Reservation
         $request->bindParam(':data_type', $data_type);
         $request->bindParam(':data', $data);
 
-        if($request->execute()){
-            switch($data_type){
+        if ($request->execute()) {
+            switch ($data_type) {
                 case 'apartment_id':
                     $this->apartment_id = $data;
                     break;
@@ -127,7 +129,7 @@ class Reservation
                 case 'end_time':
                     $this->end_time = $data;
                     break;
-                default :
+                default:
                     return false;
                     break;
             }
@@ -137,7 +139,8 @@ class Reservation
     }
 
     //  fonction pour supprimer une réservation
-    public function deleteReservation(){
+    public function deleteReservation()
+    {
 
         $db = new Database();
         $connection = $db->getConnection();
@@ -145,7 +148,7 @@ class Reservation
         $request = $connection->prepare('DELETE FROM Reservation WHERE id = :id');
         $request->bindParam(':id', $this->id);
 
-        if($request->execute()){
+        if ($request->execute()) {
             return true;
         }
         return false;
@@ -174,30 +177,33 @@ class Reservation
     // }
 
     //  fonction qui récupère toutes les réservations d'un utilisateur via son ID(celle de l'utilisateur)
-    public  function getUserReservations($user_id){
+    public  function getUserReservations($user_id)
+    {
         $db = new Database();
         $connection = $db->getConnection();
-
-        $request = $connection->prepare('SELECT * FROM Reservation WHERE user_id = :user_id');
+        
+        // $request = $connection->prepare('SELECT * FROM reservation WHERE user_id = :user_id');
+        // $request = $connection->prepare('SELECT * FROM reservation INNER JOIN apartments ON apartment_id = apartments.id WHERE user_id = :user_id');
+        $request = $connection->prepare('SELECT R.id, R.apartment_id, R.start_time, R.end_time, A.name ,A.address, A.arrondissement FROM reservation AS R INNER JOIN apartments AS A ON R.apartment_id = A.id WHERE user_id = :user_id');
         $request->bindParam(':user_id', $user_id);
-
+        
+        $request->execute();
         $results = $request->fetchAll(PDO::FETCH_ASSOC);
-        if($request->execute()){
-            return $results;
-        }
-        return null;
+        return $results;
+
     }
 
     //  fonction qui récupère toutes les réservations d'un appartement via son ID
-    public function getApartmentReservations($apartment_id){
+    public function getApartmentReservations($apartment_id)
+    {
         $db = new Database();
         $connection = $db->getConnection();
 
-        $request = $connection->prepare('SELECT * FROM Reservation WHERE apartment_id = :apartment_id');
+        $request = $connection->prepare('SELECT * FROM reservation WHERE apartment_id = :apartment_id');
         $request->bindParam(':apartment_id', $apartment_id);
 
         $results = $request->fetchAll(PDO::FETCH_ASSOC);
-        if($request->execute()){
+        if ($request->execute()) {
             return $results;
         }
         return null;

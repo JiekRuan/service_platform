@@ -103,7 +103,7 @@ $toDate = $_POST['toDate'];
                 <h3>Prix</h3>
                 <hr>
                 <h4 id="price">
-                    560€/jour
+                <?= $apartmentObject->getPrice() ?>€/jour
                 </h4>
             </div>
 

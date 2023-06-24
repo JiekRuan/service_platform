@@ -64,10 +64,10 @@ class ReservationController {
     function reservationList(){
         $user_id = $_SESSION['userId'];
 
-        $reservation = new Reservation;
+        $reservation = new Reservation();
+        global $reservations;
         $reservations = $reservation->getUserReservations($user_id);
 
-        //  require de la page reservationList
         require_once 'public\templates\customer\reservationList.php';
     }
 

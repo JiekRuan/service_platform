@@ -8,13 +8,13 @@ function toggleSuperContainer(index) {
     chevronDowns[index].classList.remove('fa-chevron-up');
     chevronDowns[index].classList.add('fa-chevron-down');
     superContainers2[index].style.display = "none";
-    console.log("cacher");
+    // console.log("cacher");
     isSuperContainer2Hidden = false;
   } else {
     chevronDowns[index].classList.remove('fa-chevron-down');
     chevronDowns[index].classList.add('fa-chevron-up');
     superContainers2[index].style.display = "flex";
-    console.log("pas cacher");
+    // console.log("pas cacher");
     isSuperContainer2Hidden = true;
   }
 }

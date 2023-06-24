@@ -7,28 +7,31 @@ if ($_SESSION["status"] === "desactive") {
     global $domain;
     header('Location: http://' . $domain . '/user/disableAccount');
 }
+
+global $reservations;
+
 ?>
 
 <?php include 'public/templates/component/header.php' ?>
 <link rel="stylesheet" href="../public/css/global.css">
 <link rel="stylesheet" href="../public/css/reservationList.css">
 
-<?php function reservationList()
+<?php function reservationList($i)
 {
 ?>
     <div class="superContainer">
         <div class="Container">
             <div>
-                <h3>Nom de logement</h3>
-                <p>dans le 4è arrondissement</p>
+                <h3><?= $i['name'] ?></h3>
+                <p><?= $i['arrondissement'] ?>ème arrondissement</p>
             </div>
             <div class="reservationDateDesktop">
                 <h4>Arrivée</h4>
-                <p>XX/XX/XXXX</p>
+                <p><?= date_format(new DateTime($i['start_time']), 'd/m/Y') ?></p>
             </div>
             <div class="reservationDateDesktop">
                 <h4>Départ</h4>
-                <p>XX/XX/XXXX</p>
+                <p><?= date_format(new DateTime($i['end_time']), 'd/m/Y') ?></p>
             </div>
             <div>
                 <i class="fa-solid fa-chevron-down fa-2xl arrow"></i>
@@ -75,8 +78,10 @@ if ($_SESSION["status"] === "desactive") {
     </p>
 </div>
 
-<?php for ($i = 0; $i < 5; $i++) {
-    reservationList();
+<?php
+foreach ($reservations as $reservation) {
+
+    reservationList($reservation);
 } ?>
 
 <script src="../public/js/reservationList.js"></script>

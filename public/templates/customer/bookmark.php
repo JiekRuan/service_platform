@@ -22,7 +22,7 @@ function adminUserTemplate($i)
 <div class="user">
 <div class="bookmarkName">
     <div>
-        <h2>#nomdulogement_<?= $i ?> blabla</h2>
+        <h2>#nomdulogement_<?= $i ?></h2>
         <p>XVII arrondissement</p>
     </div>
     <i class="fa-regular fa-bookmark"></i>
