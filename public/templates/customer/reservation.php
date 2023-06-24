@@ -7,14 +7,18 @@ if ($_SESSION["status"] === "desactive") {
     global $domain;
     header('Location: http://' . $domain . '/user/disableAccount');
 }
+
+global $reservationInfo;
+$info = $reservationInfo[0];
+
 ?>
 
 
 <?php include 'public/templates/component/header.php' ?>
-<link rel="stylesheet" href="public/css/searchPage.css">
-<link rel="stylesheet" href="public/css/logement.css">
-<link rel="stylesheet" href="public/css/reservation.css">
-<link rel="stylesheet" href="public/css/picture.css">
+<link rel="stylesheet" href="../public/css/searchPage.css">
+<link rel="stylesheet" href="../public/css/logement.css">
+<link rel="stylesheet" href="../public/css/reservation.css">
+<link rel="stylesheet" href="../public/css/picture.css">
 
 
 <main>
@@ -26,21 +30,28 @@ if ($_SESSION["status"] === "desactive") {
 
     <div class="banner">
         <h1>Votre réservation</h1>
-        <p>Bonjour [nom d'utilisateur], nous avons le plaisir de vous accueillir chez nous. Voici le détail concernant votre réservation au sein de notre établissement.</p>
+        <p>Bonjour <?= $_SESSION['userName'] ?>, nous avons le plaisir de vous accueillir chez nous. Voici le détail concernant votre réservation au sein de notre établissement.</p>
     </div>
 
     <section class="container">
-        <h1>Appartement exceptionnel 4 pièces au Trocadéro</h1>
+        <h1><?= $info['housingType'] ?> <?= $info['name'] ?></h1>
 
         <article class="containerContent">
             <div class="descriptionBookmark">
                 <h2>Description</h2>
                 <i class="fa-regular fa-bookmark"></i>
             </div>
-            <p class="info">300m2 | 5 chambres | 4 salles de bain</p>
+            <p class="info"><?= $info['squareMeter'] ?>m² | <?= $info['capacity'] ?> chambres | <?php
+                                                                                                $numberBathroom = $info['numberBathroom'];
+                                                                                                if ($numberBathroom == 1) {
+                                                                                                    echo $numberBathroom . " salle";
+                                                                                                } else {
+                                                                                                    echo $numberBathroom . " salles";
+                                                                                                }
+                                                                                                ?> de bain</p>
 
             <figure class="containerImage">
-                <img src="public/images/troca.png" alt="appartement 4 pièces" class="clickable-image">
+                <img src="../public/images/troca.png" alt="appartement 4 pièces" class="clickable-image">
             </figure>
 
             <section class="galleryContainer">
@@ -48,22 +59,20 @@ if ($_SESSION["status"] === "desactive") {
 
                     <div class="galerie">
                         <figure>
-                            <img src="public/images/sdb.png" alt="salle de bain" class="clickable-image">
+                            <img src="../public/images/sdb.png" alt="salle de bain" class="clickable-image">
                         </figure>
                         <figure>
-                            <img src="public/images/salon.png" alt="salon" class="clickable-image">
+                            <img src="../public/images/salon.png" alt="salon" class="clickable-image">
                         </figure>
                         <figure>
-                            <img src="public/images/cuisine.png" alt="cuisine" class="clickable-image">
+                            <img src="../public/images/cuisine.png" alt="cuisine" class="clickable-image">
                         </figure>
                     </div>
                 </article>
             </section>
 
             <div class="text-describe">
-                <p>Cette superbe proriété de quatre chambres est l’expression ultime de l’architecture contemporaine, offrant à ses résidents un décor inpeccable dans une palette de couleurs élégantes pour créer une atmosphère luxieuse et rayonante.</p>
-                <p>La propriété comprend une cuisine ultra moderne et trois grands espaces de vie avec des baies vitrées, permettant à la lumière naturelle d’inondée l’espace. </p>
-                <p>Les équipements du batiment sont conçus pour une expérience clé en main, offrant au résident un parking privé, une cave, une conciergerie, une sécurité 24h/24 et une piscine olympique. De plus, la terrasse vous offrira un cadre sublime pour vous imprénier du paysage et d’un soleil radieux.</p>
+                <?= $info['description'] ?>
             </div>
         </article>
     </section>
@@ -73,26 +82,40 @@ if ($_SESSION["status"] === "desactive") {
             <div class="caracteristic">
                 <h2>Caractéristiques</h2>
                 <hr>
-                <p>100m2</p>
+                <p><?= $info['squareMeter'] ?> m²</p>
                 <hr>
-                <p>1 jacuzzi</p>
+                <p><?php $info['numberBathroom'];
+                    if ($numberBathroom == 1) {
+                        echo $numberBathroom . " salle";
+                    } else {
+                        echo $numberBathroom . " salles";
+                    } ?> de bain</p>
                 <hr>
-                <p>5 chambres</p>
-                <hr>
-            </div>
-            <div class="caracteristic">
-                <h2>Agréments</h2>
-                <hr>
-                <p>Vue sur la mer</p>
-                <hr>
-                <p>terrasse</p>
+                <p><?= $info['capacity'] ?> chambres</p>
                 <hr>
             </div>
             <div class="caracteristic">
+            <h2>Agréments</h2>
+                <hr>
+                <p>Vue sur <?= $info['vueSur'] ?></p>
+                <hr>
+                <?php if ($info['terasse'] === 'on') : ?>
+                    <p>Possède une terrasse</p>
+                    <hr>
+                <?php endif; ?>
+                <?php if ($info['balcon'] === 'on') : ?>
+                    <p>Possède un balcon</p>
+                    <hr>
+                <?php endif; ?>
+
+                <p>Dans le quartier <?= $info['quartier'] ?></p>
+                <hr>
+            </div>
+            <!-- <div class="caracteristic">
                 <h2>Particularités</h2>
                 <hr>
                 <p class="carac-text">Situé au 28e étage d'une résidence exclusive les appartements du chateau du Périgord ont été magnifiquement conçu dans un esprit de luxe et de douceur de vivre. En tant que summum du paysage architectural monégasque, les résidents bénéficient d’une vue panorama sur Monaco et son paysage azur méditeranéen qui s’étend à perte de vue.</p>
-            </div>
+            </div> -->
         </article>
     </section>
 
@@ -135,7 +158,7 @@ if ($_SESSION["status"] === "desactive") {
                     </article>
                 </div>
                 <figure class="logementInfoImage">
-                    <img src="public/images/agence.png" alt="">
+                    <img src="../public/images/agence.png" alt="">
                 </figure>
             </div>
         </article>
@@ -155,7 +178,7 @@ if ($_SESSION["status"] === "desactive") {
 
 </main>
 
-<script src="public/js/reservation.js"></script>
-<script src="public/js/picture.js"></script>
+<script src="../public/js/reservation.js"></script>
+<script src="../public/js/picture.js"></script>
 
 <?php include 'public/templates/component/footer.php' ?>

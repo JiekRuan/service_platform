@@ -108,7 +108,7 @@ $_SESSION['apartmentObject'] = $serializedObject;
                         echo $numberBathroom . " salle";
                     } else {
                         echo $numberBathroom . " salles";
-                    } ?></p>
+                    } ?> de bain</p>
                 <hr>
                 <p><?= $apartmentObject->getCapacity() ?> chambres</p>
                 <hr>

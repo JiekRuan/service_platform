@@ -9,7 +9,6 @@ if ($_SESSION["status"] === "desactive") {
 }
 
 global $reservations;
-
 ?>
 
 <?php include 'public/templates/component/header.php' ?>
@@ -21,10 +20,11 @@ global $reservations;
 ?>
     <div class="superContainer">
         <div class="Container">
-            <div>
+            <form action="reservation" method="POST" id="<?= $i['id'] ?>" onclick="submitReservationForm('<?= $i['id'] ?>')">
+            <input type="hidden" name="reservation_id" value=<?= $i['id'] ?>>
                 <h3><?= $i['name'] ?></h3>
                 <p><?= $i['arrondissement'] ?>ème arrondissement</p>
-            </div>
+            </form>
             <div class="reservationDateDesktop">
                 <h4>Arrivée</h4>
                 <p><?= date_format(new DateTime($i['start_time']), 'd/m/Y') ?></p>
@@ -42,22 +42,22 @@ global $reservations;
             <div class="reservationDateMobile">
                 <div class="reservationDate">
                     <h4>Arrivée</h4>
-                    <p>XX/XX/XXXX</p>
+                    <p><?= date_format(new DateTime($i['start_time']), 'd/m/Y') ?></p>
                 </div>
                 <div class="reservationDate">
                     <h4>Départ</h4>
-                    <p>XX/XX/XXXX</p>
+                    <p><?= date_format(new DateTime($i['end_time']), 'd/m/Y') ?></p>
                 </div>
             </div>
 
             <p class="goldenButton cancelReservation">Annuler la réservation</p>
             <div class="cancelReservationConfirm">
-                <p>Êtes-vous sûr(e) de vouloir désactiver ce compte ?</p>
+                <p>Êtes-vous sûr(e) de vouloir annuler la réservation ?</p>
                 <div class="readDeleteMenuButton">
                     <div class="userForm">
                         <p class="blueButton cancelDesactivate">Annuler</p>
                     </div>
-                    <form action="" method="POST"><input type="submit" value="Désactiver" class="goldenButton"></form>
+                    <form action="" method="POST"><input type="submit" value="Confirmer" class="goldenButton"></form>
                 </div>
             </div>
             <figure>
@@ -85,5 +85,14 @@ foreach ($reservations as $reservation) {
 } ?>
 
 <script src="../public/js/reservationList.js"></script>
-
+<script>
+    function submitReservationForm(formId) {
+        document.getElementById(formId).submit();
+    }
+</script>
+<style>
+    form{
+        cursor: pointer;
+    }
+</style>
 <?php include "public/templates/component/footer.php" ?>

@@ -6,12 +6,15 @@ use MyApp\Models\Reservation as Reservation;
 
 require_once 'src/model/Reservation.php';
 
-class ReservationController {
-    function reservationCancel(){
+class ReservationController
+{
+    function reservationCancel()
+    {
         require_once 'public\templates\customer\reservationCancel.php';
     }
 
-    function reservationThanks(){
+    function reservationThanks()
+    {
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // recup les données du form create
@@ -37,31 +40,35 @@ class ReservationController {
                 header('Location: public\templates\public\404.php');
             }
         }
-
     }
 
-    function confirmReservation(){
+    function confirmReservation()
+    {
 
         require_once 'public\templates\customer\ConfirmReservation.php';
     }
 
-    function reservation(){
+    function reservation()
+    {
         $reservation_id = $_POST['reservation_id'];
 
         $reservation = new Reservation();
-        // $reservation->getReservationById($reservation_id);
+        global $reservationInfo;
+        $reservationInfo = $reservation->getReservationApart($reservation_id);
 
         //  require de la page reservation detail
         require_once 'public\templates\customer\reservation.php';
     }
 
-    function createTestimony(){
+    function createTestimony()
+    {
         $reservation_id = $_POST['reservation_id'];
 
         require_once 'public\templates\customer\createTestimony.php';
     }
 
-    function reservationList(){
+    function reservationList()
+    {
         $user_id = $_SESSION['userId'];
 
         $reservation = new Reservation();
@@ -71,7 +78,8 @@ class ReservationController {
         require_once 'public\templates\customer\reservationList.php';
     }
 
-    function reservationDetails(){
+    function reservationDetails()
+    {
         $reservation_id = $_GET['reservation_id'];
 
         $reservation = new Reservation();
@@ -81,7 +89,8 @@ class ReservationController {
         require_once 'public\templates\management\reservationDetails.php';
     }
 
-    function delReservation(){
+    function delReservation()
+    {
 
         //  on instancie la réservation
         $reservation = new Reservation();
@@ -97,13 +106,14 @@ class ReservationController {
 
         //  on redirige l'utilisateur vers la page d'affichage des réservation
         global $domain;
-        header('Location : http://' . $domain .'/ReservationList');
+        header('Location : http://' . $domain . '/ReservationList');
     }
 
-    public function chat(){
+    public function chat()
+    {
 
 
-        
+
         require_once 'public\templates\management\chat.php';
     }
 }

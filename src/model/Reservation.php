@@ -181,16 +181,31 @@ class Reservation
     {
         $db = new Database();
         $connection = $db->getConnection();
-        
+
         // $request = $connection->prepare('SELECT * FROM reservation WHERE user_id = :user_id');
         // $request = $connection->prepare('SELECT * FROM reservation INNER JOIN apartments ON apartment_id = apartments.id WHERE user_id = :user_id');
-        $request = $connection->prepare('SELECT R.id, R.apartment_id, R.start_time, R.end_time, A.name ,A.address, A.arrondissement FROM reservation AS R INNER JOIN apartments AS A ON R.apartment_id = A.id WHERE user_id = :user_id');
+        $request = $connection->prepare('SELECT R.id, R.apartment_id, R.start_time, R.end_time, A.name, A.address, A.arrondissement FROM reservation AS R INNER JOIN apartments AS A ON R.apartment_id = A.id WHERE user_id = :user_id');
         $request->bindParam(':user_id', $user_id);
-        
+
         $request->execute();
         $results = $request->fetchAll(PDO::FETCH_ASSOC);
         return $results;
+    }
 
+    public  function getReservationApart($reservation_id)
+    {
+        $db = new Database();
+        $connection = $db->getConnection();
+
+        $request = $connection->prepare('SELECT A.*
+        FROM reservation AS R 
+        INNER JOIN apartments AS A ON R.apartment_id = A.id 
+        WHERE R.id = :reservation_id');
+        $request->bindParam(':reservation_id', $reservation_id);
+
+        $request->execute();
+        $results = $request->fetchAll(PDO::FETCH_ASSOC);
+        return $results;
     }
 
     //  fonction qui récupère toutes les réservations d'un appartement via son ID
