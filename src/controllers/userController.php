@@ -36,7 +36,6 @@ class UserController
 
         if ($user->addUser()) {
             $_SESSION["loggedin"] = true;
-            $_SESSION["role"] = $user->getRole();
             $_SESSION['userId'] = $user->getId();
             $_SESSION['userName'] = $user->getName();
             $_SESSION['phone'] = $user->getPhone();
@@ -287,7 +286,7 @@ class UserController
         }
     }
 
-    public function UpdateStatus()
+    public function updateStatus()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id = $_POST['id'];
@@ -298,6 +297,24 @@ class UserController
             // Enregistrer les nouvelles informations
             if ($user->status($id)) {
                 $_SESSION['status'] = $user->getStatus();
+                global $domain;
+                header('Location: http://' . $domain . '/admin');
+                exit();
+            } else {
+                header('Location: public\templates\public\404.php');
+            }
+        }
+    }
+
+    public function updateRole()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_POST['id'];
+            $role = $_POST['role'];
+            $user = new User($id, null, null, null, $role, null, null, null);
+
+            // Enregistrer les nouvelles informations
+            if ($user->role($id)) {
                 global $domain;
                 header('Location: http://' . $domain . '/admin');
                 exit();

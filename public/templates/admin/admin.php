@@ -22,6 +22,7 @@ $filters = [
     ['text' => 'Gestion', 'number' => $value3],
     ['text' => 'Logistique', 'number' => $value4]
 ];
+
 ?>
 
 <script>
@@ -34,24 +35,66 @@ $filters = [
 function adminUserTemplate($i)
 {
     global $domain;
+
+    $role = $i->getRole();
+    if ($role === 'customer') {
+        $roleText = 'Client';
+    } elseif ($role === 'logistic') {
+        $roleText = 'Logistique';
+    } elseif ($role === 'admin') {
+        $roleText = 'Admin';
+    } elseif ($role === 'management') {
+        $roleText = 'Gestion';
+    } else {
+        $roleText = $role;
+    }
+
+    $status = $i->getStatus();
+    if ($status === 'active') {
+        $statusText = 'Actif';
+    } else if ($status === 'desactivate') {
+        $statusText = 'Désactivé';
+    }
     if (is_object($i)) {
+
 ?>
         <div class="user">
             <div class="userInfo">
                 <p>ID : <?= $i->getId() ?></p>
-                <p><?= $i->getMail() ?></p>
                 <p><?= $i->getName() ?></p>
+                <p><?= $i->getMail() ?></p>
                 <!-- <p>Prénom</p> -->
-                <p>Statut : <?= $i->getStatus() ?></p>
+                <div class="statusRole">
+                    <p>Statut : <?= $statusText ?></p>
+                    <p>Rôle : <?= $roleText ?></p>
+                </div>
                 <!-- <p>Date de création : 02/12/2020</p> -->
             </div>
             <div class="userForm">
-                <form action="" method="POST" class="form">
-                    <select>
-                        <option value="option1">Client</option>
-                        <option value="option2">Gestion</option>
-                        <option value="option3">Logistique</option>
-                    </select>
+                <form action="user/updateRole" method="POST" class="form myForm">
+                    <input type="hidden" name="id" value=<?= $i->getId() ?>>
+
+                    <?php if ($role !== 'admin') : ?>
+                        <select name="role" class="mySelect">
+                            <?php if ($role === 'customer') : ?>
+                                <option value="customer" selected>Client</option>
+                            <?php else : ?>
+                                <option value="customer">Client</option>
+                            <?php endif; ?>
+
+                            <?php if ($role === 'management') : ?>
+                                <option value="management" selected>Gestion</option>
+                            <?php else : ?>
+                                <option value="management">Gestion</option>
+                            <?php endif; ?>
+
+                            <?php if ($role === 'logistic') : ?>
+                                <option value="logistic" selected>Logistique</option>
+                            <?php else : ?>
+                                <option value="logistic">Logistique</option>
+                            <?php endif; ?>
+                        </select>
+                    <?php endif; ?>
                 </form>
 
                 <?php if ($i->getStatus() === "active") : ?>
@@ -72,7 +115,7 @@ function adminUserTemplate($i)
                         <div class="userForm">
                             <p class="blueButton cancelDesactivate">Annuler</p>
                         </div>
-                        <form action="user/UpdateStatus" method="POST">
+                        <form action="user/updateStatus" method="POST">
                             <input type="hidden" name="id" value=<?= $i->getId() ?>>
                             <?php if ($i->getStatus() === "active") : ?>
                                 <input type="hidden" name="status" value="desactive">
@@ -126,7 +169,7 @@ function adminUserTemplate($i)
                 <input type="text" placeholder="Rechercher...">
             </form>
             <form action="" method="GET">
-                <select>
+                <select class="select">
                     <option value="option1">ID</option>
                     <option value="option2">Adresse e-mail</option>
                     <option value="option3">Nom</option>
@@ -154,6 +197,7 @@ function adminUserTemplate($i)
 
 </body>
 <script src="../public/js/optionSelect.js"></script>
+<script src="../public/js/submit.js"></script>
 <script src="../public/js/admin.js"></script>
 
 </html>

@@ -37,6 +37,17 @@
     gap: 20px;
 }
 
+.statusRole{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+.selected{
+    background-color: var(--greyLight);
+}
+
 @media (max-width: 1024px) {
 
     .userInfo {
@@ -46,5 +57,9 @@
 
     .userForm {
         flex-direction: column;
+    }
+
+    .statusRole{
+        width: 100%;
     }
 }

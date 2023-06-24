@@ -240,6 +240,23 @@ class User
         return $result;
     }
 
+    public function role($id)
+    {
+        $db = new Database();
+        $connection = $db->getConnection();
+
+        $request = $connection->prepare('UPDATE users SET 
+        role = :role
+        WHERE id = :id');
+
+        $request->bindParam(':role', $this->role);
+        $request->bindParam(':id', $id);
+
+        $result = $request->execute();
+
+        return $result;
+    }
+
     public function deleteUser($id)
     {
         $db = new Database();
