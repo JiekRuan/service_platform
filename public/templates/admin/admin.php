@@ -14,20 +14,18 @@ if ($_SESSION["role"] !== "admin") {
 function countUsersByRole($users, $role)
 {
     $count = 0;
-    if (is_object($users)) {
-        foreach ($users as $user) {
+    foreach ($users as $user) {
+        if (is_array($user)) {
+            if ($user['role'] === $role) {
+                $count++;
+            }
+        } else if (is_object($user)) {
             if ($user->getRole() === $role) {
                 $count++;
             }
         }
-    } else if (is_array($users)) {
-
-        foreach ($users as $user) {
-            if ($user['role'] === $role) {
-                $count++;
-            }
-        }
     }
+
     return $count;
 }
 
