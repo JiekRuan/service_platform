@@ -83,9 +83,17 @@ global $reservations;
 </div>
 
 <?php
-foreach ($reservations as $reservation) {
+if (count($reservations) > 0) {
+    foreach ($reservations as $reservation) {
 
-    reservationList($reservation);
+        reservationList($reservation);
+    }
+} else { ?>
+    <div class="superContainer">
+        <p>Vous n'avez pas fait de réservation pour le moment.</p>
+    </div>
+<?php
+
 } ?>
 
 <script src="../public/js/reservationList.js"></script>

@@ -57,7 +57,7 @@ global $domain;
                         <li><a href=<?= "http://" . $domain . "/intern/checklist" ?>><i class="fa-solid fa-list-check"></i></a></li>
                         <li><a href=<?= "http://" . $domain . "/intern/todo" ?>><i class="fa-solid fa-list-ul"></i></a></li>
                     <?php } else if ($_SESSION["role"] == "management") { ?>
-                        <li><a href=<?= "http://" . $domain . "/#" ?>><i class="fa-regular fa-calendar"></i></a></li>
+                        <li><a href=<?= "http://" . $domain . "/reservation/reservationDetails" ?>><i class="fa-regular fa-calendar"></i></a></li>
                         <li><a href=<?= "http://" . $domain . "/intern/chat" ?>><i class="fa-regular fa-message"></i></a></li>
                         <li><a href=<?= "http://" . $domain . "/apartment/moderateTestimony" ?>><i class="fas fa-clipboard-check"></i></a></li>
                         <li><a href=<?= "http://" . $domain . "/apartment/listApartement" ?>><i class="fa-regular fa-building"></i></a></li>
@@ -144,7 +144,7 @@ global $domain;
                             </li>
                         </a>
                     <?php } else if ($_SESSION["role"] == "management") { ?>
-                        <a href=<?= "http://" . $domain . "/#" ?>>
+                        <a href=<?= "http://" . $domain . "/reservation/reservationDetails" ?>>
                             <li><i class="fa-regular fa-calendar"></i>
                                 <p>Calendrier
                                 </p>

@@ -120,7 +120,7 @@
         "controllerClass": "MyApp\\Controllers\\ApartmentController"
     },
     "Management_6": {
-        "url": "apartment/reservationDetails",
+        "url": "reservation/reservationDetails",
         "method": "GET",
         "function": "reservationDetails",
         "controllerClass": "MyApp\\Controllers\\ReservationController"
@@ -154,6 +154,12 @@
         "method": "GET",
         "function": "searchPageListApartment",
         "controllerClass": "MyApp\\Controllers\\ApartmentController"
+    },
+    "Management_12": {
+        "url": "reservation/delReservation",
+        "method": "POST",
+        "function": "delReservation",
+        "controllerClass": "MyApp\\Controllers\\ReservationController"
     },
     "Logistic_1": {
         "url": "intern/checklist",

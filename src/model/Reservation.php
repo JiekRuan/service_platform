@@ -208,6 +208,21 @@ class Reservation
         return $results;
     }
 
+    // pour afficher toutes les réservations
+    public  function getAllReservations()
+    {
+        $db = new Database();
+        $connection = $db->getConnection();
+
+        $request = $connection->prepare('SELECT R.id, R.user_id , users.name AS customer ,R.start_time, R.end_time, R.apartment_id, A.name
+        FROM reservation AS R 
+        INNER JOIN apartments AS A ON R.apartment_id = A.id INNER JOIN users on R.user_id = users.id ORDER BY R.id ASC');
+
+        $request->execute();
+        $results = $request->fetchAll(PDO::FETCH_ASSOC);
+        return $results;
+    }
+
     //  fonction qui récupère toutes les réservations d'un appartement via son ID
     public function getApartmentReservations($apartment_id)
     {

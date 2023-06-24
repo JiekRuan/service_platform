@@ -8,17 +8,25 @@ require_once 'src/model/Reservation.php';
 
 class ReservationController
 {
+    // coté client
     function reservationCancel()
     {
-
         $id = $_POST['id'];
-
         $reservation = new Reservation();
         $result = $reservation->deleteReservation($id);
-
-        // global $domain;
-        // header('Location: http://' . $domain . '/apartment/listApartement');
         require_once 'public\templates\customer\reservationCancel.php';
+    }
+
+    // coté gestion
+    function delReservation()
+    {
+        $reservation_id = $_POST['id'];
+        $reservation = new Reservation();
+        $result = $reservation->deleteReservation($reservation_id);
+
+        global $reservations;
+        $reservations = $reservation->getAllReservations();
+        require_once 'public\templates\management\reservationDetails.php';
     }
 
     function reservationThanks()
@@ -40,9 +48,6 @@ class ReservationController
 
             //Enregistrer les infos
             if ($reservation->addReservation()) {
-                // header('Location: public\templates\management\listApartment.php');
-                // global $domain;
-                // header('Location: http://' . $domain . '/apartment/listApartement'); //a revoir pour les Location.
                 require_once 'public\templates\customer\reservationThanks.php';
             } else {
                 header('Location: public\templates\public\404.php');
@@ -52,26 +57,21 @@ class ReservationController
 
     function confirmReservation()
     {
-
         require_once 'public\templates\customer\ConfirmReservation.php';
     }
 
     function reservation()
     {
         $reservation_id = $_POST['reservation_id'];
-
         $reservation = new Reservation();
         global $reservationInfo;
         $reservationInfo = $reservation->getReservationApart($reservation_id);
-
-        //  require de la page reservation detail
         require_once 'public\templates\customer\reservation.php';
     }
 
     function createTestimony()
     {
         $reservation_id = $_POST['reservation_id'];
-
         require_once 'public\templates\customer\createTestimony.php';
     }
 
@@ -88,40 +88,14 @@ class ReservationController
 
     function reservationDetails()
     {
-        $reservation_id = $_GET['reservation_id'];
-
         $reservation = new Reservation();
-        // $reservation->getReservationById($reservation_id);
-
-        //  require de la page reservation detail
+        global $reservations;
+        $reservations = $reservation->getAllReservations();
         require_once 'public\templates\management\reservationDetails.php';
-    }
-
-    function delReservation()
-    {
-
-        //  on instancie la réservation
-        $reservation = new Reservation();
-
-        //  on récupère l'id de la réservation en POST
-        $reservation_id = $_POST['reservation_id'];
-
-        //  on récupère les infos de la réservation à supprimer
-        // $reservation->getReservationById($reservation_id);
-
-        //  on supprime la réservation
-        $reservation->deleteReservation();
-
-        //  on redirige l'utilisateur vers la page d'affichage des réservation
-        global $domain;
-        header('Location : http://' . $domain . '/ReservationList');
     }
 
     public function chat()
     {
-
-
-
         require_once 'public\templates\management\chat.php';
     }
 }
