@@ -11,13 +11,15 @@ if ($_SESSION["role"] !== "admin") {
 
 <?php
 global $users;
+$total = count($users);
 $value1 = count($users);
 $value2 = 0;
 $value3 = 0;
 $value4 = 0;
 
 $filters = [
-    ['text' => 'Tous', 'number' => $value1],
+    ['text' => 'Tous', 'number' => $total],
+    ['text' => 'Admin', 'number' => $value1],
     ['text' => 'Client', 'number' => $value2],
     ['text' => 'Gestion', 'number' => $value3],
     ['text' => 'Logistique', 'number' => $value4]
@@ -97,54 +99,56 @@ function adminUserTemplate($i)
                     <?php endif; ?>
                 </form>
 
-                <?php if ($i->getStatus() === "active") : ?>
-                    <p class="blueGoldButton readDesactivate">Désactiver</p>
-                <?php elseif ($i->getStatus() === "desactive") : ?>
-                    <p class="blueGoldButton readDesactivate">Activer</p>
-                <?php endif; ?>
-
-                <!-- <p class="blueGoldButton readDesactivate">Désactiver</p> -->
-
-                <div class="readDesactivateMenu">
+                <div class="activeDelete">
                     <?php if ($i->getStatus() === "active") : ?>
-                        <p>Êtes-vous sûr(e) de vouloir activer ce compte ?</p>
+                        <p class="blueGoldButton readDesactivate">Désactiver</p>
                     <?php elseif ($i->getStatus() === "desactive") : ?>
-                        <p>Êtes-vous sûr(e) de vouloir désactiver ce compte ?</p>
+                        <p class="blueGoldButton readDesactivate">Activer</p>
                     <?php endif; ?>
-                    <div id="readDeleteMenuButton">
-                        <div class="userForm">
-                            <p class="blueButton cancelDesactivate">Annuler</p>
+
+                    <!-- <p class="blueGoldButton readDesactivate">Désactiver</p> -->
+
+                    <div class="readDesactivateMenu">
+                        <?php if ($i->getStatus() === "active") : ?>
+                            <p>Êtes-vous sûr(e) de vouloir activer ce compte ?</p>
+                        <?php elseif ($i->getStatus() === "desactive") : ?>
+                            <p>Êtes-vous sûr(e) de vouloir désactiver ce compte ?</p>
+                        <?php endif; ?>
+                        <div id="readDeleteMenuButton">
+                            <div class="userForm">
+                                <p class="blueButton cancelDesactivate">Annuler</p>
+                            </div>
+                            <form action="user/updateStatus" method="POST">
+                                <input type="hidden" name="id" value=<?= $i->getId() ?>>
+                                <?php if ($i->getStatus() === "active") : ?>
+                                    <input type="hidden" name="status" value="desactive">
+
+                                    <input type="submit" value="Désactiver" class="goldenButton">
+                                <?php elseif ($i->getStatus() === "desactive") : ?>
+                                    <input type="hidden" name="status" value="active">
+
+                                    <input type="submit" value="Activer" class="goldenButton">
+                                <?php endif; ?>
+                            </form>
                         </div>
-                        <form action="user/updateStatus" method="POST">
-                            <input type="hidden" name="id" value=<?= $i->getId() ?>>
-                            <?php if ($i->getStatus() === "active") : ?>
-                                <input type="hidden" name="status" value="desactive">
-
-                                <input type="submit" value="Désactiver" class="goldenButton">
-                            <?php elseif ($i->getStatus() === "desactive") : ?>
-                                <input type="hidden" name="status" value="active">
-
-                                <input type="submit" value="Activer" class="goldenButton">
-                            <?php endif; ?>
-                        </form>
                     </div>
-                </div>
 
-                <p class="goldenButton readDelete">Supprimer</p>
+                    <p class="goldenButton readDelete">Supprimer</p>
 
-                <div class="readDeleteMenu">
-                    <p>Êtes-vous sûr(e) de vouloir supprimer ce compte ?</p>
-                    <div id="readDeleteMenuButton">
-                        <div class="userForm">
-                            <p class="blueButton cancelDelete">Annuler</p>
+                    <div class="readDeleteMenu">
+                        <p>Êtes-vous sûr(e) de vouloir supprimer ce compte ?</p>
+                        <div id="readDeleteMenuButton">
+                            <div class="userForm">
+                                <p class="blueButton cancelDelete">Annuler</p>
+                            </div>
+                            <form action="user/deleteUser" method="POST">
+                                <input type="hidden" name="id" value=<?= $i->getId() ?>>
+                                <input type="submit" value="Supprimer" class="goldenButton">
+                            </form>
                         </div>
-                        <form action="user/deleteUser" method="POST">
-                            <input type="hidden" name="id" value=<?= $i->getId() ?>>
-                            <input type="submit" value="Supprimer" class="goldenButton">
-                        </form>
                     </div>
-                </div>
 
+                </div>
             </div>
         </div>
 <?php
