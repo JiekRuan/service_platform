@@ -28,7 +28,7 @@ class User
         $this->role = $role;
         $this->password = $password;
         $this->createdAt = $createdAt;
-        $this->status = $status;  // Correction ici
+        $this->status = $status; // Correction ici
     }
 
     /**
@@ -338,22 +338,17 @@ class User
         }
     }
 
-    public function updatePassword($newPassword)
+    public function updateUserPassword($userId, $password)
     {
         $db = new Database();
         $connection = $db->getConnection();
 
-        $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
         $request = $connection->prepare('UPDATE users SET password = :password WHERE id = :id');
-        $request->bindParam(':id', $this->id);
         $request->bindParam(':password', $hashedPassword);
+        $request->bindParam(':id', $userId);
 
-        if ($request->execute()) {
-            $this->password = $hashedPassword;
-            return true;
-        } else {
-            return false;
-        }
+        return $request->execute();
     }
 }

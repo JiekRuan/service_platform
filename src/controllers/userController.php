@@ -49,31 +49,56 @@ class UserController
         $data = [
             'id' => $_POST['id'],
             'name' => $_POST['name'],
-            'password' => $_POST['password'],
-            'email' => $_POST['email'],
             'phone' => $_POST['phone'],
-            'role' => $_POST['role'],
-            'create_at' => $_POST['create_at'],
-            'status' => $_POST['status']
+            'email' => $_POST['email']
         ];
 
         $user = new User(
             $data['id'],
             $data['name'],
-            $data['password'],
+            null,
             $data['email'],
             $data['phone'],
-            $data['role'],
-            $data['create_at'],
-            $data['status'],
+            null,
+            null,
+            null
         );
 
         if ($user->updateUser($data['id'])) {
-            echo "Les informations de l'utilisateur ont été mises à jour.";
+            $_SESSION["userName"] = $data['name'];
+            $_SESSION["email"] = $data['email'];
+            $_SESSION["phone"] = $data['phone'];
+            global $domain;
+            header('Location: http://' . $domain . '/home');
         } else {
             echo "Erreur lors de la mise à jour des informations de l'utilisateur.";
         }
     }
+
+    public function updatePassword()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (isset($_POST['password']) && isset($_POST['confirmedPassword'])) {
+                $password = $_POST['password'];
+                $confirmedPassword = $_POST['confirmedPassword'];
+
+                if ($password === $confirmedPassword) {
+                    $userId = $_SESSION["userId"];
+                    $user = new User();
+                    if ($user->updateUserPassword($userId, $password)) {
+                        echo "Le mot de passe a été mis à jour avec succès.";
+                    } else {
+                        echo "Erreur lors de la mise à jour du mot de passe.";
+                    }
+                } else {
+                    echo "Le mot de passe et sa confirmation ne correspondent pas. Veuillez réessayer.";
+                }
+            } else {
+                echo "Veuillez fournir un mot de passe et une confirmation.";
+            }
+        }
+    }
+
 
     public function deleteUser()
     {
