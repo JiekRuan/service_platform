@@ -20,7 +20,8 @@ class UserController
             'name' => $_POST['name'],
             'password' => $_POST['password'],
             'email' => $_POST['email'],
-            'phone' => $_POST['phone']
+            'phone' => $_POST['phone'],
+            'smalldatetime' => $_POST['created_at']
         ];
 
         $user = new User(
@@ -30,7 +31,7 @@ class UserController
             $data['phone'],
             'customer',
             $data['password'],
-            null,
+            $data['smalldatetime'],
             'active'
         );
 

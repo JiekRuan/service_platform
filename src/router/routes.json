@@ -210,7 +210,7 @@
         "controllerClass": "MyApp\\Controllers\\UserController"
     },
     "Customer_7": {
-        "url": "user/confirmReservation",
+        "url": "reservation/confirmReservation",
         "method": "POST",
         "function": "confirmReservation",
         "controllerClass": "MyApp\\Controllers\\ReservationController"

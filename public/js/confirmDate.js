@@ -20,13 +20,13 @@ fromDateInput.addEventListener('input', () => {
 });
 
 toDateInput.addEventListener('input', () => {
+  calculatePrice();
+});
+
+
+function calculatePrice() {
   let fromDate = new Date(fromDateInput.value);
   let toDate = new Date(toDateInput.value);
-
-  if (!fromDate) {
-    toDateInput.value = '';
-    return;
-  }
 
   if (toDate < fromDate) {
     toDateInput.value = '';
@@ -34,16 +34,17 @@ toDateInput.addEventListener('input', () => {
 
   // Calcul du nombre de jours
   let timeDiff = Math.abs(toDate.getTime() - fromDate.getTime());
-  let numOfDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
-  
+  let numOfDays = Math.ceil(timeDiff / (1000 * 3600 * 24)) + 1;
+
   let pricePerDayElement = document.getElementById("price");
   let pricePerDay = parseFloat(pricePerDayElement.textContent);
-  
+
   let totalPriceElement = document.getElementById("totalPrice");
   let totalPrice = parseFloat(totalPriceElement.textContent);
-  
+
   let price = pricePerDay * numOfDays;
   let formattedPrice = price.toLocaleString(); // Ajoute l'espace tous les trois chiffres
   totalPriceElement.textContent = formattedPrice + "€";
+}
 
-});
+calculatePrice();

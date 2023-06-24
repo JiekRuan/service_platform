@@ -7,6 +7,9 @@
 <?php
 global $readApartment;
 $apartmentObject = $readApartment[0];
+$serializedObject = serialize($apartmentObject);
+$_SESSION['apartmentObject'] = $serializedObject;
+
 ?>
 
 <main>
@@ -30,16 +33,16 @@ $apartmentObject = $readApartment[0];
             <?php
 
             } else { ?>
-                <form action="" method="GET" class="formSearch">
+                <form action="reservation/confirmReservation" method="POST" class="formSearch">
                     <div class="date">
                         <div class="dateInput">
                             <label for="fromDate">De : </label>
-                            <input type="date" name="fromDate" id="fromDate" min="<?php echo date('Y-m-d'); ?>">
+                            <input type="date" name="fromDate" id="fromDate" min="<?php echo date('Y-m-d'); ?>" required>
                         </div>
 
                         <div class="dateInput">
                             <label for="toDate">Jusqu'à : </label>
-                            <input type="date" name="toDate" id="toDate" min="<?php echo date('Y-m-d'); ?>">
+                            <input type="date" name="toDate" id="toDate" min="<?php echo date('Y-m-d'); ?>" required>
                         </div>
                         <input type="submit" value="Réserver" class="goldenButton">
                     </div>

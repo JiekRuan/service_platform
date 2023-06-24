@@ -8,6 +8,14 @@ require_once 'src/database/Database.php';
 
 class Reservation
 {
+
+    private $id;
+    private $user_id;
+    private $apartment_id;
+    private $start_time;
+    private $end_time;
+
+
     /**
      * @return mixed
      */
@@ -58,7 +66,7 @@ class Reservation
      */
     public function setStart($time): void
     {
-        $this->start_time = $start_time;
+        $this->start_time = $time;
     }
 
     /**
@@ -74,29 +82,28 @@ class Reservation
      */
     public function setEnd($time): void
     {
-        $this->end_time = $end_time;
+        $this->end_time = $time;
     }
 
     //  fonction pour ajouter une réservation dans la BDD
-    public function addReservation(){
-
-        //Connecter la BDD
+    public function addReservation()
+    {
         $db = new Database();
-        // Ouverture de la connection
         $connection = $db->getConnection();
-
-        //  Requêtes sql
-        $request = $connection->prepare('INSERT INTO Reservation VALUES (:user_id, :apartment_id, :start_time, :end_time)');
+    
+        $request = $connection->prepare('INSERT INTO reservation (user_id, apartment_id, start_time, end_time) VALUES (:user_id, :apartment_id, :start_time, :end_time)');
         $request->bindParam(':user_id', $this->user_id);
         $request->bindParam(':apartment_id', $this->apartment_id);
         $request->bindParam(':start_time', $this->start_time);
         $request->bindParam(':end_time', $this->end_time);
-
-        if($request->execute()){
+    
+        if ($request->execute()) {
             return true;
         }
+        
         return false;
     }
+    
 
     //  fonction qui modifie une réservation (changement d'appartement, de début ou de fin) / prend en paramètre le type de donnée modifiée et la donnée en question
     //  attention la classe doit déjà être instanciée pour avoir l'ID de la réservation à modifier
@@ -145,26 +152,26 @@ class Reservation
     }
 
     //  fonction qui récupère les informations d'une réservation via son ID
-    public function getReservationById($reservation_id){
-        $db = new Database();
-        $connection = $db->getConnection();
+    // public function getReservationById($reservation_id){
+    //     $db = new Database();
+    //     $connection = $db->getConnection();
 
-        $request = $connection->prepare('SELECT * FROM Reservation WHERE id = :id');
-        $request->bindParam(':id', $reservation_id);
+    //     $request = $connection->prepare('SELECT * FROM Reservation WHERE id = :id');
+    //     $request->bindParam(':id', $reservation_id);
 
-        $result = $request->fetch(PDO::FETCH_ASSOC);
+    //     $result = $request->fetch(PDO::FETCH_ASSOC);
 
-        if($request->execute()){
-            $this->id = $id;
-            $this->user_id = $result['user_id'];
-            $this->apartment_id = $result['apartment_id'];
-            $this->start_time = $result['start_time'];
-            $this->end_time = $result['end_time'];
-            $this->created_at = $result['created_at'];
-            return true;
-        }
-        return false;
-    }
+    //     if($request->execute()){
+    //         $this->id = $id;
+    //         $this->user_id = $result['user_id'];
+    //         $this->apartment_id = $result['apartment_id'];
+    //         $this->start_time = $result['start_time'];
+    //         $this->end_time = $result['end_time'];
+    //         $this->created_at = $result['created_at'];
+    //         return true;
+    //     }
+    //     return false;
+    // }
 
     //  fonction qui récupère toutes les réservations d'un utilisateur via son ID(celle de l'utilisateur)
     public  function getUserReservations($user_id){

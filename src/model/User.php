@@ -169,18 +169,19 @@ class User
         if ($this->ifEmailExists($this->email)) {
             return false; // L'email existe déjà, renvoyer false
         }
-
+        $createdAt = date('Y-m-d H:i:s');
         $db = new Database();
         $connection = $db->getConnection();
 
         $hashedPassword = password_hash($this->password, PASSWORD_DEFAULT);
 
-        $request = $connection->prepare('INSERT INTO users (name, password, email, phone, role) VALUES(:name, :password, :email, :phone, :role)');
+        $request = $connection->prepare('INSERT INTO users (name, password, email, phone, role, created_at) VALUES(:name, :password, :email, :phone, :role, :created_at)');
         $request->bindParam(':name', $this->name);
         $request->bindParam(':password', $hashedPassword);
         $request->bindParam(':email', $this->email);
         $request->bindParam(':phone', $this->phone);
         $request->bindParam(':role', $this->role);
+        $request->bindParam(':created_at', $createdAt);
 
         if ($request->execute()) {
             return true; // Utilisateur ajouté avec succès

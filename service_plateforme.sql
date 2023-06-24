@@ -5,7 +5,7 @@ CREATE TABLE `Users` (
   `email` varchar(255) UNIQUE NOT NULL,
   `phone` varchar(15),
   `role` varchar(30) DEFAULT null,
-  `created_at` timestamp,
+  `created_at` datetime DEFAULT CURRENT_DATETIME
   `status` varchar(15) DEFAULT 'active'
 );
 
@@ -41,7 +41,7 @@ CREATE TABLE `Opinion` (
   `reservation_id` int(11),
   `user_id` int(11),
   `content` varchar(255),
-  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  `created_at` datetime DEFAULT CURRENT_DATETIME
 );
 
 CREATE TABLE `Opinion_photos` (
@@ -68,7 +68,7 @@ CREATE TABLE `Reservation` (
   `apartment_id` int(11),
   `start_time` date,
   `end_time` date,
-  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  `created_at` datetime DEFAULT CURRENT_DATETIME
 );
 
 CREATE TABLE `Reservation_support` (
@@ -80,7 +80,7 @@ CREATE TABLE `Reservation_support` (
 CREATE TABLE `Reservation_support_messages` (
   `reservation_support_id` int(11),
   `content` varchar(255) NOT NULL,
-  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  `created_at` datetime DEFAULT CURRENT_DATETIME
 );
 
 CREATE TABLE `Session` (
