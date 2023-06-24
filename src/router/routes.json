@@ -257,6 +257,12 @@
         "function": "UpdateStatus",
         "controllerClass": "MyApp\\Controllers\\UserController"
     },
+    "Customer_15": {
+        "url": "user/updatePassword",
+        "method": "POST",
+        "function": "updatePassword",
+        "controllerClass": "MyApp\\Controllers\\UserController"
+    },
     "Admin": {
         "url": "admin",
         "method": "POST",

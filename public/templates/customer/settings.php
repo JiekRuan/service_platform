@@ -60,17 +60,21 @@ if ($_SESSION["status"] === "desactive") {
     <div class="Container">
         <h2>MODIFIER MOT DE PASSE</h2>
 
-        <form class="infoForm">
+        <form class="infoForm" action="updatePassword" method="POST" onsubmit="return validatePassword()">
+        <input type="hidden" name="id" value=<?= $_SESSION["userId"] ?>>
             <div class="row">
-                <input name="password" type="password" class="inputText" placeholder="Mot de passe" required>
+                <input id="password" name="password" type="password" class="inputText" placeholder="Mot de passe" required>
             </div>
             <div class="row">
-                <input name="confirmedPassword" type="password" class="inputText" placeholder="Confirmation du mot de passe" required>
+                <input id="confirmedPassword" name="confirmedPassword" type="password" class="inputText" placeholder="Confirmation du mot de passe" required>
             </div>
+            
             <input type="submit" class="goldenButton" value="Confirmer">
         </form>
+
     </div>
 </div>
 
+<script src="../public/js/validatePassword.js"></script>
 
 <?php include 'public/templates/component/footer.php' ?>
