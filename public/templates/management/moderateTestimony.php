@@ -61,10 +61,10 @@ function logisticPlanning($i)
             <div class="userInfo">
                 <p>Photos :</p>
                 <div class="readImage">
-                    <figure><img src="../public/images/concierge/service_1.png" alt="placeholder"></figure>
-                    <figure><img src="../public/images/concierge/service_1.png" alt="placeholder"></figure>
-                    <figure><img src="../public/images/concierge/service_1.png" alt="placeholder"></figure>
-                    <figure><img src="../public/images/concierge/service_1.png" alt="placeholder"></figure>
+                    <figure><img src="../public/images/salon.png" alt="placeholder"></figure>
+                    <figure><img src="../public/images/homepage/appart_2.jpg" alt="placeholder"></figure>
+                    <figure><img src="../public/images/homepage/appart_6.jpg" alt="placeholder"></figure>
+                    <figure><img src="../public/images/homepage/appart_5.jpg" alt="placeholder"></figure>
                 </div>
 
             </div>
@@ -91,18 +91,18 @@ function logisticPlanning($i)
                     let filterSub1 = document.querySelector(".filterSub1")
                     filterSub1.appendChild(filterElement)
                 </script>
-                <form action="" method="GET">
+                <!-- <form action="" method="GET">
                     <select>
                         <option value="option1">ID témoignage</option>
                         <option value="option2">Date témoignage</option>
                         <option value="option3">ID logement</option>
                     </select>
-                </form>
+                </form> -->
             </div>
             <form action="" method="GET" class="filterSub2">
                 <input type="text" placeholder="Rechercher...">
-                <input type="date" placeholder="De...">
-                <input type="date" placeholder="Jusqu'à">
+                <!-- <input type="date" placeholder="De...">
+                <input type="date" placeholder="Jusqu'à"> -->
                 <input type="submit" value="Rechercher" class="goldenButton">
             </form>
         </div>

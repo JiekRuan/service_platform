@@ -57,7 +57,7 @@ global $reservations;
 } ?>
 
 <div class="banner">
-    <h1>Réservations des clients</h1>
+    <h1>Réservations clients</h1>
 </div>
 
 <?php
@@ -67,7 +67,7 @@ if (count($reservations) > 0) {
     }
 } else { ?>
     <div class="superContainer">
-        <p>Aucun réservation n'a été faite pour le moment.</p>
+        <p>Aucune réservation n'a été faite pour le moment.</p>
     </div>
 <?php
 
