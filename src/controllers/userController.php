@@ -333,4 +333,21 @@ class UserController
         // echo var_dump($users);
         require_once 'public\templates\admin\admin.php';
     }
+
+    public function searchUser()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+            $search = $_GET['search'];
+            $user = new User(null, null, null, null, null, null, null, null);
+            global $users;
+
+            if (empty($search)) {
+                $users = $user->getAllUsers();
+            } else {
+                $users = $user->searchUsers($search);
+            }
+
+            require_once 'public\templates\admin\admin.php';
+        }
+    }
 }

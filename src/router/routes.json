@@ -269,8 +269,14 @@
         "function": "updateRole",
         "controllerClass": "MyApp\\Controllers\\UserController"
     },
+    "Customer_17": {
+        "url": "admin/searchUser",
+        "method": "GET",
+        "function": "searchUser",
+        "controllerClass": "MyApp\\Controllers\\UserController"
+    },
     "Admin": {
-        "url": "admin",
+        "url": "admin/admin",
         "method": "POST",
         "function": "admin",
         "controllerClass": "MyApp\\Controllers\\UserController"

@@ -368,4 +368,24 @@ class User
 
         return $request->execute();
     }
+
+    public function searchUsers($search)
+    {
+        $db = new Database();
+        $connection = $db->getConnection();
+
+        $searchValue = "%" . $search . "%";
+
+
+        $request = $connection->prepare("SELECT * FROM users WHERE id LIKE :searchValue OR name LIKE :searchValue OR email LIKE :searchValue OR phone LIKE :searchValue OR role LIKE :searchValue");
+
+        $request->bindParam(':searchValue', $searchValue);
+
+        if ($request->execute()) {
+            $results = $request->fetchAll(PDO::FETCH_ASSOC);
+            return $results;
+        }
+
+        return false;
+    }
 }

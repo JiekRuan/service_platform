@@ -255,7 +255,7 @@ a:hover {
     cursor: pointer;
 }
 
-.filterSub.selected {
+.filterSub.selectedFilter {
     font-weight: 700;
 }
 

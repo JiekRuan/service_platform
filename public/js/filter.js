@@ -27,11 +27,11 @@ function createFilter(filters) {
     filterSub.addEventListener('click', function () {
       // Supprimer la classe 'selected' de tous les éléments du filtre
       filterContainer.querySelectorAll('.filterSub').forEach((element) => {
-        element.classList.remove('selected');
+        element.classList.remove('selectedFilter');
       });
 
       // Ajouter la classe 'selected' à l'élément cliqué
-      filterSub.classList.add('selected');
+      filterSub.classList.add('selectedFilter');
     });
   });
 
