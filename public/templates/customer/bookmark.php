@@ -29,7 +29,7 @@ function adminUserTemplate($i)
 </div>
     <div class="bookmarkList">
         <div class="userForm">
-            <figure><img src="public/images/concierge/service_1.png" alt=""></figure>
+            <figure><img src="../public/images/concierge/service_1.png" alt=""></figure>
         </div>
         <div class="userInfo">
             <p>Description</p>

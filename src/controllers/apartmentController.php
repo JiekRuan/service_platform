@@ -255,18 +255,18 @@ class ApartmentController
     }
     public function bookmark()
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-            $name = $_GET['name'];
-            $arrondissement = $_GET['arrondissement'];
-            $description = $_GET['description'];
+        // if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+        //     $name = $_GET['name'];
+        //     $arrondissement = $_GET['arrondissement'];
+        //     $description = $_GET['description'];
 
-            $apartmentModel = new Apartment();
-            $apartments = $apartmentModel->readAllApartments();
+        //     $apartmentModel = new Apartment();
+        //     $apartments = $apartmentModel->readAllApartments();
 
-            // Utilisez les variables récupérées dans votre code ici
+        //     // Utilisez les variables récupérées dans votre code ici
 
+        // }
             require_once 'public/templates/customer/bookmark.php';
-        }
     }
     public function checklist()
     {
