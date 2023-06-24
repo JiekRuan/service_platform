@@ -10,6 +10,14 @@ class ReservationController
 {
     function reservationCancel()
     {
+
+        $id = $_POST['id'];
+
+        $reservation = new Reservation();
+        $result = $reservation->deleteReservation($id);
+
+        // global $domain;
+        // header('Location: http://' . $domain . '/apartment/listApartement');
         require_once 'public\templates\customer\reservationCancel.php';
     }
 

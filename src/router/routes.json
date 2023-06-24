@@ -229,7 +229,7 @@
     },
     "Customer_10": {
         "url": "reservation/reservationCancel",
-        "method": "GET",
+        "method": "POST",
         "function": "reservationCancel",
         "controllerClass": "MyApp\\Controllers\\ReservationController"
     },

@@ -17,11 +17,12 @@ global $reservations;
 
 <?php function reservationList($i)
 {
+    global $domain;
 ?>
     <div class="superContainer">
         <div class="Container">
             <form action="reservation" method="POST" id="<?= $i['id'] ?>" onclick="submitReservationForm('<?= $i['id'] ?>')">
-            <input type="hidden" name="reservation_id" value=<?= $i['id'] ?>>
+                <input type="hidden" name="reservation_id" value=<?= $i['id'] ?>>
                 <h3><?= $i['name'] ?></h3>
                 <p><?= $i['arrondissement'] ?>ème arrondissement</p>
             </form>
@@ -57,7 +58,10 @@ global $reservations;
                     <div class="userForm">
                         <p class="blueButton cancelDesactivate">Annuler</p>
                     </div>
-                    <form action="" method="POST"><input type="submit" value="Confirmer" class="goldenButton"></form>
+                    <form action=<?= "http://" . $domain . "/reservation/reservationCancel" ?> method="POST">
+                        <input type="hidden" name="id" value=<?= $i['id'] ?>>
+                        <input type="submit" value="Confirmer" class="goldenButton">
+                    </form>
                 </div>
             </div>
             <figure>
@@ -91,7 +95,7 @@ foreach ($reservations as $reservation) {
     }
 </script>
 <style>
-    form{
+    form {
         cursor: pointer;
     }
 </style>

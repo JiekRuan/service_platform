@@ -139,14 +139,14 @@ class Reservation
     }
 
     //  fonction pour supprimer une réservation
-    public function deleteReservation()
+    public function deleteReservation($id)
     {
 
         $db = new Database();
         $connection = $db->getConnection();
 
-        $request = $connection->prepare('DELETE FROM Reservation WHERE id = :id');
-        $request->bindParam(':id', $this->id);
+        $request = $connection->prepare('DELETE FROM reservation WHERE id = :id');
+        $request->bindParam(':id', $id);
 
         if ($request->execute()) {
             return true;
