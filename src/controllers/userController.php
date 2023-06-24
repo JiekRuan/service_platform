@@ -37,6 +37,14 @@ class UserController
         if ($user->addUser()) {
             $_SESSION["loggedin"] = true;
             $_SESSION["role"] = $user->getRole();
+            $_SESSION['userId'] = $user->getId();
+            $_SESSION['userName'] = $user->getName();
+            $_SESSION['phone'] = $user->getPhone();
+            $_SESSION['email'] = $user->getMail();
+            $_SESSION["role"] = $user->getRole();
+            $_SESSION["status"] = $user->getStatus();
+            setcookie("userId", $_SESSION['userId'], time() + 3600);
+            setcookie("userName", $_SESSION['userName'], time() + 3600);
             global $domain;
             header('Location: http://' . $domain . '/home');
         } else {
@@ -164,25 +172,25 @@ class UserController
         exit();
     }
 
-    public function getUserById($id)
-    {
-        $user = new User(null, null, null, null, null, null, null, null);
+    // public function getUserById($id)
+    // {
+    //     $user = new User(null, null, null, null, null, null, null, null);
 
-        if ($user->getUserById($id)) {
-            $userInfo = $user->getUserInfo($id);
+    //     if ($user->getUserById($id)) {
+    //         $userInfo = $user->getUserInfo($id);
 
-            if ($userInfo) {
-                echo "ID : ", $userInfo['id'], "<br>";
-                echo "Nom : ", $userInfo['name'], "<br>";
-                echo "Email : ", $userInfo['email'], "<br>";
-                echo "Téléphone : ", $userInfo['phone'], "<br>";
-            } else {
-                echo "Aucune information disponible pour l'utilisateur avec l'ID spécifié.";
-            }
-        } else {
-            echo "Erreur lors de la récupération des informations de l'utilisateur.";
-        }
-    }
+    //         if ($userInfo) {
+    //             echo "ID : ", $userInfo['id'], "<br>";
+    //             echo "Nom : ", $userInfo['name'], "<br>";
+    //             echo "Email : ", $userInfo['email'], "<br>";
+    //             echo "Téléphone : ", $userInfo['phone'], "<br>";
+    //         } else {
+    //             echo "Aucune information disponible pour l'utilisateur avec l'ID spécifié.";
+    //         }
+    //     } else {
+    //         echo "Erreur lors de la récupération des informations de l'utilisateur.";
+    //     }
+    // }
     // redirection vers les vues
     public function Error404(): void
     {
