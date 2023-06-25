@@ -14,7 +14,7 @@ Ce projet à pour objectif de mettre en oeuvre ainsi que de renforcer les outils
   </tr>
   <tr>
     <th>Back End</th>
-    <td>Hugo Cieplucha <br> <em> Lead Front </em> </td>
+    <td>Hugo Cieplucha <br> <em> Lead Back </em> </td>
     <td>Jiek Ruan</td>
     <td>Valentin Machefaux</td>
     <td>Fouad Lamnaouar</td>
@@ -28,56 +28,56 @@ Ce projet à pour objectif de mettre en oeuvre ainsi que de renforcer les outils
 <p>Notre mission est de proposer une application spécialisée dans la gestion d'une plateforme de location de logements à Paris pour une entreprise familiale.</p>
 
 ## Informations : 
-<ul>
-    <li>Base de données utilisée : MySQL</li>
-    <li>Informations concernant la DB dans le dossier src/database/database.php</li>
-    <li>Si ce n'est pas fait, dans le dossier SQL `my.ini`, mettre `max_allowed_packet = 128M`</li>
-</ul>
+
+- Base de données utilisée : MySQL
+- Architecture : MVC
+- Informations concernant la DB dans le dossier src/database/database.php
+- Si ce n'est pas fait, dans le dossier SQL `my.ini`, mettre `max_allowed_packet = 128M`
+- Fichier pour la DB : `service_plateforme_2.sql`, le mot de passe pour chaque utilisateur est `aze`
 
 ## Fonctionnalités :
 
 - Responsive (toutes les pages ne sont pas adaptés aux larges écrans)
 
 ### En tant que client non connecté :
-<ul>
-    <li>Inscription un utilisateur</li>
-    <li>Se connecter</li>
-    <li>Voir les témoignages</li>
-    <li>Rechercher un logement avec le nom, l'arrondissement, la capacité...</li>
-</ul>
+
+- Inscription utilisateur
+- Se connecter
+- Voir les témoignages
+- Rechercher un logement avec le nom, l'arrondissement, la capacité...
+
 
 ### En tant que client connecté :
-<p>En plus des fonctionnalités lorsqu'on est pas connecté</p>
-<ul>
-    <li>Réserver un logement</li>
-    <li>Annuler la réservation</li>
-    <li>Ajouter et supprimer des logements en favoris</li>
-    <li>Mettre un témoignage</li>
-    <li>Modifier les paramètres du comptes</li>
-    <li>Accéder à sa liste de réservations</li>
-    <li>Chat (pas complètement fonctionnel)</li>
-</ul>
+En plus des fonctionnalités lorsqu'on est pas connecté</p>
+
+- Réserver un logement
+- Annuler la réservation
+- Ajouter et supprimer des logements en favoris
+- Mettre un témoignage
+- Modifier les paramètres du comptes
+- Accéder à sa liste de réservations
+- Chat (pas complètement fonctionnel)
+
 
 ### En tant que gestionnaire :
-<ul>
-    <li>Ajouter un logement</li>
-    <li>Modifier un logement</li>
-    <li>Supprimer un logement</li>
-    <li>Modérer les témoignages clients</li>
-    <li>Chat (pas complètement fonctionnel)</li>
-    <li>Réservation de tous les clients</li>
-</ul>
+- Ajouter un logement
+- Modifier un logement
+- Supprimer un logement
+- Modérer les témoignages clients
+- Chat (pas complètement fonctionnel)
+- Réservation de tous les clients
+
 
 ### En tant que personne de la logistique :
-<ul>
-    <li>Non implémenté</li>
-</ul>
+
+- Non implémenté mais les vues sont présentes
+
 
 ### En tant que admin :
 <ul>
-    <li>Modifier un rôle utilisateur</li>
-    <li>Désactiver un utilisateur</li>
-    <li>Supprimer un utilisateur</li>
+    -Modifier un rôle utilisateur
+    -Désactiver un utilisateur
+    -Supprimer un utilisateur
 </ul>
 
 ### Utilisation du chat :
