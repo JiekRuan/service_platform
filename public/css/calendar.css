@@ -42,10 +42,6 @@
     border: 1px solid #ccc;
 }
 
-.selected {
-    background-color: var(--goldDark);
-}
-
 
 .day:hover {
     background-color: var(--goldLight);
@@ -65,4 +61,11 @@
     display: flex;
     margin: 10px;
     justify-content: center;
+}
+
+.my-date {
+    background-color: var(--goldDark);
+}
+.other-date {
+    background-color: var(--goldLight);
 }
