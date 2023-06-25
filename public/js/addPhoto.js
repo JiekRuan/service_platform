@@ -71,23 +71,25 @@ function createDivMaxImages() {
 addButton.addEventListener("click", function () {
     if (divImages.childElementCount >= maxImages) {
         createDivMaxImages();
-
     } else {
         let fileInput = document.createElement("input");
+        fileInput.id = 'formwithfileinput';
+
         fileInput.type = "file";
         fileInput.accept = "image/*";
         fileInput.multiple = true;
-
+        
         fileInput.addEventListener("change", function (e) {
             let files = e.target.files;
 
             for (let i = 0; i < files.length; i++) {
-                if (divImages.childElementCount >= maxImages) {
-                    createDivMaxImages();
-                    break;
+                let file = files[i];
+
+                if (file.size > 4194304) {
+                    alert("Le fichier est trop volumineux. Veuillez sélectionner une image inférieure à 20 Ko.");
+                    continue; // Passe à la prochaine itération de la boucle sans ajouter l'image
                 }
 
-                let file = files[i];
                 addImageContainer(file);
             }
 
@@ -97,6 +99,7 @@ addButton.addEventListener("click", function () {
         fileInput.click();
     }
 });
+
 
 document.addEventListener("click", function (event) {
     if (

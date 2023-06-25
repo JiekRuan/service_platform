@@ -72,6 +72,7 @@ if ($_SESSION["status"] === "desactive") {
                     <i class="fa-solid fa-camera"></i>
                     <p>Ajouter des images</p>
                 </label>
+                <p style="font-size: 12px;">Vous pouvez sélectionner jusqu'à un maximum de 4 images, avec une limite de poids de 4 Mo pour chaque image.</p>
 
             </div>
 
