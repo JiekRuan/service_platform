@@ -4,12 +4,15 @@
 <script src="public/js/filter.js"></script>
 
 <?php
-$value1 = 15;
-$value2 = 4;
+global $getTestimonies;
+// echo var_dump($getTestimonies);
+
+// $value1 = 15;
+// $value2 = 4;
 
 $filters = [
-    ['text' => 'Témoignages', 'number' => $value1],
-    ['text' => 'Mes témoignages', 'number' => $value2],
+    ['text' => 'Témoignages', 'number' => count($getTestimonies)],
+    // ['text' => 'Mes témoignages', 'number' => $value2],
 
 ];
 ?>
@@ -19,33 +22,33 @@ $filters = [
     var filterElement = createFilter(filters);
 </script>
 
-<?php function testimony()
-{ ?>
+<?php function testimony($i)
+{
+    global $domain;
+    ?>
     <div class="superContainer">
         <div class="Container">
             <div class="infoLogement">
-                <h3>Nom du logement</h3>
-                <p>dans le 4ème arrondissement</p>
+                <h3><a href=<?= "http://" . $domain . "/logement?id=". $i['id'] ?>><?= $i['name'] ?></a></h3>
+                <p><a href=<?= "http://" . $domain . "/logement?id=". $i['id'] ?>>dans le <?= $i['arrondissement'] ?>ème arrondissement</a></p>
             </div>
             <div class="infoTemoignage">
                 <i class="fa-solid fa-quote-left" style="color: #c29b40;"></i>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vestibulum purus nec felis consequat mattis.
-                    Nam varius felis nec massa efficitur consequat. Aenean vel justo sed mi maximus suscipit nec gravida dui. Vivamus non finibus orci.
-                    Sed laoreet est odio, a imperdiet felis volutpat sed. Donec sagittis a mi et pellentesque. Vestibulum et libero est. Fusce cursus massa
-                    eu risus accumsan, a porta eros rutrum. Integer consequat dictum finibus. Maecenas eget bibendum orci. Morbi eget commodo leo.
+                <p>
+                    <?= $i['content'] ?>
                 </p>
             </div>
             <div class="infoNomTemoignage">
-                <p>De Jaqueline, il y a 5 jours</p>
+                <p>De <?= $i['user_name'] ?></p>
                 <i class="fa-solid fa-quote-right" style="color: #c29b40;"></i>
             </div>
         </div>
-        <div class="readImage">
+        <!-- <div class="readImage">
             <figure><img src="public/images/concierge/service_1.png" alt="placeholder"></figure>
             <figure><img src="public/images/concierge/service_1.png" alt="placeholder"></figure>
             <figure><img src="public/images/concierge/service_1.png" alt="placeholder"></figure>
             <figure><img src="public/images/concierge/service_1.png" alt="placeholder"></figure>
-        </div>
+        </div> -->
     </div>
 <?php
 } ?>
@@ -56,16 +59,27 @@ $filters = [
         Votre confiance et vos commentaires nous guident dans notre volonté constante de vous offrir une expérience exceptionnelle.
     </p>
 </div>
+
 <div class="filterList">
     <script>
         let filterList = document.querySelector(".filterList")
         filterList.appendChild(filterElement)
     </script>
 </div>
-<?php for ($i = 0; $i < 5; $i++) {
-    testimony();
-} ?>
 
-<a href="#" class="blueGoldButton">Voir plus de témoignages</a>
+<?php
+if (count($getTestimonies) > 0) {
+
+    foreach ($getTestimonies as $getTestimony) {
+        testimony($getTestimony);
+    }
+} else {
+?>
+    <p>Pas de témoignages pour le moment.</p>
+<?php
+}
+?>
+
+<!-- <a href="#" class="blueGoldButton">Voir plus de témoignages</a> -->
 
 <?php include "public/templates/component/footer.php" ?>

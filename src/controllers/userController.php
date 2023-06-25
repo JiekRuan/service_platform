@@ -232,10 +232,6 @@ class UserController
         require_once 'public\templates\public\signup.php';
     }
 
-    public function testimony()
-    {
-        require_once 'public\templates\public\testimony.php';
-    }
     public function chat()
     {
         require_once 'public\templates\customer\chatroom.php';

@@ -229,20 +229,23 @@ class ApartmentController
 
     public function logement()
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-            $userId = $_SESSION['userId'];
-            $bookmark = new Apartment();
-            $bookmark->setUserId($userId);
-            global $bookmarks;
-            $bookmarks = $bookmark->readUserBookmark();
+        $id = $_GET['id'];
+        $apart = new Apartment();
+        global $readApartment;
+        $readApartment = $apart->readAnApartment($id);
+        if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+        } else {
+            if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+                $userId = $_SESSION['userId'];
+                $bookmark = new Apartment();
+                $bookmark->setUserId($userId);
+                global $bookmarks;
+                $bookmarks = $bookmark->readUserBookmark();
 
-            $id = $_GET['id'];
-            $apart = new Apartment();
-            global $readApartment;
-            $readApartment = $apart->readAnApartment($id);
-            //afficher la vue lier a la function
-            require_once 'public\templates\public\logement.php';
+                //afficher la vue lier a la function
+            }
         }
+        require_once 'public\templates\public\logement.php';
     }
 
     // public function listTestimony()

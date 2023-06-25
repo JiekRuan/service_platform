@@ -167,4 +167,12 @@ class ReservationController
             header('Location: http://' . $domain . '/apartment/moderateTestimony');
         }
     }
+
+    public function testimony()
+    {
+        $getTestimony = new Reservation();
+        global $getTestimonies;
+        $getTestimonies = $getTestimony->getAcceptTestimony();
+        require_once 'public\templates\public\testimony.php';
+    }
 }

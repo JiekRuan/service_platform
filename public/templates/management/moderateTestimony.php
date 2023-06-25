@@ -21,13 +21,21 @@ global $getTestimonies;
 // echo var_dump($getTestimonies);
 
 $value1 = count($getTestimonies);
-// $value2 = 4;
-// $value3 = 5;
+$approvedCount = 0;
+$pendingCount = 0;
+
+foreach ($getTestimonies as $testimony) {
+    if ($testimony['state'] == 1) {
+        $approvedCount++;
+    } elseif ($testimony['state'] == 0) {
+        $pendingCount++;
+    }
+}
 
 $filters = [
-    ['text' => 'Tous', 'number' => $value1],
-    // ['text' => 'Approuvé', 'number' => $value2],
-    // ['text' => 'En attente', 'number' => $value3],
+    ['text' => 'Tous', 'number' => count($getTestimonies)],
+    ['text' => 'Approuvé', 'number' => $approvedCount],
+    ['text' => 'En attente', 'number' => $pendingCount],
 ];
 ?>
 

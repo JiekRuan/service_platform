@@ -328,7 +328,16 @@ class Reservation
         $request->bindParam(':id', $this->id);
 
         $request->execute();
-        // $results = $request->fetchAll(PDO::FETCH_ASSOC);
-        // return $results;
+    }
+
+    public function getAcceptTestimony()
+    {
+        $db = new Database();
+        $connection = $db->getConnection();
+
+        $request = $connection->prepare('SELECT opinion.id AS opinion_id, opinion.*, reservation.*, apartments.*, users.name AS user_name, users.email FROM opinion INNER JOIN reservation ON opinion.reservation_id = reservation.id INNER JOIN apartments ON reservation.apartment_id = apartments.id INNER JOIN users ON reservation.user_id = users.id WHERE state = 1');
+        $request->execute();
+        $results = $request->fetchAll(PDO::FETCH_ASSOC);
+        return $results;
     }
 }

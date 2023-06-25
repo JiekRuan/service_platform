@@ -69,7 +69,7 @@
         "url": "testimony",
         "method": "GET",
         "function": "testimony",
-        "controllerClass": "MyApp\\Controllers\\UserController"
+        "controllerClass": "MyApp\\Controllers\\ReservationController"
     },
     "Public_13": {
         "url": "404",

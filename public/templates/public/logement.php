@@ -61,27 +61,29 @@ global $bookmarks;
         <article class="containerContent">
             <div class="descriptionBookmark">
                 <h2>Description</h2>
-                <form action=<?= "http://" . $domain . "/user/bookmarkAddDelete" ?> method="POST" id=<?= $apartmentObject->getId() ?> onclick="submitReservationForm('<?= $apartmentObject->getId() ?>')">
-                    <input type="hidden" name="apartmentId" value=<?= $apartmentObject->getId() ?>>
-                    <input type="hidden" name="REQUEST_URI" value=<?= $_SERVER['REQUEST_URI'] ?>>
-                    <input type="hidden" name="userId" value=<?= $_SESSION['userId'] ?>>
+                <?php if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+                } else { ?>
+                    <form action=<?= "http://" . $domain . "/user/bookmarkAddDelete" ?> method="POST" id=<?= $apartmentObject->getId() ?> onclick="submitReservationForm('<?= $apartmentObject->getId() ?>')">
+                        <input type="hidden" name="apartmentId" value=<?= $apartmentObject->getId() ?>>
+                        <input type="hidden" name="REQUEST_URI" value=<?= $_SERVER['REQUEST_URI'] ?>>
+                        <input type="hidden" name="userId" value=<?= $_SESSION['userId'] ?>>
                     <?php
-                        $isFavorite = false;
-                        if (count($bookmarks) > 0) {
-                            foreach ($bookmarks as $bookmark) {
-                                if ($bookmark['id'] == $apartmentObject->getId()) {
-                                    $isFavorite = true; // L'élément est dans les favoris
-                                    break; // Sortir de la boucle dès que l'élément est trouvé
-                                }
+                    $isFavorite = false;
+                    if (count($bookmarks) > 0) {
+                        foreach ($bookmarks as $bookmark) {
+                            if ($bookmark['id'] == $apartmentObject->getId()) {
+                                $isFavorite = true; // L'élément est dans les favoris
+                                break; // Sortir de la boucle dès que l'élément est trouvé
                             }
                         }
-                        if ($isFavorite) {
-                            echo '<i class="fa-solid fa-bookmark"></i>';
-                        } else {
-                            echo '<i class="fa-regular fa-bookmark"></i>';
-                        }
-                    
-                        ?>
+                    }
+                    if ($isFavorite) {
+                        echo '<i class="fa-solid fa-bookmark"></i>';
+                    } else {
+                        echo '<i class="fa-regular fa-bookmark"></i>';
+                    }
+                
+                } ?>
                 </form>
             </div>
             <p class="info"><?= $apartmentObject->getSquareMeter() ?> m² | <?= $apartmentObject->getCapacity() ?> chambres |
