@@ -9,6 +9,7 @@ if ($_SESSION["status"] === "desactive") {
 }
 
 global $reservations;
+
 ?>
 
 <?php include 'public/templates/component/header.php' ?>
@@ -18,6 +19,11 @@ global $reservations;
 <?php function reservationList($i)
 {
     global $domain;
+
+    $currentDate = new DateTime(); // Date actuelle
+    $startDateTime = DateTime::createFromFormat('Y-m-d', $i['start_time']); // Convertir en objet DateTime
+    $endDateTime = DateTime::createFromFormat('Y-m-d', $i['end_time']); // Convertir en objet DateTime
+
 ?>
     <div class="superContainer">
         <div class="Container">
@@ -50,8 +56,26 @@ global $reservations;
                     <p><?= date_format(new DateTime($i['end_time']), 'd/m/Y') ?></p>
                 </div>
             </div>
-
-            <p class="goldenButton cancelReservation">Annuler la réservation</p>
+            <?php
+            if ($currentDate > $endDateTime) { ?>
+            <div class="dateReservationContainer">
+                <p>Passé</p><span class="dateReservation inComing"></span>
+            </div>
+            <p class="goldenButton">Raconter votre expérience</p>
+            <?php
+            } elseif ($currentDate >= $startDateTime && $currentDate <= $endDateTime) { ?>
+            <div class="dateReservationContainer">
+                <p>En cours</p><span class="dateReservation atTheMoment"></span>
+            </div>
+            <?php
+            } elseif ($currentDate < $startDateTime) { ?>
+            <div class="dateReservationContainer">
+                <p>À venir</p><span class="dateReservation passed"></span>
+            </div>
+                <p class="goldenButton cancelReservation">Annuler la réservation</p>
+            <?php
+            }
+            ?>
             <div class="cancelReservationConfirm">
                 <p>Êtes-vous sûr(e) de vouloir annuler la réservation ?</p>
                 <div class="readDeleteMenuButton">

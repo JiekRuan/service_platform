@@ -5,7 +5,7 @@ CREATE TABLE `Users` (
   `email` varchar(255) UNIQUE NOT NULL,
   `phone` varchar(15),
   `role` varchar(30) DEFAULT null,
-  `created_at` datetime DEFAULT CURRENT_DATETIME
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP
   `status` varchar(15) DEFAULT 'active'
 );
 
@@ -36,13 +36,16 @@ CREATE TABLE `Services` (
   `service` varchar(255)
 );
 
-CREATE TABLE `Opinion` (
-  `id` int PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  `reservation_id` int(11),
-  `user_id` int(11),
-  `content` varchar(255),
-  `created_at` datetime DEFAULT CURRENT_DATETIME
-);
+DROP TABLE IF EXISTS `opinion`;
+CREATE TABLE IF NOT EXISTS `opinion` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `reservation_id` int(11) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `content` varchar(255) DEFAULT NULL,
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `state` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `Opinion_photos` (
   `opinion_id` int(11),
@@ -68,7 +71,7 @@ CREATE TABLE `Reservation` (
   `apartment_id` int(11),
   `start_time` date,
   `end_time` date,
-  `created_at` datetime DEFAULT CURRENT_DATETIME
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE `Reservation_support` (
@@ -80,7 +83,7 @@ CREATE TABLE `Reservation_support` (
 CREATE TABLE `Reservation_support_messages` (
   `reservation_support_id` int(11),
   `content` varchar(255) NOT NULL,
-  `created_at` datetime DEFAULT CURRENT_DATETIME
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE `Session` (
