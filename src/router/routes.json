@@ -111,7 +111,7 @@
         "url": "apartment/moderateTestimony",
         "method": "GET",
         "function": "moderateTestimony",
-        "controllerClass": "MyApp\\Controllers\\ApartmentController"
+        "controllerClass": "MyApp\\Controllers\\ReservationController"
     },
     "Management_5": {
         "url": "apartment/readApartement",
@@ -159,6 +159,18 @@
         "url": "reservation/delReservation",
         "method": "POST",
         "function": "delReservation",
+        "controllerClass": "MyApp\\Controllers\\ReservationController"
+    },
+    "Management_13": {
+        "url": "apartment/acceptTestimony",
+        "method": "GET",
+        "function": "acceptTestimony",
+        "controllerClass": "MyApp\\Controllers\\ReservationController"
+    },
+    "Management_14": {
+        "url": "apartment/refuseTestimony",
+        "method": "GET",
+        "function": "refuseTestimony",
         "controllerClass": "MyApp\\Controllers\\ReservationController"
     },
     "Logistic_1": {

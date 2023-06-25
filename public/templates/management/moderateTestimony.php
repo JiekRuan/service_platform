@@ -10,20 +10,24 @@ if ($_SESSION["status"] === "desactive") {
 ?>
 
 <?php include 'public/templates/component/header.php' ?>
-<link rel="stylesheet" href="../public/css/managementCrud.css">
-<link rel="stylesheet" href="../public/css/moderateTestimony.css">
 <link rel="stylesheet" href="../public/css/planning.css">
+<link rel="stylesheet" href="../public/css/moderateTestimony.css">
+<link rel="stylesheet" href="../public/css/managementCrud.css">
 <script src="../public/js/filter.js"></script>
 
 <?php
-$value2 = 4;
-$value3 = 5;
-$value1 = $value2 + $value3;
+
+global $getTestimonies;
+// echo var_dump($getTestimonies);
+
+$value1 = count($getTestimonies);
+// $value2 = 4;
+// $value3 = 5;
 
 $filters = [
     ['text' => 'Tous', 'number' => $value1],
-    ['text' => 'Approuvé', 'number' => $value2],
-    ['text' => 'En attente', 'number' => $value3],
+    // ['text' => 'Approuvé', 'number' => $value2],
+    // ['text' => 'En attente', 'number' => $value3],
 ];
 ?>
 
@@ -34,31 +38,30 @@ $filters = [
 
 <?php
 
-function logisticPlanning($i)
+function moderateTestimony($i)
 {
+    global $domain;
 ?>
     <div class="user">
         <div class="userInfo">
             <div class="testimonyInfo">
                 <div>
-                    <h3>#location_<?= $i ?></h3>
-                    <p>dans le Xème arrondissement</p>
+                    <h3>#<?= $i['apartment_id'] ?> <?= $i['name'] ?></h3>
+                    <p>dans le <?= $i['arrondissement'] ?>ème arrondissement</p>
                 </div>
                 <p>
-                    #id_du_témoignage
+                    Témoignage #<?= $i['opinion_id'] ?>
                 </p>
             </div>
             <div class="testimonyUser">
-                <p>Nom</p>
-                <p>Prénom</p>
-                <p>E-mail</p>
-                <p>Arrivé</p>
-                <p>Départ</p>
-                <p>Date du témoignage</p>
+                <p><?= $i['user_name'] ?></p>
+                <p><?= $i['email'] ?></p>
+                <p>Date du séjour : <?= date_format(new DateTime($i['start_time']), 'd/m/Y') ?> - <?= date_format(new DateTime($i['end_time']), 'd/m/Y') ?></p>
+                <p>Date du témoignage : <?= date_format(new DateTime($i['created_at']), 'd/m/Y') ?></p>
                 <p>Témoignage :</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto recusandae illo inventore iste atque. Obcaecati reprehenderit architecto cum, vel possimus dolores voluptatum ipsa natus odit commodi esse quis sit pariatur!</p>
+                <p><?= $i['content'] ?></p>
             </div>
-            <div class="userInfo">
+            <!-- <div class="userInfo">
                 <p>Photos :</p>
                 <div class="readImage">
                     <figure><img src="../public/images/salon.png" alt="placeholder"></figure>
@@ -66,12 +69,25 @@ function logisticPlanning($i)
                     <figure><img src="../public/images/homepage/appart_6.jpg" alt="placeholder"></figure>
                     <figure><img src="../public/images/homepage/appart_5.jpg" alt="placeholder"></figure>
                 </div>
+            </div> -->
 
-            </div>
-            <div class="testimonyForm">
-                <form action=""><input type="submit" value="Accepter" class="goldenButton"></form>
-                <form action=""><input type="submit" value="Refuser" class="blueButton"></form>
-            </div>
+            <?php
+            if ($i['state']) { ?>
+                <div class="testimonyForm">
+                    <p>Témoignage validé !</p>
+                </div>
+            <?php
+            } else { ?>
+                <div class="testimonyForm">
+                    <form action=""><input type="submit" value="Refuser" class="blueButton"></form>
+                    <form action="http://<?= $domain ?>/apartment/acceptTestimony" method="POST">
+                        <input type="hidden" name="id" value=<?= $i['opinion_id'] ?>>
+                        <input type="submit" value="Accepter" class="goldenButton">
+                    </form>
+                </div>
+            <?php
+            } ?>
+
         </div>
     </div>
 <?php
@@ -99,18 +115,23 @@ function logisticPlanning($i)
                     </select>
                 </form> -->
             </div>
-            <form action="" method="GET" class="filterSub2">
+            <!-- <form action="" method="GET" class="filterSub2">
                 <input type="text" placeholder="Rechercher...">
-                <!-- <input type="date" placeholder="De...">
-                <input type="date" placeholder="Jusqu'à"> -->
+                <input type="date" placeholder="De...">
+                <input type="date" placeholder="Jusqu'à">
                 <input type="submit" value="Rechercher" class="goldenButton">
-            </form>
+            </form> -->
         </div>
 
 
         <?php
-        for ($i = 0; $i < 5; $i++) {
-            logisticPlanning($i);
+        if (count($getTestimonies) > 0)
+            foreach ($getTestimonies as $getTestimony) {
+                moderateTestimony($getTestimony);
+            }
+        else { ?>
+            <p>Pas de témoignage pour le moment.</p>
+        <?php
         }
         ?>
 
