@@ -1,8 +1,12 @@
 // Obtenez une référence vers le calendrier et les boutons de navigation
-const calendarGrid = document.getElementById('calendar-grid');
+const calendarGridGrid = document.getElementById('calendar-grid-grid');
 const prevButton = document.getElementById('prevButton');
 const nextButton = document.getElementById('nextButton');
 const monthYearText = document.getElementById('monthYear');
+
+let myDateRanges = [];
+let otherDateRanges = [{ start: new Date(2023, 6, 10), end: new Date(2023, 6, 15) }]; // déplacez cette ligne vers le haut
+
 
 // Créez un objet Date pour la date actuelle
 let currentDate = new Date();
@@ -11,31 +15,36 @@ let currentDate = new Date();
 let startDate = null;
 let endDate = null;
 
-// Mettez à jour le calendrier avec le mois et l'année actuels
-updateCalendar();
+// Variables pour la plage de dates
+let startDate = null;
+let endDate = null;
+let selectedDateRanges = []; // Ajoutez cette ligne en haut de votre script pour créer le tableau qui stocke les plages de dates
+
 
 // Ajoutez un gestionnaire d'événement clic au bouton précédent
-prevButton.addEventListener('click', function() {
-  currentDate.setMonth(currentDate.getMonth() - 1);
-  updateCalendar();
+prevButton.addEventListener('click', function () {
+    const currentMonth = currentDate.getMonth();
+    currentDate.setMonth(currentMonth - 1);
+    updateCalendar();
 });
 
 // Ajoutez un gestionnaire d'événement clic au bouton suivant
-nextButton.addEventListener('click', function() {
-  currentDate.setMonth(currentDate.getMonth() + 1);
-  updateCalendar();
+nextButton.addEventListener('click', function () {
+    const currentMonth = currentDate.getMonth();
+    currentDate.setMonth(currentMonth + 1);
+    updateCalendar();
 });
+
 
 // Met à jour le calendrier avec le mois et l'année actuels
 function updateCalendar() {
     // Vide le calendrier
     calendarGrid.innerHTML = '';
-    
     // Met à jour le mois et l'année affichés
     const month = currentDate.toLocaleString('default', { month: 'long' });
     const year = currentDate.getFullYear();
     monthYearText.textContent = `${month} ${year}`;
-    
+  
     // Obtenir le nombre de jours dans le mois actuel
     const daysInMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDate();
     
@@ -45,10 +54,10 @@ function updateCalendar() {
     // Ajoutez les jours de la semaine à l'en-tête du calendrier
     const weekdays = ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'];
     for (let i = 0; i < weekdays.length; i++) {
-      const weekdayElement = document.createElement('div');
-      weekdayElement.classList.add('day', 'weekday');
-      weekdayElement.textContent = weekdays[i];
-      calendarGrid.appendChild(weekdayElement);
+        const weekdayElement = document.createElement('div');
+        weekdayElement.classList.add('day', 'weekday');
+        weekdayElement.textContent = weekdays[i];
+        calendarGrid.appendChild(weekdayElement);
     }
   
     // Ajoutez des espaces vides pour les jours avant le premier jour du mois
@@ -98,24 +107,24 @@ function handleDayClick(dayElement) {
     startDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), selectedDay);
   }
 
-  updateCalendar();
 
-  // Affiche les dates sélectionnées
-  if (startDate && endDate) {
-    const selectedDates = getSelectedDates(startDate, endDate);
-    console.log('Dates sélectionnées:', selectedDates);
-  }
+// Affiche les plages de dates sélectionnées
+for (let i = 0; i < selectedDateRanges.length; i++) {
+    const range = selectedDateRanges[i];
+    const dates = getSelectedDates(range.start, range.end);
+    console.log(`Plage de dates ${i + 1} :`, dates);
 }
+
 
 // Obtient les dates sélectionnées dans une plage de dates
 function getSelectedDates(start, end) {
-  const dates = [];
-  let currentDate = new Date(start);
+    const dates = [];
+    let currentDate = new Date(start);
 
-  while (currentDate <= end) {
-    dates.push(new Date(currentDate));
-    currentDate.setDate(currentDate.getDate() + 1);
-  }
+    while (currentDate <= end) {
+        dates.push(new Date(currentDate));
+        currentDate.setDate(currentDate.getDate() + 1);
+    }
 
-  return dates;
+    return dates;
 }
