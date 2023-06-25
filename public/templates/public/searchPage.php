@@ -11,25 +11,32 @@ function apartementTemplate($apartments)
     if (is_object($apartments)) {
         $i = $apartments;
 ?>
-        <a href="<?= "http://" . $domain . "/logement?id=" . $i->getId() ?>" class="userInfo box">
-            <figure>
-                <img src="../public/images/paris.jpeg" alt="logement2">
-            </figure>
+        <div class="userInfo box">
+            <a href="<?= "http://" . $domain . "/logement?id=" . $i->getId() ?>">
+                <figure>
+                    <img src="../public/images/paris.jpeg" alt="logement2">
+                </figure>
+            </a>
             <div class="information">
                 <div class="star">
-                    <h3 class="monaco"><?= $i->getName() ?></h3>
-                    <!-- <form action="" method="POST">
-                        <input type="hidden" name="favorite" value=<?= $i->getId() ?>>
-                        <i class="fa-regular fa-bookmark"></i>
-                    </form> -->
+                    <h3 class="monaco"><a href="<?= "http://" . $domain . "/logement?id=" . $i->getId() ?>"><?= $i->getName() ?></a></h3>
+                    <?php if (isset($_SESSION["role"]) && $_SESSION["role"] === "customer") { ?>
+                        <form action=<?= "http://" . $domain . "/user/bookmarkAddDelete" ?> method="POST" id=<?= $i->getId() ?> onclick="submitReservationForm('<?= $i->getId() ?>')">
+                            <input type="hidden" name="apartmentId" value=<?= $i->getId() ?>>
+                            <input type="hidden" name="REQUEST_URI" value=<?= $_SERVER['REQUEST_URI'] ?>>
+                            <input type="hidden" name="userId" value=<?= $_SESSION['userId'] ?>>
+                            <i class="fa-regular fa-bookmark"></i>
+                        </form>
+                    <?php } ?>
                 </div>
                 <div class="price">
-                    <p><?= $i->getHousingType() ?> | <?= $i->getSquareMeter() ?> m² | <?= $i->getCapacity() ?> chambres</p>
+
+                    <p><a href="<?= "http://" . $domain . "/logement?id=" . $i->getId() ?>"><?= $i->getHousingType() ?> | <?= $i->getSquareMeter() ?> m² | <?= $i->getCapacity() ?> chambres</a></p>
                     <p><?= $i->getPrice() ?>€</p>
                 </div>
                 <p class="price2">/jour</p>
             </div>
-        </a>
+        </div>
     <?php
     } elseif (is_array($apartments)) {
         // foreach ($apartments as $i) {
@@ -205,7 +212,11 @@ function apartementTemplate($apartments)
     </div>
 
 </main>
-
+<script>
+    function submitReservationForm(formId) {
+        document.getElementById(formId).submit();
+    }
+</script>
 <script src="public/js/searchPageDate.js"></script>
 <script src="public/js/searchPageDualRange.js"></script>
 <script src="public/js/date.js"></script>

@@ -97,6 +97,10 @@ header {
     /* width: min-content; */
 }
 
+#desktop .fa-bookmark{
+    color: inherit;
+}
+
 @media (max-width: 1024px) {
     header {
         padding: 10px 10px;

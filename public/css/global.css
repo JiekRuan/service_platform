@@ -335,6 +335,10 @@ a:hover {
     text-decoration: none;
 }
 
+.fa-bookmark{
+    color: var(--goldPrimary);
+}
+
 /* pour les form select option
 https://codepen.io/wallaceerick/pen/nJLPvN
 adapté en CSS par ChatGPT*/

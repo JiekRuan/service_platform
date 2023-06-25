@@ -25,19 +25,19 @@ function adminUserTemplate($i)
     <div class="user">
         <div class="bookmarkName">
             <div>
-                <h2><?= $i['name'] ?></h2>
-                <p><?= $i['arrondissement'] ?> arrondissement</p>
+                <h2><a href=<?= "http://" . $domain . "/logement?id=" . $i['id'] ?>><?= $i['name'] ?></a></h2>
+                <p><a href=<?= "http://" . $domain . "/logement?id=" . $i['id'] ?>><?= $i['arrondissement'] ?> arrondissement</a></p>
             </div>
             <form action=<?= "http://" . $domain . "/user/bookmarkAddDelete" ?> method="POST" id=<?= $i['id'] ?> onclick="submitReservationForm('<?= $i['id'] ?>')">
                 <input type="hidden" name="apartmentId" value=<?= $i['id'] ?>>
                 <input type="hidden" name="REQUEST_URI" value=<?= $_SERVER['REQUEST_URI'] ?>>
                 <input type="hidden" name="userId" value=<?= $_SESSION['userId'] ?>>
-                <i class="fa-regular fa-bookmark"></i>
+                <i class="fa-solid fa-bookmark"></i>
             </form>
         </div>
         <div class="bookmarkList">
             <div class="userForm">
-                <figure><img src="../public/images/paris.jpeg" alt=""></figure>
+                <figure><a href=<?= "http://" . $domain . "/logement?id=" . $i['id'] ?>><img src="../public/images/paris.jpeg" alt="image du logement"></a></figure>
             </div>
             <div class="userInfo">
                 <p>Description</p>
