@@ -23,7 +23,7 @@ global $reservations;
     global $domain;
     global $getTestimonies;
     global $photos;
-    // echo var_dump($photos);
+    // echo var_dump($getTestimonies);
 
 
     $currentDate = new DateTime(); // Date actuelle
@@ -64,9 +64,11 @@ global $reservations;
                 </div>
             </div>
             <?php
-            if ($currentDate > $endDateTime) { ?>
+            if ($currentDate > $endDateTime) {
+            ?>
                 <div class="dateReservationContainer">
-                    <p>Passé</p><span class="dateReservation inComing"></span>
+                    <p>Passé</p>
+                    <span class="dateReservation inComing"></span>
                 </div>
                 <?php
                 if (count($getTestimonies) > 0) {
@@ -78,14 +80,25 @@ global $reservations;
                         }
                     }
 
-                    if ($hasTestimony) { ?>
+                    if ($hasTestimony) {
+                ?>
                         <p>Merci pour votre témoignage !</p>
-                    <?php } else { ?>
+                    <?php
+                    } else {
+                    ?>
                         <form action="http://<?= $domain ?>/user/createTestimony" method="POST">
                             <input type="hidden" name="reservation_id" value="<?= $i['id'] ?>">
                             <input type="submit" class="goldenButton" value="Raconter votre expérience">
                         </form>
-                <?php }
+                    <?php
+                    }
+                } else {
+                    ?>
+                    <form action="http://<?= $domain ?>/user/createTestimony" method="POST">
+                        <input type="hidden" name="reservation_id" value="<?= $i['id'] ?>">
+                        <input type="submit" class="goldenButton" value="Raconter votre expérience">
+                    </form>
+                <?php
                 }
             } elseif ($currentDate >= $startDateTime && $currentDate <= $endDateTime) { ?>
                 <div class="dateReservationContainer">
@@ -120,7 +133,7 @@ global $reservations;
                     $firstPhotoDisplayed = true;
             ?>
                     <!-- <a href=<?= "http://" . $domain . "/logement?id=" . $i['apartment_id'] ?>> -->
-                        <img src="data:image/jpeg;base64,<?= $photo['photo']; ?>" alt="logement à Paris <?= $i['apartment_id'] ?>" />
+                    <img src="data:image/jpeg;base64,<?= $photo['photo']; ?>" alt="logement à Paris <?= $i['apartment_id'] ?>" />
                     <!-- </a> -->
             <?php
                 }

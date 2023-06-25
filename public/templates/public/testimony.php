@@ -96,7 +96,9 @@ if (count($getTestimonies) > 0) {
     }
 } else {
 ?>
-    <p>Pas de témoignages pour le moment.</p>
+    <div class="superContainer">
+        <p>Pas de témoignages pour le moment.</p>
+    </div>
 <?php
 }
 ?>
