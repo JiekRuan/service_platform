@@ -7,6 +7,8 @@ if ($_SESSION["status"] === "desactive") {
     global $domain;
     header('Location: http://' . $domain . '/user/disableAccount');
 }
+global $bookmarks;
+// echo var_dump($bookmarks);
 ?>
 
 <?php include 'public/templates/component/header.php' ?>
@@ -18,25 +20,31 @@ if ($_SESSION["status"] === "desactive") {
 
 function adminUserTemplate($i)
 {
+    global $domain;
 ?>
-<div class="user">
-<div class="bookmarkName">
-    <div>
-        <h2>#nomdulogement_<?= $i ?></h2>
-        <p>XVII arrondissement</p>
-    </div>
-    <i class="fa-regular fa-bookmark"></i>
-</div>
-    <div class="bookmarkList">
-        <div class="userForm">
-            <figure><img src="../public/images/concierge/service_1.png" alt=""></figure>
+    <div class="user">
+        <div class="bookmarkName">
+            <div>
+                <h2><?= $i['name'] ?></h2>
+                <p><?= $i['arrondissement'] ?> arrondissement</p>
+            </div>
+            <form action=<?= "http://" . $domain . "/user/bookmarkAddDelete" ?> method="POST" id=<?= $i['id'] ?> onclick="submitReservationForm('<?= $i['id'] ?>')">
+                <input type="hidden" name="apartmentId" value=<?= $i['id'] ?>>
+                <input type="hidden" name="REQUEST_URI" value=<?= $_SERVER['REQUEST_URI'] ?>>
+                <input type="hidden" name="userId" value=<?= $_SESSION['userId'] ?>>
+                <i class="fa-regular fa-bookmark"></i>
+            </form>
         </div>
-        <div class="userInfo">
-            <p>Description</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit consequuntur adipisci ex unde architecto explicabo eum nisi repellendus non vitae, animi voluptatibus error ratione reprehenderit, numquam illum. Harum, ea eum!</p>
+        <div class="bookmarkList">
+            <div class="userForm">
+                <figure><img src="../public/images/paris.jpeg" alt=""></figure>
+            </div>
+            <div class="userInfo">
+                <p>Description</p>
+                <p><?= $i['description'] ?></p>
+            </div>
         </div>
     </div>
-</div>
 <?php
 }
 ?>
@@ -50,8 +58,8 @@ function adminUserTemplate($i)
     <div class="userContainer">
 
         <?php
-        for ($i = 0; $i < 5; $i++) {
-            adminUserTemplate($i);
+        foreach ($bookmarks as $bookmark) {
+            adminUserTemplate($bookmark);
         }
         ?>
 
@@ -59,6 +67,10 @@ function adminUserTemplate($i)
 
 </main>
 
-
+<script>
+    function submitReservationForm(formId) {
+        document.getElementById(formId).submit();
+    }
+</script>
 <script src="../public/js/optionSelect.js"></script>
 <?php include 'public/templates/component/footer.php' ?>

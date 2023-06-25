@@ -477,7 +477,7 @@ class Apartment
         return false;
     }
 
-    public function addBookmark()
+    public function addDeleteBookmark()
     {
         $db = new Database();
         $connection = $db->getConnection();
@@ -491,10 +491,24 @@ class Apartment
         $count = $query->fetchColumn();
 
         if ($count > 0) {
-            // echo "Ce couple existe déjà dans les favoris.";
-            return 0;
+            // Le couple existe, on supprime
+            $request = $connection->prepare('DELETE FROM favorites WHERE user_id = :userId AND apartment_id = :id');
+
+            $request->bindParam(':userId', $this->userId);
+            $request->bindParam(':id', $this->id);
+
+            if ($this->id) {
+                $request->bindParam(':id', $this->id);
+            }
+            if ($result = $request->execute()) {
+                // L'insertion a réussi
+                return $result;
+            } else {
+                // Une erreur s'est produite lors de l'insertion
+                echo "Une erreur s'est produite lors de la supression du couple aux favoris.";
+            }
         } else {
-            // Le couple n'existe pas, vous pouvez effectuer l'insertion
+            // Le couple n'existe pas
             $request = $connection->prepare('INSERT INTO favorites (user_id, apartment_id) 
             VALUES (:userId, :id)');
 
@@ -513,5 +527,15 @@ class Apartment
             }
         }
     }
+
+    public function readUserBookmark()
+    {
+        $db = new Database();
+        $connection = $db->getConnection();
+        $request = $connection->prepare("SELECT * FROM favorites INNER JOIN apartments ON favorites.apartment_id = apartments.id WHERE favorites.user_id = :user_id");
+        $request->bindParam(':user_id', $this->userId);
+        $request->execute();
+        $result = $request->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
 }
-//revoir la dernier fonction et terminer le controller !

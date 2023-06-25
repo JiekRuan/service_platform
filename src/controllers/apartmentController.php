@@ -256,16 +256,16 @@ class ApartmentController
 
     public function bookmark()
     {
-
+        $userId = $_SESSION['userId'];
+        $bookmark = new Apartment();
+        $bookmark->setUserId($userId);
+        global $bookmarks;
+        $bookmarks = $bookmark->readUserBookmark();
         require_once 'public/templates/customer/bookmark.php';
     }
 
-    public function bookmarkAdd()
+    public function bookmarkAddDelete()
     {
-        // $currentPage = $_SERVER['REQUEST_URI'];
-        // echo $currentPage;
-
-
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $apartmentId = $_POST['apartmentId'];
             $userId = $_POST['userId'];
@@ -274,11 +274,12 @@ class ApartmentController
 
             $apartment->setId($apartmentId);
             $apartment->setUserId($userId);
-            echo $apartment->getId();
-            if ($apartment->addBookmark()) {
+
+            if ($apartment->addDeleteBookmark()) {
 
                 global $domain;
-                header('Location: http://' . $domain . '/user/bookmark');
+                $currentPage = $_POST['REQUEST_URI'];
+                header('Location: http://' . $domain . '' . $currentPage);
             } else {
                 global $domain;
                 header('Location: http://' . $domain . '/user/bookmark');
@@ -289,12 +290,12 @@ class ApartmentController
         require_once 'public/templates/customer/bookmark.php';
     }
 
-    public function bookmarkDelete()
-    {
-        // $currentPage = $_SERVER['REQUEST_URI'];
-        // echo $currentPage;
-        require_once 'public/templates/customer/bookmark.php';
-    }
+    // public function bookmarkDelete()
+    // {
+    //     $currentPage = $_SERVER['REQUEST_URI'];
+    //     echo $currentPage;
+    //     require_once 'public/templates/customer/bookmark.php';
+    // }
 
     public function checklist()
     {

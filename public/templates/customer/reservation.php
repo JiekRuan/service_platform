@@ -39,7 +39,12 @@ $info = $reservationInfo[0];
         <article class="containerContent">
             <div class="descriptionBookmark">
                 <h2>Description</h2>
-                <i class="fa-regular fa-bookmark"></i>
+                <form action=<?= "http://" . $domain . "/user/bookmarkAddDelete" ?> method="POST" id=<?= $info['id'] ?> onclick="submitReservationForm('<?= $info['id'] ?>')">
+                    <input type="hidden" name="apartmentId" value=<?= $info['id'] ?>>
+                    <input type="hidden" name="REQUEST_URI" value='/user/bookmark'>
+                    <input type="hidden" name="userId" value=<?= $_SESSION['userId'] ?>>
+                    <i class="fa-regular fa-bookmark"></i>
+                </form>
             </div>
             <p class="info"><?= $info['squareMeter'] ?>m² | <?= $info['capacity'] ?> chambres | <?php
                                                                                                 $numberBathroom = $info['numberBathroom'];
@@ -95,7 +100,7 @@ $info = $reservationInfo[0];
                 <hr>
             </div>
             <div class="caracteristic">
-            <h2>Agréments</h2>
+                <h2>Agréments</h2>
                 <hr>
                 <p>Vue sur <?= $info['vueSur'] ?></p>
                 <hr>
@@ -177,7 +182,11 @@ $info = $reservationInfo[0];
     </div>
 
 </main>
-
+<script>
+    function submitReservationForm(formId) {
+        document.getElementById(formId).submit();
+    }
+</script>
 <script src="../public/js/reservation.js"></script>
 <script src="../public/js/picture.js"></script>
 

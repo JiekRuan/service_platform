@@ -60,8 +60,9 @@ $_SESSION['apartmentObject'] = $serializedObject;
         <article class="containerContent">
             <div class="descriptionBookmark">
                 <h2>Description</h2>
-                <form action=<?= "http://" . $domain . "/user/bookmarkAdd" ?> method="POST" id=<?= $apartmentObject->getId() ?> onclick="submitReservationForm('<?= $apartmentObject->getId() ?>')">
+                <form action=<?= "http://" . $domain . "/user/bookmarkAddDelete" ?> method="POST" id=<?= $apartmentObject->getId() ?> onclick="submitReservationForm('<?= $apartmentObject->getId() ?>')">
                     <input type="hidden" name="apartmentId" value=<?= $apartmentObject->getId() ?>>
+                    <input type="hidden" name="REQUEST_URI" value=<?= $_SERVER['REQUEST_URI'] ?>>
                     <input type="hidden" name="userId" value=<?= $_SESSION['userId'] ?>>
                     <i class="fa-regular fa-bookmark"></i>
                 </form>
