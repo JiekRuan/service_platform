@@ -15,6 +15,7 @@ class Reservation
     private $apartment_id;
     private $start_time;
     private $end_time;
+    private $content;
 
 
     /**
@@ -24,6 +25,12 @@ class Reservation
     {
         return $this->id;
     }
+
+    public function setId($id): void
+    {
+        $this->id = $id;
+    }
+    
 
     /**
      * @return mixed
@@ -85,6 +92,20 @@ class Reservation
     {
         $this->end_time = $time;
     }
+
+        /**
+     * @return mixed
+     */
+    public function getContent()
+    {
+        return $this->id;
+    }
+
+    public function setContent($content): void
+    {
+        $this->content = $content;
+    }
+    
 
     //  fonction pour ajouter une réservation dans la BDD
     public function addReservation()
@@ -237,5 +258,24 @@ class Reservation
             return $results;
         }
         return null;
+    }
+
+    public function addTestimony(){
+        $createdAt = date('Y-m-d H:i:s');
+
+        $db = new Database();
+        $connection = $db->getConnection();
+        
+        $request = $connection->prepare('INSERT INTO opinion (reservation_id, user_id, content, created_at) VALUES (:reservation_id, :user_id, :content, :created_at)');
+        $request->bindParam(':reservation_id', $this->id);
+        $request->bindParam(':user_id', $this->user_id);
+        $request->bindParam(':content', $this->content);
+        $request->bindParam(':created_at', $createdAt);
+        
+        if ($request->execute()) {
+            return true;
+        }
+        
+        return false;
     }
 }

@@ -7,10 +7,11 @@ if ($_SESSION["status"] === "desactive") {
     global $domain;
     header('Location: http://' . $domain . '/user/disableAccount');
 }
+
 ?>
 
 <?php include 'public/templates/component/header.php' ?>
-<link rel="stylesheet" href="public/css/avis.css">
+<link rel="stylesheet" href="../public/css/avis.css">
 
 
 <div class="banner">
@@ -25,11 +26,10 @@ if ($_SESSION["status"] === "desactive") {
 
 <div class="superContainer">
     <div class="Container">
-        <h1>VOTRE EXPERIENCE</h1>
-
-        <form class="infoForm">
+        <h1>VOTRE EXPÉRIENCE</h1>
+        <form class="infoForm" method="POST" action=<?= "http://" . $domain . "/user/sendCreateTestimony" ?>>
             <div class="row">
-                <input name="name" type="text" class="inputText" placeholder="Note" required>
+                <input name="content" type="text" class="inputText" placeholder="J'ai passé un séjour incroyable dans l'appartement..." required>
             </div>
             
             <div class="userInfo">
@@ -47,7 +47,9 @@ if ($_SESSION["status"] === "desactive") {
             </div>
 
             <div class="buttonAvis">
-                <a href="#" class="blueButton">Fermer</a>
+                <a href=<?= "http://" . $domain . "/user/reservationList" ?> class="blueButton">Retour</a>
+                <input type="hidden" name="reservation_id" value=<?= $_POST['reservation_id'] ?>>
+                <input type="hidden" name="user_id" value=<?= $_SESSION['userId'] ?>>
                 <input type="submit" class="goldenButton" value="Envoyer">
             </div>
             
@@ -59,6 +61,6 @@ if ($_SESSION["status"] === "desactive") {
 <script>
     let userContainer = document.querySelector('.superContainer');
 </script>
-<script src="public/js/addPhoto.js"></script>
+<script src="../public/js/addPhoto.js"></script>
 
 <?php include "public/templates/component/footer.php" ?>

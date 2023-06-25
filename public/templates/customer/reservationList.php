@@ -61,7 +61,10 @@ global $reservations;
             <div class="dateReservationContainer">
                 <p>Passé</p><span class="dateReservation inComing"></span>
             </div>
-            <p class="goldenButton">Raconter votre expérience</p>
+            <form action=<?= "http://" . $domain . "/user/createTestimony" ?> method="POST">
+                <input type="hidden" name="reservation_id" value=<?= $i['id'] ?>>
+                <input type="submit" class="goldenButton" value="Raconter votre expérience">
+            </form>
             <?php
             } elseif ($currentDate >= $startDateTime && $currentDate <= $endDateTime) { ?>
             <div class="dateReservationContainer">

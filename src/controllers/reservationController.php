@@ -70,10 +70,34 @@ class ReservationController
         require_once 'public\templates\customer\reservation.php';
     }
 
+    // afficher le formulaire pour le témoignage
     function createTestimony()
     {
         $reservation_id = $_POST['reservation_id'];
         require_once 'public\templates\customer\createTestimony.php';
+    }
+
+    // création du témoignage
+    function sendCreateTestimony()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // recup les données du form create
+            $userId = $_POST['user_id'];
+            $reservationId = $_POST['reservation_id'];
+            $content = $_POST['content'];
+
+            $reservation = new Reservation();
+            $reservation->setId($reservationId);
+            $reservation->setUserId($userId);
+            $reservation->setContent($content);
+
+            if ($reservation->addTestimony()) {
+                require_once 'public\templates\customer\thanksTestimony.php';
+            } else {
+                header('Location: public\templates\public\404.php');
+            }
+
+        }
     }
 
     function reservationList()

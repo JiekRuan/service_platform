@@ -187,7 +187,7 @@
     },
     "Customer_2": {
         "url": "user/createTestimony",
-        "method": "GET",
+        "method": "POST",
         "function": "createTestimony",
         "controllerClass": "MyApp\\Controllers\\ReservationController"
     },
@@ -222,70 +222,70 @@
         "controllerClass": "MyApp\\Controllers\\ReservationController"
     },
     "Customer_8": {
-        "url": "user/thanksTestimony",
-        "method": "GET",
-        "function": "thanksTestimony",
-        "controllerClass": "MyApp\\Controllers\\ApartmentController"
-    },
-    "Customer_9": {
         "url": "user/bookmark",
         "method": "GET",
         "function": "bookmark",
         "controllerClass": "MyApp\\Controllers\\ApartmentController"
     },
-    "Customer_10": {
+    "Customer_9": {
         "url": "reservation/reservationCancel",
         "method": "POST",
         "function": "reservationCancel",
         "controllerClass": "MyApp\\Controllers\\ReservationController"
     },
-    "Customer_11": {
+    "Customer_10": {
         "url": "reservation/reservationThanks",
         "method": "GET",
         "function": "reservationThanks",
         "controllerClass": "MyApp\\Controllers\\ReservationController"
     },
-    "Customer_12": {
+    "Customer_11": {
         "url": "user/settingsForm",
         "method": "POST",
         "function": "settingsForm",
         "controllerClass": "MyApp\\Controllers\\UserController"
     },
-    "Customer_13": {
+    "Customer_12": {
         "url": "user/deleteUser",
         "method": "POST",
         "function": "deleteUser",
         "controllerClass": "MyApp\\Controllers\\UserController"
     },
-    "Customer_14": {
+    "Customer_13": {
         "url": "user/updateStatus",
         "method": "POST",
         "function": "updateStatus",
         "controllerClass": "MyApp\\Controllers\\UserController"
     },
-    "Customer_15": {
+    "Customer_14": {
         "url": "user/updatePassword",
         "method": "POST",
         "function": "updatePassword",
         "controllerClass": "MyApp\\Controllers\\UserController"
     },
-    "Customer_16": {
+    "Customer_15": {
         "url": "user/updateRole",
         "method": "POST",
         "function": "updateRole",
         "controllerClass": "MyApp\\Controllers\\UserController"
     },
-    "Customer_17": {
+    "Customer_16": {
         "url": "admin/searchUser",
         "method": "GET",
         "function": "searchUser",
         "controllerClass": "MyApp\\Controllers\\UserController"
     },
-    "Customer_18": {
+    "Customer_17": {
         "url": "user/bookmarkAddDelete",
         "method": "POST",
         "function": "bookmarkAddDelete",
         "controllerClass": "MyApp\\Controllers\\ApartmentController"
+    },
+    "Customer_18": {
+        "url": "user/sendCreateTestimony",
+        "method": "POST",
+        "function": "sendCreateTestimony",
+        "controllerClass": "MyApp\\Controllers\\ReservationController"
     },
     "Admin": {
         "url": "admin/admin",
