@@ -152,11 +152,19 @@ class ReservationController
         }
     }
 
-    // public function refuseTestimony()
-    // {
-    //     $getTestimony = new Reservation();
-    //     global $getTestimonies;
-    //     $getTestimonies = $getTestimony->refuseTestimony();
-    //     require_once 'public\templates\management\moderateTestimony.php';
-    // }
+    public function refuseTestimony()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_POST['id'];
+
+            $getTestimony = new Reservation();
+            $getTestimony->setId($id);
+            $getTestimony->refuseTestimony();
+
+            global $getTestimonies;
+            global $domain;
+            $getTestimonies = $getTestimony->getAllTestimonies();
+            header('Location: http://' . $domain . '/apartment/moderateTestimony');
+        }
+    }
 }

@@ -79,7 +79,10 @@ function moderateTestimony($i)
             <?php
             } else { ?>
                 <div class="testimonyForm">
-                    <form action=""><input type="submit" value="Refuser" class="blueButton"></form>
+                    <form action="http://<?= $domain ?>/apartment/refuseTestimony" method="POST">
+                        <input type="hidden" name="id" value=<?= $i['opinion_id'] ?>>
+                        <input type="submit" value="Refuser" class="blueButton">
+                    </form>
                     <form action="http://<?= $domain ?>/apartment/acceptTestimony" method="POST">
                         <input type="hidden" name="id" value=<?= $i['opinion_id'] ?>>
                         <input type="submit" value="Accepter" class="goldenButton">

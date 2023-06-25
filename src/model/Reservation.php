@@ -318,4 +318,17 @@ class Reservation
         // $results = $request->fetchAll(PDO::FETCH_ASSOC);
         // return $results;
     }
+
+    public function refuseTestimony()
+    {
+        $db = new Database();
+        $connection = $db->getConnection();
+
+        $request = $connection->prepare('DELETE FROM `opinion` WHERE `opinion`.`id` = :id');
+        $request->bindParam(':id', $this->id);
+
+        $request->execute();
+        // $results = $request->fetchAll(PDO::FETCH_ASSOC);
+        // return $results;
+    }
 }
