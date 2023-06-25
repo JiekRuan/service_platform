@@ -278,9 +278,11 @@ class ApartmentController
             if ($apartment->addBookmark()) {
 
                 global $domain;
-                // header('Location: http://' . $domain . '/user/bookmark');
+                header('Location: http://' . $domain . '/user/bookmark');
             } else {
-                header('Location: public\templates\public\404.php');
+                global $domain;
+                header('Location: http://' . $domain . '/user/bookmark');
+                // header('Location: http://' . $domain . '/404');
             }
         }
 

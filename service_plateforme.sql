@@ -116,3 +116,7 @@ ALTER TABLE `Favorites` ADD FOREIGN KEY (`user_id`) REFERENCES `Users` (`id`);
 ALTER TABLE `Opinion_photos` ADD FOREIGN KEY (`opinion_id`) REFERENCES `Opinion` (`id`);
 
 ALTER TABLE `Session` ADD FOREIGN KEY (`user_id`) REFERENCES `Users` (`id`);
+
+ALTER TABLE favorites
+ADD CONSTRAINT unique_favorite
+UNIQUE (user_id, apartment_id);

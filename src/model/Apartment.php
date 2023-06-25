@@ -53,7 +53,7 @@ class Apartment
         return $this->id;
     }
 
-        /**
+    /**
      * @return mixed
      */
     public function setId($id)
@@ -482,19 +482,36 @@ class Apartment
         $db = new Database();
         $connection = $db->getConnection();
 
-        $request = $connection->prepare('INSERT INTO favorites (user_id, apartment_id) 
+        // Vérification si le couple existe déjà dans la table des favoris
+        $query = $connection->prepare('SELECT COUNT(*) FROM favorites WHERE user_id = :user_id AND apartment_id = :id');
+        $query->bindParam(':user_id', $this->userId);
+        $query->bindParam(':id', $this->id);
+        $query->execute();
+
+        $count = $query->fetchColumn();
+
+        if ($count > 0) {
+            // echo "Ce couple existe déjà dans les favoris.";
+            return 0;
+        } else {
+            // Le couple n'existe pas, vous pouvez effectuer l'insertion
+            $request = $connection->prepare('INSERT INTO favorites (user_id, apartment_id) 
             VALUES (:userId, :id)');
 
-        $request->bindParam(':userId', $this->userId);
-        $request->bindParam(':id', $this->id);
-
-        if ($this->id) {
+            $request->bindParam(':userId', $this->userId);
             $request->bindParam(':id', $this->id);
+
+            if ($this->id) {
+                $request->bindParam(':id', $this->id);
+            }
+            if ($result = $request->execute()) {
+                // L'insertion a réussi
+                return $result;
+            } else {
+                // Une erreur s'est produite lors de l'insertion
+                echo "Une erreur s'est produite lors de l'ajout du couple aux favoris.";
+            }
         }
-
-        $result = $request->execute();
-
-        return $result;
     }
 }
 //revoir la dernier fonction et terminer le controller !
