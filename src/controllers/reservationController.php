@@ -108,6 +108,11 @@ class ReservationController
         global $reservations;
         $reservations = $reservation->getUserReservations($user_id);
 
+        $getTestimony = new Reservation();
+        $getTestimony->setUserId($user_id);
+        global $getTestimonies;
+        $getTestimonies = $getTestimony->getTestimony();
+
         require_once 'public\templates\customer\reservationList.php';
     }
 

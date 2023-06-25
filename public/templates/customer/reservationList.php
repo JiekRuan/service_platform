@@ -19,6 +19,7 @@ global $reservations;
 <?php function reservationList($i)
 {
     global $domain;
+    global $getTestimonies;
 
     $currentDate = new DateTime(); // Date actuelle
     $startDateTime = DateTime::createFromFormat('Y-m-d', $i['start_time']); // Convertir en objet DateTime
@@ -58,23 +59,37 @@ global $reservations;
             </div>
             <?php
             if ($currentDate > $endDateTime) { ?>
-            <div class="dateReservationContainer">
-                <p>Passé</p><span class="dateReservation inComing"></span>
-            </div>
-            <form action=<?= "http://" . $domain . "/user/createTestimony" ?> method="POST">
-                <input type="hidden" name="reservation_id" value=<?= $i['id'] ?>>
-                <input type="submit" class="goldenButton" value="Raconter votre expérience">
-            </form>
-            <?php
+                <div class="dateReservationContainer">
+                    <p>Passé</p><span class="dateReservation inComing"></span>
+                </div>
+                <?php
+                if (count($getTestimonies) > 0) {
+                    $hasTestimony = false;
+                    foreach ($getTestimonies as $getTestimony) {
+                        if ($getTestimony['reservation_id'] == $i['id']) {
+                            $hasTestimony = true;
+                            break; // Sortir de la boucle si un témoignage est trouvé
+                        }
+                    }
+
+                    if ($hasTestimony) { ?>
+                        <p>Merci pour votre témoignage !</p>
+                    <?php } else { ?>
+                        <form action="http://<?= $domain ?>/user/createTestimony" method="POST">
+                            <input type="hidden" name="reservation_id" value="<?= $i['id'] ?>">
+                            <input type="submit" class="goldenButton" value="Raconter votre expérience">
+                        </form>
+                <?php }
+                }
             } elseif ($currentDate >= $startDateTime && $currentDate <= $endDateTime) { ?>
-            <div class="dateReservationContainer">
-                <p>En cours</p><span class="dateReservation atTheMoment"></span>
-            </div>
+                <div class="dateReservationContainer">
+                    <p>En cours</p><span class="dateReservation atTheMoment"></span>
+                </div>
             <?php
             } elseif ($currentDate < $startDateTime) { ?>
-            <div class="dateReservationContainer">
-                <p>À venir</p><span class="dateReservation passed"></span>
-            </div>
+                <div class="dateReservationContainer">
+                    <p>À venir</p><span class="dateReservation passed"></span>
+                </div>
                 <p class="goldenButton cancelReservation">Annuler la réservation</p>
             <?php
             }

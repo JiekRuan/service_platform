@@ -30,7 +30,7 @@ class Reservation
     {
         $this->id = $id;
     }
-    
+
 
     /**
      * @return mixed
@@ -93,7 +93,7 @@ class Reservation
         $this->end_time = $time;
     }
 
-        /**
+    /**
      * @return mixed
      */
     public function getContent()
@@ -105,7 +105,7 @@ class Reservation
     {
         $this->content = $content;
     }
-    
+
 
     //  fonction pour ajouter une réservation dans la BDD
     public function addReservation()
@@ -260,22 +260,38 @@ class Reservation
         return null;
     }
 
-    public function addTestimony(){
+    public function addTestimony()
+    {
         $createdAt = date('Y-m-d H:i:s');
 
         $db = new Database();
         $connection = $db->getConnection();
-        
+
         $request = $connection->prepare('INSERT INTO opinion (reservation_id, user_id, content, created_at) VALUES (:reservation_id, :user_id, :content, :created_at)');
         $request->bindParam(':reservation_id', $this->id);
         $request->bindParam(':user_id', $this->user_id);
         $request->bindParam(':content', $this->content);
         $request->bindParam(':created_at', $createdAt);
-        
+
         if ($request->execute()) {
             return true;
         }
-        
+
         return false;
+    }
+
+    // récuperer tous les témoignages d'un utilisateur
+    public function getTestimony()
+    {
+        $db = new Database();
+        $connection = $db->getConnection();
+
+        $request = $connection->prepare('SELECT * FROM opinion WHERE user_id = :user_id');
+        $request->bindParam(':user_id', $this->user_id);
+
+        $request->execute();
+        $results = $request->fetchAll(PDO::FETCH_ASSOC);
+        echo var_dump($results);
+        return $results;
     }
 }
