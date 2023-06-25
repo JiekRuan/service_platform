@@ -7,28 +7,32 @@ if ($_SESSION["status"] === "desactive") {
     global $domain;
     header('Location: http://' . $domain . '/user/disableAccount');
 }
+
+global $reservations;
 ?>
 
 <?php include 'public/templates/component/header.php' ?>
 <link rel="stylesheet" href="../public/css/global.css">
 <link rel="stylesheet" href="../public/css/reservationList.css">
 
-<?php function reservationList()
+<?php function reservationList($i)
 {
+    global $domain;
 ?>
     <div class="superContainer">
         <div class="Container">
-            <div>
-                <h3>Nom de logement</h3>
-                <p>dans le 4è arrondissement</p>
-            </div>
+            <form action="reservation" method="POST" id="<?= $i['id'] ?>" onclick="submitReservationForm('<?= $i['id'] ?>')">
+                <input type="hidden" name="reservation_id" value=<?= $i['id'] ?>>
+                <h3><?= $i['name'] ?></h3>
+                <p><?= $i['arrondissement'] ?>ème arrondissement</p>
+            </form>
             <div class="reservationDateDesktop">
                 <h4>Arrivée</h4>
-                <p>XX/XX/XXXX</p>
+                <p><?= date_format(new DateTime($i['start_time']), 'd/m/Y') ?></p>
             </div>
             <div class="reservationDateDesktop">
                 <h4>Départ</h4>
-                <p>XX/XX/XXXX</p>
+                <p><?= date_format(new DateTime($i['end_time']), 'd/m/Y') ?></p>
             </div>
             <div>
                 <i class="fa-solid fa-chevron-down fa-2xl arrow"></i>
@@ -39,22 +43,25 @@ if ($_SESSION["status"] === "desactive") {
             <div class="reservationDateMobile">
                 <div class="reservationDate">
                     <h4>Arrivée</h4>
-                    <p>XX/XX/XXXX</p>
+                    <p><?= date_format(new DateTime($i['start_time']), 'd/m/Y') ?></p>
                 </div>
                 <div class="reservationDate">
                     <h4>Départ</h4>
-                    <p>XX/XX/XXXX</p>
+                    <p><?= date_format(new DateTime($i['end_time']), 'd/m/Y') ?></p>
                 </div>
             </div>
 
             <p class="goldenButton cancelReservation">Annuler la réservation</p>
             <div class="cancelReservationConfirm">
-                <p>Êtes-vous sûr(e) de vouloir désactiver ce compte ?</p>
+                <p>Êtes-vous sûr(e) de vouloir annuler la réservation ?</p>
                 <div class="readDeleteMenuButton">
                     <div class="userForm">
                         <p class="blueButton cancelDesactivate">Annuler</p>
                     </div>
-                    <form action="" method="POST"><input type="submit" value="Désactiver" class="goldenButton"></form>
+                    <form action=<?= "http://" . $domain . "/reservation/reservationCancel" ?> method="POST">
+                        <input type="hidden" name="id" value=<?= $i['id'] ?>>
+                        <input type="submit" value="Confirmer" class="goldenButton">
+                    </form>
                 </div>
             </div>
             <figure>
@@ -75,10 +82,29 @@ if ($_SESSION["status"] === "desactive") {
     </p>
 </div>
 
-<?php for ($i = 0; $i < 5; $i++) {
-    reservationList();
+<?php
+if (count($reservations) > 0) {
+    foreach ($reservations as $reservation) {
+
+        reservationList($reservation);
+    }
+} else { ?>
+    <div class="superContainer">
+        <p>Vous n'avez pas fait de réservation pour le moment.</p>
+    </div>
+<?php
+
 } ?>
 
 <script src="../public/js/reservationList.js"></script>
-
+<script>
+    function submitReservationForm(formId) {
+        document.getElementById(formId).submit();
+    }
+</script>
+<style>
+    form {
+        cursor: pointer;
+    }
+</style>
 <?php include "public/templates/component/footer.php" ?>

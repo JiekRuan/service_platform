@@ -24,6 +24,7 @@ class Apartment
     private $vueSur;
     private $quartier;
 
+    private $userId;
 
 
     // public function __construct($id,$name,$address,$arrondissement,$price,$description,$squareMeter,$numberBathroom,$housingType,$balcon,$terasse,$capacity,$vueSur,$quartier)
@@ -50,6 +51,14 @@ class Apartment
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
     }
 
     /**
@@ -268,6 +277,22 @@ class Apartment
         $this->quartier = $quartier;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getUserId()
+    {
+        return $this->userId;
+    }
+
+    /**
+     * @param mixed $name
+     */
+    public function setUserId($userId): void
+    {
+        $this->userId = $userId;
+    }
+
     // fonction pour afficher les appartements
     public function readAllApartments()
     {
@@ -432,9 +457,9 @@ class Apartment
     {
         $db = new Database();
         $connection = $db->getConnection();
-    
+
         $searchValue = "%" . $search . "%"; // Valeur de recherche avec les wildcards
-    
+
         // $request = $connection->prepare("SELECT * FROM apartments WHERE id = :searchValue name LIKE :searchValue OR address LIKE :searchValue OR capacity LIKE :searchValue OR price LIKE :searchValue OR description LIKE :searchValue OR arrondissement LIKE :searchValue");
         $request = $connection->prepare("SELECT * FROM apartments WHERE id LIKE :searchValue OR name LIKE :searchValue OR address LIKE :searchValue OR capacity LIKE :searchValue OR price LIKE :searchValue OR description LIKE :searchValue OR arrondissement LIKE :searchValue");
 
@@ -443,7 +468,7 @@ class Apartment
         // $request->bindParam(':capacity', $this->capacity);
         // $request->bindParam(':arrondissement', $this->arrondissement);
         // $request->bindParam(':price', $this->price);
-    
+
         if ($request->execute()) {
             $results = $request->fetchAll(PDO::FETCH_ASSOC);
             return $results;
@@ -451,6 +476,66 @@ class Apartment
 
         return false;
     }
-    
+
+    public function addDeleteBookmark()
+    {
+        $db = new Database();
+        $connection = $db->getConnection();
+
+        // Vérification si le couple existe déjà dans la table des favoris
+        $query = $connection->prepare('SELECT COUNT(*) FROM favorites WHERE user_id = :user_id AND apartment_id = :id');
+        $query->bindParam(':user_id', $this->userId);
+        $query->bindParam(':id', $this->id);
+        $query->execute();
+
+        $count = $query->fetchColumn();
+
+        if ($count > 0) {
+            // Le couple existe, on supprime
+            $request = $connection->prepare('DELETE FROM favorites WHERE user_id = :userId AND apartment_id = :id');
+
+            $request->bindParam(':userId', $this->userId);
+            $request->bindParam(':id', $this->id);
+
+            if ($this->id) {
+                $request->bindParam(':id', $this->id);
+            }
+            if ($result = $request->execute()) {
+                // L'insertion a réussi
+                return $result;
+            } else {
+                // Une erreur s'est produite lors de l'insertion
+                echo "Une erreur s'est produite lors de la supression du couple aux favoris.";
+            }
+        } else {
+            // Le couple n'existe pas
+            $request = $connection->prepare('INSERT INTO favorites (user_id, apartment_id) 
+            VALUES (:userId, :id)');
+
+            $request->bindParam(':userId', $this->userId);
+            $request->bindParam(':id', $this->id);
+
+            if ($this->id) {
+                $request->bindParam(':id', $this->id);
+            }
+            if ($result = $request->execute()) {
+                // L'insertion a réussi
+                return $result;
+            } else {
+                // Une erreur s'est produite lors de l'insertion
+                echo "Une erreur s'est produite lors de l'ajout du couple aux favoris.";
+            }
+        }
+    }
+
+    public function readUserBookmark()
+    {
+        $db = new Database();
+        $connection = $db->getConnection();
+        $request = $connection->prepare("SELECT * FROM favorites INNER JOIN apartments ON favorites.apartment_id = apartments.id WHERE favorites.user_id = :user_id");
+        $request->bindParam(':user_id', $this->userId);
+        $request->execute();
+        $result = $request->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
 }
-//revoir la dernier fonction et terminer le controller !

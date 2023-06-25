@@ -43,7 +43,7 @@ if ($_SESSION["status"] === "desactive") {
     </div>
 
     <p class="thanksClose">
-        <a href="#" class="goldenButton">Fermer</a>
+        <a href=<?= "http://" . $domain . "/user/reservationList" ?> class="goldenButton">Fermer</a>
     </p>
 
 </main>

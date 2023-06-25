@@ -19,10 +19,12 @@ if ($_SESSION["status"] === "desactive") {
 <div class="superContainer">
     <div class="Container">
         <h2>PARAMÈTRES</h2>
-        <p class="descritionParametre">
-            Votre vie privée est notre priorité, et nous veillons à ce que toutes les
-            mesures de sécurité appropriées soient en place pour garantir la protection de vos données confidentielles.
-        </p>
+        <?php if ($_SESSION['role'] == 'customer') { ?>
+            <p class="descritionParametre">
+                Votre vie privée est notre priorité, et nous veillons à ce que toutes les
+                mesures de sécurité appropriées soient en place pour garantir la protection de vos données confidentielles.
+            </p>
+        <?php } ?>
 
         <form method="POST" action="settingsForm" class="infoForm">
             <!-- <div class="radiobox">
@@ -60,17 +62,21 @@ if ($_SESSION["status"] === "desactive") {
     <div class="Container">
         <h2>MODIFIER MOT DE PASSE</h2>
 
-        <form class="infoForm">
+        <form class="infoForm" action="updatePassword" method="POST" onsubmit="return validatePassword()">
+            <input type="hidden" name="id" value=<?= $_SESSION["userId"] ?>>
             <div class="row">
-                <input name="password" type="password" class="inputText" placeholder="Mot de passe" required>
+                <input id="password" name="password" type="password" class="inputText" placeholder="Mot de passe" required>
             </div>
             <div class="row">
-                <input name="confirmedPassword" type="password" class="inputText" placeholder="Confirmation du mot de passe" required>
+                <input id="confirmedPassword" name="confirmedPassword" type="password" class="inputText" placeholder="Confirmation du mot de passe" required>
             </div>
+
             <input type="submit" class="goldenButton" value="Confirmer">
         </form>
+
     </div>
 </div>
 
+<script src="../public/js/validatePassword.js"></script>
 
 <?php include 'public/templates/component/footer.php' ?>

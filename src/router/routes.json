@@ -120,7 +120,7 @@
         "controllerClass": "MyApp\\Controllers\\ApartmentController"
     },
     "Management_6": {
-        "url": "apartment/reservationDetails",
+        "url": "reservation/reservationDetails",
         "method": "GET",
         "function": "reservationDetails",
         "controllerClass": "MyApp\\Controllers\\ReservationController"
@@ -154,6 +154,12 @@
         "method": "GET",
         "function": "searchPageListApartment",
         "controllerClass": "MyApp\\Controllers\\ApartmentController"
+    },
+    "Management_12": {
+        "url": "reservation/delReservation",
+        "method": "POST",
+        "function": "delReservation",
+        "controllerClass": "MyApp\\Controllers\\ReservationController"
     },
     "Logistic_1": {
         "url": "intern/checklist",
@@ -210,7 +216,7 @@
         "controllerClass": "MyApp\\Controllers\\UserController"
     },
     "Customer_7": {
-        "url": "user/confirmReservation",
+        "url": "reservation/confirmReservation",
         "method": "POST",
         "function": "confirmReservation",
         "controllerClass": "MyApp\\Controllers\\ReservationController"
@@ -229,7 +235,7 @@
     },
     "Customer_10": {
         "url": "reservation/reservationCancel",
-        "method": "GET",
+        "method": "POST",
         "function": "reservationCancel",
         "controllerClass": "MyApp\\Controllers\\ReservationController"
     },
@@ -252,13 +258,37 @@
         "controllerClass": "MyApp\\Controllers\\UserController"
     },
     "Customer_14": {
-        "url": "user/UpdateStatus",
+        "url": "user/updateStatus",
         "method": "POST",
-        "function": "UpdateStatus",
+        "function": "updateStatus",
         "controllerClass": "MyApp\\Controllers\\UserController"
     },
+    "Customer_15": {
+        "url": "user/updatePassword",
+        "method": "POST",
+        "function": "updatePassword",
+        "controllerClass": "MyApp\\Controllers\\UserController"
+    },
+    "Customer_16": {
+        "url": "user/updateRole",
+        "method": "POST",
+        "function": "updateRole",
+        "controllerClass": "MyApp\\Controllers\\UserController"
+    },
+    "Customer_17": {
+        "url": "admin/searchUser",
+        "method": "GET",
+        "function": "searchUser",
+        "controllerClass": "MyApp\\Controllers\\UserController"
+    },
+    "Customer_18": {
+        "url": "user/bookmarkAddDelete",
+        "method": "POST",
+        "function": "bookmarkAddDelete",
+        "controllerClass": "MyApp\\Controllers\\ApartmentController"
+    },
     "Admin": {
-        "url": "admin",
+        "url": "admin/admin",
         "method": "POST",
         "function": "admin",
         "controllerClass": "MyApp\\Controllers\\UserController"

@@ -28,7 +28,7 @@ class User
         $this->role = $role;
         $this->password = $password;
         $this->createdAt = $createdAt;
-        $this->status = $status;  // Correction ici
+        $this->status = $status; // Correction ici
     }
 
     /**
@@ -169,18 +169,19 @@ class User
         if ($this->ifEmailExists($this->email)) {
             return false; // L'email existe déjà, renvoyer false
         }
-
+        $createdAt = date('Y-m-d H:i:s');
         $db = new Database();
         $connection = $db->getConnection();
 
         $hashedPassword = password_hash($this->password, PASSWORD_DEFAULT);
 
-        $request = $connection->prepare('INSERT INTO users (name, password, email, phone, role) VALUES(:name, :password, :email, :phone, :role)');
+        $request = $connection->prepare('INSERT INTO users (name, password, email, phone, role, created_at) VALUES(:name, :password, :email, :phone, :role, :created_at)');
         $request->bindParam(':name', $this->name);
         $request->bindParam(':password', $hashedPassword);
         $request->bindParam(':email', $this->email);
         $request->bindParam(':phone', $this->phone);
         $request->bindParam(':role', $this->role);
+        $request->bindParam(':created_at', $createdAt);
 
         if ($request->execute()) {
             return true; // Utilisateur ajouté avec succès
@@ -233,6 +234,23 @@ class User
         WHERE id = :id');
 
         $request->bindParam(':status', $this->status);
+        $request->bindParam(':id', $id);
+
+        $result = $request->execute();
+
+        return $result;
+    }
+
+    public function role($id)
+    {
+        $db = new Database();
+        $connection = $db->getConnection();
+
+        $request = $connection->prepare('UPDATE users SET 
+        role = :role
+        WHERE id = :id');
+
+        $request->bindParam(':role', $this->role);
         $request->bindParam(':id', $id);
 
         $result = $request->execute();
@@ -338,22 +356,37 @@ class User
         }
     }
 
-    public function updatePassword($newPassword)
+    public function updateUserPassword($userId, $password)
     {
         $db = new Database();
         $connection = $db->getConnection();
 
-        $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
         $request = $connection->prepare('UPDATE users SET password = :password WHERE id = :id');
-        $request->bindParam(':id', $this->id);
         $request->bindParam(':password', $hashedPassword);
+        $request->bindParam(':id', $userId);
+
+        return $request->execute();
+    }
+
+    public function searchUsers($search)
+    {
+        $db = new Database();
+        $connection = $db->getConnection();
+
+        $searchValue = "%" . $search . "%";
+
+
+        $request = $connection->prepare("SELECT * FROM users WHERE id LIKE :searchValue OR name LIKE :searchValue OR email LIKE :searchValue OR phone LIKE :searchValue OR role LIKE :searchValue");
+
+        $request->bindParam(':searchValue', $searchValue);
 
         if ($request->execute()) {
-            $this->password = $hashedPassword;
-            return true;
-        } else {
-            return false;
+            $results = $request->fetchAll(PDO::FETCH_ASSOC);
+            return $results;
         }
+
+        return false;
     }
 }

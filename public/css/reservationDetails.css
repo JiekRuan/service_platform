@@ -26,6 +26,27 @@
     gap: 20px;
 }
 
+.cancelReservationConfirm{
+    display: none;
+    background-color: var(--white);
+    box-shadow: var(--shadow1);
+    display: none;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    padding: 50px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.readDeleteMenuButton {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
 @media (max-width: 1024px) {
     .superContainer {
         padding: 50px 20px;

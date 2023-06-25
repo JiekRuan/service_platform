@@ -7,6 +7,10 @@
 <?php
 global $readApartment;
 $apartmentObject = $readApartment[0];
+$serializedObject = serialize($apartmentObject);
+$_SESSION['apartmentObject'] = $serializedObject;
+global $bookmarks;
+
 ?>
 
 <main>
@@ -30,16 +34,16 @@ $apartmentObject = $readApartment[0];
             <?php
 
             } else { ?>
-                <form action="" method="GET" class="formSearch">
+                <form action="reservation/confirmReservation" method="POST" class="formSearch">
                     <div class="date">
                         <div class="dateInput">
                             <label for="fromDate">De : </label>
-                            <input type="date" name="fromDate" id="fromDate" min="<?php echo date('Y-m-d'); ?>">
+                            <input type="date" name="fromDate" id="fromDate" min="<?php echo date('Y-m-d'); ?>" required>
                         </div>
 
                         <div class="dateInput">
                             <label for="toDate">Jusqu'à : </label>
-                            <input type="date" name="toDate" id="toDate" min="<?php echo date('Y-m-d'); ?>">
+                            <input type="date" name="toDate" id="toDate" min="<?php echo date('Y-m-d'); ?>" required>
                         </div>
                         <input type="submit" value="Réserver" class="goldenButton">
                     </div>
@@ -57,7 +61,28 @@ $apartmentObject = $readApartment[0];
         <article class="containerContent">
             <div class="descriptionBookmark">
                 <h2>Description</h2>
-                <i class="fa-regular fa-bookmark"></i>
+                <form action=<?= "http://" . $domain . "/user/bookmarkAddDelete" ?> method="POST" id=<?= $apartmentObject->getId() ?> onclick="submitReservationForm('<?= $apartmentObject->getId() ?>')">
+                    <input type="hidden" name="apartmentId" value=<?= $apartmentObject->getId() ?>>
+                    <input type="hidden" name="REQUEST_URI" value=<?= $_SERVER['REQUEST_URI'] ?>>
+                    <input type="hidden" name="userId" value=<?= $_SESSION['userId'] ?>>
+                    <?php
+                        $isFavorite = false;
+                        if (count($bookmarks) > 0) {
+                            foreach ($bookmarks as $bookmark) {
+                                if ($bookmark['id'] == $apartmentObject->getId()) {
+                                    $isFavorite = true; // L'élément est dans les favoris
+                                    break; // Sortir de la boucle dès que l'élément est trouvé
+                                }
+                            }
+                        }
+                        if ($isFavorite) {
+                            echo '<i class="fa-solid fa-bookmark"></i>';
+                        } else {
+                            echo '<i class="fa-regular fa-bookmark"></i>';
+                        }
+                    
+                        ?>
+                </form>
             </div>
             <p class="info"><?= $apartmentObject->getSquareMeter() ?> m² | <?= $apartmentObject->getCapacity() ?> chambres |
                 <?php
@@ -105,7 +130,7 @@ $apartmentObject = $readApartment[0];
                         echo $numberBathroom . " salle";
                     } else {
                         echo $numberBathroom . " salles";
-                    } ?></p>
+                    } ?> de bain</p>
                 <hr>
                 <p><?= $apartmentObject->getCapacity() ?> chambres</p>
                 <hr>
@@ -197,7 +222,11 @@ $apartmentObject = $readApartment[0];
     </section>
 
 </main>
-
+<script>
+    function submitReservationForm(formId) {
+        document.getElementById(formId).submit();
+    }
+</script>
 <script src="../public/js/date.js"></script>
 <script src="../public/js/picture.js"></script>
 <script src="../public/js/carousel.js"></script>

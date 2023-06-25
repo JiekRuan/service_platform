@@ -20,7 +20,8 @@ class UserController
             'name' => $_POST['name'],
             'password' => $_POST['password'],
             'email' => $_POST['email'],
-            'phone' => $_POST['phone']
+            'phone' => $_POST['phone'],
+            'smalldatetime' => $_POST['created_at']
         ];
 
         $user = new User(
@@ -30,13 +31,20 @@ class UserController
             $data['phone'],
             'customer',
             $data['password'],
-            null,
+            $data['smalldatetime'],
             'active'
         );
 
         if ($user->addUser()) {
             $_SESSION["loggedin"] = true;
+            $_SESSION['userId'] = $user->getId();
+            $_SESSION['userName'] = $user->getName();
+            $_SESSION['phone'] = $user->getPhone();
+            $_SESSION['email'] = $user->getMail();
             $_SESSION["role"] = $user->getRole();
+            $_SESSION["status"] = $user->getStatus();
+            setcookie("userId", $_SESSION['userId'], time() + 3600);
+            setcookie("userName", $_SESSION['userName'], time() + 3600);
             global $domain;
             header('Location: http://' . $domain . '/home');
         } else {
@@ -49,31 +57,58 @@ class UserController
         $data = [
             'id' => $_POST['id'],
             'name' => $_POST['name'],
-            'password' => $_POST['password'],
-            'email' => $_POST['email'],
             'phone' => $_POST['phone'],
-            'role' => $_POST['role'],
-            'create_at' => $_POST['create_at'],
-            'status' => $_POST['status']
+            'email' => $_POST['email']
         ];
 
         $user = new User(
             $data['id'],
             $data['name'],
-            $data['password'],
+            null,
             $data['email'],
             $data['phone'],
-            $data['role'],
-            $data['create_at'],
-            $data['status'],
+            null,
+            null,
+            null
         );
 
         if ($user->updateUser($data['id'])) {
-            echo "Les informations de l'utilisateur ont été mises à jour.";
+            $_SESSION["userName"] = $data['name'];
+            $_SESSION["email"] = $data['email'];
+            $_SESSION["phone"] = $data['phone'];
+            global $domain;
+            header('Location: http://' . $domain . '/home');
         } else {
             echo "Erreur lors de la mise à jour des informations de l'utilisateur.";
         }
     }
+
+    public function updatePassword()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (isset($_POST['password']) && isset($_POST['confirmedPassword'])) {
+                $password = $_POST['password'];
+                $confirmedPassword = $_POST['confirmedPassword'];
+
+                if ($password === $confirmedPassword) {
+                    $userId = $_SESSION["userId"];
+                    $user = new User(null, null, null, null, null, null, null, null);
+                    if ($user->updateUserPassword($userId, $password)) {
+                        // echo "Le mot de passe a été mis à jour avec succès.";
+                        global $domain;
+                        header('Location: http://' . $domain . '/user/settings');
+                    } else {
+                        echo "Erreur lors de la mise à jour du mot de passe.";
+                    }
+                } else {
+                    echo "Le mot de passe et sa confirmation ne correspondent pas. Veuillez réessayer.";
+                }
+            } else {
+                echo "Veuillez fournir un mot de passe et une confirmation.";
+            }
+        }
+    }
+
 
     public function deleteUser()
     {
@@ -137,25 +172,25 @@ class UserController
         exit();
     }
 
-    public function getUserById($id)
-    {
-        $user = new User(null, null, null, null, null, null, null, null);
+    // public function getUserById($id)
+    // {
+    //     $user = new User(null, null, null, null, null, null, null, null);
 
-        if ($user->getUserById($id)) {
-            $userInfo = $user->getUserInfo($id);
+    //     if ($user->getUserById($id)) {
+    //         $userInfo = $user->getUserInfo($id);
 
-            if ($userInfo) {
-                echo "ID : ", $userInfo['id'], "<br>";
-                echo "Nom : ", $userInfo['name'], "<br>";
-                echo "Email : ", $userInfo['email'], "<br>";
-                echo "Téléphone : ", $userInfo['phone'], "<br>";
-            } else {
-                echo "Aucune information disponible pour l'utilisateur avec l'ID spécifié.";
-            }
-        } else {
-            echo "Erreur lors de la récupération des informations de l'utilisateur.";
-        }
-    }
+    //         if ($userInfo) {
+    //             echo "ID : ", $userInfo['id'], "<br>";
+    //             echo "Nom : ", $userInfo['name'], "<br>";
+    //             echo "Email : ", $userInfo['email'], "<br>";
+    //             echo "Téléphone : ", $userInfo['phone'], "<br>";
+    //         } else {
+    //             echo "Aucune information disponible pour l'utilisateur avec l'ID spécifié.";
+    //         }
+    //     } else {
+    //         echo "Erreur lors de la récupération des informations de l'utilisateur.";
+    //     }
+    // }
     // redirection vers les vues
     public function Error404(): void
     {
@@ -252,7 +287,7 @@ class UserController
         }
     }
 
-    public function UpdateStatus()
+    public function updateStatus()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id = $_POST['id'];
@@ -272,6 +307,24 @@ class UserController
         }
     }
 
+    public function updateRole()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_POST['id'];
+            $role = $_POST['role'];
+            $user = new User($id, null, null, null, $role, null, null, null);
+
+            // Enregistrer les nouvelles informations
+            if ($user->role($id)) {
+                global $domain;
+                header('Location: http://' . $domain . '/admin');
+                exit();
+            } else {
+                header('Location: public\templates\public\404.php');
+            }
+        }
+    }
+
     public function admin()
     {
         $user = new User(null, null, null, null, null, null, null, null);
@@ -280,5 +333,22 @@ class UserController
         $users = $user->getAllUsers();
         // echo var_dump($users);
         require_once 'public\templates\admin\admin.php';
+    }
+
+    public function searchUser()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+            $search = $_GET['search'];
+            $user = new User(null, null, null, null, null, null, null, null);
+            global $users;
+
+            if (empty($search)) {
+                $users = $user->getAllUsers();
+            } else {
+                $users = $user->searchUsers($search);
+            }
+
+            require_once 'public\templates\admin\admin.php';
+        }
     }
 }

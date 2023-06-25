@@ -29,7 +29,7 @@ global $domain;
             <ul id="desktop">
                 <li id="search"><i class="fa-solid fa-magnifying-glass"></i></li>
                 <li id="searchForm">
-                    <form action="searchPage" method="GET" class="searchFormInput">
+                    <form action=<?= "http://" . $domain . "/searchPage" ?> method="GET" class="searchFormInput">
                         <input class="searchInput" name="search" type="text" placeholder="16ème arrondissement...">
                         <button type="submit" class="homepageSearchButton homepageSearchButtonMobile"><i class="fa-solid fa-magnifying-glass"></i></button>
                     </form>
@@ -57,12 +57,12 @@ global $domain;
                         <li><a href=<?= "http://" . $domain . "/intern/checklist" ?>><i class="fa-solid fa-list-check"></i></a></li>
                         <li><a href=<?= "http://" . $domain . "/intern/todo" ?>><i class="fa-solid fa-list-ul"></i></a></li>
                     <?php } else if ($_SESSION["role"] == "management") { ?>
-                        <li><a href=<?= "http://" . $domain . "/#" ?>><i class="fa-regular fa-calendar"></i></a></li>
+                        <li><a href=<?= "http://" . $domain . "/reservation/reservationDetails" ?>><i class="fa-regular fa-calendar"></i></a></li>
                         <li><a href=<?= "http://" . $domain . "/intern/chat" ?>><i class="fa-regular fa-message"></i></a></li>
                         <li><a href=<?= "http://" . $domain . "/apartment/moderateTestimony" ?>><i class="fas fa-clipboard-check"></i></a></li>
                         <li><a href=<?= "http://" . $domain . "/apartment/listApartement" ?>><i class="fa-regular fa-building"></i></a></li>
                     <?php } else if ($_SESSION["role"] == "admin") { ?>
-                        <li><a href=<?= "http://" . $domain . "/admin" ?>><i class="fa-solid fa-user-gear"></i></a></li>
+                        <li><a href=<?= "http://" . $domain . "/admin/admin" ?>><i class="fa-solid fa-user-gear"></i></a></li>
                     <?php } ?>
                     <li><a href=<?= "http://" . $domain . "/user/settings" ?>><i class="fa-regular fa-user"></i></a></li>
                     <li>
@@ -77,7 +77,7 @@ global $domain;
             <ul id="mobile">
                 <li id="searchMobile"><i class="fa-solid fa-magnifying-glass"></i></li>
                 <li id="searchFormMobile">
-                    <form action="searchPage" method="GET" class="searchFormInput">
+                    <form action=<?= "http://" . $domain . "/searchPage" ?> method="GET" class="searchFormInput">
                         <input class="searchInput" name="search" type="text" placeholder="16ème arrondissement...">
                         <button type="submit" class="homepageSearchButton homepageSearchButtonMobile"><i class="fa-solid fa-magnifying-glass"></i></button>
                     </form>
@@ -144,7 +144,7 @@ global $domain;
                             </li>
                         </a>
                     <?php } else if ($_SESSION["role"] == "management") { ?>
-                        <a href=<?= "http://" . $domain . "/#" ?>>
+                        <a href=<?= "http://" . $domain . "/reservation/reservationDetails" ?>>
                             <li><i class="fa-regular fa-calendar"></i>
                                 <p>Calendrier
                                 </p>
@@ -169,7 +169,7 @@ global $domain;
                             </li>
                         </a>
                     <?php } else if ($_SESSION["role"] == "admin") { ?>
-                        <a href=<?= "http://" . $domain . "/admin" ?>>
+                        <a href=<?= "http://" . $domain . "/admin/admin" ?>>
                             <li><i class="fa-solid fa-user-gear"></i>
                                 <p>Gérer les utilisateurs
                                 </p>

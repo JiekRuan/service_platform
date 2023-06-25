@@ -93,14 +93,14 @@ function listApartement($i)
                 <input type="text" name="search" placeholder="Rechercher...">
                 <button type="sumbit"><i class="fa-solid fa-magnifying-glass"></i></button>
             </form>
-            <form action="" method="GET">
+            <!-- <form action="" method="GET">
                 <select>
                     <option value="option1">ID</option>
                     <option value="option2">Nom</option>
                     <option value="option3">Arrondissement</option>
                     <option value="option4">Capacité</option>
                 </select>
-            </form>
+            </form> -->
         </div>
 
 

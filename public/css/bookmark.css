@@ -1,4 +1,10 @@
+body {
+    background-image: url(../images/bglight.png);
+    background-size: cover;
+}
+
 .user {
+    background-color: var(--white);
     display: flex;
     flex-direction: column;
     box-shadow: var(--shadow1);

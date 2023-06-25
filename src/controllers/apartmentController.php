@@ -230,6 +230,12 @@ class ApartmentController
     public function logement()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+            $userId = $_SESSION['userId'];
+            $bookmark = new Apartment();
+            $bookmark->setUserId($userId);
+            global $bookmarks;
+            $bookmarks = $bookmark->readUserBookmark();
+
             $id = $_GET['id'];
             $apart = new Apartment();
             global $readApartment;
@@ -253,21 +259,50 @@ class ApartmentController
     {
         require_once 'public\templates\customer\thanksTestimony.php';
     }
+
     public function bookmark()
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-            $name = $_GET['name'];
-            $arrondissement = $_GET['arrondissement'];
-            $description = $_GET['description'];
-
-            $apartmentModel = new Apartment();
-            $apartments = $apartmentModel->readAllApartments();
-
-            // Utilisez les variables récupérées dans votre code ici
-
-            require_once 'public/templates/customer/bookmark.php';
-        }
+        $userId = $_SESSION['userId'];
+        $bookmark = new Apartment();
+        $bookmark->setUserId($userId);
+        global $bookmarks;
+        $bookmarks = $bookmark->readUserBookmark();
+        require_once 'public/templates/customer/bookmark.php';
     }
+
+    public function bookmarkAddDelete()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $apartmentId = $_POST['apartmentId'];
+            $userId = $_POST['userId'];
+
+            $apartment = new Apartment();
+
+            $apartment->setId($apartmentId);
+            $apartment->setUserId($userId);
+
+            if ($apartment->addDeleteBookmark()) {
+
+                global $domain;
+                $currentPage = $_POST['REQUEST_URI'];
+                header('Location: http://' . $domain . '' . $currentPage);
+            } else {
+                global $domain;
+                header('Location: http://' . $domain . '/user/bookmark');
+                // header('Location: http://' . $domain . '/404');
+            }
+        }
+
+        require_once 'public/templates/customer/bookmark.php';
+    }
+
+    // public function bookmarkDelete()
+    // {
+    //     $currentPage = $_SERVER['REQUEST_URI'];
+    //     echo $currentPage;
+    //     require_once 'public/templates/customer/bookmark.php';
+    // }
+
     public function checklist()
     {
         require_once 'public\templates\logistic\checklist.php';
@@ -290,16 +325,24 @@ class ApartmentController
     public function searchPage()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+            // récupérer les favoris
+            $userId = $_SESSION['userId'];
+            $bookmark = new Apartment();
+            $bookmark->setUserId($userId);
+            global $bookmarks;
+            $bookmarks = $bookmark->readUserBookmark();
+
+
             $search = $_GET['search'];
             $apartment = new Apartment();
             global $apartments;
-    
+
             if (empty($search)) {
                 $apartments = $apartment->readAllApartments();
             } else {
                 $apartments = $apartment->searchApartment($search);
             }
-    
+
             require_once 'public\templates\public\searchPage.php';
         }
     }
@@ -310,16 +353,15 @@ class ApartmentController
             $search = $_GET['search'];
             $apartment = new Apartment();
             global $apartments;
-    
+
             if (empty($search)) {
                 $apartments = $apartment->readAllApartments();
             } else {
                 $apartments = $apartment->searchApartment($search);
             }
-    
+
             require_once 'public\templates\management\listApartement.php';
         }
     }
-    
 }
 //affichier les appart cree une function avec un [].

@@ -1,6 +1,4 @@
-// https://codepen.io/wallaceerick/pen/nJLPvN
-
-function customSelect(element) {
+function customSelectSubmit(element) {
     let select = element;
     let numberOfOptions = select.children.length;
   
@@ -10,7 +8,6 @@ function customSelect(element) {
     select.parentNode.insertBefore(selectContainer, select.nextSibling);
     let selectStyled = document.createElement('div');
     selectStyled.classList.add('select-styled');
-    selectStyled.textContent = select.children[0].textContent;
     selectContainer.appendChild(selectStyled);
   
     let selectOptions = document.createElement('ul');
@@ -23,6 +20,14 @@ function customSelect(element) {
       listItem.textContent = option.textContent;
       listItem.setAttribute('rel', option.value);
       selectOptions.appendChild(listItem);
+  
+      if (option.selected) {
+        selectStyled.textContent = option.textContent;
+      }
+  
+      if (option.selected && !select.hasAttribute('multiple')) {
+        listItem.classList.add('selected');
+      }
     }
   
     let listItems = selectOptions.children;
@@ -45,6 +50,19 @@ function customSelect(element) {
         selectStyled.classList.remove('active');
         select.value = this.getAttribute('rel');
         selectOptions.style.display = 'none';
+  
+        // Remove selected class from all list items
+        for (let k = 0; k < listItems.length; k++) {
+          listItems[k].classList.remove('selected');
+        }
+  
+        // Add selected class to the clicked list item
+        this.classList.add('selected');
+  
+        let form = select.closest('form');
+        if (form) {
+          form.submit(); // Soumettre le formulaire
+        }
       });
     }
   
@@ -54,7 +72,14 @@ function customSelect(element) {
     });
   }
   
-  let selects = document.querySelectorAll('.select');
-  for (let i = 0; i < selects.length; i++) {
-    customSelect(selects[i]);
+  let selectsSubmit = document.querySelectorAll('.mySelect');
+  for (let i = 0; i < selectsSubmit.length; i++) {
+    customSelectSubmit(selectsSubmit[i]);
+  
+    let form = selectsSubmit[i].closest('form');
+    if (form) {
+      selectsSubmit[i].addEventListener('change', function () {
+        form.submit(); // Soumettre le formulaire
+      });
+    }
   }

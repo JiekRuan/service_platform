@@ -22,7 +22,7 @@
             <p>Profitez d'un séjour d'exception au cœur de nos somptueux appartements haut de gamme, nichés dans les quartiers les plus prestigieux de Paris.</p>
 
             <div class="homepageFormContainer">
-                <form action="searchPage" method="GET" class="homepageSearch">
+                <form action=<?= "http://" . $domain . "/searchPage" ?> method="GET" class="homepageSearch">
                     <input type="text" name="search" placeholder="Rechercher..." class="homepageSearchInput">
                     <input type="submit" value="Rechercher" class="blueButton homepageSearchButton">
                 </form>
@@ -71,7 +71,7 @@
             </div>
 
 
-            <a href=<?= "http://" . $domain . "/searchPage" ?> class="goldenButton">Découvrez nos logements</a>
+            <a href=<?= "http://" . $domain . "/searchPage?search=" ?> class="goldenButton">Découvrez nos logements</a>
 
         </article>
 
@@ -80,7 +80,7 @@
             <div class="homepageDiscoverParagraph">
                 <p>Chaque maison de notre collection est une rencontre entre nos critères d'excellence et un véritable coup de cœur. Nos conseillers vous accompagnent avec une transparence totale pour trouver votre maison idéale, celle qui correspond parfaitement à vos envies.</p>
             </div>
-            <a href=<?= "http://" . $domain . "/searchPage" ?> class="homepageInformation">Se renseigner sur notre catalogue</a>
+            <a href=<?= "http://" . $domain . "/searchPage?search=" ?> class="homepageInformation">Se renseigner sur notre catalogue</a>
             <img src="public/images/homepage/appart_4.jpg" alt="">
         </article>
 
@@ -129,7 +129,7 @@
             <div class="homepageReservation homepageReservationContent">
                 <h2>Réservez votre logement dès maintenant</h2>
                 <p>Profiter de vos vacances dans un cadre exceptionnel</p>
-                <a href=<?= "http://" . $domain . "/searchPage" ?> class="goldenButton">Découvrez nos logements</a>
+                <a href=<?= "http://" . $domain . "/searchPage?search=" ?> class="goldenButton">Découvrez nos logements</a>
                 <figure class="homepageReservationImage">
                     <img src="public/images/homepage/appart_5.jpg" alt="">
                 </figure>

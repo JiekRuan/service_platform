@@ -3,49 +3,76 @@
 
 <?php
 global $apartments;
-// echo var_dump($apartments);
 function apartementTemplate($apartments)
 {
     global $domain;
+    global $bookmarks;
 
     if (is_object($apartments)) {
         $i = $apartments;
-        ?>
-        <a href="<?= "http://" . $domain . "/logement?id=" . $i->getId() ?>" class="userInfo box">
+?>
+        <div class="userInfo box">
+            <a href="<?= "http://" . $domain . "/logement?id=" . $i->getId() ?>">
+                <figure>
+                    <img src="../public/images/paris.jpeg" alt="logement2">
+                </figure>
+            </a>
+            <div class="information">
+                <div class="star">
+                    <h3 class="monaco"><a href="<?= "http://" . $domain . "/logement?id=" . $i->getId() ?>"><?= $i->getName() ?></a></h3>
+                    <?php if (isset($_SESSION["role"]) && $_SESSION["role"] === "customer") { ?>
+                        <form action=<?= "http://" . $domain . "/user/bookmarkAddDelete" ?> method="POST" id=<?= $i->getId() ?> onclick="submitReservationForm('<?= $i->getId() ?>')">
+                            <input type="hidden" name="apartmentId" value=<?= $i->getId() ?>>
+                            <input type="hidden" name="REQUEST_URI" value=<?= $_SERVER['REQUEST_URI'] ?>>
+                            <input type="hidden" name="userId" value=<?= $_SESSION['userId'] ?>>
+                        <?php
+                        $isFavorite = false;
+                        if (count($bookmarks) > 0) {
+                            foreach ($bookmarks as $bookmark) {
+                                if ($bookmark['id'] == $i->getId()) {
+                                    $isFavorite = true; // L'élément est dans les favoris
+                                    break; // Sortir de la boucle dès que l'élément est trouvé
+                                }
+                            }
+                        }
+                        if ($isFavorite) {
+                            echo '<i class="fa-solid fa-bookmark"></i>';
+                        } else {
+                            echo '<i class="fa-regular fa-bookmark"></i>';
+                        }
+                    }
+                        ?>
+                        </form>
+
+                </div>
+                <div class="price">
+
+                    <p><a href="<?= "http://" . $domain . "/logement?id=" . $i->getId() ?>"><?= $i->getHousingType() ?> | <?= $i->getSquareMeter() ?> m² | <?= $i->getCapacity() ?> chambres</a></p>
+                    <p><?= $i->getPrice() ?>€</p>
+                </div>
+                <p class="price2">/jour</p>
+            </div>
+        </div>
+    <?php
+    } elseif (is_array($apartments)) {
+        // foreach ($apartments as $i) {
+    ?>
+        <a href="<?= "http://" . $domain . "/logement?id=" . $apartments['id'] ?>" class="userInfo box">
             <figure>
                 <img src="../public/images/paris.jpeg" alt="logement2">
             </figure>
             <div class="information">
                 <div class="star">
-                    <h3 class="monaco"><?= $i->getName() ?></h3><i class="fa-regular fa-bookmark"></i>
+                    <h3 class="monaco"><?= $apartments['name'] ?></h3><i class="fa-regular fa-bookmark"></i>
                 </div>
                 <div class="price">
-                    <p><?= $i->getHousingType() ?> | <?= $i->getSquareMeter() ?> m² | <?= $i->getCapacity() ?> chambres</p>
-                    <p><?= $i->getPrice() ?>€</p>
+                    <p><?= $apartments['housingType'] ?> | <?= $apartments['squareMeter'] ?> m² | <?= $apartments['capacity'] ?> chambres</p>
+                    <p><?= $apartments['price'] ?>€</p>
                 </div>
                 <p class="price2">/jour</p>
             </div>
         </a>
-        <?php
-    } elseif (is_array($apartments)) {
-        // foreach ($apartments as $i) {
-            ?>
-            <a href="<?= "http://" . $domain . "/logement?id=" . $apartments['id'] ?>" class="userInfo box">
-                <figure>
-                    <img src="../public/images/paris.jpeg" alt="logement2">
-                </figure>
-                <div class="information">
-                    <div class="star">
-                        <h3 class="monaco"><?= $apartments['name'] ?></h3><i class="fa-regular fa-bookmark"></i>
-                    </div>
-                    <div class="price">
-                        <p><?= $apartments['housingType'] ?> | <?= $apartments['squareMeter'] ?> m² | <?= $apartments['capacity'] ?> chambres</p>
-                        <p><?= $apartments['price'] ?>€</p>
-                    </div>
-                    <p class="price2">/jour</p>
-                </div>
-            </a>
-            <?php
+<?php
         // }
     } else {
         echo "Type de données non pris en charge pour \$apartments.";
@@ -201,7 +228,11 @@ function apartementTemplate($apartments)
     </div>
 
 </main>
-
+<script>
+    function submitReservationForm(formId) {
+        document.getElementById(formId).submit();
+    }
+</script>
 <script src="public/js/searchPageDate.js"></script>
 <script src="public/js/searchPageDualRange.js"></script>
 <script src="public/js/date.js"></script>
