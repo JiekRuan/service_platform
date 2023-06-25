@@ -25,12 +25,33 @@ $filters = [
 <?php function testimony($i)
 {
     global $domain;
-    ?>
+
+    $createdAt = $i['opinion_create_at'];
+    $createdDateTime = new DateTime($createdAt);
+    $currentDateTime = new DateTime();
+    $interval = $currentDateTime->diff($createdDateTime);
+
+    $daysElapsed = $interval->days;
+    $monthsElapsed = $interval->y * 12 + $interval->m;
+    $yearsElapsed = $interval->y;
+    $text = "";
+
+    if ($daysElapsed == 0) {
+        $text = "aujourd'hui";
+    } elseif ($daysElapsed < 30) {
+        $text =  "il y a " . $daysElapsed . " jour(s)";
+    } elseif ($monthsElapsed < 12) {
+        $text = "il y a " . floor($daysElapsed / 30) . " mois";
+    } else {
+        $text = "il y a " . floor($daysElapsed / 365) . " ans";
+    }
+
+?>
     <div class="superContainer">
         <div class="Container">
             <div class="infoLogement">
-                <h3><a href=<?= "http://" . $domain . "/logement?id=". $i['id'] ?>><?= $i['name'] ?></a></h3>
-                <p><a href=<?= "http://" . $domain . "/logement?id=". $i['id'] ?>>dans le <?= $i['arrondissement'] ?>ème arrondissement</a></p>
+                <h3><a href=<?= "http://" . $domain . "/logement?id=" . $i['id'] ?>><?= $i['name'] ?></a></h3>
+                <p><a href=<?= "http://" . $domain . "/logement?id=" . $i['id'] ?>>dans le <?= $i['arrondissement'] ?>ème arrondissement</a></p>
             </div>
             <div class="infoTemoignage">
                 <i class="fa-solid fa-quote-left" style="color: #c29b40;"></i>
@@ -39,7 +60,7 @@ $filters = [
                 </p>
             </div>
             <div class="infoNomTemoignage">
-                <p>De <?= $i['user_name'] ?></p>
+                <p>De <?= $i['user_name'] ?>, <?= $text ?></p>
                 <i class="fa-solid fa-quote-right" style="color: #c29b40;"></i>
             </div>
         </div>
