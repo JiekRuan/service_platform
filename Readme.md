@@ -86,4 +86,4 @@ Pour le moment, fonctionnel uniquement entre deux utilisateurs avec le rôle cli
 
 ### PS :
 
-<p>Il se peut que certaines fonctionnalités n'ont pas été cité plus haut, n'hésitez pas à regarder partout.</p>
+<p>Il se peut que certaines fonctionnalités n'aient pas été citées plus haut, n'hésitez pas à regarder partout.</p>
