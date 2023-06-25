@@ -231,7 +231,7 @@
         "url": "reservation/confirmReservation",
         "method": "POST",
         "function": "confirmReservation",
-        "controllerClass": "MyApp\\Controllers\\ReservationController"
+        "controllerClass": "MyApp\\Controllers\\ApartmentController"
     },
     "Customer_8": {
         "url": "user/bookmark",

@@ -568,4 +568,23 @@ class Apartment
         $result = $request->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
+
+    public function getPhotosByApartment(){
+        $db = new Database();
+        $connection = $db->getConnection();
+        $request = $connection->prepare("SELECT photo, apartment_id FROM apartments INNER JOIN apartment_photos ON apartments.id = apartment_photos.apartment_id WHERE apartments.id = :id");
+        $request->bindParam(':id', $this->id);
+        $request->execute();
+        $result = $request->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
+    public function getAllPhotos(){
+        $db = new Database();
+        $connection = $db->getConnection();
+        $request = $connection->prepare("SELECT photo, apartment_id FROM apartments INNER JOIN apartment_photos ON apartments.id = apartment_photos.apartment_id");
+        $request->execute();
+        $result = $request->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
 }

@@ -2,47 +2,55 @@
 <link rel="stylesheet" href="public/css/searchPage.css">
 
 <?php
+
+
 global $apartments;
-function apartementTemplate($apartments)
+function apartementTemplate($apartments, $index)
 {
     global $domain;
     global $bookmarks;
-
+    global $photos;
     if (is_object($apartments)) {
+
         $i = $apartments;
 ?>
         <div class="userInfo box">
             <a href="<?= "http://" . $domain . "/logement?id=" . $i->getId() ?>">
                 <figure>
-                    <img src="../public/images/paris.jpeg" alt="logement2">
+                    <!-- <img src="../public/images/paris.jpeg" alt="logement2"> -->
+                    <img src="data:image/jpeg;base64,<?= $photos[$index]['photo']; ?>" alt="logement à Paris <?= $i->getName() ?>" />
                 </figure>
             </a>
             <div class="information">
                 <div class="star">
                     <h3 class="monaco"><a href="<?= "http://" . $domain . "/logement?id=" . $i->getId() ?>"><?= $i->getName() ?></a></h3>
-                    <?php if (isset($_SESSION["role"]) && $_SESSION["role"] === "customer") { ?>
-                        <form action=<?= "http://" . $domain . "/user/bookmarkAddDelete" ?> method="POST" id=<?= $i->getId() ?> onclick="submitReservationForm('<?= $i->getId() ?>')">
-                            <input type="hidden" name="apartmentId" value=<?= $i->getId() ?>>
-                            <input type="hidden" name="REQUEST_URI" value=<?= $_SERVER['REQUEST_URI'] ?>>
-                            <input type="hidden" name="userId" value=<?= $_SESSION['userId'] ?>>
+                    <?php
+                    if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+                    } else {
+                        if (isset($_SESSION["role"]) && $_SESSION["role"] === "customer") { ?>
+                            <form action=<?= "http://" . $domain . "/user/bookmarkAddDelete" ?> method="POST" id=<?= $i->getId() ?> onclick="submitReservationForm('<?= $i->getId() ?>')">
+                                <input type="hidden" name="apartmentId" value=<?= $i->getId() ?>>
+                                <input type="hidden" name="REQUEST_URI" value=<?= $_SERVER['REQUEST_URI'] ?>>
+                                <input type="hidden" name="userId" value=<?= $_SESSION['userId'] ?>>
                         <?php
-                        $isFavorite = false;
-                        if (count($bookmarks) > 0) {
-                            foreach ($bookmarks as $bookmark) {
-                                if ($bookmark['id'] == $i->getId()) {
-                                    $isFavorite = true; // L'élément est dans les favoris
-                                    break; // Sortir de la boucle dès que l'élément est trouvé
+                            $isFavorite = false;
+                            if (count($bookmarks) > 0) {
+                                foreach ($bookmarks as $bookmark) {
+                                    if ($bookmark['id'] == $i->getId()) {
+                                        $isFavorite = true; // L'élément est dans les favoris
+                                        break; // Sortir de la boucle dès que l'élément est trouvé
+                                    }
                                 }
                             }
-                        }
-                        if ($isFavorite) {
-                            echo '<i class="fa-solid fa-bookmark"></i>';
-                        } else {
-                            echo '<i class="fa-regular fa-bookmark"></i>';
+                            if ($isFavorite) {
+                                echo '<i class="fa-solid fa-bookmark"></i>';
+                            } else {
+                                echo '<i class="fa-regular fa-bookmark"></i>';
+                            }
                         }
                     }
                         ?>
-                        </form>
+                            </form>
 
                 </div>
                 <div class="price">
@@ -55,23 +63,56 @@ function apartementTemplate($apartments)
         </div>
     <?php
     } elseif (is_array($apartments)) {
-        // foreach ($apartments as $i) {
     ?>
-        <a href="<?= "http://" . $domain . "/logement?id=" . $apartments['id'] ?>" class="userInfo box">
+        <div class="userInfo box">
             <figure>
-                <img src="../public/images/paris.jpeg" alt="logement2">
+                <a href="<?= "http://" . $domain . "/logement?id=" . $apartments['id'] ?>">
+                    <img src="data:image/jpeg;base64,<?= $photos[$index]['photo']; ?>" alt="logement à Paris <?= $apartments['name'] ?>" />
+                </a>
             </figure>
             <div class="information">
                 <div class="star">
-                    <h3 class="monaco"><?= $apartments['name'] ?></h3><i class="fa-regular fa-bookmark"></i>
+                    <h3 class="monaco">
+                        <a href="<?= "http://" . $domain . "/logement?id=" . $apartments['id'] ?>">
+                            <?= $apartments['name'] ?>
+                        </a>
+                    </h3>
+                    <?php
+                    if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+                    } else {
+                        if (isset($_SESSION["role"]) && $_SESSION["role"] === "customer") { ?>
+                            <form action=<?= "http://" . $domain . "/user/bookmarkAddDelete" ?> method="POST" id=<?= $apartments['id'] ?> onclick="submitReservationForm('<?= $apartments['id'] ?>')">
+                                <input type="hidden" name="apartmentId" value=<?= $apartments['id'] ?>>
+                                <input type="hidden" name="REQUEST_URI" value=<?= $_SERVER['REQUEST_URI'] ?>>
+                                <input type="hidden" name="userId" value=<?= $_SESSION['userId'] ?>>
+                        <?php
+                            $isFavorite = false;
+                            if (count($bookmarks) > 0) {
+                                foreach ($bookmarks as $bookmark) {
+                                    if ($bookmark['id'] == $apartments['id']) {
+                                        $isFavorite = true; // L'élément est dans les favoris
+                                        break; // Sortir de la boucle dès que l'élément est trouvé
+                                    }
+                                }
+                            }
+                            if ($isFavorite) {
+                                echo '<i class="fa-solid fa-bookmark"></i>';
+                            } else {
+                                echo '<i class="fa-regular fa-bookmark"></i>';
+                            }
+                        }
+                    }
+                        ?>
                 </div>
                 <div class="price">
-                    <p><?= $apartments['housingType'] ?> | <?= $apartments['squareMeter'] ?> m² | <?= $apartments['capacity'] ?> chambres</p>
+                    <p><?= $apartments['housingType'] ?> | <?= $apartments['squareMeter'] ?> m² | <?= $apartments['capacity'] ?> chambres <a href="<?= "http://" . $domain . "/logement?id=" . $apartments['id'] ?>">
+                        </a>
+                    </p>
                     <p><?= $apartments['price'] ?>€</p>
                 </div>
                 <p class="price2">/jour</p>
             </div>
-        </a>
+        </div>
 <?php
         // }
     } else {
@@ -217,8 +258,8 @@ function apartementTemplate($apartments)
         <?php
 
         if (count($apartments) > 0) {
-            foreach ($apartments as $apartment) {
-                apartementTemplate($apartment);
+            foreach ($apartments as $index => $apartment) {
+                apartementTemplate($apartment, $index);
             }
         } else {
             echo "<p>Pas de logement correspondant à cette cette recherche.</p>";

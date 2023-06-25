@@ -59,19 +59,19 @@ $apartmentObject = $readApartment[0];
                 <h3>Particularité</h3>
                 <input type="text" name="description" placeholder="Description..." value=<?= $apartmentObject->getDescription() ?> required>
             </div>
-            <div class="userInfo">
+            <!-- <div class="userInfo">
                 <h3>Photo</h3>
-                <!-- <input type="text" name="photo1" placeholder="URL de l'image 1" required>
+                <input type="text" name="photo1" placeholder="URL de l'image 1" required>
                 <input type="text" name="photo2" placeholder="URL de l'image 2">
                 <input type="text" name="photo3" placeholder="URL de l'image 3">
-                <input type="text" name="photo4" placeholder="URL de l'image 4"> -->
-                <!-- <div class="readImage">
+                <input type="text" name="photo4" placeholder="URL de l'image 4">
+                <div class="readImage">
                     <figure><img src="public/images/concierge/service_1.png" alt="placeholder"></figure>
                     <figure><img src="public/images/concierge/service_1.png" alt="placeholder"></figure>
                     <figure><img src="public/images/concierge/service_1.png" alt="placeholder"></figure>
                     <figure><img src="public/images/concierge/service_1.png" alt="placeholder"></figure>
-                </div> -->
-            </div>
+                </div>
+            </div> -->
             <div class="userForm">
                 <input type="submit" value="Mettre à jour" class="goldenButton">
             </div>

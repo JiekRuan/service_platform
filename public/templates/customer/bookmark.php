@@ -18,8 +18,9 @@ global $bookmarks;
 
 <?php
 
-function adminUserTemplate($i)
+function bookmark($i)
 {
+    global $photos;
     global $domain;
 ?>
     <div class="user">
@@ -37,7 +38,27 @@ function adminUserTemplate($i)
         </div>
         <div class="bookmarkList">
             <div class="userForm">
-                <figure><a href=<?= "http://" . $domain . "/logement?id=" . $i['id'] ?>><img src="../public/images/paris.jpeg" alt="image du logement"></a></figure>
+                <figure>
+                    <?php
+                    $firstPhotoDisplayed = false;
+
+                    foreach ($photos as $photo) {
+                        if ($photo['apartment_id'] == $i['id'] && !$firstPhotoDisplayed) {
+                            $firstPhotoDisplayed = true;
+                    ?>
+                            <a href=<?= "http://" . $domain . "/logement?id=" . $i['id'] ?>>
+                                <img src="data:image/jpeg;base64,<?= $photo['photo']; ?>" alt="logement à Paris <?= $i['id'] ?>" />
+                            </a>
+                    <?php
+                        }
+                    }
+                    ?>
+                </figure>
+                <!-- <figure>
+                    <a href=<?= "http://" . $domain . "/logement?id=" . $i['id'] ?>>
+                        <img src="../public/images/paris.jpeg" alt="image du logement">
+                    </a>
+                </figure> -->
             </div>
             <div class="userInfo">
                 <p>Description</p>
@@ -60,7 +81,7 @@ function adminUserTemplate($i)
         <?php
         if (count($bookmarks) > 0) {
             foreach ($bookmarks as $bookmark) {
-                adminUserTemplate($bookmark);
+                bookmark($bookmark);
             }
         } else { ?>
             <div class="user">

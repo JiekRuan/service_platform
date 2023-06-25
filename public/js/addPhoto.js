@@ -123,6 +123,7 @@ fileInput.type = "file";
 fileInput.accept = "image/*";
 fileInput.multiple = true;
 fileInput.name = "userfile[]";
+fileInput.required = true;
 
 fileInputContainer.appendChild(fileInput);
 

@@ -55,13 +55,15 @@ class ReservationController
         }
     }
 
-    function confirmReservation()
-    {
-        require_once 'public\templates\customer\ConfirmReservation.php';
-    }
 
     function reservation()
     {
+        $apartment_id = $_POST['apartment_id'];
+        $photo = new Reservation();
+        $photo->setId($apartment_id);
+        global $photos;
+        $photos = $photo->getPhotosByApartment();
+
         global $reservation_id;
         $reservation_id = $_POST['reservation_id'];
         $reservation = new Reservation();
@@ -111,6 +113,10 @@ class ReservationController
         $getTestimony->setUserId($user_id);
         global $getTestimonies;
         $getTestimonies = $getTestimony->getTestimony();
+
+        $photo = new Reservation();
+        global $photos;
+        $photos = $photo->getAllPhotos();
 
         require_once 'public\templates\customer\reservationList.php';
     }

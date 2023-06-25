@@ -192,6 +192,12 @@ class ApartmentController
             $apart = new Apartment();
             global $readApartment;
             $readApartment = $apart->readAnApartment($id);
+
+            $photo = new Apartment();
+            $photo->setId($id);
+            global $photos;
+            $photos = $photo->getPhotosByApartment();
+
             //afficher la vue lier a la function
             require_once('public\templates\management\readApartement.php');
         }
@@ -267,6 +273,12 @@ class ApartmentController
         $apart = new Apartment();
         global $readApartment;
         $readApartment = $apart->readAnApartment($id);
+
+        $photo = new Apartment();
+        $photo->setId($id);
+        global $photos;
+        $photos = $photo->getPhotosByApartment();
+
         if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
         } else {
             if ($_SERVER['REQUEST_METHOD'] === 'GET') {
@@ -294,6 +306,12 @@ class ApartmentController
         $bookmark->setUserId($userId);
         global $bookmarks;
         $bookmarks = $bookmark->readUserBookmark();
+
+        $photo = new Apartment();
+        global $photos;
+        $photos = $photo->getAllPhotos();
+        // echo var_dump($photos);
+
         require_once 'public/templates/customer/bookmark.php';
     }
 
@@ -353,16 +371,20 @@ class ApartmentController
     {
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             // récupérer les favoris
-            $userId = $_SESSION['userId'];
-            $bookmark = new Apartment();
-            $bookmark->setUserId($userId);
-            global $bookmarks;
-            $bookmarks = $bookmark->readUserBookmark();
-
-
+            if (isset($_SESSION['userId'])) {
+                $userId = $_SESSION['userId'];
+                $bookmark = new Apartment();
+                $bookmark->setUserId($userId);
+                global $bookmarks;
+                $bookmarks = $bookmark->readUserBookmark();
+            }
             $search = $_GET['search'];
             $apartment = new Apartment();
             global $apartments;
+
+            $photo = new Apartment();
+            global $photos;
+            $photos = $photo->getAllPhotos();
 
             if (empty($search)) {
                 $apartments = $apartment->readAllApartments();
@@ -374,6 +396,7 @@ class ApartmentController
         }
     }
 
+    // gestion
     public function searchPageListApartment()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
@@ -388,6 +411,22 @@ class ApartmentController
             }
 
             require_once 'public\templates\management\listApartement.php';
+        }
+    }
+
+    function confirmReservation()
+    {
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+            $id = $_POST['id'];
+
+            $photo = new Apartment();
+            $photo->setId($id);
+            global $photos;
+            $photos = $photo->getPhotosByApartment();
+
+            require_once 'public\templates\customer\ConfirmReservation.php';
         }
     }
 }

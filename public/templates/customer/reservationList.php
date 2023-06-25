@@ -9,6 +9,8 @@ if ($_SESSION["status"] === "desactive") {
 }
 
 global $reservations;
+// echo var_dump($reservations);
+
 
 ?>
 
@@ -20,6 +22,9 @@ global $reservations;
 {
     global $domain;
     global $getTestimonies;
+    global $photos;
+    // echo var_dump($photos);
+
 
     $currentDate = new DateTime(); // Date actuelle
     $startDateTime = DateTime::createFromFormat('Y-m-d', $i['start_time']); // Convertir en objet DateTime
@@ -30,6 +35,7 @@ global $reservations;
         <div class="Container">
             <form action="reservation" method="POST" id="<?= $i['id'] ?>" onclick="submitReservationForm('<?= $i['id'] ?>')">
                 <input type="hidden" name="reservation_id" value=<?= $i['id'] ?>>
+                <input type="hidden" name="apartment_id" value=<?= $i['apartment_id'] ?>>
                 <h3><?= $i['name'] ?></h3>
                 <p><?= $i['arrondissement'] ?>ème arrondissement</p>
             </form>
@@ -106,9 +112,20 @@ global $reservations;
                     </form>
                 </div>
             </div>
-            <figure>
-                <img class="img-reservation" src="../public/images/salon.png" alt="image du logement">
-            </figure>
+            <?php
+            $firstPhotoDisplayed = false;
+
+            foreach ($photos as $photo) {
+                if ($photo['apartment_id'] == $i['apartment_id'] && !$firstPhotoDisplayed) {
+                    $firstPhotoDisplayed = true;
+            ?>
+                    <!-- <a href=<?= "http://" . $domain . "/logement?id=" . $i['apartment_id'] ?>> -->
+                        <img src="data:image/jpeg;base64,<?= $photo['photo']; ?>" alt="logement à Paris <?= $i['apartment_id'] ?>" />
+                    <!-- </a> -->
+            <?php
+                }
+            }
+            ?>
         </div>
     </div>
 <?php

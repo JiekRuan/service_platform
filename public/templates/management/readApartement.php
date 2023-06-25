@@ -7,6 +7,8 @@ if ($_SESSION["status"] === "desactive") {
     global $domain;
     header('Location: http://' . $domain . '/user/disableAccount');
 }
+
+global $photos;
 ?>
 
 <?php include 'public/templates/component/header.php' ?>
@@ -59,10 +61,33 @@ $apartmentObject = $readApartment[0];
             <div class="userInfo">
                 <h3>Photos</h3>
                 <div class="readImage">
-                    <figure><img src="../public/images/concierge/service_6.png" alt="placeholder"></figure>
-                    <figure><img src="../public/images/concierge/service_2.png" alt="placeholder"></figure>
-                    <figure><img src="../public/images/concierge/service_3.png" alt="placeholder"></figure>
-                    <figure><img src="../public/images/concierge/service_5.png" alt="placeholder"></figure>
+                <figure>
+                    <?php if (isset($photos[0]['photo'])) : ?>
+                        <!-- <img src="public/images/sdb.png" alt="salle de bain" class="clickable-image"> -->
+                        <img src="data:image/jpeg;base64,<?= $photos[0]['photo']; ?>" alt="logement à Paris <?= $apartmentObject->getName() ?>" class="clickable-image" />
+                    <?php endif; ?>
+
+                </figure>
+                <figure>
+                    <?php if (isset($photos[1]['photo'])) : ?>
+                        <!-- <img src="public/images/sdb.png" alt="salle de bain" class="clickable-image"> -->
+                        <img src="data:image/jpeg;base64,<?= $photos[1]['photo']; ?>" alt="logement à Paris <?= $apartmentObject->getName() ?>" class="clickable-image" />
+                    <?php endif; ?>
+
+                </figure>
+                <figure>
+                    <?php if (isset($photos[2]['photo'])) : ?>
+                        <!-- <img src="public/images/sdb.png" alt="salle de bain" class="clickable-image"> -->
+                        <img src="data:image/jpeg;base64,<?= $photos[2]['photo']; ?>" alt="logement à Paris <?= $apartmentObject->getName() ?>" class="clickable-image" />
+                    <?php endif; ?>
+
+                </figure>
+                <figure>
+                    <?php if (isset($photos[3]['photo'])) : ?>
+                        <!-- <img src="public/images/sdb.png" alt="salle de bain" class="clickable-image"> -->
+                        <img src="data:image/jpeg;base64,<?= $photos[3]['photo']; ?>" alt="logement à Paris <?= $apartmentObject->getName() ?>" class="clickable-image" />
+                    <?php endif; ?>
+                </figure>
                 </div>
             </div>
 

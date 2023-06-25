@@ -10,7 +10,6 @@ $apartmentObject = $readApartment[0];
 $serializedObject = serialize($apartmentObject);
 $_SESSION['apartmentObject'] = $serializedObject;
 global $bookmarks;
-
 ?>
 
 <main>
@@ -45,13 +44,17 @@ global $bookmarks;
                             <label for="toDate">Jusqu'à : </label>
                             <input type="date" name="toDate" id="toDate" min="<?php echo date('Y-m-d'); ?>" required>
                         </div>
+                        <input type="hidden" name="id" value=<?= $apartmentObject->getId() ?>>
+
                         <input type="submit" value="Réserver" class="goldenButton">
                     </div>
                 </form>
             <?php } ?>
         </div>
         <figure class="containerImage">
-            <img src="public/images/troca.png" alt="appartement 4 pièces" class="clickable-image">
+            <!-- <img src="public/images/troca.png" alt="appartement 4 pièces" class="clickable-image"> -->
+            <img src="data:image/jpeg;base64,<?= $photos[0]['photo']; ?>" alt="logement à Paris <?= $apartmentObject->getName() ?>" class="clickable-image" />
+
         </figure>
     </div>
 
@@ -82,9 +85,8 @@ global $bookmarks;
                     } else {
                         echo '<i class="fa-regular fa-bookmark"></i>';
                     }
-                
                 } ?>
-                </form>
+                    </form>
             </div>
             <p class="info"><?= $apartmentObject->getSquareMeter() ?> m² | <?= $apartmentObject->getCapacity() ?> chambres |
                 <?php
@@ -169,13 +171,24 @@ global $bookmarks;
 
             <div class="galerie">
                 <figure>
-                    <img src="public/images/sdb.png" alt="salle de bain" class="clickable-image">
+                    <?php if (isset($photos[1]['photo'])) : ?>
+                        <!-- <img src="public/images/sdb.png" alt="salle de bain" class="clickable-image"> -->
+                        <img src="data:image/jpeg;base64,<?= $photos[1]['photo']; ?>" alt="logement à Paris <?= $apartmentObject->getName() ?>" class="clickable-image" />
+                    <?php endif; ?>
+
                 </figure>
                 <figure>
-                    <img src="public/images/salon.png" alt="salon" class="clickable-image">
+                    <?php if (isset($photos[2]['photo'])) : ?>
+                        <!-- <img src="public/images/sdb.png" alt="salle de bain" class="clickable-image"> -->
+                        <img src="data:image/jpeg;base64,<?= $photos[1]['photo']; ?>" alt="logement à Paris <?= $apartmentObject->getName() ?>" class="clickable-image" />
+                    <?php endif; ?>
+
                 </figure>
                 <figure>
-                    <img src="public/images/cuisine.png" alt="cuisine" class="clickable-image">
+                    <?php if (isset($photos[3]['photo'])) : ?>
+                        <!-- <img src="public/images/sdb.png" alt="salle de bain" class="clickable-image"> -->
+                        <img src="data:image/jpeg;base64,<?= $photos[1]['photo']; ?>" alt="logement à Paris <?= $apartmentObject->getName() ?>" class="clickable-image" />
+                    <?php endif; ?>
                 </figure>
             </div>
         </article>

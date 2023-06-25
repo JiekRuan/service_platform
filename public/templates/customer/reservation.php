@@ -11,6 +11,10 @@ if ($_SESSION["status"] === "desactive") {
 global $reservation_id;
 global $reservationInfo;
 $info = $reservationInfo[0];
+
+global $photos;
+// echo var_dump($photos);
+
 ?>
 
 
@@ -56,22 +60,34 @@ $info = $reservationInfo[0];
                                                                                                 ?> de bain</p>
 
             <figure class="containerImage">
-                <img src="../public/images/troca.png" alt="appartement 4 pièces" class="clickable-image">
+                <!-- <img src="../public/images/troca.png" alt="appartement 4 pièces" class="clickable-image"> -->
+                <img src="data:image/jpeg;base64,<?= $photos[0]['photo']; ?>" alt="logement à Paris <?= $info['name'] ?>" class="clickable-image" />
             </figure>
 
             <section class="galleryContainer">
                 <article class="gallery">
 
                     <div class="galerie">
-                        <figure>
-                            <img src="../public/images/sdb.png" alt="salle de bain" class="clickable-image">
-                        </figure>
-                        <figure>
-                            <img src="../public/images/salon.png" alt="salon" class="clickable-image">
-                        </figure>
-                        <figure>
-                            <img src="../public/images/cuisine.png" alt="cuisine" class="clickable-image">
-                        </figure>
+                    <figure>
+                    <?php if (isset($photos[1]['photo'])) : ?>
+                        <!-- <img src="public/images/sdb.png" alt="salle de bain" class="clickable-image"> -->
+                        <img src="data:image/jpeg;base64,<?= $photos[1]['photo']; ?>" alt="logement à Paris <?= $info['name'] ?>" class="clickable-image" />
+                    <?php endif; ?>
+
+                </figure>
+                <figure>
+                    <?php if (isset($photos[2]['photo'])) : ?>
+                        <!-- <img src="public/images/sdb.png" alt="salle de bain" class="clickable-image"> -->
+                        <img src="data:image/jpeg;base64,<?= $photos[1]['photo']; ?>" alt="logement à Paris <?= $info['name'] ?>" class="clickable-image" />
+                    <?php endif; ?>
+
+                </figure>
+                <figure>
+                    <?php if (isset($photos[3]['photo'])) : ?>
+                        <!-- <img src="public/images/sdb.png" alt="salle de bain" class="clickable-image"> -->
+                        <img src="data:image/jpeg;base64,<?= $photos[1]['photo']; ?>" alt="logement à Paris <?= $info['name'] ?>" class="clickable-image" />
+                    <?php endif; ?>
+                </figure>
                     </div>
                 </article>
             </section>

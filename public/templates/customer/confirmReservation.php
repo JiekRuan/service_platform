@@ -40,18 +40,31 @@ $toDate = $_POST['toDate'];
         <div class="subContainer">
 
             <figure class="containerImage">
-                <img src="../public/images/troca.png" alt="appartement 4 pièces" class="clickable-image">
+                <img src="data:image/jpeg;base64,<?= $photos[0]['photo']; ?>" alt="logement à Paris <?= $apartmentObject->getName() ?>" class="clickable-image" />
+
+                <!-- <img src="../public/images/troca.png" alt="appartement 4 pièces" class="clickable-image"> -->
             </figure>
 
             <div class="galerie">
                 <figure>
-                    <img src="../public/images/sdb.png" alt="salle de bain" class="clickable-image">
+                    <?php if (isset($photos[1]['photo'])) : ?>
+                        <!-- <img src="public/images/sdb.png" alt="salle de bain" class="clickable-image"> -->
+                        <img src="data:image/jpeg;base64,<?= $photos[1]['photo']; ?>" alt="logement à Paris <?= $apartmentObject->getName() ?>" class="clickable-image" />
+                    <?php endif; ?>
+
                 </figure>
                 <figure>
-                    <img src="../public/images/salon.png" alt="salon" class="clickable-image">
+                    <?php if (isset($photos[2]['photo'])) : ?>
+                        <!-- <img src="public/images/sdb.png" alt="salle de bain" class="clickable-image"> -->
+                        <img src="data:image/jpeg;base64,<?= $photos[1]['photo']; ?>" alt="logement à Paris <?= $apartmentObject->getName() ?>" class="clickable-image" />
+                    <?php endif; ?>
+
                 </figure>
                 <figure>
-                    <img src="../public/images/cuisine.png" alt="cuisine" class="clickable-image">
+                    <?php if (isset($photos[3]['photo'])) : ?>
+                        <!-- <img src="public/images/sdb.png" alt="salle de bain" class="clickable-image"> -->
+                        <img src="data:image/jpeg;base64,<?= $photos[1]['photo']; ?>" alt="logement à Paris <?= $apartmentObject->getName() ?>" class="clickable-image" />
+                    <?php endif; ?>
                 </figure>
             </div>
 
@@ -79,7 +92,7 @@ $toDate = $_POST['toDate'];
             <div>
                 <h3>Agréments</h3>
                 <hr>
-                <p>Vue sur <?= $apartmentObject->getVueSur() ?> 
+                <p>Vue sur <?= $apartmentObject->getVueSur() ?>
                     |
                     <?php if ($apartmentObject->getTerasse() === 'on') : ?>
                         Possède une terrasse
@@ -103,7 +116,7 @@ $toDate = $_POST['toDate'];
                 <h3>Prix</h3>
                 <hr>
                 <h4 id="price">
-                <?= $apartmentObject->getPrice() ?>€/jour
+                    <?= $apartmentObject->getPrice() ?>€/jour
                 </h4>
             </div>
 
