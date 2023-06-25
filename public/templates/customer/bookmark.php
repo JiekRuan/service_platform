@@ -58,8 +58,15 @@ function adminUserTemplate($i)
     <div class="userContainer">
 
         <?php
-        foreach ($bookmarks as $bookmark) {
-            adminUserTemplate($bookmark);
+        if (count($bookmarks) > 0) {
+            foreach ($bookmarks as $bookmark) {
+                adminUserTemplate($bookmark);
+            }
+        } else { ?>
+            <div class="user">
+                <p>Vous n'avez pas de favoris pour le moment.</p>
+            </div>
+        <?php
         }
         ?>
 

@@ -3,10 +3,10 @@
 
 <?php
 global $apartments;
-// echo var_dump($apartments);
 function apartementTemplate($apartments)
 {
     global $domain;
+    global $bookmarks;
 
     if (is_object($apartments)) {
         $i = $apartments;
@@ -25,9 +25,25 @@ function apartementTemplate($apartments)
                             <input type="hidden" name="apartmentId" value=<?= $i->getId() ?>>
                             <input type="hidden" name="REQUEST_URI" value=<?= $_SERVER['REQUEST_URI'] ?>>
                             <input type="hidden" name="userId" value=<?= $_SESSION['userId'] ?>>
-                            <i class="fa-regular fa-bookmark"></i>
+                        <?php
+                        $isFavorite = false;
+                        if (count($bookmarks) > 0) {
+                            foreach ($bookmarks as $bookmark) {
+                                if ($bookmark['id'] == $i->getId()) {
+                                    $isFavorite = true; // L'élément est dans les favoris
+                                    break; // Sortir de la boucle dès que l'élément est trouvé
+                                }
+                            }
+                        }
+                        if ($isFavorite) {
+                            echo '<i class="fa-solid fa-bookmark"></i>';
+                        } else {
+                            echo '<i class="fa-regular fa-bookmark"></i>';
+                        }
+                    }
+                        ?>
                         </form>
-                    <?php } ?>
+
                 </div>
                 <div class="price">
 

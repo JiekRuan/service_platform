@@ -8,9 +8,9 @@ if ($_SESSION["status"] === "desactive") {
     header('Location: http://' . $domain . '/user/disableAccount');
 }
 
+global $reservation_id;
 global $reservationInfo;
 $info = $reservationInfo[0];
-
 ?>
 
 
@@ -39,12 +39,12 @@ $info = $reservationInfo[0];
         <article class="containerContent">
             <div class="descriptionBookmark">
                 <h2>Description</h2>
-                <form action=<?= "http://" . $domain . "/user/bookmarkAddDelete" ?> method="POST" id=<?= $info['id'] ?> onclick="submitReservationForm('<?= $info['id'] ?>')">
+                <!-- <form action=<?= "http://" . $domain . "/user/bookmarkAddDelete" ?> method="POST" id=<?= $info['id'] ?> onclick="submitReservationForm('<?= $info['id'] ?>')">
                     <input type="hidden" name="apartmentId" value=<?= $info['id'] ?>>
                     <input type="hidden" name="REQUEST_URI" value='/user/bookmark'>
                     <input type="hidden" name="userId" value=<?= $_SESSION['userId'] ?>>
                     <i class="fa-regular fa-bookmark"></i>
-                </form>
+                </form> -->
             </div>
             <p class="info"><?= $info['squareMeter'] ?>m² | <?= $info['capacity'] ?> chambres | <?php
                                                                                                 $numberBathroom = $info['numberBathroom'];
@@ -177,7 +177,10 @@ $info = $reservationInfo[0];
             <div class="userForm">
                 <p class="blueButton cancelDesactivate">Retour</p>
             </div>
-            <form action="" method="POST"><input type="submit" value="Confirmer" class="goldenButton"></form>
+            <form action=<?= "http://" . $domain . "/reservation/reservationCancel" ?> method="POST">
+                <input type="hidden" name="id" value=<?= $reservation_id ?>>
+                <input type="submit" value="Confirmer" class="goldenButton">
+            </form>
         </div>
     </div>
 

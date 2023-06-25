@@ -9,6 +9,7 @@ global $readApartment;
 $apartmentObject = $readApartment[0];
 $serializedObject = serialize($apartmentObject);
 $_SESSION['apartmentObject'] = $serializedObject;
+global $bookmarks;
 
 ?>
 
@@ -64,7 +65,23 @@ $_SESSION['apartmentObject'] = $serializedObject;
                     <input type="hidden" name="apartmentId" value=<?= $apartmentObject->getId() ?>>
                     <input type="hidden" name="REQUEST_URI" value=<?= $_SERVER['REQUEST_URI'] ?>>
                     <input type="hidden" name="userId" value=<?= $_SESSION['userId'] ?>>
-                    <i class="fa-regular fa-bookmark"></i>
+                    <?php
+                        $isFavorite = false;
+                        if (count($bookmarks) > 0) {
+                            foreach ($bookmarks as $bookmark) {
+                                if ($bookmark['id'] == $apartmentObject->getId()) {
+                                    $isFavorite = true; // L'élément est dans les favoris
+                                    break; // Sortir de la boucle dès que l'élément est trouvé
+                                }
+                            }
+                        }
+                        if ($isFavorite) {
+                            echo '<i class="fa-solid fa-bookmark"></i>';
+                        } else {
+                            echo '<i class="fa-regular fa-bookmark"></i>';
+                        }
+                    
+                        ?>
                 </form>
             </div>
             <p class="info"><?= $apartmentObject->getSquareMeter() ?> m² | <?= $apartmentObject->getCapacity() ?> chambres |

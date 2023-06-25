@@ -62,6 +62,7 @@ class ReservationController
 
     function reservation()
     {
+        global $reservation_id;
         $reservation_id = $_POST['reservation_id'];
         $reservation = new Reservation();
         global $reservationInfo;

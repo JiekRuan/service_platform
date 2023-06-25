@@ -29,7 +29,7 @@ global $domain;
             <ul id="desktop">
                 <li id="search"><i class="fa-solid fa-magnifying-glass"></i></li>
                 <li id="searchForm">
-                    <form action="searchPage" method="GET" class="searchFormInput">
+                    <form action=<?= "http://" . $domain . "/searchPage" ?> method="GET" class="searchFormInput">
                         <input class="searchInput" name="search" type="text" placeholder="16ème arrondissement...">
                         <button type="submit" class="homepageSearchButton homepageSearchButtonMobile"><i class="fa-solid fa-magnifying-glass"></i></button>
                     </form>
@@ -77,7 +77,7 @@ global $domain;
             <ul id="mobile">
                 <li id="searchMobile"><i class="fa-solid fa-magnifying-glass"></i></li>
                 <li id="searchFormMobile">
-                    <form action="searchPage" method="GET" class="searchFormInput">
+                    <form action=<?= "http://" . $domain . "/searchPage" ?> method="GET" class="searchFormInput">
                         <input class="searchInput" name="search" type="text" placeholder="16ème arrondissement...">
                         <button type="submit" class="homepageSearchButton homepageSearchButtonMobile"><i class="fa-solid fa-magnifying-glass"></i></button>
                     </form>

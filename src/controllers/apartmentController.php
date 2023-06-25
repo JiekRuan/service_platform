@@ -230,6 +230,12 @@ class ApartmentController
     public function logement()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+            $userId = $_SESSION['userId'];
+            $bookmark = new Apartment();
+            $bookmark->setUserId($userId);
+            global $bookmarks;
+            $bookmarks = $bookmark->readUserBookmark();
+
             $id = $_GET['id'];
             $apart = new Apartment();
             global $readApartment;
@@ -319,6 +325,14 @@ class ApartmentController
     public function searchPage()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+            // récupérer les favoris
+            $userId = $_SESSION['userId'];
+            $bookmark = new Apartment();
+            $bookmark->setUserId($userId);
+            global $bookmarks;
+            $bookmarks = $bookmark->readUserBookmark();
+
+
             $search = $_GET['search'];
             $apartment = new Apartment();
             global $apartments;
