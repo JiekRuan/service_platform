@@ -1,4 +1,4 @@
-<h1>Hetic Projet Final</h1>
+<h1>Hetic Projet Final - Elysians Paris</h1>
 Ce projet à pour objectif de mettre en oeuvre ainsi que de renforcer les outils acquis durant l'année, le tout grâce à une simulation avec une relation client. 
 <hr>
 
