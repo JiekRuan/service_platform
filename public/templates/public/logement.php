@@ -60,7 +60,11 @@ $_SESSION['apartmentObject'] = $serializedObject;
         <article class="containerContent">
             <div class="descriptionBookmark">
                 <h2>Description</h2>
-                <i class="fa-regular fa-bookmark"></i>
+                <form action=<?= "http://" . $domain . "/user/bookmarkAdd" ?> method="POST" id=<?= $apartmentObject->getId() ?> onclick="submitReservationForm('<?= $apartmentObject->getId() ?>')">
+                    <input type="hidden" name="apartmentId" value=<?= $apartmentObject->getId() ?>>
+                    <input type="hidden" name="userId" value=<?= $_SESSION['userId'] ?>>
+                    <i class="fa-regular fa-bookmark"></i>
+                </form>
             </div>
             <p class="info"><?= $apartmentObject->getSquareMeter() ?> m² | <?= $apartmentObject->getCapacity() ?> chambres |
                 <?php
@@ -200,7 +204,11 @@ $_SESSION['apartmentObject'] = $serializedObject;
     </section>
 
 </main>
-
+<script>
+    function submitReservationForm(formId) {
+        document.getElementById(formId).submit();
+    }
+</script>
 <script src="../public/js/date.js"></script>
 <script src="../public/js/picture.js"></script>
 <script src="../public/js/carousel.js"></script>

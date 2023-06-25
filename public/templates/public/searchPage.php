@@ -10,14 +10,18 @@ function apartementTemplate($apartments)
 
     if (is_object($apartments)) {
         $i = $apartments;
-        ?>
+?>
         <a href="<?= "http://" . $domain . "/logement?id=" . $i->getId() ?>" class="userInfo box">
             <figure>
                 <img src="../public/images/paris.jpeg" alt="logement2">
             </figure>
             <div class="information">
                 <div class="star">
-                    <h3 class="monaco"><?= $i->getName() ?></h3><i class="fa-regular fa-bookmark"></i>
+                    <h3 class="monaco"><?= $i->getName() ?></h3>
+                    <!-- <form action="" method="POST">
+                        <input type="hidden" name="favorite" value=<?= $i->getId() ?>>
+                        <i class="fa-regular fa-bookmark"></i>
+                    </form> -->
                 </div>
                 <div class="price">
                     <p><?= $i->getHousingType() ?> | <?= $i->getSquareMeter() ?> m² | <?= $i->getCapacity() ?> chambres</p>
@@ -26,26 +30,26 @@ function apartementTemplate($apartments)
                 <p class="price2">/jour</p>
             </div>
         </a>
-        <?php
+    <?php
     } elseif (is_array($apartments)) {
         // foreach ($apartments as $i) {
-            ?>
-            <a href="<?= "http://" . $domain . "/logement?id=" . $apartments['id'] ?>" class="userInfo box">
-                <figure>
-                    <img src="../public/images/paris.jpeg" alt="logement2">
-                </figure>
-                <div class="information">
-                    <div class="star">
-                        <h3 class="monaco"><?= $apartments['name'] ?></h3><i class="fa-regular fa-bookmark"></i>
-                    </div>
-                    <div class="price">
-                        <p><?= $apartments['housingType'] ?> | <?= $apartments['squareMeter'] ?> m² | <?= $apartments['capacity'] ?> chambres</p>
-                        <p><?= $apartments['price'] ?>€</p>
-                    </div>
-                    <p class="price2">/jour</p>
+    ?>
+        <a href="<?= "http://" . $domain . "/logement?id=" . $apartments['id'] ?>" class="userInfo box">
+            <figure>
+                <img src="../public/images/paris.jpeg" alt="logement2">
+            </figure>
+            <div class="information">
+                <div class="star">
+                    <h3 class="monaco"><?= $apartments['name'] ?></h3><i class="fa-regular fa-bookmark"></i>
                 </div>
-            </a>
-            <?php
+                <div class="price">
+                    <p><?= $apartments['housingType'] ?> | <?= $apartments['squareMeter'] ?> m² | <?= $apartments['capacity'] ?> chambres</p>
+                    <p><?= $apartments['price'] ?>€</p>
+                </div>
+                <p class="price2">/jour</p>
+            </div>
+        </a>
+<?php
         // }
     } else {
         echo "Type de données non pris en charge pour \$apartments.";

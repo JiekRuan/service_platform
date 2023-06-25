@@ -253,31 +253,45 @@ class ApartmentController
     {
         require_once 'public\templates\customer\thanksTestimony.php';
     }
-    
+
     public function bookmark()
     {
-        // if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-        //     $name = $_GET['name'];
-        //     $arrondissement = $_GET['arrondissement'];
-        //     $description = $_GET['description'];
 
-        //     $apartmentModel = new Apartment();
-        //     $apartments = $apartmentModel->readAllApartments();
-
-        //     // Utilisez les variables récupérées dans votre code ici
-
-        // }
-            require_once 'public/templates/customer/bookmark.php';
+        require_once 'public/templates/customer/bookmark.php';
     }
 
     public function bookmarkAdd()
     {
-            require_once 'public/templates/customer/bookmark.php';
+        // $currentPage = $_SERVER['REQUEST_URI'];
+        // echo $currentPage;
+
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $apartmentId = $_POST['apartmentId'];
+            $userId = $_POST['userId'];
+
+            $apartment = new Apartment();
+
+            $apartment->setId($apartmentId);
+            $apartment->setUserId($userId);
+            echo $apartment->getId();
+            if ($apartment->addBookmark()) {
+
+                global $domain;
+                // header('Location: http://' . $domain . '/user/bookmark');
+            } else {
+                header('Location: public\templates\public\404.php');
+            }
+        }
+
+        require_once 'public/templates/customer/bookmark.php';
     }
 
     public function bookmarkDelete()
     {
-            require_once 'public/templates/customer/bookmark.php';
+        // $currentPage = $_SERVER['REQUEST_URI'];
+        // echo $currentPage;
+        require_once 'public/templates/customer/bookmark.php';
     }
 
     public function checklist()
@@ -305,13 +319,13 @@ class ApartmentController
             $search = $_GET['search'];
             $apartment = new Apartment();
             global $apartments;
-    
+
             if (empty($search)) {
                 $apartments = $apartment->readAllApartments();
             } else {
                 $apartments = $apartment->searchApartment($search);
             }
-    
+
             require_once 'public\templates\public\searchPage.php';
         }
     }
@@ -322,16 +336,15 @@ class ApartmentController
             $search = $_GET['search'];
             $apartment = new Apartment();
             global $apartments;
-    
+
             if (empty($search)) {
                 $apartments = $apartment->readAllApartments();
             } else {
                 $apartments = $apartment->searchApartment($search);
             }
-    
+
             require_once 'public\templates\management\listApartement.php';
         }
     }
-    
 }
 //affichier les appart cree une function avec un [].

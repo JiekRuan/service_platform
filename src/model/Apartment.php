@@ -24,6 +24,7 @@ class Apartment
     private $vueSur;
     private $quartier;
 
+    private $userId;
 
 
     // public function __construct($id,$name,$address,$arrondissement,$price,$description,$squareMeter,$numberBathroom,$housingType,$balcon,$terasse,$capacity,$vueSur,$quartier)
@@ -50,6 +51,14 @@ class Apartment
     public function getId()
     {
         return $this->id;
+    }
+
+        /**
+     * @return mixed
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
     }
 
     /**
@@ -268,6 +277,22 @@ class Apartment
         $this->quartier = $quartier;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getUserId()
+    {
+        return $this->userId;
+    }
+
+    /**
+     * @param mixed $name
+     */
+    public function setUserId($userId): void
+    {
+        $this->userId = $userId;
+    }
+
     // fonction pour afficher les appartements
     public function readAllApartments()
     {
@@ -432,9 +457,9 @@ class Apartment
     {
         $db = new Database();
         $connection = $db->getConnection();
-    
+
         $searchValue = "%" . $search . "%"; // Valeur de recherche avec les wildcards
-    
+
         // $request = $connection->prepare("SELECT * FROM apartments WHERE id = :searchValue name LIKE :searchValue OR address LIKE :searchValue OR capacity LIKE :searchValue OR price LIKE :searchValue OR description LIKE :searchValue OR arrondissement LIKE :searchValue");
         $request = $connection->prepare("SELECT * FROM apartments WHERE id LIKE :searchValue OR name LIKE :searchValue OR address LIKE :searchValue OR capacity LIKE :searchValue OR price LIKE :searchValue OR description LIKE :searchValue OR arrondissement LIKE :searchValue");
 
@@ -443,7 +468,7 @@ class Apartment
         // $request->bindParam(':capacity', $this->capacity);
         // $request->bindParam(':arrondissement', $this->arrondissement);
         // $request->bindParam(':price', $this->price);
-    
+
         if ($request->execute()) {
             $results = $request->fetchAll(PDO::FETCH_ASSOC);
             return $results;
@@ -451,6 +476,25 @@ class Apartment
 
         return false;
     }
-    
+
+    public function addBookmark()
+    {
+        $db = new Database();
+        $connection = $db->getConnection();
+
+        $request = $connection->prepare('INSERT INTO favorites (user_id, apartment_id) 
+            VALUES (:userId, :id)');
+
+        $request->bindParam(':userId', $this->userId);
+        $request->bindParam(':id', $this->id);
+
+        if ($this->id) {
+            $request->bindParam(':id', $this->id);
+        }
+
+        $result = $request->execute();
+
+        return $result;
+    }
 }
 //revoir la dernier fonction et terminer le controller !
