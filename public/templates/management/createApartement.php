@@ -20,7 +20,7 @@ if ($_SESSION["status"] === "desactive") {
 
     <div class="userContainer">
 
-        <form action="createApartementMethod" method="POST" class="apartement">
+        <form id="myForm" action="createApartementMethod" method="POST" class="apartement" enctype="multipart/form-data">
             <div class="userInfo">
                 <h3>Informations principales</h3>
                 <input type="text" name="name" placeholder="Nom de l'appartement" required>
@@ -68,10 +68,11 @@ if ($_SESSION["status"] === "desactive") {
 
                 </div>
 
-                <label id="custom-img-btn" class="addPhoto blueGoldButton">
+                <!-- <label id="custom-img-btn" class="addPhoto blueGoldButton">
                     <i class="fa-solid fa-camera"></i>
                     <p>Ajouter des images</p>
-                </label>
+                </label> -->
+                <div id="fileInputContainer"></div>
                 <p style="font-size: 12px;">Vous pouvez sélectionner jusqu'à un maximum de 4 images, avec une limite de poids de 4 Mo pour chaque image.</p>
 
             </div>

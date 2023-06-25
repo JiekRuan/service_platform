@@ -23,10 +23,13 @@ class ApartmentController
             $numberBathroom = $_POST['numberBathroom'];
             $housingType = $_POST['housingType'];
             $capacity = $_POST['capacity'];
-            $balcon = $_POST['balcon'];
-            $terasse = $_POST['terasse'];
+            // $balcon = $_POST['balcon'];
+            // $terasse = $_POST['terasse'];
             $vueSur = $_POST['vueSur'];
             $quartier = $_POST['quartier'];
+
+            $balcon = isset($_POST['balcon']) ? $_POST['balcon'] : null;
+            $terasse = isset($_POST['terasse']) ? $_POST['terasse'] : null;
 
             $apartment = new Apartment();
             // Definir les valeurs de l'appart
@@ -44,14 +47,45 @@ class ApartmentController
             $apartment->setVueSur($vueSur);
             $apartment->setQuartier($quartier);
 
+
             //Enregistrer les infos
-            if ($apartment->saveData()) {
-                // header('Location: public\templates\management\listApartment.php');
-                global $domain;
-                header('Location: http://' . $domain . '/apartment/listApartement'); //a revoir pour les Location.
-            } else {
-                header('Location: public\templates\public\404.php');
+            // if () {
+            $lastInsertedId = $apartment->saveData();
+            // recuperer les images
+            $uploadedFiles = $_FILES['userfile'];
+
+            // echo var_dump($uploadedFiles);
+
+            for ($i = 0; $i < count($uploadedFiles['tmp_name']); $i++) {
+                $tmpFile = $uploadedFiles['tmp_name'][$i];
+
+                // Vérifier si le fichier existe et est accessible
+                if (is_uploaded_file($tmpFile)) {
+                    $blob = file_get_contents($tmpFile);
+
+                    // Vérifier si la lecture du fichier a réussi
+                    if ($blob !== false) {
+                        $bin = base64_encode($blob);
+
+                        $saveImage = new Apartment();
+                        $saveImage->setId($lastInsertedId); // Utiliser l'ID du dernier appartement inséré
+                        $saveImage->setImage($bin);
+                        $saveImage->addImage();
+                    } else {
+                        // Gérer l'erreur de lecture du fichier
+                        echo "Erreur lors de la lecture du fichier.";
+                    }
+                } else {
+                    // Gérer l'erreur de fichier non téléchargé
+                    echo "Erreur lors du téléchargement du fichier.";
+                }
             }
+            // header('Location: public\templates\management\listApartment.php');
+            global $domain;
+            header('Location: http://' . $domain . '/apartment/listApartement'); //a revoir pour les Location.
+            // } else {
+            //     header('Location: public\templates\public\404.php');
+            // }
         }
     }
     // public function updateApartement()

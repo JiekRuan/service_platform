@@ -26,6 +26,8 @@ class Apartment
 
     private $userId;
 
+    private $image;
+    private $connection;
 
     // public function __construct($id,$name,$address,$arrondissement,$price,$description,$squareMeter,$numberBathroom,$housingType,$balcon,$terasse,$capacity,$vueSur,$quartier)
     // {
@@ -293,6 +295,34 @@ class Apartment
         $this->userId = $userId;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+    }
+
+    public function addImage()
+    {
+        $db = new Database();
+        $connection = $db->getConnection();
+
+        $request = $connection->prepare('INSERT INTO apartment_photos (apartment_id, photo) 
+            VALUES (:apartment_id, :photo)');
+        $request->bindParam(':apartment_id', $this->id);
+        $request->bindParam(':photo', $this->image);
+        $request->execute();
+    }
+
     // fonction pour afficher les appartements
     public function readAllApartments()
     {
@@ -407,8 +437,8 @@ class Apartment
         }
 
         $result = $request->execute();
-
-        return $result;
+        $lastInsertedId = $connection->lastInsertId();
+        return $lastInsertedId;
     }
 
     public function updateData($id)
